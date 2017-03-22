@@ -9512,7 +9512,8 @@ Temperatures of both axis are the same, both losses are added.
 Material properties alpha can be set differently for both d- and q-axis,
 although reference temperature for both resistances is the same.
 </p>
-</html>"));
+</html>"),
+          Diagram(coordinateSystem(grid={2,2}, initialScale=0.1)));
       end DamperCage;
 
       model ElectricalExcitation "Electrical excitation"
@@ -9804,9 +9805,9 @@ the connection to airgap has to be grounded at one point.
         Modelica.SIunits.Current im[m]=i1 + i2/n12 + i3/n13
           "Magnetizing current";
         Modelica.Electrical.MultiPhase.Interfaces.PositivePlug plug_p1(final m=
-              m) annotation (Placement(transformation(extent={{-110,40},{-90,60}})));
+              m) annotation (Placement(transformation(extent={{-110,90},{-90,110}}), iconTransformation(extent={{-110,90},{-90,110}})));
         Modelica.Electrical.MultiPhase.Interfaces.NegativePlug plug_n1(final m=
-              m) annotation (Placement(transformation(extent={{-110,-60},{-90,-40}})));
+              m) annotation (Placement(transformation(extent={{-110,-110},{-90,-90}}), iconTransformation(extent={{-110,-110},{-90,-90}})));
         Modelica.Electrical.MultiPhase.Interfaces.PositivePlug plug_p2(final m=
               m) annotation (Placement(transformation(extent={{90,90},{110,110}})));
         Modelica.Electrical.MultiPhase.Interfaces.NegativePlug plug_n2(final m=
@@ -9820,11 +9821,9 @@ the connection to airgap has to be grounded at one point.
         plug_p2.pin.i + plug_n2.pin.i = zeros(m);
         plug_p3.pin.i + plug_n3.pin.i = zeros(m);
         annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
-                  -100},{100,100}}), graphics={Text(
-                      extent={{-100,130},{100,110}},
-                      textString="%name",
-                      lineColor={0,0,255}),          Line(points={{-90,50},{-30,50}},
-                      color={0,0,255}),Line(points={{-90,-50},{-30,-50}}, color=
+                  -100},{100,100}}), graphics={      Line(points={{-90,100},{-30,100}},
+                      color={0,0,255}),Line(points={{-90,-100},{-30,-100}},
+                                                                          color=
                  {0,0,255}),                         Line(points={{30,100},{90,100}},
                       color={0,0,255}),Line(points={{30,40},{92,40}}, color={0,
                 0,255}),                             Line(points={{30,-40},{90,-40}},
@@ -9871,32 +9870,69 @@ the connection to airgap has to be grounded at one point.
                 points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
                 color={0,0,255},
                 smooth=Smooth.Bezier,
-                origin={-25,40},
+                origin={-25,90},
                 rotation=360),
               Line(
                 points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
                 color={0,0,255},
                 smooth=Smooth.Bezier,
-                origin={-25,20},
+                origin={-25,70},
                 rotation=360),
               Line(
                 points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
                 color={0,0,255},
                 smooth=Smooth.Bezier,
-                origin={-25,0},
+                origin={-25,50},
                 rotation=360),
               Line(
                 points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
                 color={0,0,255},
                 smooth=Smooth.Bezier,
-                origin={-25,-20},
+                origin={-25,30},
                 rotation=360),
               Line(
                 points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
                 color={0,0,255},
                 smooth=Smooth.Bezier,
-                origin={-25,-40},
-                rotation=360)}),
+                origin={-25,10},
+                rotation=360),
+              Line(
+                points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
+                color={0,0,255},
+                smooth=Smooth.Bezier,
+                origin={-25,-10},
+                rotation=360),
+              Line(
+                points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
+                color={0,0,255},
+                smooth=Smooth.Bezier,
+                origin={-25,-30},
+                rotation=360),
+              Line(
+                points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
+                color={0,0,255},
+                smooth=Smooth.Bezier,
+                origin={-25,-50},
+                rotation=360),
+              Line(
+                points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
+                color={0,0,255},
+                smooth=Smooth.Bezier,
+                origin={-25,-70},
+                rotation=360),
+              Line(
+                points={{-5,-10},{0,-9},{5,-4},{5,4},{0,9},{-5,10}},
+                color={0,0,255},
+                smooth=Smooth.Bezier,
+                origin={-25,-90},
+                rotation=360),
+              Text(
+                extent={{-150,-110},{150,-150}},
+                lineColor={0,0,0},
+                textString="m=%m"),            Text(
+                      extent={{-150,150},{150,110}},
+                      textString="%name",
+                      lineColor={0,0,255})}),
                               Documentation(info="<html>
 Partial model of transformer core with 3 windings; saturation function flux versus magnetizing current has to be defined.
 </html>"));
@@ -12045,7 +12081,7 @@ where <code>RRef</code> is the resistance at the reference temperature <code>TRe
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={80,-100})));
+              origin={100,-120})));
         Modelica.Blocks.Sources.Constant constTr(final k=Tr) if not
           useTemperatureInputs annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -12060,7 +12096,7 @@ where <code>RRef</code> is the resistance at the reference temperature <code>TRe
             points={{-50,40},{-50,100},{0,100}},
             color={191,0,0}));
         connect(TRotorWinding, temperatureRotorWinding.T) annotation (Line(
-            points={{80,-100},{80,8},{-50,8},{-50,18}},
+            points={{100,-120},{100,8},{-50,8},{-50,18}},
             color={0,0,127}));
         annotation (Icon(graphics={Text(
                 extent={{-100,-20},{100,-80}},
@@ -12100,7 +12136,7 @@ Additionally, all losses = heat flows are recorded.
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={80,-100})));
+              origin={100,-118})));
         Modelica.Blocks.Sources.Constant constTr(final k=Tr) if not
           useTemperatureInputs annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -12131,7 +12167,7 @@ Additionally, all losses = heat flows are recorded.
             points={{0,60},{0,60},{0,100}},
             color={191,0,0}));
         connect(TRotorWinding, temperatureRotorWinding.T) annotation (Line(
-            points={{80,-100},{80,8},{-50,8},{-50,18}},
+            points={{100,-118},{100,8},{-50,8},{-50,18}},
             color={0,0,127}));
         annotation (Icon(graphics={Text(
                 extent={{-100,-20},{100,-80}},
@@ -12185,7 +12221,10 @@ Thermal parts for asynchronous induction machines
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={80,-100})));
+              origin={100,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={100,-120})));
         Modelica.Blocks.Sources.Constant constTr(final k=if useDamperCage then
               Tr else TDefault) if (not useTemperatureInputs or not
           useDamperCage) annotation (Placement(transformation(
@@ -12207,7 +12246,10 @@ Thermal parts for asynchronous induction machines
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={0,-100})));
+              origin={0,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={0,-120})));
       equation
         connect(constTr.y, temperatureRotorWinding.T) annotation (Line(
             points={{-20,1},{-20,18}},
@@ -12217,7 +12259,7 @@ Thermal parts for asynchronous induction machines
             points={{-20,40},{-20,100},{0,100}},
             color={191,0,0}));
         connect(TRotorWinding, temperatureRotorWinding.T) annotation (Line(
-            points={{80,-100},{80,8},{-20,8},{-20,18}},
+            points={{100,-120},{100,8},{-20,8},{-20,18}},
             color={0,0,127}));
         connect(temperaturePermanentMagnet.port, thermalPort.heatPortPermanentMagnet)
           annotation (Line(
@@ -12228,7 +12270,7 @@ Thermal parts for asynchronous induction machines
             color={0,0,127}));
         connect(TPermanentMagnet, temperaturePermanentMagnet.T) annotation (
             Line(
-            points={{0,-100},{0,-60},{-60,-60},{-60,8},{-50,8},{-50,18}},
+            points={{0,-120},{0,-60},{-64,-60},{-64,8},{-50,8},{-50,18}},
             color={0,0,127}));
         annotation (Icon(graphics={Text(
                 extent={{-100,-20},{100,-80}},
@@ -12273,7 +12315,7 @@ Additionally, all losses = heat flows are recorded.
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={80,-100})));
+              origin={100,-120})));
         Modelica.Blocks.Sources.Constant constTr(final k=if useDamperCage then
               Tr else TDefault) if (not useTemperatureInputs or not
           useDamperCage) annotation (Placement(transformation(
@@ -12290,7 +12332,7 @@ Additionally, all losses = heat flows are recorded.
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={0,-100})));
+              origin={0,-120})));
         Modelica.Blocks.Sources.Constant constTe(final k=Te) if not
           useTemperatureInputs annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -12310,13 +12352,13 @@ Additionally, all losses = heat flows are recorded.
             points={{-20,40},{-20,100},{0,100}},
             color={191,0,0}));
         connect(TRotorWinding, temperatureRotorWinding.T) annotation (Line(
-            points={{80,-100},{80,8},{-20,8},{-20,18}},
+            points={{100,-120},{100,8},{-20,8},{-20,18}},
             color={0,0,127}));
         connect(constTe.y, temperatureExcitation.T) annotation (Line(
             points={{-50,1},{-50,18}},
             color={0,0,127}));
         connect(TExcitation, temperatureExcitation.T) annotation (Line(
-            points={{0,-100},{0,-60},{-60,-60},{-60,8},{-50,8},{-50,18}},
+            points={{0,-120},{0,-60},{-66,-60},{-66,8},{-50,8},{-50,18}},
             color={0,0,127}));
         connect(temperatureExcitation.port, thermalPort.heatPortExcitation)
           annotation (Line(
@@ -12364,7 +12406,7 @@ Additionally, all losses = heat flows are recorded.
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={80,-100})));
+              origin={100,-120})));
         Modelica.Blocks.Sources.Constant constTr(final k=if useDamperCage then
               Tr else TDefault) if (not useTemperatureInputs or not
           useDamperCage) annotation (Placement(transformation(
@@ -12380,7 +12422,7 @@ Additionally, all losses = heat flows are recorded.
             points={{-20,40},{-20,100},{0,100}},
             color={191,0,0}));
         connect(TRotorWinding, temperatureRotorWinding.T) annotation (Line(
-            points={{80,-100},{80,10},{-20,10},{-20,18}},
+            points={{100,-120},{100,10},{-20,10},{-20,18}},
             color={0,0,127}));
         annotation (Icon(graphics={Text(
                 extent={{-100,-20},{100,-80}},
@@ -12427,7 +12469,7 @@ Thermal parts for synchronous induction machines
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={0,-100})));
+              origin={0,-120})));
       equation
         connect(temperaturePermanentMagnet.port, thermalPort.heatPortPermanentMagnet)
           annotation (Line(
@@ -12438,7 +12480,7 @@ Thermal parts for synchronous induction machines
             color={0,0,127}));
         connect(TPermanentMagnet, temperaturePermanentMagnet.T) annotation (
             Line(
-            points={{0,-100},{0,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
+            points={{0,-120},{0,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
             color={0,0,127}));
         annotation (Icon(graphics={Text(
                       extent={{-100,-20},{100,-80}},
@@ -12478,13 +12520,13 @@ Additionally, all losses = heat flows are recorded.
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={0,-100})));
+              origin={0,-120})));
       equation
         connect(constTe.y, temperatureExcitation.T) annotation (Line(
             points={{-20,1},{-20,18}},
             color={0,0,127}));
         connect(TExcitation, temperatureExcitation.T) annotation (Line(
-            points={{0,-100},{0,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
+            points={{0,-120},{0,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
             color={0,0,127}));
         connect(temperatureExcitation.port, thermalPort.heatPortExcitation)
           annotation (Line(
@@ -12528,13 +12570,16 @@ Additionally, all losses = heat flows are recorded.
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={-40,-100})));
+              origin={0,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={0,-120})));
       equation
         connect(constTse.y, temperatureSeriesExcitation.T) annotation (Line(
             points={{-50,1},{-50,18}},
             color={0,0,127}));
         connect(T_se, temperatureSeriesExcitation.T) annotation (Line(
-            points={{-40,-100},{-40,-60},{-70,-60},{-70,8},{-50,8},{-50,18}},
+            points={{0,-120},{0,-60},{-70,-60},{-70,8},{-50,8},{-50,18}},
             color={0,0,127}));
         connect(temperatureSeriesExcitation.port, thermalPort.heatPortSeriesExcitation)
           annotation (Line(
@@ -12584,7 +12629,10 @@ Additionally, all losses = heat flows are recorded.
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={0,-100})));
+              origin={100,-118}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={100,-118})));
         Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
           temperatureSeriesExcitation annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -12600,19 +12648,22 @@ Additionally, all losses = heat flows are recorded.
               transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={-40,-100})));
+              origin={0,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={0,-120})));
       equation
         connect(constTe.y, temperatureShuntExcitation.T) annotation (Line(
             points={{-20,1},{-20,18}},
             color={0,0,127}));
         connect(T_e, temperatureShuntExcitation.T) annotation (Line(
-            points={{0,-100},{0,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
+            points={{100,-118},{100,-60},{-40,-60},{-40,8},{-20,8},{-20,18}},
             color={0,0,127}));
         connect(constTse.y, temperatureSeriesExcitation.T) annotation (Line(
             points={{-50,1},{-50,18}},
             color={0,0,127}));
         connect(T_se, temperatureSeriesExcitation.T) annotation (Line(
-            points={{-40,-100},{-40,-60},{-70,-60},{-70,8},{-50,8},{-50,18}},
+            points={{0,-120},{0,-60},{-70,-60},{-70,8},{-50,8},{-50,18}},
             color={0,0,127}));
         connect(temperatureSeriesExcitation.port, thermalPort.heatPortSeriesExcitation)
           annotation (Line(
@@ -12672,7 +12723,10 @@ Thermal parts for DC machines
         "Temperature of primary windings" annotation (Placement(transformation(
             extent={{-20,-20},{20,20}},
             rotation=90,
-            origin={-80,-100})));
+            origin={-100,-120}), iconTransformation(
+            extent={{-20,-20},{20,20}},
+            rotation=90,
+            origin={-100,-120})));
       Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature temperature2
         annotation (Placement(transformation(
             extent={{-10,10},{10,-10}},
@@ -12688,7 +12742,7 @@ Thermal parts for DC machines
             transformation(
             extent={{-20,20},{20,-20}},
             rotation=90,
-            origin={80,-100})));
+            origin={100,-120})));
       Modelica.Thermal.HeatTransfer.Sources.FixedTemperature temperatureCore(
           final T=TDefault) annotation (Placement(transformation(
             extent={{-10,-10},{10,10}},
@@ -12702,13 +12756,13 @@ Thermal parts for DC machines
         annotation (Placement(transformation(extent={{70,60},{90,80}})));
     equation
       connect(TPrimary, temperature1.T) annotation (Line(
-          points={{-80,-100},{-80,-60},{-100,-60},{-100,8},{-80,8},{-80,18}},
+          points={{-100,-120},{-100,-60},{-100,8},{-80,8},{-80,18}},
           color={0,0,127}));
       connect(constT1.y, temperature1.T) annotation (Line(
           points={{-80,1},{-80,18}},
           color={0,0,127}));
       connect(TSecondary, temperature2.T) annotation (Line(
-          points={{80,-100},{80,-60},{100,-60},{100,8},{80,8},{80,18}},
+          points={{100,-120},{100,-60},{100,8},{80,8},{80,18}},
           color={0,0,127}));
       connect(constT2.y, temperature2.T) annotation (Line(
           points={{80,1},{80,18}},
@@ -13007,7 +13061,7 @@ Connector for Space Phasors:
       annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={
             Text(
-              extent={{-150,-120},{150,-180}},
+              extent={{-150,-120},{150,-160}},
               lineColor={0,0,255},
               textString="%name"),
             Rectangle(
@@ -13329,7 +13383,10 @@ Partial thermal port for induction machines
             Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={-80,-100})));
+              origin={-100,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={-100,-120})));
         Modelica.Blocks.Sources.Constant constTs(final k=Ts) if not
           useTemperatureInputs annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -13343,7 +13400,7 @@ Partial thermal port for induction machines
             points={{-80,1},{-80,18}},
             color={0,0,127}));
         connect(TStatorWinding, temperatureStatorWinding.T) annotation (Line(
-            points={{-80,-100},{-80,-60},{-100,-60},{-100,8},{-80,8},{-80,18}},
+            points={{-100,-120},{-100,-120},{-100,8},{-80,8},{-80,18}},
             color={0,0,127}));
 
         connect(temperatureStrayLoad.port, thermalPort.heatPortStrayLoad)
@@ -13823,7 +13880,10 @@ Partial thermal port for DC machines
           "Temperature of armature" annotation (Placement(transformation(
               extent={{-20,-20},{20,20}},
               rotation=90,
-              origin={-80,-100})));
+              origin={-100,-120}), iconTransformation(
+              extent={{-20,-20},{20,20}},
+              rotation=90,
+              origin={-100,-120})));
         Modelica.Blocks.Sources.Constant constTa(final k=Ta) if not
           useTemperatureInputs annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
@@ -13839,7 +13899,7 @@ Partial thermal port for DC machines
             points={{-80,1},{-80,18}},
             color={0,0,127}));
         connect(TArmature, temperatureArmature.T) annotation (Line(
-            points={{-80,-100},{-80,-60},{-100,-60},{-100,8},{-80,8},{-80,18}},
+            points={{-100,-120},{-100,-60},{-100,8},{-80,8},{-80,18}},
             color={0,0,127}));
 
         connect(temperatureArmature.port, thermalPort.heatPortArmature)
@@ -14148,10 +14208,10 @@ Thermal ports for DC machines
       annotation (
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={Text(
-                  extent={{0,-60},{0,-100}},
-                  lineColor={0,0,255},
+                  extent={{150,-60},{-150,-100}},
+                  lineColor={0,0,0},
                   textString="%VectorGroup"),Text(
-                  extent={{0,100},{0,60}},
+                  extent={{150,100},{-150,60}},
                   lineColor={0,0,255},
                   textString="%name")}),
         Documentation(info="<html>

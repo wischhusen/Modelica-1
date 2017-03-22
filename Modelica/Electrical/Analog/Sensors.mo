@@ -164,9 +164,12 @@ model PowerSensor "Sensor to measure the power"
   Modelica.Blocks.Interfaces.RealOutput power(unit="W")
       "Instantaneous power as output signal"
     annotation (Placement(transformation(
-          origin={-80,-110},
+          origin={-100,-110},
           extent={{-10,10},{10,-10}},
-          rotation=270)));
+          rotation=270), iconTransformation(
+          extent={{-10,10},{10,-10}},
+          rotation=270,
+          origin={-100,-110})));
   Modelica.Electrical.Analog.Sensors.VoltageSensor voltageSensor
     annotation (Placement(transformation(
           origin={0,-30},
@@ -193,13 +196,13 @@ equation
             -30},{-36,-30},{-36,-38}}, color={0,0,127}));
   connect(voltageSensor.v, product.u1) annotation (Line(points={{-10,-30},{-24,
             -30},{-24,-38}}, color={0,0,127}));
-  connect(product.y, power) annotation (Line(points={{-30,-61},{-30,-80},{-80,
-            -80},{-80,-110}}, color={0,0,127}));
+  connect(product.y, power) annotation (Line(points={{-30,-61},{-30,-80},{-100,-80},{-100,-110}},
+                              color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
       Line(points = {{0,100},{0,70}}, color = {0,0,255}),
       Line(points = {{0,-70},{0,-100}}, color = {0,0,255}),
-      Line(points = {{-80,-100},{-80,-80},{-46,-52}}, color = {0,0,127}),
+      Line(points={{-100,-100},{-100,-80},{-58,-38}}, color = {0,0,127}),
       Line(points = {{-100,0},{100,0}}, color = {0,0,255}),
       Text(lineColor = {0,0,255}, extent = {{-150,120},{150,160}}, textString = "%name"),
       Line(points = {{0,70},{0,40}}),
@@ -257,10 +260,6 @@ equation
       Line(points = {{0,-70},{0,-100}}, color = {0,0,255}),
       Line(points = {{-100,0},{100,0}}, color = {0,0,255}),
       Line(points = {{0,70},{0,40}}),
-        Text(
-          extent={{-100,-60},{100,-20}},
-          textString="%name",
-          lineColor={0,0,255}),
         Line(points={{-100,-60},{-80,-60},{-56,-42}},
                                                    color={28,108,200}),
         Line(points={{-60,-100},{-60,-80},{-42,-56}},
@@ -269,16 +268,17 @@ equation
                                                 color={28,108,200}),
         Text(
           extent={{-100,-40},{-60,-80}},
-          lineColor={28,108,200},
+          lineColor={0,0,255},
           textString="p"),
         Text(
           extent={{-80,-60},{-40,-100}},
-          lineColor={28,108,200},
+          lineColor={0,0,255},
           textString="i"),
         Text(
           extent={{40,-60},{80,-100}},
-          lineColor={28,108,200},
-          textString="v")}),
+          lineColor={0,0,255},
+          textString="v"),
+      Text(lineColor = {0,0,255}, extent = {{-150,120},{150,160}}, textString = "%name")}),
     Documentation(info="<html>
 <p>This multi sensor measures current, voltage and instantaneous electrical power of a singlephase system and has a separated voltage and current path. 
 The pins of the voltage path are pv and nv, the pins of the current path are pc and nc. 

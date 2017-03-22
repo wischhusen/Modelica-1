@@ -13,7 +13,7 @@ package Sources "Time-dependent and controlled voltage and current sources"
     Modelica.Blocks.Interfaces.RealInput v(unit="V")
       "Voltage between pin p and n (= p.v - n.v) as input signal" annotation (
         Placement(transformation(
-          origin={0,70},
+          origin={0,120},
           extent={{-20,-20},{20,20}},
           rotation=270)));
     SI.Current i "Current flowing from pin p to pin n";
@@ -33,7 +33,7 @@ package Sources "Time-dependent and controlled voltage and current sources"
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{-50,0},{50,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-104},{150,-64}},
+            extent={{-150,-110},{150,-70}},
             textString="%name",
             lineColor={0,0,255}),
           Text(
@@ -43,7 +43,8 @@ package Sources "Time-dependent and controlled voltage and current sources"
           Text(
             extent={{20,50},{120,0}},
             lineColor={0,0,255},
-            textString="-")}),
+            textString="-"),
+          Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Ellipse(
               extent={{-50,50},{50,-50}},
@@ -69,7 +70,8 @@ package Sources "Time-dependent and controlled voltage and current sources"
               lineColor={160,160,164},
               textString="i"),Line(points={{-119,-5},{-119,5}}, color={160,160,
             164}),Line(points={{-124,0},{-114,0}}, color={160,160,164}),Line(
-            points={{116,0},{126,0}}, color={160,160,164})}),
+            points={{116,0},{126,0}}, color={160,160,164}),
+          Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -998,8 +1000,8 @@ package Sources "Time-dependent and controlled voltage and current sources"
               textString="falling"),Text(
               extent={{-77,103},{-23,91}},
               lineColor={160,160,164},
-              textString="v = p.v - n.v"),Line(points={{-30,76},{60,76}}, color
-            ={192,192,192}),Polygon(
+              textString="v = p.v - n.v"),Line(points={{-30,76},{60,76}}, color=
+             {192,192,192}),Polygon(
               points={{-30,76},{-21,78},{-21,74},{-30,76}},
               lineColor={192,192,192},
               fillColor={192,192,192},
@@ -1128,7 +1130,7 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
     Modelica.Blocks.Interfaces.RealInput i(unit="A")
       "Current flowing from pin p to pin n as input signal" annotation (
         Placement(transformation(
-          origin={0,70},
+          origin={0,120},
           extent={{-20,-20},{20,20}},
           rotation=270)));
   equation
@@ -1147,14 +1149,15 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{0,-50},{0,50}}, color={0,0,255}),
           Text(
-            extent={{-150,-120},{150,-80}},
+            extent={{-150,-110},{150,-70}},
             textString="%name",
             lineColor={0,0,255}),
           Polygon(
             points={{90,0},{60,10},{60,-10},{90,0}},
             lineColor={0,0,255},
             fillColor={0,0,255},
-            fillPattern=FillPattern.Solid)}),
+            fillPattern=FillPattern.Solid),
+          Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Ellipse(
               extent={{-50,50},{50,-50}},
@@ -1162,7 +1165,8 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),Line(points={{-96,0},{-50,0}},
             color={0,0,255}),Line(points={{50,0},{96,0}}, color={0,0,255}),Line(
-            points={{0,-50},{0,50}}, color={0,0,255})}),
+            points={{0,-50},{0,50}}, color={0,0,255}),
+          Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -1763,7 +1767,6 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={Line(points={{-80,-67},{-50,-67},{-50,73},{-10,
                 73},{-10,-67},{30,-67},{30,73},{70,73}}, color={192,192,192})}),
-
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Polygon(
               points={{-80,90},{-88,68},{-72,68},{-80,90}},
@@ -1864,6 +1867,7 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
 </html>", info="<html>
 <p>This current source uses the corresponding signal source of the Modelica.Blocks.Sources package. Care for the meaning of the parameters in the Blocks package. Furthermore, an offset parameter is introduced, which is added to the value calculated by the blocks source. The startTime parameter allows to shift the blocks source behavior on the time axis.</p>
 </html>"));
+
   end PulseCurrent;
 
   model SawToothCurrent "Saw tooth current source"
@@ -2252,7 +2256,7 @@ If, e.g., time = 1.0, the current i =  0.0 (before event), 1.0 (after event)
             points={{60,0},{90,0}},
             color={0,0,255}),
           Text(
-            extent={{-100,100},{100,80}},
+            extent={{-150,110},{150,70}},
             lineColor={0,0,255},
             textString="%name"),
           Line(
