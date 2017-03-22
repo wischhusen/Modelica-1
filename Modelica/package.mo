@@ -485,6 +485,103 @@ then this leads to the following equations:
 </html>"));
 end Connectors;
 
+class ParameterDefaults "Parameter defaults"
+  extends Modelica.Icons.Information;
+
+ annotation (Documentation(info="<html>
+
+<p>
+In this section the convention is summarized how default parameters are
+handled in the Modelica Standard Library (since version 3.0).
+</p>
+
+<p>
+Many models in this library have parameter declarations to define
+constants of a model that might be changed before simulation starts.
+Example:
+</p>
+
+<blockquote>
+<pre>
+<b>model</b> SpringDamper
+<b>parameter</b> Real c(final unit=\"N.m/rad\")    = 1e5 \"Spring constant\";
+<b>parameter</b> Real d(final unit=\"N.m.s/rad\")  = 0   \"Damping constant\";
+<b>parameter</b> Modelica.SIunits.Angle phi_rel0 = 0   \"Unstretched spring angle\";
+...
+<b>end</b> SpringDamper;
+</pre>
+</blockquote>
+
+<p>
+In Modelica it is possible to define a default value of a parameter in
+the parameter declaration. In the example above, this is performed for
+all parameters. Providing default values for all parameters can lead to
+errors that are difficult to detect, since a modeler may have forgotten
+to provide a meaningful value (the model simulates but gives wrong
+results due to wrong parameter values). In general the following basic
+situations are present:
+</p>
+
+<ol>
+<li> The parameter value could be anything (e.g., a spring constant or
+  a resistance value) and therefore the user should provide a value in
+  all cases. A Modelica translator should warn, if no value is provided.
+</li>
+
+<li> The parameter value is not changed in &gt; 95 % of the cases
+  (e.g., initialization or visualization parameters, or parameter phi_rel0
+  in the example above). In this case a default parameter value should be
+  provided, in order that the model or function can be conveniently
+  used by a modeler.
+</li>
+
+<li> A modeler would like to quickly utilize a model, e.g.,
+  <ul>
+  <li> to automatically check that the model still translates and/or simulates
+    (after some changes in the library),</li>
+  <li> to make a quick demo of a library by drag-and-drop of components,</li>
+  <li> to implement a simple test model in order to get a better understanding
+    of the desired component.</li>
+  </ul>
+  In all these cases, it would be not practical, if the modeler would
+  have to provide explicit values for all parameters first.
+  </li>
+</ol>
+
+<p>
+To handle the conflicting goals of (1) and (3), the Modelica Standard Library
+uses two approaches to define default parameters, as demonstrated with the
+following example:
+</p>
+
+<blockquote>
+<pre>
+<b>model</b> SpringDamper
+<b>parameter</b> Real c(final unit=\"N.m/rad\"  , start=1e5) \"Spring constant\";
+<b>parameter</b> Real d(final unit=\"N.m.s/rad\", start=  0) \"Damping constant\";
+<b>parameter</b> Modelica.SIunits.Angle phi_rel0 = 0       \"Unstretched spring angle\";
+...
+<b>end</b> SpringDamper;
+
+SpringDamper sp1;              // warning for \"c\" and \"d\"
+SpringDamper sp2(c=1e4, d=0);  // fine, no warning
+</pre>
+</blockquote>
+
+<p>
+Both definition forms, using a \"start\" value (for \"c\" and \"d\") and providing
+a declaration equation (for \"phi_rel0\"), are valid Modelica and define the value
+of the parameter. By convention, it is expected that Modelica translators will
+trigger a warning message for parameters that are <b>not</b> defined by a declaration
+equation, by a modifier equation or in an initial equation/algorithm section.
+A Modelica translator might have options to change this behavior, especially,
+that no messages are printed in such cases and/or that an error is triggered
+instead of a warning.
+</p>
+
+</html>"));
+end ParameterDefaults;
+
   package Conventions "Conventions"
     extends Modelica.Icons.Information;
     package Documentation "HTML documentation"
@@ -1091,6 +1188,39 @@ For parameters, connectors, as well as inputs and outputs of function automatic 
 </html>"));
     end Documentation;
 
+    class Icons "Icon layout including component name and parameters"
+
+      annotation (Documentation(info="<html>
+<p>The icon of a Modelica class shall consider the following the guidelines: </p>
+<h5>Icon size</h5>
+<p>The icon of a Modelica class shall not be significantly greater or smaller than the default Diagram limits of 200 units x 200 units. These default diagram limits are</p>
+<ul>
+<li>-100 units &le; horizontal coordinate &le; +100 units</li>
+<li>-100 units &le; vertical coordinate &le; +100 untis</li>
+</ul>
+<p>If possible, the icon shall be designed such way, that the icon name <code>%name</code> 
+and the most significant parameter can be displayed within the vertical Diagram range of the icon.</p>
+
+<p>
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_size.png\">
+</p>
+
+<h5>Component Name</h5>
+<p>The component name <code>%name</code> shall be in RGB (0,0,255) blue color.</p>
+<ul>
+<li>Text height: 40 units</li>
+<li>Text width: 300 units </li>
+</ul>
+<p>If possible, the text shall be located above the actual icon. If there is enough space, the component name
+shall be 10 units below the icon boundary. If that is not possible the the component name shall moved upwards 
+in steps of 10 units until the text has 10 units space to the icon.</p>
+<p>In some cases it might make sense to \"squeeze\" the text between the icon and a connector which is located
+at the icon boundary.</p>
+<p>
+</p>
+</html>"));
+    end Icons;
+
     package ModelicaCode "Modelica code"
       extends Modelica.Icons.Information;
 
@@ -1658,103 +1788,6 @@ This class summarizes contact information of the contributing persons.
 </ol>
 </html>"));
   end Conventions;
-
-class ParameterDefaults "Parameter defaults"
-  extends Modelica.Icons.Information;
-
- annotation (Documentation(info="<html>
-
-<p>
-In this section the convention is summarized how default parameters are
-handled in the Modelica Standard Library (since version 3.0).
-</p>
-
-<p>
-Many models in this library have parameter declarations to define
-constants of a model that might be changed before simulation starts.
-Example:
-</p>
-
-<blockquote>
-<pre>
-<b>model</b> SpringDamper
-<b>parameter</b> Real c(final unit=\"N.m/rad\")    = 1e5 \"Spring constant\";
-<b>parameter</b> Real d(final unit=\"N.m.s/rad\")  = 0   \"Damping constant\";
-<b>parameter</b> Modelica.SIunits.Angle phi_rel0 = 0   \"Unstretched spring angle\";
-...
-<b>end</b> SpringDamper;
-</pre>
-</blockquote>
-
-<p>
-In Modelica it is possible to define a default value of a parameter in
-the parameter declaration. In the example above, this is performed for
-all parameters. Providing default values for all parameters can lead to
-errors that are difficult to detect, since a modeler may have forgotten
-to provide a meaningful value (the model simulates but gives wrong
-results due to wrong parameter values). In general the following basic
-situations are present:
-</p>
-
-<ol>
-<li> The parameter value could be anything (e.g., a spring constant or
-  a resistance value) and therefore the user should provide a value in
-  all cases. A Modelica translator should warn, if no value is provided.
-</li>
-
-<li> The parameter value is not changed in &gt; 95 % of the cases
-  (e.g., initialization or visualization parameters, or parameter phi_rel0
-  in the example above). In this case a default parameter value should be
-  provided, in order that the model or function can be conveniently
-  used by a modeler.
-</li>
-
-<li> A modeler would like to quickly utilize a model, e.g.,
-  <ul>
-  <li> to automatically check that the model still translates and/or simulates
-    (after some changes in the library),</li>
-  <li> to make a quick demo of a library by drag-and-drop of components,</li>
-  <li> to implement a simple test model in order to get a better understanding
-    of the desired component.</li>
-  </ul>
-  In all these cases, it would be not practical, if the modeler would
-  have to provide explicit values for all parameters first.
-  </li>
-</ol>
-
-<p>
-To handle the conflicting goals of (1) and (3), the Modelica Standard Library
-uses two approaches to define default parameters, as demonstrated with the
-following example:
-</p>
-
-<blockquote>
-<pre>
-<b>model</b> SpringDamper
-<b>parameter</b> Real c(final unit=\"N.m/rad\"  , start=1e5) \"Spring constant\";
-<b>parameter</b> Real d(final unit=\"N.m.s/rad\", start=  0) \"Damping constant\";
-<b>parameter</b> Modelica.SIunits.Angle phi_rel0 = 0       \"Unstretched spring angle\";
-...
-<b>end</b> SpringDamper;
-
-SpringDamper sp1;              // warning for \"c\" and \"d\"
-SpringDamper sp2(c=1e4, d=0);  // fine, no warning
-</pre>
-</blockquote>
-
-<p>
-Both definition forms, using a \"start\" value (for \"c\" and \"d\") and providing
-a declaration equation (for \"phi_rel0\"), are valid Modelica and define the value
-of the parameter. By convention, it is expected that Modelica translators will
-trigger a warning message for parameters that are <b>not</b> defined by a declaration
-equation, by a modifier equation or in an initial equation/algorithm section.
-A Modelica translator might have options to change this behavior, especially,
-that no messages are printed in such cases and/or that an error is triggered
-instead of a warning.
-</p>
-
-</html>"));
-end ParameterDefaults;
 
 class ModelicaLicense2 "Modelica License 2"
   extends Modelica.Icons.Information;
