@@ -30,8 +30,7 @@ package Sensors "Potential, voltage, current, and power sensors"
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={Line(points={{-70,0},{-96,0}}),
-            Line(points={{100,0},{70,0}}, color={0,0,127})}),
+          extent={{-100,-100},{100,100}})),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -78,10 +77,7 @@ package Sensors "Potential, voltage, current, and power sensors"
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-70,0},{-96,0}}),
-          Line(points={{70,0},{96,0}}),
-          Line(points={{0,-90},{0,-70}}, color={0,0,255})}),
+          extent={{-100,-100},{100,100}})),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -132,10 +128,7 @@ package Sensors "Potential, voltage, current, and power sensors"
           Text(
             extent={{-153,79},{147,119}},
             textString="%name",
-            lineColor={0,0,255}),
-          Line(points={{-70,0},{-96,0}}),
-          Line(points={{70,0},{96,0}}),
-          Line(points={{0,-90},{0,-70}}, color={0,0,255})}),
+            lineColor={0,0,255})}),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -206,7 +199,9 @@ equation
       Line(points = {{-100,0},{100,0}}, color = {0,0,255}),
       Text(lineColor = {0,0,255}, extent = {{-150,120},{150,160}}, textString = "%name"),
       Line(points = {{0,70},{0,40}}),
-      Text(extent = {{-29,-70},{30,-11}}, textString = "P")}),
+      Text(extent = {{-29,-70},{30,-11}},
+            lineColor={0,0,0},
+            textString="P")}),
     Documentation(info="<html>
 <p>This power sensor measures instantaneous electrical power of a singlephase system and has a separated voltage and current path. The pins of the voltage path are pv and nv, the pins of the current path are pc and nc. The internal resistance of the current path is zero, the internal resistance of the voltage path is infinite.</p>
 </html>", revisions="<html>
@@ -268,16 +263,16 @@ equation
                                                 color={28,108,200}),
         Text(
           extent={{-100,-40},{-60,-80}},
-          lineColor={0,0,255},
-          textString="p"),
+          lineColor={0,0,0},
+            textString="p"),
         Text(
           extent={{-80,-60},{-40,-100}},
-          lineColor={0,0,255},
-          textString="i"),
+          lineColor={0,0,0},
+            textString="i"),
         Text(
           extent={{40,-60},{80,-100}},
-          lineColor={0,0,255},
-          textString="v"),
+          lineColor={0,0,0},
+            textString="v"),
       Text(lineColor = {0,0,255}, extent = {{-150,120},{150,160}}, textString = "%name")}),
     Documentation(info="<html>
 <p>This multi sensor measures current, voltage and instantaneous electrical power of a singlephase system and has a separated voltage and current path. 

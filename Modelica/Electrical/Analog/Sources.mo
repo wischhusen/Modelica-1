@@ -33,7 +33,7 @@ package Sources "Time-dependent and controlled voltage and current sources"
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{-50,0},{50,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-110},{150,-70}},
+            extent={{-150,-90},{150,-50}},
             textString="%name",
             lineColor={0,0,255}),
           Text(
