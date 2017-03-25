@@ -1685,7 +1685,7 @@ the line shall be interrupted such that this line does not interfere with compon
 Fig. 3: Comonent name between actual icon and connector<br>
 </p>
 
-<p>In some cases, if there is not alternative, the component name has to be placed below the actual icon, see. Fig. 4.
+<p>In some cases, if there is not alternative, the component name has to be placed below the actual icon, see. Fig. 4.</p>
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_below.png\"><br>
@@ -1694,8 +1694,12 @@ Fig. 4: Comonent name below actual icon<br>
 
 <h5>Parameter Name</h5>
 
-<p>One siginifcant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color. 
-The parameter text box shall be placed 10 units below the actual icon.  
+<p>One siginifcant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color.</p>
+<ul>
+<li>Text height: 40 units (or 30 units, minimum 20 units, if required)</li>
+<li>Text width: 300 units </li>
+</ul>
+<p>The parameter text box shall be placed 10 units below the actual icon.  
 </p>
 
 <h5>Connector location</h5>
@@ -1706,6 +1710,7 @@ Preferred connector locations are:</p>
 <li>at the four corners of the icon diagram, see Fig. 5</li>
 <li>at vertical or horizontal symmetry line of an icon, see Fig. 1-3</li>
 <li>alternative connection points shall be located in a raster of 20 units (or 10 units) if required, see Fig. 4</li>
+</ul>
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_connector_corner.png\"><br>
@@ -1714,7 +1719,7 @@ Fig. 5: Connectors located at the four corners of the icon diagram<br>
 
 <h5>Diagram icons</h5>
 
-<p>Icons drawn in the Diagram layer shall be avoided. This refers particularly to icons of Diagram layer which are more or less equal to the 
+<p>Icons drawn in the Diagram layer shall be avoided. Particularly, icons of Diagram layer shall be avoided which are equal to the 
 icons of the Icon layer. Any graphical illustrations shall be moved to the HTML documentation instead.</p>
 
 
