@@ -33,18 +33,12 @@ package Sources "Time-dependent and controlled voltage and current sources"
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{-50,0},{50,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-90},{150,-50}},
+            extent={{-150,50},{150,90}},
             textString="%name",
             lineColor={0,0,255}),
-          Text(
-            extent={{-120,50},{-20,0}},
-            lineColor={0,0,255},
-            textString="+"),
-          Text(
-            extent={{20,50},{120,0}},
-            lineColor={0,0,255},
-            textString="-"),
-          Line(points={{0,100},{0,50}}, color={0,0,0})}),
+          Line(points={{-70,30},{-70,10}}, color={0,0,255}),
+          Line(points={{-80,20},{-60,20}}, color={0,0,255}),
+          Line(points={{60,20},{80,20}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={         Line(points={{-96,0},{-50,0}},
             color={0,0,255}),                         Line(points={{-109,20},{-84,
@@ -91,17 +85,12 @@ package Sources "Time-dependent and controlled voltage and current sources"
           Line(points={{0,30},{0,-30}}, color={0,0,255}),
           Line(points={{0,0},{90,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-112},{150,-72}},
+            extent={{-152,70},{148,110}},
             textString="%name=%V",
             lineColor={0,0,255}),
-          Text(
-            extent={{-120,50},{-20,0}},
-            lineColor={0,0,255},
-            textString="+"),
-          Text(
-            extent={{20,50},{120,0}},
-            lineColor={0,0,255},
-            textString="-")}),
+          Line(points={{-70,30},{-70,10}}, color={0,0,255}),
+          Line(points={{-80,20},{-60,20}}, color={0,0,255}),
+          Line(points={{60,20},{80,20}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}})),
       Documentation(revisions="<html>
@@ -1140,15 +1129,14 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{0,-50},{0,50}}, color={0,0,255}),
           Text(
-            extent={{-150,-110},{150,-70}},
+            extent={{-150,50},{150,90}},
             textString="%name",
             lineColor={0,0,255}),
           Polygon(
             points={{90,0},{60,10},{60,-10},{90,0}},
             lineColor={0,0,255},
             fillColor={0,0,255},
-            fillPattern=FillPattern.Solid),
-          Line(points={{0,100},{0,50}}, color={0,0,0})}),
+            fillPattern=FillPattern.Solid)}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}})),
       Documentation(revisions="<html>
@@ -1179,7 +1167,7 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
           Line(points={{50,0},{90,0}}, color={0,0,255}),
           Line(points={{0,-50},{0,50}}, color={0,0,255}),
           Text(
-            extent={{-150,80},{150,120}},
+            extent={{-150,50},{150,90}},
             textString="%name=%I",
             lineColor={0,0,255}),
           Polygon(
