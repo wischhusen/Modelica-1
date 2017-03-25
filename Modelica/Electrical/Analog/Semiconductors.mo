@@ -64,13 +64,7 @@ package Semiconductors
             pattern=LinePattern.Dot)}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Polygon(
-            points={{30,0},{-30,40},{-30,-40},{30,0}},
-            lineColor={0,0,255},
-            fillColor={255,0,0}),
-          Line(points={{-96,0},{96,0}}, color={0,0,255}),
-          Line(points={{30,40},{30,-40}}, color={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
   end Diode;
 
   model Diode2 "Improved diode model"
@@ -164,13 +158,7 @@ Stefan Vorkoetter - new model proposed.</li>
             pattern=LinePattern.Dot)}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Polygon(
-            points={{30,0},{-30,40},{-30,-40},{30,0}},
-            lineColor={0,0,255},
-            fillColor={255,0,0}),
-          Line(points={{-96,0},{96,0}}, color={0,0,255}),
-          Line(points={{30,40},{30,-40}}, color={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
   end Diode2;
 
  model ZDiode "Zener diode with 3 working areas"
@@ -233,13 +221,7 @@ Stefan Vorkoetter - new model proposed.</li>
             pattern=LinePattern.Dot)}),
             Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Polygon(
-            points={{30,0},{-30,40},{-30,-40},{30,0}},
-            lineColor={0,0,255},
-            fillColor={255,0,0}),
-          Line(points={{-99,0},{96,0}}, color={0,0,255}),
-          Line(points={{30,40},{30,-40}}, color={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
  end ZDiode;
 
 model PMOS "Simple MOS Transistor"
@@ -364,20 +346,7 @@ Some typical parameter sets are:
             pattern=LinePattern.Dot)}),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-96,-50},{-10,-50}}, color={0,0,255}),
-          Line(points={{-10,-50},{-10,50}}, color={0,0,255}),
-          Line(points={{10,70},{10,29}}, color={0,0,255}),
-          Line(points={{10,20},{10,-21}}, color={0,0,255}),
-          Line(points={{10,-30},{10,-71}}, color={0,0,255}),
-          Line(points={{10,50},{96,50}}, color={0,0,255}),
-          Line(points={{10,0},{96,0}}, color={0,0,255}),
-          Line(points={{10,-50},{96,-50}}, color={0,0,255}),
-          Polygon(
-            points={{60,0},{40,5},{40,-5},{60,0}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+        extent={{-100,-100},{100,100}})));
 end PMOS;
 
 model NMOS "Simple MOS Transistor"
@@ -508,20 +477,7 @@ Muenchen Wien 1990.</DD>
             lineColor={0,0,255})}),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-96,-50},{-10,-50}}, color={0,0,255}),
-          Line(points={{-10,-50},{-10,50}}, color={0,0,255}),
-          Line(points={{10,70},{10,29}}, color={0,0,255}),
-          Line(points={{10,20},{10,-21}}, color={0,0,255}),
-          Line(points={{10,-30},{10,-71}}, color={0,0,255}),
-          Line(points={{10,50},{96,50}}, color={0,0,255}),
-          Line(points={{10,0},{96,0}}, color={0,0,255}),
-          Line(points={{10,-50},{96,-50}}, color={0,0,255}),
-          Polygon(
-            points={{40,0},{60,5},{60,-5},{40,0}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+        extent={{-100,-100},{100,100}})));
 end NMOS;
 
 model NPN "Simple BJT according to Ebers-Moll"
@@ -671,18 +627,7 @@ on page 317 ff.</DD>
             lineColor={0,0,255})}),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-10,40},{-10,-40}}, color={0,0,255}),
-          Line(points={{-10,0},{-100,0}}, color={0,0,255}),
-          Line(points={{30,50},{-10,10}}, color={0,0,255}),
-          Line(points={{-10,-10},{30,-50}}, color={0,0,255}),
-          Line(points={{30,-50},{100,-50}}, color={0,0,255}),
-          Line(points={{100,50},{30,50}}, color={0,0,255}),
-          Polygon(
-            points={{30,-50},{24,-36},{16,-44},{30,-50}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+        extent={{-100,-100},{100,100}})));
 end NPN;
 
 model PNP "Simple BJT according to Ebers-Moll"
@@ -824,18 +769,7 @@ on page 317 ff.</DD>
             lineColor={0,0,255})}),
     Diagram(coordinateSystem(
         preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-10,40},{-10,-40}}, color={0,0,255}),
-          Line(points={{-10,0},{-99,0}}, color={0,0,255}),
-          Line(points={{100,50},{30,50}}, color={0,0,255}),
-          Line(points={{30,50},{-10,10}}, color={0,0,255}),
-          Line(points={{-10,-10},{30,-50}}, color={0,0,255}),
-          Line(points={{30,-50},{99,-50}}, color={0,0,255}),
-          Polygon(
-            points={{-10,-10},{5,-17},{-3,-25},{-10,-10}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+        extent={{-100,-100},{100,100}})));
 end PNP;
 
 model HeatingDiode "Simple diode with heating port"
@@ -922,13 +856,7 @@ The thermal power is calculated by <i>i*v</i>.
             lineColor={0,0,255})}),
     Diagram(coordinateSystem(
   preserveAspectRatio=true,
-  extent={{-100,-100},{100,100}}), graphics={
-        Polygon(
-          points={{30,0},{-30,40},{-30,-40},{30,0}},
-          lineColor={0,0,255},
-          fillColor={255,0,0}),
-        Line(points={{-96,0},{96,0}}, color={0,0,255}),
-        Line(points={{30,40},{30,-40}}, color={0,0,255})}));
+  extent={{-100,-100},{100,100}})));
 end HeatingDiode;
 
         model HeatingNMOS "Simple MOS Transistor with heating port"
@@ -1054,20 +982,7 @@ end HeatingDiode;
                     lineColor={0,0,255})}),
             Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-96,-50},{-10,-50}}, color={0,0,255}),
-          Line(points={{-10,-50},{-10,50}}, color={0,0,255}),
-          Line(points={{10,70},{10,29}}, color={0,0,255}),
-          Line(points={{10,20},{10,-21}}, color={0,0,255}),
-          Line(points={{10,-30},{10,-71}}, color={0,0,255}),
-          Line(points={{10,50},{96,50}}, color={0,0,255}),
-          Line(points={{10,0},{96,0}}, color={0,0,255}),
-          Line(points={{10,-50},{96,-50}}, color={0,0,255}),
-          Polygon(
-            points={{40,0},{60,5},{60,-5},{40,0}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
         end HeatingNMOS;
 
         model HeatingPMOS "Simple PMOS Transistor with heating port"
@@ -1182,20 +1097,7 @@ end HeatingDiode;
                     lineColor={0,0,255})}),
             Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-100,-50},{-10,-50}}, color={0,0,255}),
-          Line(points={{-10,-50},{-10,50}}, color={0,0,255}),
-          Line(points={{10,70},{10,29}}, color={0,0,255}),
-          Line(points={{10,20},{10,-21}}, color={0,0,255}),
-          Line(points={{10,-30},{10,-71}}, color={0,0,255}),
-          Line(points={{10,50},{96,50}}, color={0,0,255}),
-          Line(points={{10,0},{101,0}}, color={0,0,255}),
-          Line(points={{10,-50},{100,-50}}, color={0,0,255}),
-          Polygon(
-            points={{60,0},{40,5},{40,-5},{60,0}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
         end HeatingPMOS;
 
         model HeatingNPN "Simple NPN BJT according to Ebers-Moll with heating port"
@@ -1332,18 +1234,7 @@ end HeatingDiode;
                     lineColor={0,0,255})}),
             Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-10,40},{-10,-40}}, color={0,0,255}),
-          Line(points={{-10,0},{-100,0}}, color={0,0,255}),
-          Line(points={{30,50},{-10,10}}, color={0,0,255}),
-          Line(points={{-10,-10},{30,-50}}, color={0,0,255}),
-          Line(points={{30,-50},{100,-50}}, color={0,0,255}),
-          Line(points={{100,50},{30,50}}, color={0,0,255}),
-          Polygon(
-            points={{30,-50},{24,-36},{16,-44},{30,-50}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
         end HeatingNPN;
 
         model HeatingPNP "Simple PNP BJT according to Ebers-Moll with heating port"
@@ -1481,18 +1372,7 @@ end HeatingDiode;
                     lineColor={0,0,255})}),
             Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={
-          Line(points={{-10,40},{-10,-40}}, color={0,0,255}),
-          Line(points={{-10,0},{-99,0}}, color={0,0,255}),
-          Line(points={{96,50},{30,50}}, color={0,0,255}),
-          Line(points={{30,50},{-10,10}}, color={0,0,255}),
-          Line(points={{-10,-10},{30,-50}}, color={0,0,255}),
-          Line(points={{30,-50},{96,-50}}, color={0,0,255}),
-          Polygon(
-            points={{-10,-10},{5,-17},{-3,-25},{-10,-10}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
         end HeatingPNP;
 
 protected

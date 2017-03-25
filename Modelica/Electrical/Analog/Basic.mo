@@ -28,26 +28,11 @@ package Basic "Basic electrical components"
           Line(points={{-20,10},{20,10}}, color={0,0,255}),
           Line(points={{0,90},{0,50}}, color={0,0,255}),
           Text(
-            extent={{-144,-19},{156,-59}},
+            extent={{-150,-11},{150,-51}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Line(
-              points={{-60,50},{60,50}},
-              thickness=0.5,
-              color={0,0,255}),Line(
-              points={{-40,30},{40,30}},
-              thickness=0.5,
-              color={0,0,255}),Line(
-              points={{-20,10},{20,10}},
-              thickness=0.5,
-              color={0,0,255}),Line(
-              points={{0,96},{0,50}},
-              thickness=0.5,
-              color={0,0,255}),Text(
-              extent={{-24,-38},{22,-6}},
-              textString="p.v=0",
-              lineColor={0,0,255})}));
+              100,100}})));
   end Ground;
 
   model Resistor "Ideal linear electrical resistor"
@@ -107,9 +92,7 @@ package Basic "Basic electrical components"
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Rectangle(extent={{-70,30},{70,-30}},
-            lineColor={0,0,255}),Line(points={{-96,0},{-70,0}}, color={0,0,255}),
-            Line(points={{70,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end Resistor;
 
   model HeatingResistor "Temperature dependent electrical resistor"
@@ -160,19 +143,8 @@ package Basic "Basic electrical components"
             lineColor={0,0,255},
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
-          Line(points={{-52,-50},{48,50}}, color={0,0,255}),
-          Polygon(
-            points={{40,52},{50,42},{54,56},{40,52}},
-            lineColor={0,0,255},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid),
-          Line(
-            visible=useHeatPort,
-            points={{0,-100},{0,-30}},
-            color={127,0,0},
-            pattern=LinePattern.Dot),
           Text(
-            extent={{-150,110},{150,70}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Documentation(info="<html>
@@ -252,9 +224,7 @@ package Basic "Basic electrical components"
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Line(points={{-96,0},{-70,0}}, color={0,0,
-            255}),Line(points={{70,0},{96,0}}, color={0,0,255}),Rectangle(
-            extent={{-70,30},{70,-30}}, lineColor={0,0,255})}));
+              100,100}})));
   end Conductor;
 
   model Capacitor "Ideal linear electrical capacitor"
@@ -289,12 +259,7 @@ package Basic "Basic electrical components"
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Line(
-              points={{-20,40},{-20,-40}},
-              color={0,0,255}),Line(
-              points={{20,40},{20,-40}},
-              color={0,0,255}),Line(points={{-96,0},{-20,0}}, color={0,0,255}),
-            Line(points={{20,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end Capacitor;
 
   model Inductor "Ideal linear electrical inductor"
@@ -343,25 +308,7 @@ package Basic "Basic electrical components"
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-     Line(points={{60,0},{96,0}}, color={0,0,255}),
-     Line(points={{-96,0},{-60,0}}, color={0,0,255}),
-          Line(
-            points={{-60,0},{-59,6},{-52,14},{-38,14},{-31,6},{-30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{-30,0},{-29,6},{-22,14},{-8,14},{-1,6},{0,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{0,0},{1,6},{8,14},{22,14},{29,6},{30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{30,0},{31,6},{38,14},{52,14},{59,6},{60,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier)}));
+              100,100}})));
   end Inductor;
 
   model SaturatingInductor "Simple model of an inductor with saturation"
@@ -444,30 +391,7 @@ package Basic "Basic electrical components"
  </dl>
 </html>"),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-     Line(points={{60,0},{96,0}}, color={0,0,255}),
-     Line(points={{-96,0},{-60,0}}, color={0,0,255}),
-            Rectangle(
-              extent={{-60,-10},{60,-20}},
-              lineColor={0,0,0},
-              fillPattern=FillPattern.Sphere,
-              fillColor={0,0,255}),
-          Line(
-            points={{-60,0},{-59,6},{-52,14},{-38,14},{-31,6},{-30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{-30,0},{-29,6},{-22,14},{-8,14},{-1,6},{0,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{0,0},{1,6},{8,14},{22,14},{29,6},{30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{30,0},{31,6},{38,14},{52,14},{59,6},{60,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier)}));
+              100,100}})));
   end SaturatingInductor;
 
   model Transformer "Transformer with two ports"
@@ -573,59 +497,7 @@ package Basic "Basic electrical components"
             textString="L2",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
-              100}}), graphics={
-          Line(points={{-40,60},{-40,100},{-100,100}},color={0,0,255}),
-          Line(points={{40,60},{40,100},{100,100}},color={0,0,255}),
-          Line(points={{-40,-60},{-40,-100},{-100,-100}},color={0,0,255}),
-          Line(points={{40,-60},{40,-100},{100,-100}},color={0,0,255}),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={-33,45},
-            rotation=270),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={-33,15},
-            rotation=270),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={-33,-15},
-            rotation=270),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={-33,-45},
-            rotation=270),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={33,45},
-            rotation=90),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={33,15},
-            rotation=90),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={33,-15},
-            rotation=90),
-          Line(
-            points={{-15,-7},{-14,-1},{-7,7},{7,7},{14,-1},{15,-7}},
-            color={0,0,255},
-            smooth=Smooth.Bezier,
-            origin={33,-45},
-            rotation=90)}));
+              100}})));
   end Transformer;
 
   model M_Transformer "Generic transformer with free number of inductors"
@@ -818,7 +690,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             lineColor={0,0,255}),
           Line(points={{-5,10},{-10,-10}}),
           Line(points={{9,10},{4,-9}}),
-          Line(points={{-14,9},{16,10}}),
+          Line(points={{-12,10},{16,10}}),
           Text(
             extent={{-29,69},{30,40}},
             textString="G1",
@@ -853,51 +725,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             origin={80,-75},
             rotation=360)}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Rectangle(
-            extent={{-80,80},{80,-80}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-40,30},{40,30}}, color={0,0,255}),
-          Line(points={{-20,-30},{20,-30}}, color={0,0,255}),
-          Polygon(
-            points={{30,34},{40,30},{30,26},{30,34}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-5,10},{-10,-10}}),
-          Line(points={{9,10},{4,-9}}),
-          Line(points={{-14,9},{16,10}}),
-          Text(
-            extent={{-29,69},{30,40}},
-            textString="G1",
-            lineColor={0,0,0}),
-          Text(
-            extent={{-29,-39},{29,-68}},
-            textString="G2",
-            lineColor={0,0,0}),
-          Polygon(
-            points={{-10,-26},{-20,-30},{-10,-34},{-10,-26}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-100,100},{-40,100},{-40,60}},color={0,0,255}),
-          Line(
-            points={{20,25},{-40,25},{-40,-15}},
-            color={0,0,255},
-            origin={80,75},
-            rotation=360),
-          Line(
-            points={{-35,-20},{25,-20},{25,20}},
-            color={0,0,255},
-            origin={-65,-80},
-            rotation=360),
-          Line(
-            points={{20,-25},{-40,-25},{-40,15}},
-            color={0,0,255},
-            origin={80,-75},
-            rotation=360)}));
+              100,100}})));
   end Gyrator;
 
   model EMF "Electromotoric force (electric/mechanic transformer)"
@@ -954,7 +782,6 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
-          Line(points={{0,90},{0,40}}, color={0,0,255}),
           Rectangle(
             extent={{35,10},{100,-10}},
             lineColor={0,0,0},
@@ -965,13 +792,12 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid,
             lineColor={0,0,255}),
-          Line(points={{0,-90},{0,-40}}, color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255}),
           Text(
-            extent={{-150,80},{150,40}},
+            extent={{-150,-50},{150,-90}},
             lineColor={0,0,0},
             textString="k=%k"),
           Line(
@@ -988,7 +814,9 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             points={{-60,-50},{-40,-30}}),
           Line(
             visible=not useSupport,
-            points={{-70,-30},{-70,-10}})}),
+            points={{-70,-30},{-70,-10}}),
+          Line(points={{0,40},{0,50}}, color={0,0,255}),
+          Line(points={{0,-50},{0,-40}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Polygon(
               points={{-17,95},{-20,85},{-23,95},{-17,95}},
@@ -1085,7 +913,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             fillColor={135,135,135},
             fillPattern=FillPattern.Solid),
           Text(
-            extent={{0,80},{160,40}},
+            extent={{40,-40},{200,-80}},
             lineColor={0,0,0},
             textString="k=%k"),
           Line(points={{-30,49},{-30,80},{0,80},{0,91}}, color={0,0,255}),
@@ -1130,7 +958,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             visible=not useSupport,
             points={{-70,-70},{-70,-50}}),
           Text(
-            extent={{0,-50},{200,-90}},
+            extent={{20,80},{220,40}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
@@ -1208,23 +1036,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
           Line(points={{-90,100},{-40,100},{-40,62}}, color={0,0,255}),
           Line(points={{-90,-100},{-40,-100},{-40,-60}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Rectangle(
-            extent={{-80,80},{80,-80}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{98,100},{40,100},{40,-100},{100,-100}},
-                                                             color={0,0,255}),
-          Ellipse(extent={{20,20},{60,-20}}, lineColor={0,0,255}),
-          Line(points={{-20,60},{20,60}}, color={0,0,255}),
-          Polygon(
-            points={{20,60},{10,63},{10,57},{20,60}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-100,100},{-40,100},{-40,62}},color={0,0,255}),
-          Line(points={{-100,-100},{-40,-100},{-40,-60}},color={0,0,255})}));
+              100,100}})));
   end VCV;
 
   model VCC "Linear voltage-controlled current source"
@@ -1275,30 +1087,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             origin={-80,-75},
             rotation=180)}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Rectangle(
-            extent={{-80,80},{80,-80}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Ellipse(extent={{20,20},{60,-20}}, lineColor={0,0,255}),
-          Line(points={{-20,60},{20,60}}, color={0,0,255}),
-          Polygon(
-            points={{20,60},{10,63},{10,57},{20,60}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{100,100},{40,100},{40,20}},
-                                                 color={0,0,255}),
-          Line(points={{100,-100},{40,-100},{40,-20}},
-                                                    color={0,0,255}),
-          Line(points={{20,0},{60,0}}, color={0,0,255}),
-          Line(points={{-100,100},{-40,100},{-40,60}},color={0,0,255}),
-          Line(
-            points={{20,25},{-40,25},{-40,-15}},
-            color={0,0,255},
-            origin={-80,-75},
-            rotation=180)}));
+              100,100}})));
   end VCC;
 
   model CCV "Linear current-controlled voltage source"
@@ -1344,23 +1133,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Rectangle(
-            extent={{-80,80},{80,-80}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{100,100},{40,100},{40,-100},{100,-100}},
-                                                             color={0,0,255}),
-          Ellipse(extent={{20,20},{60,-20}}, lineColor={0,0,255}),
-          Line(points={{-20,60},{20,60}}, color={0,0,255}),
-          Polygon(
-            points={{20,60},{10,63},{10,57},{20,60}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-100,100},{-40,100},{-40,-100},{-100,-100}},
-                                                               color={0,0,255})}));
+              100,100}})));
   end CCV;
 
   model CCC "Linear current-controlled current source"
@@ -1408,26 +1181,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Rectangle(
-            extent={{-80,80},{80,-80}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-100,100},{-40,100},{-40,-100},{-100,-100}},
-                                                                 color={0,0,255}),
-          Ellipse(extent={{20,20},{60,-20}}, lineColor={0,0,255}),
-          Line(points={{-20,60},{20,60}}, color={0,0,255}),
-          Polygon(
-            points={{20,60},{10,63},{10,57},{20,60}},
-            fillColor={0,0,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{100,100},{40,100},{40,20}},
-                                                 color={0,0,255}),
-          Line(points={{100,-100},{40,-100},{40,-20}},
-                                                    color={0,0,255}),
-          Line(points={{20,0},{60,0}}, color={0,0,255})}));
+              100,100}})));
   end CCC;
 
   model OpAmp "Simple nonideal model of an OpAmp with limitation"
@@ -1493,39 +1247,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={                       Text(
-              extent={{-112,-83},{-91,-63}},
-              lineColor={160,160,164},
-              textString="in_p.i=0"),Polygon(
-              points={{120,3},{110,0},{120,-3},{120,3}},
-              lineColor={0,0,0},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={160,160,164}),Line(points={{111,0},{136,0}}, color={0,
-            0,0}),Text(
-              extent={{118,2},{135,17}},
-              lineColor={0,0,0},
-              textString="i2"),Text(
-              extent={{-111,70},{-85,90}},
-              lineColor={160,160,164},
-              textString="in_n.i=0"),Line(
-              points={{-100,-25},{-100,33},{-100,34}},
-              color={160,160,164},
-              arrow={Arrow.None,Arrow.Filled}),
-          Polygon(
-            points={{70,0},{-70,80},{-70,-80},{70,0}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-45,-10},{-20,-10},{-14,-9},{-11,-7},{-9,7},{-6,9},{0,10},{20,10}},
-                              color={0,0,255}),
-          Line(points={{0,40},{0,100}},color={0,0,255}),
-          Line(points={{0,-40},{0,-100}},color={0,0,255}),
-          Line(points={{-100,60},{-70,60}},color={0,0,255}),
-          Line(points={{-100,-60},{-70,-60}},color={0,0,255}),
-          Line(points={{-58,50},{-38,50}}, color={0,0,255}),
-          Line(points={{-49,-40},{-49,-61}}, color={0,0,255}),
-          Line(points={{-60,-51},{-38,-51}}, color={0,0,255}),
-          Line(points={{70,0},{100,0}}, color={0,0,255})}));
+              100,100}})));
   end OpAmp;
 
   model OpAmpDetailed "Detailed model of an operational amplifier"
@@ -1591,7 +1313,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             extent={{-110,-70},{-90,-50}}), iconTransformation(extent={{-110,-70},{-90,-50}})));
     Modelica.Electrical.Analog.Interfaces.NegativePin m
       "Negative pin of the input port" annotation (Placement(transformation(
-            extent={{-90,48},{-110,68}}), iconTransformation(extent={{-90,48},{-110,68}})));
+            extent={{-90,50},{-110,70}}), iconTransformation(extent={{-90,50},{-110,70}})));
     Modelica.Electrical.Analog.Interfaces.PositivePin outp "Output pin"
       annotation (Placement(transformation(extent={{110,-10},{90,10}}), iconTransformation(extent={{110,-10},{90,10}})));
     Modelica.Electrical.Analog.Interfaces.PositivePin p_supply
@@ -1776,37 +1498,7 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
           Line(points={{-60,-51},{-38,-51}}, color={0,0,255}),
           Line(points={{-49,-40},{-49,-61}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-                             Polygon(
-              points={{120,3},{110,0},{120,-3},{120,3}},
-              lineColor={0,0,0},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={160,160,164}),Line(points={{111,0},{136,0}}, color={0,
-            0,0}),Text(
-              extent={{114,2},{131,17}},
-              lineColor={0,0,0},
-              textString="i2"),Line(
-              points={{-100,-29},{-100,29},{-100,30}},
-              color={160,160,164},
-              arrow={Arrow.None,Arrow.Filled}),Text(
-              extent={{-97,-10},{-74,10}},
-              lineColor={160,160,164},
-              textString="vin"),
-          Polygon(
-            points={{70,0},{-70,80},{-70,-80},{70,0}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-45,-10},{-20,-10},{-14,-9},{-11,-7},{-9,7},{-6,9},{0,
-                10},{20,10}}, color={0,0,255}),
-          Line(points={{0,40},{0,100}},color={0,0,255}),
-          Line(points={{0,-40},{0,-100}},color={0,0,255}),
-          Line(points={{-100,60},{-70,60}},color={0,0,255}),
-          Line(points={{-100,-60},{-70,-60}},color={0,0,255}),
-          Line(points={{-58,50},{-38,50}}, color={0,0,255}),
-          Line(points={{-49,-40},{-49,-61}}, color={0,0,255}),
-          Line(points={{-60,-51},{-38,-51}}, color={0,0,255}),
-          Line(points={{70,0},{100,0}},color={0,0,255})}));
+              100,100}})));
   end OpAmpDetailed;
 
   model VariableResistor
@@ -1863,19 +1555,12 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
           Line(points={{70,0},{90,0}}, color={0,0,255}),
-          Line(points={{0,100},{0,30}},color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Rectangle(
-              extent={{-70,30},{70,-30}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-70,0}},
-            color={0,0,255}),Line(points={{0,100},{0,30}},color={0,0,255}),Line(
-            points={{70,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end VariableResistor;
 
   model VariableConductor
@@ -1927,19 +1612,12 @@ the user has to allocate the parameter vector <i>L[6] </i>, since <i>Nv=(N*(N+1)
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
           Line(points={{70,0},{90,0}}, color={0,0,255}),
-          Line(points={{0,100},{0,30}},color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Line(points={{0,100},{0,30}},color={0,0,255}),
-            Line(points={{-96,0},{-70,0}}, color={0,0,255}),Line(points={{70,0},
-            {96,0}}, color={0,0,255}),Rectangle(
-              extent={{-70,30},{70,-30}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid)}));
+              100,100}})));
   end VariableConductor;
 
   model VariableCapacitor
@@ -1988,22 +1666,14 @@ C = Cmin, if 0 &le; C &lt; Cmin, where Cmin is a parameter with default value Mo
               100}}),graphics={
           Line(points={{-90,0},{-6,0}}, color={0,0,255}),
           Line(points={{6,0},{90,0}}, color={0,0,255}),
-          Line(points={{0,100},{0,30}},color={0,0,255}),
           Line(points={{-6,28},{-6,-28}}, color={0,0,255}),
           Line(points={{6,28},{6,-28}}, color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={                            Line(points={{0,100},{0,30}},
-                         color={0,0,255}),
-                                    Line(
-              points={{-20,40},{-20,-40}},
-              color={0,0,255}),Line(
-              points={{20,40},{20,-40}},
-              color={0,0,255}),Line(points={{-96,0},{-20,0}}, color={0,0,255}),
-            Line(points={{20,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end VariableCapacitor;
 
   model VariableInductor
@@ -2055,7 +1725,7 @@ It is required that L &ge; 0, otherwise an assertion is raised. To avoid a varia
           Line(points={{-90,0},{-60,0}}, color={0,0,255}),
           Line(points={{60,0},{90,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255}),
           Line(
@@ -2073,29 +1743,9 @@ It is required that L &ge; 0, otherwise an assertion is raised. To avoid a varia
           Line(
             points={{30,0},{31,6},{38,14},{52,14},{59,6},{60,0}},
             color={0,0,255},
-            smooth=Smooth.Bezier),
-     Line(points={{0,100},{0,8}},color={0,0,255})}),
+            smooth=Smooth.Bezier)}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-     Line(points={{-96,0},{-60,0}}, color={0,0,255}),
-     Line(points={{60,0},{96,0}}, color={0,0,255}),
-     Line(points={{0,100},{0,8}},color={0,0,255}),
-          Line(
-            points={{-60,0},{-59,6},{-52,14},{-38,14},{-31,6},{-30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{-30,0},{-29,6},{-22,14},{-8,14},{-1,6},{0,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{0,0},{1,6},{8,14},{22,14},{29,6},{30,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier),
-          Line(
-            points={{30,0},{31,6},{38,14},{52,14},{59,6},{60,0}},
-            color={0,0,255},
-            smooth=Smooth.Bezier)}));
+              100,100}})));
   end VariableInductor;
 
   model Potentiometer "Adjustable resistor"

@@ -1640,7 +1640,7 @@ This class summarizes contact information of the contributing persons.
 </html>"));
     end UsersGuide;
 
-    class Icons "Icon layout including component name and parameters"
+    class Icons "Icon design"
 
       annotation (Documentation(info="<html>
 <p>The icon of a Modelica class shall consider the following the guidelines: </p>
@@ -1654,7 +1654,8 @@ This class summarizes contact information of the contributing persons.
 and the most significant parameter can be displayed within the vertical Diagram range of the icon.</p>
 
 <p>
-<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_size.png\">
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name.png\"><br>
+Fig. 1: Typical icon name<br>
 </p>
 
 <h5>Component Name</h5>
@@ -1663,13 +1664,60 @@ and the most significant parameter can be displayed within the vertical Diagram 
 <li>Text height: 40 units</li>
 <li>Text width: 300 units </li>
 </ul>
-<p>If possible, the text shall be located above the actual icon. If there is enough space, the component name
-shall be 10 units below the icon boundary. If that is not possible the the component name shall moved upwards 
-in steps of 10 units until the text has 10 units space to the icon.</p>
-<p>In some cases it might make sense to \"squeeze\" the text between the icon and a connector which is located
-at the icon boundary.</p>
+<p>The text shall be located above the actual icon. If there is enough space, the upper text limit of the component name
+shall be 10 units below the upper icon boundary, see Fig. 1.</p>
+
+<p>If the icon is as big as the entire icon range of 200 units x 200 units, e.g. in blocks, 
+the component name shall be placed above the icon with vertical 10 units of space between icon and lower text box, see Fig. 2.</p>
+
 <p>
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Block_name.png\"><br>
+Fig. 2: Block component name<br>
 </p>
+
+<p>If there is a connector locoated at the top icon boundary and it is obvious that this connector influences the model 
+behavior compared to a similar model without such connector, then a line from the connector to the actual icon
+shall be avoided to keep the design straight, see Fig. 4. If it is required to use a line indicating the connector dependency, then
+the line shall be interrupted such that this line does not interfere with component name.</p>
+
+<p>
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_connector_above.png\"><br>
+Fig. 3: Comonent name between actual icon and connector<br>
+</p>
+
+<p>In some cases, if there is not alternative, the component name has to be placed below the actual icon, see. Fig. 4.
+
+<p>
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_below.png\"><br>
+Fig. 4: Comonent name below actual icon<br>
+</p>
+
+<h5>Parameter Name</h5>
+
+<p>One siginifcant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color. 
+The parameter text box shall be placed 10 units below the actual icon.  
+</p>
+
+<h5>Connector location</h5>
+
+<p>Physical connectors shall always be located on the icon boundary. Input and output connector shall be placed outside the icon, see Fig. 2 and 3. 
+Preferred connector locations are:</p>
+<ul>
+<li>at the four corners of the icon diagram, see Fig. 5</li>
+<li>at vertical or horizontal symmetry line of an icon, see Fig. 1-3</li>
+<li>alternative connection points shall be located in a raster of 20 units (or 10 units) if required, see Fig. 4</li>
+
+<p>
+<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_connector_corner.png\"><br>
+Fig. 5: Connectors located at the four corners of the icon diagram<br>
+</p>
+
+<h5>Diagram icons</h5>
+
+<p>Icons drawn in the Diagram layer shall be avoided. This refers particularly to icons of Diagram layer which are more or less equal to the 
+icons of the Icon layer. Any graphical illustrations shall be moved to the HTML documentation instead.</p>
+
+
 </html>"));
     end Icons;
     annotation (DocumentationClass=true,Documentation(info="<html>

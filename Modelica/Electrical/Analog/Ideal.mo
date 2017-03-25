@@ -37,7 +37,7 @@ The diode is locking if current &lt; Vknee/Goff.
     extends Modelica.Electrical.Analog.Interfaces.IdealSemiconductor;
     Modelica.Blocks.Interfaces.BooleanInput fire annotation (Placement(
           transformation(
-          origin={70,110},
+          origin={100,120},
           extent={{-20,-20},{20,20}},
           rotation=270), iconTransformation(
           extent={{-20,-20},{20,20}},
@@ -69,14 +69,14 @@ If fire gets false, the current has to fall below Vknee*Goff, then the tyhristor
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{30,20},{100,90},{100,100}},
-                                                 color={0,0,255}),
           Line(points={{40,50},{60,30}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
             points={{0,-100},{0,-20}},
             color={127,0,0},
-            pattern=LinePattern.Dot)}),
+            pattern=LinePattern.Dot),
+          Line(points={{30,20},{58,48}}, color={0,0,255}),
+          Line(points={{100,90},{100,100}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={
                                    Line(
@@ -88,7 +88,7 @@ If fire gets false, the current has to fall below Vknee*Goff, then the tyhristor
     extends Modelica.Electrical.Analog.Interfaces.IdealSemiconductor;
     Modelica.Blocks.Interfaces.BooleanInput fire annotation (Placement(
           transformation(
-          origin={70,110},
+          origin={100,120},
           extent={{-20,-20},{20,20}},
           rotation=270), iconTransformation(
           extent={{-20,-20},{20,20}},
@@ -121,17 +121,12 @@ Otherwise, the GTO thyristor is locking.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{30,10},{100,80},{100,100}},
-                                                 color={0,0,255}),
-          Line(points={{50,50},{70,30}}, color={0,0,255}),
+          Line(points={{48,52},{68,32}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
             points={{0,-100},{0,-20}},
             color={127,0,0},
             pattern=LinePattern.Dot),
-          Line(
-            points={{30,22},{100,90}},
-            color={0,0,255}),
           Polygon(
             points={{44,43},{44,36},{51,36},{44,43}},
             lineColor={0,0,255},
@@ -141,7 +136,10 @@ Otherwise, the GTO thyristor is locking.
             points={{46,33},{53,33},{53,26},{46,33}},
             lineColor={0,0,255},
             fillPattern=FillPattern.Solid,
-            fillColor={0,0,255})}),
+            fillColor={0,0,255}),
+          Line(points={{30,10},{68,48}}, color={0,0,255}),
+          Line(points={{100,90},{100,100}}, color={0,0,255}),
+          Line(points={{30,22},{56,48}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={
                                    Line(
@@ -159,7 +157,7 @@ Otherwise, the GTO thyristor is locking.
               -10},{-90,10}})));
     Interfaces.NegativePin n2 annotation (Placement(transformation(extent={{90,
               -10},{110,10}})));
-    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,50},{110,70}}), iconTransformation(extent={{90,50},{110,70}})));
+    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
     Modelica.Blocks.Interfaces.BooleanInput control
       "true => p--n2 connected, false => p--n1 connected" annotation (Placement(
           transformation(
@@ -216,22 +214,9 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
           Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}),
-          Text(
-            extent={{-80,8},{-60,30}},
-            textString="p",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,64},{80,86}},
-            textString="n1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,4},{80,26}},
-            textString="n2",
-            lineColor={0,0,255}),
           Line(points={{-90,0},{-44,0}}, color={0,0,255}),
-          Line(points={{-37,2},{40,60}}, color={0,0,255}),
-          Line(points={{40,60},{90,60}}, color={0,0,255}),
-          Line(points={{0,100},{0,30}},color={0,0,255}),
+          Line(points={{-37,2},{40,40}}, color={0,0,255}),
+          Line(points={{40,40},{90,40}}, color={0,0,255}),
           Line(points={{40,0},{90,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -239,15 +224,11 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
             color={127,0,0},
             pattern=LinePattern.Dot),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(extent={{-44,4},{-36,-4}},
-            lineColor={0,0,255}),Line(points={{-96,0},{-44,0}}, color={0,0,255}),
-            Line(points={{-37,2},{40,60}}, color={0,0,255}),Line(points={{40,60},{96,60}},
-                      color={0,0,255}),Line(points={{0,100},{0,30}},color={0,0,
-            255}),Line(points={{40,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end IdealCommutingSwitch;
 
   model IdealIntermediateSwitch "Ideal intermediate switch"
@@ -256,9 +237,9 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
       "Opened switch conductance";
     extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
           293.15);
-    Interfaces.PositivePin p1 annotation (Placement(transformation(extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,50},{-90,70}})));
+    Interfaces.PositivePin p1 annotation (Placement(transformation(extent={{-110,30},{-90,50}}), iconTransformation(extent={{-110,30},{-90,50}})));
     Interfaces.PositivePin p2 annotation (Placement(transformation(extent={{-110,-10},{-90,10}}), iconTransformation(extent={{-110,-10},{-90,10}})));
-    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,50},{110,70}}), iconTransformation(extent={{90,50},{110,70}})));
+    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
     Interfaces.NegativePin n2 annotation (Placement(transformation(extent={{90,-10},{110,10}}), iconTransformation(extent={{90,-10},{110,10}})));
     Modelica.Blocks.Interfaces.BooleanInput control
       "true => p1--n2, p2--n1 connected, otherwise p1--n1, p2--n2  connected"
@@ -322,36 +303,16 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{-90,60},{-40,60},{40,0},{90,0}}, color={0,0,255}),
-          Line(points={{-90,0},{-40,0},{40,60},{90,60}}, color={0,0,255}),
-          Ellipse(extent={{-4,34},{4,26}}, lineColor={0,0,255}),
           Text(
-            extent={{-80,64},{-60,86}},
-            textString="p1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{-80,4},{-60,26}},
-            textString="p2",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,64},{80,86}},
-            textString="n1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,4},{80,26}},
-            textString="n2",
-            lineColor={0,0,255}),
-          Line(points={{0,100},{0,29}},color={0,0,255}),
-          Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(extent={{-4,34},{4,26}}, lineColor=
+              100,100}}), graphics={Ellipse(extent={{-4,24},{4,16}}, lineColor=
             {0,0,255}),Line(points={{-96,0},{-40,0}}, color={0,0,255}),Line(
-            points={{-96,60},{-40,60}}, color={0,0,255}),Line(points={{-40,0},{40,60}},
-                     color={0,0,255}),Line(points={{-40,60},{40,0}}, color={0,0,
-            255}),Line(points={{40,60},{96,60}}, color={0,0,255}),Line(points={{0,100},{0,30}},
+            points={{-96,40},{-40,40}}, color={0,0,255}),Line(points={{-40,0},{40,40}},
+                     color={0,0,255}),Line(points={{-40,40},{40,0}}, color={0,0,
+            255}),Line(points={{40,40},{96,40}}, color={0,0,255}),Line(points={{0,94},{0,24}},
                             color={0,0,255}),Line(points={{40,0},{96,0}}, color=
              {0,0,255})}));
   end IdealIntermediateSwitch;
@@ -367,7 +328,7 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
               -10},{-90,10}})));
     Interfaces.NegativePin n2 annotation (Placement(transformation(extent={{90,
               -10},{110,10}})));
-    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,50},{110,70}}), iconTransformation(extent={{90,50},{110,70}})));
+    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
     Interfaces.Pin control
       "Control pin: if control.v > level p--n2 connected, otherwise p--n1 connected"
       annotation (Placement(transformation(
@@ -423,22 +384,9 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
           Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}),
-          Text(
-            extent={{-80,4},{-60,26}},
-            textString="p",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,64},{80,86}},
-            textString="n1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,4},{80,26}},
-            textString="n2",
-            lineColor={0,0,255}),
           Line(points={{-90,0},{-44,0}}, color={0,0,255}),
-          Line(points={{-37,2},{40,60}}, color={0,0,255}),
-          Line(points={{40,60},{90,60}}, color={0,0,255}),
-          Line(points={{0,90},{0,30}}, color={0,0,255}),
+          Line(points={{-37,2},{40,40}}, color={0,0,255}),
+          Line(points={{40,40},{90,40}}, color={0,0,255}),
           Line(points={{40,0},{90,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -446,15 +394,11 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
             color={127,0,0},
             pattern=LinePattern.Dot),
           Text(
-            extent={{-145,-21},{155,-61}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(extent={{-44,4},{-36,-4}},
-            lineColor={0,0,255}),Line(points={{-96,0},{-44,0}}, color={0,0,255}),
-            Line(points={{-37,2},{40,50}}, color={0,0,255}),Line(points={{40,50},
-            {96,50}}, color={0,0,255}),Line(points={{0,96},{0,25}}, color={0,0,
-            255}),Line(points={{40,0},{96,0}}, color={0,0,255})}));
+              100,100}})));
   end ControlledIdealCommutingSwitch;
 
   model ControlledIdealIntermediateSwitch
@@ -465,10 +409,10 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
       "Opened switch conductance";
     extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
           293.15);
-    Interfaces.PositivePin p1 annotation (Placement(transformation(extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,50},{-90,70}})));
+    Interfaces.PositivePin p1 annotation (Placement(transformation(extent={{-110,30},{-90,50}}), iconTransformation(extent={{-110,30},{-90,50}})));
     Interfaces.PositivePin p2 annotation (Placement(transformation(extent={{-110,
               -10},{-90,10}})));
-    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,50},{110,70}}), iconTransformation(extent={{90,50},{110,70}})));
+    Interfaces.NegativePin n1 annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
     Interfaces.NegativePin n2 annotation (Placement(transformation(extent={{90,
               -10},{110,10}})));
     Interfaces.Pin control "Control pin: if control.v > level p1--n2, p2--n1 connected,
@@ -536,29 +480,12 @@ The limiting case is also allowed, i.e., the resistance Ron of the closed switch
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Ellipse(extent={{-4,34},{4,26}}, lineColor={0,0,255}),
-          Text(
-            extent={{-80,66},{-60,88}},
-            textString="p1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{-80,6},{-60,28}},
-            textString="p2",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,70},{80,92}},
-            textString="n1",
-            lineColor={0,0,255}),
-          Text(
-            extent={{60,6},{80,28}},
-            textString="n2",
-            lineColor={0,0,255}),
+          Ellipse(extent={{-4,24},{4,16}}, lineColor={0,0,255}),
           Line(points={{-90,0},{-40,0}}, color={0,0,255}),
-          Line(points={{-90,60},{-40,60}}, color={0,0,255}),
-          Line(points={{-40,0},{40,60}}, color={0,0,255}),
-          Line(points={{-40,60},{40,0}}, color={0,0,255}),
-          Line(points={{40,60},{90,60}}, color={0,0,255}),
-          Line(points={{0,100},{0,34}},color={0,0,255}),
+          Line(points={{-90,40},{-40,40}}, color={0,0,255}),
+          Line(points={{-40,0},{40,40}}, color={0,0,255}),
+          Line(points={{-40,40},{40,0}}, color={0,0,255}),
+          Line(points={{40,40},{90,40}}, color={0,0,255}),
           Line(points={{40,0},{90,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -566,17 +493,11 @@ The limiting case is also allowed, i.e., the resistance Ron of the closed switch
             color={127,0,0},
             pattern=LinePattern.Dot),
           Text(
-            extent={{-150,-30},{150,-70}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(extent={{-4,34},{4,26}}, lineColor=
-            {0,0,255}),Line(points={{-96,0},{-40,0}}, color={0,0,255}),Line(
-            points={{-96,60},{-40,60}}, color={0,0,255}),Line(points={{-40,0},{40,60}},
-                     color={0,0,255}),Line(points={{-40,60},{40,0}}, color={0,0,
-            255}),Line(points={{40,60},{96,60}}, color={0,0,255}),Line(points={
-            {0,96},{0,25}}, color={0,0,255}),Line(points={{40,0},{96,0}}, color=
-             {0,0,255})}));
+              100,100}})));
   end ControlledIdealIntermediateSwitch;
 
   model IdealOpAmp "Ideal operational amplifier (norator-nullator pair)"
@@ -638,44 +559,7 @@ are possible (norator).
           Line(points={{-60,-50},{-40,-50}}, color={0,0,255}),
           Line(points={{-50,-40},{-50,-60}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={          Text(
-              extent={{-111,-39},{-90,-19}},
-              lineColor={160,160,164},
-              textString="p1.i=0"),Polygon(
-              points={{120,3},{110,0},{120,-3},{120,3}},
-              lineColor={0,0,0},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={160,160,164}),Line(points={{111,0},{136,0}}, color={0,
-            0,0}),Text(
-              extent={{118,2},{135,17}},
-              lineColor={0,0,0},
-              textString="i2"),Text(
-              extent={{-111,60},{-90,80}},
-              lineColor={160,160,164},
-              textString="n1.i=0"),Line(points={{18,-111},{18,-86}}, color={160,
-            160,164}),Polygon(
-              points={{21,-101},{18,-111},{15,-101},{21,-101}},
-              lineColor={160,160,164},
-              fillColor={160,160,164},
-              fillPattern=FillPattern.Solid),Text(
-              extent={{22,-100},{39,-85}},
-              lineColor={0,0,0},
-              textString="i2"),
-          Polygon(
-            points={{70,0},{-70,80},{-70,-80},{70,0}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-45,-10},{-20,-10},{-14,-9},{-11,-7},{-9,7},{-6,9},{0,10},{20,10}},
-                              color={0,0,255}),
-          Line(points={{0,40},{0,100}},color={0,0,255}),
-          Line(points={{0,-40},{0,-100}},color={0,0,255}),
-          Line(points={{-100,60},{-70,60}},color={0,0,255}),
-          Line(points={{-100,-60},{-70,-60}},color={0,0,255}),
-          Line(points={{-58,50},{-38,50}}, color={0,0,255}),
-          Line(points={{-49,-40},{-49,-61}}, color={0,0,255}),
-          Line(points={{-60,-51},{-38,-51}}, color={0,0,255}),
-          Line(points={{70,0},{100,0}}, color={0,0,255})}));
+              100,100}})));
   end IdealOpAmp;
 
   model IdealOpAmp3Pin
@@ -725,29 +609,7 @@ are possible.
           Line(points={{-60,-50},{-40,-50}}, color={0,0,255}),
           Line(points={{-50,-40},{-50,-60}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Polygon(
-              points={{60,0},{-60,70},{-60,-70},{60,0}},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid,
-              lineColor={0,0,255}),Line(points={{-96,50},{-60,50}}, color={0,0,
-            255}),Line(points={{-96,-50},{-60,-50}}, color={0,0,255}),Line(
-            points={{60,0},{97,0}}, color={0,0,255}),Line(points={{-55,50},{-45,
-            50}}, color={0,0,255}),Line(points={{-50,-45},{-50,-55}}, color={0,
-            0,255}),Line(points={{-55,-50},{-45,-50}}, color={0,0,255}),Text(
-              extent={{-111,-39},{-90,-19}},
-              lineColor={160,160,164},
-              textString="p1.i=0"),Polygon(
-              points={{120,3},{110,0},{120,-3},{120,3}},
-              lineColor={0,0,0},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={160,160,164}),Line(points={{111,0},{136,0}}, color={0,
-            0,0}),Text(
-              extent={{118,2},{135,17}},
-              lineColor={0,0,0},
-              textString="i2"),Text(
-              extent={{-111,60},{-90,80}},
-              lineColor={160,160,164},
-              textString="n1.i=0")}));
+              100,100}})));
   end IdealOpAmp3Pin;
 
   model IdealOpAmpLimited "Ideal operational amplifier with limitation"
@@ -814,39 +676,7 @@ If the input voltage is vin larger than 0, the output voltage is out.v = VMax.
           Line(points={{0,40},{0,100}}, color={0,0,255}),
           Line(points={{0,-100},{0,-40}}, color={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={
-          Polygon(
-            points={{60,0},{-60,70},{-60,-70},{60,0}},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            lineColor={0,0,255}),
-          Line(points={{-45,-10},{-10,-10},{-10,10},{20,10}}, color={0,0,255}),
-          Line(points={{0,35},{0,80}}, color={0,0,255}),
-          Line(points={{0,-35},{0,-80}}, color={0,0,255}),
-          Line(points={{-96,50},{-60,50}}, color={0,0,255}),
-          Line(points={{-96,-50},{-60,-50}}, color={0,0,255}),
-          Line(points={{60,0},{96,0}}, color={0,0,255}),
-          Line(points={{-55,50},{-45,50}}, color={0,0,255}),
-          Line(points={{-50,-45},{-50,-55}}, color={0,0,255}),
-          Line(points={{-55,-50},{-45,-50}}, color={0,0,255}),
-          Text(
-            extent={{-111,-39},{-90,-19}},
-            lineColor={160,160,164},
-            textString="p1.i=0"),
-          Polygon(
-            points={{120,3},{110,0},{120,-3},{120,3}},
-            lineColor={0,0,0},
-            fillPattern=FillPattern.HorizontalCylinder,
-            fillColor={160,160,164}),
-          Line(points={{111,0},{136,0}}),
-          Text(
-            extent={{118,2},{135,17}},
-            lineColor={0,0,0},
-            textString="i2"),
-          Text(
-            extent={{-111,60},{-90,80}},
-            lineColor={160,160,164},
-            textString="n1.i=0")}));
+              100,100}})));
   end IdealOpAmpLimited;
 
   model IdealizedOpAmpLimted "Idealized operational amplifier with limitation"
@@ -1059,26 +889,7 @@ For the backward conversion, one has to decide about the partitioning of the lea
             color={0,0,255},
             smooth=Smooth.Bezier,
             origin={33,-45},
-            rotation=90)}),
-      Diagram(graphics={
-   Line(points={{-32,-50},{-27,-50},{-20,-43},{-20,-38},{-20,-33},{-27,-25},{-32,-25}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{-32,-25},{-27,-25},{-20,-18},{-20,-13},{-20,-8},{-27,0},{-32,0}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{-32,0},{-27,0},{-20,8},{-20,13},{-20,18},{-27,25},{-32,25}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{-32,25},{-27,25},{-20,33},{-20,38},{-20,43},{-27,50},{-32,50}}, color={0,0,255}, smooth=Smooth.Bezier),
-          Line(points={{-90,50},{-32,50}}, color={0,0,255}),
-          Line(points={{-90,-50},{-32,-50}}, color={0,0,255}),
-   Line(points={{32,-50},{27,-50},{20,-43},{20,-38},{20,-33},{27,-25},{32,-25}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{32,-25},{27,-25},{20,-18},{20,-13},{20,-8},{27,0},{32,0}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{32,0},{27,0},{20,8},{20,13},{20,18},{27,25},{32,25}}, color={0,0,255}, smooth=Smooth.Bezier),
-   Line(points={{32,25},{27,25},{20,33},{20,38},{20,43},{27,50},{32,50}}, color={0,0,255}, smooth=Smooth.Bezier),
-          Line(points={{32,50},{90,50}}, color={0,0,255}),
-          Line(points={{32,-50},{90,-50}}, color={0,0,255}),Text(
-              extent={{-100,10},{0,-10}},
-              lineColor={0,0,255},
-              textString="1=primary"),Text(
-              extent={{0,10},{100,-10}},
-              lineColor={0,0,255},
-              textString="2=secondary")}));
+            rotation=90)}));
   end IdealTransformer;
 
   model IdealGyrator "Ideal gyrator"
@@ -1140,17 +951,7 @@ where the constant <i>G</i> is called the gyration conductance.
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}},
           grid={2,2},
-          initialScale=0.1),
-                          graphics={
-     Line(points={{-40,-30},{-28,-30},{-10,-12},{-10,0},{-10,12},{-28,30},{-40,30}}, color={0,0,255}, smooth=Smooth.Bezier),
-     Line(points={{-96,50},{-40,50},{-40,-50},{-96,-50}}, color={0,0,255}),
-     Line(points={{-30,60},{20,60}}, color={0,0,255}),
-     Polygon( points={{20,63},{30,60},{20,57},{20,63}},
-              fillColor={0,0,255},
-              fillPattern=FillPattern.Solid,
-              lineColor={0,0,255}),
-     Line(points={{40,-30},{28,-30},{10,-12},{10,0},{10,12},{28,30},{40,30}}, color={0,0,255}, smooth=Smooth.Bezier),
-     Line(points={{96,50},{40,50},{40,-50},{96,-50}}, color={0,0,255})}));
+          initialScale=0.1)));
   end IdealGyrator;
 
   model Idle "Idle branch"
@@ -1181,9 +982,7 @@ where the constant <i>G</i> is called the gyration conductance.
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{-96,0},{-41,0}}, color={0,0,255}),
-            Line(points={{96,0},{40,0}}, color={0,0,255})}));
+              100,100}})));
   end Idle;
 
   model Short "Short cut branch"
@@ -1213,8 +1012,7 @@ where the constant <i>G</i> is called the gyration conductance.
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{96,0},{-96,0}}, color={0,0,255}),
+              100,100}}), graphics={
             Text(
               extent={{-100,100},{100,70}},
               textString="Short",
@@ -1255,7 +1053,6 @@ For further details, see partial model <a href=\"modelica://Modelica.Electrical.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,100},{0,30}},color={0,0,255}),
           Line(points={{40,20},{40,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -1295,7 +1092,6 @@ For further details, see partial model <a href=\"modelica://Modelica.Electrical.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,100},{0,30}},color={0,0,255}),
           Line(
             visible=useHeatPort,
             points={{0,-100},{0,25}},
@@ -1336,7 +1132,6 @@ For further details, see partial model <a href=\"modelica://Modelica.Electrical.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,90},{0,30}}, color={0,0,255}),
           Line(points={{40,20},{40,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -1379,7 +1174,6 @@ For further details, see partial model <a href=\"modelica://Modelica.Electrical.
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,90},{0,30}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
             points={{0,-100},{0,25}},
@@ -1400,9 +1194,8 @@ For further details, see partial model <a href=\"modelica://Modelica.Electrical.
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,100},{0,30}},color={255,85,255}),
           Line(points={{40,20},{40,0}}, color={0,0,255}),
-          Line(points={{40,50},{32,34},{48,30},{40,20}}, color={255,0,0})}),
+          Line(points={{40,40},{32,30},{48,26},{40,20}}, color={255,0,0})}),
       Documentation(info="<html>
 <p>
 This model is an extension to the <a href=\"modelica://Modelica.Electrical.Analog.Ideal.IdealOpeningSwitch\">IdealOpeningSwitch</a>.
@@ -1438,8 +1231,7 @@ For details of the arc effect, see partial model <a href=\"modelica://Modelica.E
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{40,50},{32,24},{48,28},{40,0}}, color={255,0,0}),
-          Line(points={{0,100},{0,30}},color={255,85,255})}),
+          Line(points={{40,40},{32,14},{48,22},{40,0}}, color={255,0,0})}),
       Documentation(info="<html>
 <p>
 This model is an extension to the <a href=\"modelica://Modelica.Electrical.Analog.Ideal.IdealClosingSwitch\">IdealClosingSwitch</a>.
@@ -1492,9 +1284,8 @@ For details of the arc effect, see partial model <a href=\"modelica://Modelica.E
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,90},{0,30}}, color={0,0,255}),
           Line(points={{40,20},{40,0}}, color={0,0,255}),
-          Line(points={{40,50},{32,34},{48,30},{40,20}}, color={255,0,0})}));
+          Line(points={{40,40},{32,30},{48,28},{40,20}}, color={255,0,0})}));
   end ControlledOpenerWithArc;
 
   model ControlledCloserWithArc
@@ -1530,8 +1321,7 @@ For details of the arc effect, see partial model <a href=\"modelica://Modelica.E
 </html>"),
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
-          Line(points={{0,90},{0,30}}, color={0,0,255}),
-          Line(points={{40,50},{32,24},{48,28},{40,0}}, color={255,0,0})}));
+          Line(points={{40,40},{34,16},{48,24},{40,0}}, color={255,0,0})}));
   end ControlledCloserWithArc;
 
   model IdealTriac "Ideal triac, based on ideal thyristors"
@@ -1676,7 +1466,7 @@ For details of the arc effect, see partial model <a href=\"modelica://Modelica.E
       annotation (Placement(transformation(extent={{100,-10},{120,10}}),
                                                                        iconTransformation(extent={{100,-10},{120,10}})));
     Modelica.Electrical.Digital.Interfaces.DigitalInput trig "Trigger input"
-      annotation (Placement(transformation(extent={{-10,60},{10,80}}),
+      annotation (Placement(transformation(extent={{-8,90},{12,110}}),
           iconTransformation(
           extent={{-10,-10},{10,10}},
           rotation=-90,
@@ -1759,7 +1549,7 @@ Hence the output will change instantaneously when the trigger signal rises.
   model DA_Converter "Simple digital to analog converter"
     import L = Modelica.Electrical.Digital.Interfaces.Logic;
     Modelica.Electrical.Digital.Interfaces.DigitalInput trig "Trigger input"
-      annotation (Placement(transformation(extent={{-10,60},{10,80}}),
+      annotation (Placement(transformation(extent={{-10,92},{10,112}}),
           iconTransformation(
           extent={{-10,-10},{10,10}},
           rotation=-90,

@@ -197,7 +197,7 @@ equation
       Line(points = {{0,-70},{0,-100}}, color = {0,0,255}),
       Line(points={{-100,-100},{-100,-80},{-58,-38}}, color = {0,0,127}),
       Line(points = {{-100,0},{100,0}}, color = {0,0,255}),
-      Text(lineColor = {0,0,255}, extent = {{-150,120},{150,160}}, textString = "%name"),
+      Text(lineColor = {0,0,255}, extent={{-150,110},{150,150}},   textString = "%name"),
       Line(points = {{0,70},{0,40}}),
       Text(extent = {{-29,-70},{30,-11}},
             lineColor={0,0,0},

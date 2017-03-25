@@ -46,13 +46,8 @@ package Sources "Time-dependent and controlled voltage and current sources"
             textString="-"),
           Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(
-              extent={{-50,50},{50,-50}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-50,0}},
-            color={0,0,255}),Line(points={{50,0},{96,0}}, color={0,0,255}),Line(
-            points={{-50,0},{50,0}}, color={0,0,255}),Line(points={{-109,20},{-84,
+              100,100}}), graphics={         Line(points={{-96,0},{-50,0}},
+            color={0,0,255}),                         Line(points={{-109,20},{-84,
             20}}, color={160,160,164}),Polygon(
               points={{-94,23},{-84,20},{-94,17},{-94,23}},
               lineColor={160,160,164},
@@ -70,8 +65,7 @@ package Sources "Time-dependent and controlled voltage and current sources"
               lineColor={160,160,164},
               textString="i"),Line(points={{-119,-5},{-119,5}}, color={160,160,
             164}),Line(points={{-124,0},{-114,0}}, color={160,160,164}),Line(
-            points={{116,0},{126,0}}, color={160,160,164}),
-          Line(points={{0,100},{0,50}}, color={0,0,0})}),
+            points={{116,0},{126,0}}, color={160,160,164})}),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -109,10 +103,7 @@ package Sources "Time-dependent and controlled voltage and current sources"
             lineColor={0,0,255},
             textString="-")}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Line(points={{-96,0},{-10,0}}, color={0,0,
-            255}),Line(points={{-10,60},{-10,-60}}, color={0,0,255}),Line(
-            points={{0,30},{0,-30}}, color={0,0,255}),Line(points={{0,0},{96,0}},
-            color={0,0,255})}),
+              100,100}})),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -1159,14 +1150,7 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
             fillPattern=FillPattern.Solid),
           Line(points={{0,100},{0,50}}, color={0,0,0})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(
-              extent={{-50,50},{50,-50}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-50,0}},
-            color={0,0,255}),Line(points={{50,0},{96,0}}, color={0,0,255}),Line(
-            points={{0,-50},{0,50}}, color={0,0,255}),
-          Line(points={{0,100},{0,50}}, color={0,0,0})}),
+              100,100}})),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -1204,13 +1188,7 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
             fillColor={0,0,255},
             fillPattern=FillPattern.Solid)}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-              100,100}}), graphics={Ellipse(
-              extent={{-50,50},{50,-50}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid),Line(points={{-96,0},{-50,0}},
-            color={0,0,255}),Line(points={{50,0},{96,0}}, color={0,0,255}),Line(
-            points={{0,-50},{0,50}}, color={0,0,255})}),
+              100,100}})),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>

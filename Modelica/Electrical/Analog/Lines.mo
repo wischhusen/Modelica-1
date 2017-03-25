@@ -143,12 +143,7 @@ package Lines
           Line(points={{40,40},{40,20}})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{0,-60},{0,-96}}, color={0,0,255}),
-            Line(points={{60,0},{96,0}}, color={0,0,255}),Line(points={{-60,0},
-            {-96,0}}, color={0,0,255}),Line(points={{30,30},{-30,30}}, color={0,
-            0,255}),Line(points={{-30,40},{-30,20}}, color={0,0,255}),Line(
-            points={{30,40},{30,20}}, color={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
   end OLine;
 
   model M_OLine "Multiple OLine"
@@ -641,12 +636,7 @@ The capacitances are calculated with: C=c*length/N.
             textString="ULine")}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{0,-60},{0,-96}}, color={0,0,255}),
-            Line(points={{60,0},{96,0}}, color={0,0,255}),Line(points={{-60,0},
-            {-96,0}}, color={0,0,255}),Line(points={{30,30},{-30,30}}, color={0,
-            0,255}),Line(points={{-30,40},{-30,20}}, color={0,0,255}),Line(
-            points={{30,40},{30,20}}, color={0,0,255})}));
+          extent={{-100,-100},{100,100}})));
   end ULine;
 
   model TLine1
@@ -714,17 +704,9 @@ The capacitances are calculated with: C=c*length/N.
           Line(points={{-60,-80},{-60,-100}}, color={0,0,255})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}),graphics={Rectangle(extent={{-60,60},{60,-60}}, lineColor=
-             {0,0,255}),Line(points={{60,-50},{96,-50}}, color={0,0,255}),Line(
-            points={{60,50},{96,50}}, color={0,0,255}),Line(points={{-60,50},{-96,
-            50}}, color={0,0,255}),Line(points={{-60,-50},{-96,-50}}, color={0,
-            0,255}),Line(points={{30,30},{-30,30}}, color={0,0,255}),Line(
-            points={{-30,40},{-30,20}}, color={0,0,255}),Line(points={{30,40},{
-            30,20}}, color={0,0,255}),Text(
+          extent={{-100,-100},{100,100}}),graphics={
+                                      Text(
               extent={{-100,100},{100,70}},
-              textString="TLine1",
-              lineColor={0,0,255}),Text(
-              extent={{-30,0},{31,-31}},
               textString="TLine1",
               lineColor={0,0,255})}));
   end TLine1;
@@ -796,13 +778,8 @@ The capacitances are calculated with: C=c*length/N.
           Line(points={{-60,-80},{-60,-100}}, color={0,0,255})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{60,-50},{96,-50}}, color={0,0,
-            255}),Line(points={{60,50},{96,50}}, color={0,0,255}),Line(points={
-            {-60,50},{-96,50}}, color={0,0,255}),Line(points={{-60,-50},{-96,-50}},
-            color={0,0,255}),Line(points={{30,30},{-30,30}}, color={0,0,255}),
-            Line(points={{-30,40},{-30,20}}, color={0,0,255}),Line(points={{30,
-            40},{30,20}}, color={0,0,255}),Text(
+          extent={{-100,-100},{100,100}}), graphics={
+                                           Text(
               extent={{-100,100},{100,70}},
               textString="TLine2",
               lineColor={0,0,255})}));
@@ -872,13 +849,8 @@ The capacitances are calculated with: C=c*length/N.
           Line(points={{-60,-80},{-60,-100}}, color={0,0,255})}),
       Diagram(coordinateSystem(
           preserveAspectRatio=true,
-          extent={{-100,-100},{100,100}}), graphics={Rectangle(extent={{-60,60},{60,-60}},
-            lineColor={0,0,255}),Line(points={{60,-50},{96,-50}}, color={0,0,
-            255}),Line(points={{60,50},{96,50}}, color={0,0,255}),Line(points={
-            {-60,50},{-96,50}}, color={0,0,255}),Line(points={{-60,-50},{-96,-50}},
-            color={0,0,255}),Line(points={{30,30},{-30,30}}, color={0,0,255}),
-            Line(points={{-30,40},{-30,20}}, color={0,0,255}),Line(points={{30,
-            40},{30,20}}, color={0,0,255}),Text(
+          extent={{-100,-100},{100,100}}), graphics={
+                                           Text(
               extent={{-100,100},{100,70}},
               textString="TLine3",
               lineColor={0,0,255})}));

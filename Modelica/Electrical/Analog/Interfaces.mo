@@ -449,14 +449,9 @@ on the model behaviour.
             textString="%name",
             lineColor={0,0,255}),
           Line(points={{-90,0},{90,0}}, color={0,0,255}),
-          Text(
-            extent={{-120,50},{-20,0}},
-            lineColor={0,0,255},
-            textString="+"),
-          Text(
-            extent={{20,50},{120,0}},
-            lineColor={0,0,255},
-            textString="-")}),
+          Line(points={{-80,20},{-60,20}}, color={0,0,255}),
+          Line(points={{-70,30},{-70,10}}, color={0,0,255}),
+          Line(points={{60,20},{80,20}}, color={0,0,255})}),
       Documentation(revisions="<html>
 <ul>
 <li><i> 1998   </i>
@@ -582,7 +577,7 @@ behavior is <b>not</b> modelled.
             color={127,0,0},
             pattern=LinePattern.Dot),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
@@ -671,7 +666,7 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
               100}}), graphics={
           Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}),
           Line(points={{-90,0},{-44,0}}, color={0,0,255}),
-          Line(points={{-37,2},{40,60}}, color={0,0,255}),
+          Line(points={{-37,2},{40,40}}, color={0,0,255}),
           Line(points={{40,0},{90,0}}, color={0,0,255}),
           Line(
             visible=useHeatPort,
@@ -679,7 +674,7 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
             color={127,0,0},
             pattern=LinePattern.Dot),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}));
   end IdealSwitch;
@@ -720,10 +715,10 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
               100}}), graphics={
           Ellipse(extent={{-44,4},{-36,-4}}, lineColor={0,0,255}),
           Line(points={{-90,0},{-44,0}}, color={0,0,255}),
-          Line(points={{-37,2},{40,60}}, color={0,0,255}),
+          Line(points={{-37,2},{40,40}}, color={0,0,255}),
           Line(points={{40,0},{90,0}}, color={0,0,255}),
           Text(
-            extent={{-150,-40},{150,-80}},
+            extent={{-150,90},{150,50}},
             textString="%name",
             lineColor={0,0,255})}),
       Diagram(graphics={Line(points={{-60,60},{-60,-60},{60,-60}}, color={0,0,
