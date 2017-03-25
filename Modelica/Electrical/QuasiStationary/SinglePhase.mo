@@ -459,7 +459,7 @@ Examples to demonstrate the usage of quasistationary electric components.
             Line(points={{-20,10},{20,10}}, color={85,170,255}),
             Line(points={{0,90},{0,50}}, color={85,170,255}),
             Text(
-              extent={{100,-60},{-100,-20}},
+              extent={{150,-50},{-150,-10}},
               textString="%name",
               lineColor={0,0,255})}), Documentation(info="<html>
 <p>
@@ -843,11 +843,8 @@ the actual operating temperature and the reference input conductance <code>real(
               lineColor={85,170,255},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
-            Line(
-              points={{0,100},{0,30}},
-              color={85,170,255}),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Documentation(info="<html>
@@ -917,11 +914,8 @@ A zero crossing of the R signal could cause singularities due to the actual stru
               lineColor={85,170,255},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
-            Line(
-              points={{0,100},{0,30}},
-              color={85,170,255}),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Documentation(info="<html>
@@ -972,9 +966,8 @@ A linear temperature dependency of the conductance is also taken into account.
         Icon(graphics={
             Line(points={{-90,0},{-6,0}},  color={85,170,255}),
             Line(points={{6,0},{90,0}},  color={85,170,255}),
-            Line(points={{0,100},{0,30}},color={85,170,255}),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255}),
             Line(
@@ -1051,9 +1044,8 @@ The abstraction of a variable capacitor at quasi stationary operation assumes:
               points={{30,0},{31,6},{38,14},{52,14},{59,6},{60,0}},
               color={0,128,255},
               smooth=Smooth.Bezier),
-            Line(points={{0,100},{0,12}},color={85,170,255}),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Documentation(info="<html>
@@ -1124,16 +1116,13 @@ The abstraction of a variable inductor at quasi stationary operation assumes:
               lineColor={85,170,255},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
-            Line(
-              points={{0,100},{0,30}},
-              color={85,170,255}),
             Polygon(
               points={{-70,-30},{70,30},{70,-30},{-70,-30}},
               lineColor={85,170,255},
               fillColor={85,170,255},
               fillPattern=FillPattern.Solid),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Documentation(info="<html>
@@ -1211,16 +1200,13 @@ singularities due to the actual structure of the connected network.
               lineColor={85,170,255},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
-            Line(
-              points={{0,100},{0,30}},
-              color={85,170,255}),
             Polygon(
               points={{-70,-30},{70,30},{70,-30},{-70,-30}},
               lineColor={85,170,255},
               fillColor={85,170,255},
               fillPattern=FillPattern.Solid),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Documentation(info="<html>
@@ -1350,7 +1336,7 @@ This model is a simple short cut branch considering the complex voltage <i><u>v<
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.NegativePin n2
         annotation (Placement(transformation(extent={{90,-10},{110,10}})));
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.NegativePin n1
-        annotation (Placement(transformation(extent={{90,50},{110,70}})));
+        annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
       Modelica.Blocks.Interfaces.BooleanInput control "true => p--n2 connected, false => p--n1 connected"
                                                             annotation (
           Placement(transformation(
@@ -1406,9 +1392,8 @@ This switch is only intended to be used for structural changes, not for fast swi
                 100,100}}), graphics={
             Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}),
             Line(points={{-100,0},{-44,0}},color={85,170,255}),
-            Line(points={{-37,2},{40,60}}, color={85,170,255}),
-            Line(points={{40,60},{100,60}},color={85,170,255}),
-            Line(points={{0,100},{0,30}},color={85,170,255}),
+            Line(points={{-37,2},{40,40}}, color={85,170,255}),
+            Line(points={{40,40},{100,40}},color={85,170,255}),
             Line(points={{40,0},{100,0}},color={85,170,255}),
             Line(
               visible=useHeatPort,
@@ -1416,7 +1401,7 @@ This switch is only intended to be used for structural changes, not for fast swi
               color={127,0,0},
               pattern=LinePattern.Dot),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
@@ -1431,11 +1416,11 @@ This switch is only intended to be used for structural changes, not for fast swi
       extends Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort(final T=
            293.15);
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.PositivePin p1
-        annotation (Placement(transformation(extent={{-110,50},{-90,70}}), iconTransformation(extent={{-110,50},{-90,70}})));
+        annotation (Placement(transformation(extent={{-110,30},{-90,50}}), iconTransformation(extent={{-110,30},{-90,50}})));
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.PositivePin p2
         annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.NegativePin n1
-        annotation (Placement(transformation(extent={{90,50},{110,70}}), iconTransformation(extent={{90,50},{110,70}})));
+        annotation (Placement(transformation(extent={{90,30},{110,50}}), iconTransformation(extent={{90,30},{110,50}})));
       Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.NegativePin n2
         annotation (Placement(transformation(extent={{90,-10},{110,10}})));
       Modelica.Blocks.Interfaces.BooleanInput control "true => p1--n2, p2--n1 connected, otherwise p1--n1, p2--n2  connected"
@@ -1517,32 +1502,15 @@ This switch is only intended to be used for structural changes, not for fast swi
 </html>"),
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
-            Ellipse(extent={{-4,34},{4,26}}, lineColor={85,170,255}),
-            Text(
-              extent={{-80,68},{-60,90}},
-              textString="p1",
-              lineColor={0,0,255}),
-            Text(
-              extent={{-80,6},{-60,28}},
-              textString="p2",
-              lineColor={0,0,255}),
-            Text(
-              extent={{60,68},{80,90}},
-              textString="n1",
-              lineColor={0,0,255}),
-            Text(
-              extent={{60,6},{80,28}},
-              textString="n2",
-              lineColor={0,0,255}),
+            Ellipse(extent={{-4,24},{4,16}}, lineColor={85,170,255}),
             Line(points={{-90,0},{-40,0}}, color={85,170,255}),
-            Line(points={{-90,60},{-40,60}}, color={85,170,255}),
-            Line(points={{-40,0},{40,60}}, color={85,170,255}),
-            Line(points={{-40,60},{40,0}}, color={85,170,255}),
-            Line(points={{40,60},{90,60}}, color={85,170,255}),
-            Line(points={{0,100},{0,30}},color={85,170,255}),
+            Line(points={{-90,40},{-40,40}}, color={85,170,255}),
+            Line(points={{-40,0},{40,40}}, color={85,170,255}),
+            Line(points={{-40,40},{40,2}}, color={85,170,255}),
+            Line(points={{40,40},{90,40}}, color={85,170,255}),
             Line(points={{40,0},{90,0}}, color={85,170,255}),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
@@ -1604,9 +1572,8 @@ This switch is only intended to be used for structural changes, not for fast swi
                 100,100}}), graphics={
             Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}),
             Line(points={{-100,0},{-44,0}},color={85,170,255}),
-            Line(points={{-37,2},{40,60}}, color={85,170,255}),
+            Line(points={{-37,2},{40,40}}, color={85,170,255}),
             Line(points={{40,0},{100,0}},color={85,170,255}),
-            Line(points={{0,100},{0,30}},color={85,170,255}),
             Line(points={{40,20},{40,0}}, color={85,170,255}),
             Line(
               visible=useHeatPort,
@@ -1614,7 +1581,7 @@ This switch is only intended to be used for structural changes, not for fast swi
               color={127,0,0},
               pattern=LinePattern.Dot),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
@@ -1680,16 +1647,15 @@ This switch is only intended to be used for structural changes, not for fast swi
                 100,100}}), graphics={
             Ellipse(extent={{-44,4},{-36,-4}}, lineColor={85,170,255}),
             Line(points={{-90,0},{-44,0}}, color={85,170,255}),
-            Line(points={{-37,2},{40,60}}, color={85,170,255}),
+            Line(points={{-37,2},{40,40}}, color={85,170,255}),
             Line(points={{40,0},{90,0}}, color={85,170,255}),
-            Line(points={{0,100},{0,30}},color={85,170,255}),
             Line(
               visible=useHeatPort,
               points={{0,-100},{0,25}},
               color={127,0,0},
               pattern=LinePattern.Dot),
             Text(
-              extent={{-150,-40},{150,-80}},
+              extent={{-150,90},{150,50}},
               textString="%name",
               lineColor={0,0,255})}),
         Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
@@ -2226,15 +2192,10 @@ Quasi stationary theory for single phase circuits can be found in the
       omega = 2*Modelica.Constants.pi*f;
       v = Complex(V*cos(phi), V*sin(phi));
       annotation (Icon(graphics={
-            Text(
-              extent={{-120,50},{-20,0}},
-              lineColor={0,0,255},
-              textString="+"),
-            Text(
-              extent={{20,50},{120,0}},
-              lineColor={0,0,255},
-              textString="-"),
-            Line(points={{-50,0},{50,0}}, color={85,170,255})}),
+            Line(points={{-50,0},{50,0}}, color={85,170,255}),
+            Line(points={{-70,30},{-70,10}}, color={85,170,255}),
+            Line(points={{-80,20},{-60,20}}, color={85,170,255}),
+            Line(points={{60,20},{80,20}}, color={85,170,255})}),
                                              Documentation(info="<html>
 
 <p>
@@ -2268,15 +2229,10 @@ This is a constant voltage source, specifying the complex voltage by the RMS vol
       v = V;
       annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                 -100},{100,100}}), graphics={
-            Text(
-              extent={{-120,50},{-20,0}},
-              lineColor={0,0,255},
-              textString="+"),
-            Text(
-              extent={{20,50},{120,0}},
-              lineColor={0,0,255},
-              textString="-"),
-            Line(points={{-50,0},{50,0}}, color={85,170,255})}),
+            Line(points={{-50,0},{50,0}}, color={85,170,255}),
+            Line(points={{-70,30},{-70,10}}, color={85,170,255}),
+            Line(points={{-80,20},{-60,20}}, color={85,170,255}),
+            Line(points={{60,20},{80,20}}, color={85,170,255})}),
                                              Documentation(info="<html>
 
 <p>
@@ -2690,28 +2646,26 @@ The source partial model relies on the
       qQS = 0;
       annotation (Icon(graphics={
             Line(
-              points={{2,100},{2,60},{82,60},{2,60},{82,-60},{2,-60},{2,60},{2,
-                  -100}},
+              points={{2,40},{70,40},{2,40},{70,-50},{2,-50},{2,40},{2,-50}},
               color={0,0,255}),
             Text(
-              extent={{40,40},{100,0}},
+              extent={{50,30},{100,0}},
               lineColor={0,0,255},
               textString="DC"),
             Line(
-              points={{-2,100},{-2,60},{-82,60},{-2,60},{-82,-60},{-2,-60},{-2,
-                  60},{-2,-100}},
+              points={{-2,40},{-2,40},{-70,40},{-2,40},{-70,-50},{-2,-50},{-2,40},{-2,-50}},
               color={85,170,255}),
             Text(
-              extent={{-100,40},{-40,0}},
+              extent={{-90,30},{-40,0}},
               lineColor={85,170,255},
               textString="QS"),
             Text(
-              extent={{-100,92},{100,60}},
+              extent={{-150,90},{150,50}},
               lineColor={0,0,255},
               textString="%name"),
             Text(
-              extent={{-100,-60},{100,-92}},
-              lineColor={0,0,255},
+              extent={{-150,-50},{150,-90}},
+              lineColor={0,0,0},
               textString="%conversionFactor")}), Documentation(info="<html>
 <p>
 This is an ideal AC DC converter, based on a power balance between QS circuit and DC side.
@@ -2792,26 +2746,24 @@ At the DC side, only the mean of voltage and current are taken into account.
           points={{40,-40},{40,-100},{100,-100}},
           color={0,0,255}));
       annotation (Icon(graphics={
-            Line(
-              points={{2,100},{2,60},{82,60},{2,60},{82,-60},{2,-60},{2,60},{2,
-                  -100}},
-              color={0,0,255}),
             Text(
-              extent={{40,40},{100,0}},
+              extent={{50,30},{100,0}},
               lineColor={0,0,255},
               textString="DC"),
-            Line(
-              points={{-2,100},{-2,60},{-82,60},{-2,60},{-82,-60},{-2,-60},{-2,
-                  60},{-2,-100}},
-              color={0,0,255}),
             Text(
-              extent={{-100,40},{-40,0}},
+              extent={{-100,30},{-50,0}},
               lineColor={0,0,255},
               textString="AC"),
             Text(
-              extent={{-100,92},{100,60}},
+              extent={{-150,90},{150,50}},
               lineColor={0,0,255},
-              textString="%name")}), Documentation(info="<html>
+              textString="%name"),
+            Line(
+              points={{-2,40},{-2,40},{-70,40},{-2,40},{-70,-50},{-2,-50},{-2,40},{-2,-50}},
+              color={0,0,255}),
+            Line(
+              points={{2,40},{70,40},{2,40},{70,-50},{2,-50},{2,40},{2,-50}},
+              color={0,0,255})}),    Documentation(info="<html>
 <p>
 This is a so called Graetz-bridge, a single phase rectifier built from 4 diodes.
 </p>
