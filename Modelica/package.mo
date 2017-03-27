@@ -1694,7 +1694,7 @@ Fig. 4: Comonent name below actual icon<br>
 
 <h5>Parameter Name</h5>
 
-<p>One siginifcant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color.</p>
+<p>One significant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color.</p>
 <ul>
 <li>Text height: 40 units (or 30 units, minimum 20 units, if required)</li>
 <li>Text width: 300 units </li>
