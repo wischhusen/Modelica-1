@@ -1695,14 +1695,14 @@ the line shall be interrupted such that this line does not interfere with compon
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_connector_above.png\"><br>
-Fig. 3: Comonent name between actual icon and connector
+Fig. 3: Component name between actual icon and connector
 </p>
 
 <p>In some cases, if there is not alternative, the component name has to be placed below the actual icon, see. Fig. 4.</p>
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_below.png\"><br>
-Fig. 4: Comonent name below actual icon
+Fig. 4: Component name below actual icon
 </p>
 
 <h4>Parameter Name</h4>
