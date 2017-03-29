@@ -1648,6 +1648,7 @@ This class summarizes contact information of the contributing persons.
 
 <h4>Color and Shapes</h4>
 
+
 <p>The main icon color of a component shall be the same for all components of one library.</p>
 
 <p>White fill areas of an icon shall not be used to hide parts of an icon, see 
@@ -1664,8 +1665,9 @@ This class summarizes contact information of the contributing persons.
 and the most significant parameter can be displayed within the vertical Diagram range of the icon.</p>
 
 <p>
-<img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name.png\"><br>
-Fig. 1: Typical icon name<br>
+(a) <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name.png\">
+(b) <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_dimensions.png\"><br>
+Fig. 1: (a) Typical icon, (b) including dimensions
 </p>
 
 <h4>Component Name</h4>
@@ -1683,7 +1685,7 @@ the component name shall be placed above the icon with vertical 10 units of spac
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Block_name.png\"><br>
-Fig. 2: Block component name<br>
+Fig. 2: Block component name
 </p>
 
 <p>If there is a connector locoated at the top icon boundary and it is obvious that this connector influences the model 
@@ -1693,14 +1695,14 @@ the line shall be interrupted such that this line does not interfere with compon
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_connector_above.png\"><br>
-Fig. 3: Comonent name between actual icon and connector<br>
+Fig. 3: Comonent name between actual icon and connector
 </p>
 
 <p>In some cases, if there is not alternative, the component name has to be placed below the actual icon, see. Fig. 4.</p>
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_name_below.png\"><br>
-Fig. 4: Comonent name below actual icon<br>
+Fig. 4: Comonent name below actual icon
 </p>
 
 <h4>Parameter Name</h4>
@@ -1725,7 +1727,7 @@ Preferred connector locations are:</p>
 
 <p>
 <img src=\"modelica://Modelica/Resources/Images/UsersGuide/Conventions/Icon_connector_corner.png\"><br>
-Fig. 5: Connectors located at the four corners of the icon diagram<br>
+Fig. 5: Connectors located at the four corners of the icon diagram
 </p>
 
 <h4>Diagram icons</h4>
