@@ -1643,8 +1643,18 @@ This class summarizes contact information of the contributing persons.
     class Icons "Icon design"
 
       annotation (Documentation(info="<html>
+
 <p>The icon of a Modelica class shall consider the following the guidelines: </p>
-<h5>Icon size</h5>
+
+<h4>Color and Shapes</h4>
+
+<p>The main icon color of a component shall be the same for all components of one library.</p>
+
+<p>White fill areas of an icon shall not be used to hide parts of an icon, see 
+<a href=\"modelica://https://github.com/modelica/Modelica/issues/2031\">#2031</a>.</p>
+
+<h4>Icon size</h4>
+
 <p>The icon of a Modelica class shall not be significantly greater or smaller than the default Diagram limits of 200 units x 200 units. These default diagram limits are</p>
 <ul>
 <li>-100 units &le; horizontal coordinate &le; +100 units</li>
@@ -1658,7 +1668,8 @@ and the most significant parameter can be displayed within the vertical Diagram 
 Fig. 1: Typical icon name<br>
 </p>
 
-<h5>Component Name</h5>
+<h4>Component Name</h4>
+
 <p>The component name <code>%name</code> shall be in RGB (0,0,255) blue color.</p>
 <ul>
 <li>Text height: 40 units</li>
@@ -1692,7 +1703,7 @@ Fig. 3: Comonent name between actual icon and connector<br>
 Fig. 4: Comonent name below actual icon<br>
 </p>
 
-<h5>Parameter Name</h5>
+<h4>Parameter Name</h4>
 
 <p>One significant parameter shall be placed below the icon, see Fig. 1 and 2. The parameter name shall be RGB (0,0,0) black color.</p>
 <ul>
@@ -1702,7 +1713,7 @@ Fig. 4: Comonent name below actual icon<br>
 <p>The parameter text box shall be placed 10 units below the actual icon.  
 </p>
 
-<h5>Connector location</h5>
+<h4>Connector location</h4>
 
 <p>Physical connectors shall always be located on the icon boundary. Input and output connector shall be placed outside the icon, see Fig. 2 and 3. 
 Preferred connector locations are:</p>
@@ -1717,7 +1728,7 @@ Preferred connector locations are:</p>
 Fig. 5: Connectors located at the four corners of the icon diagram<br>
 </p>
 
-<h5>Diagram icons</h5>
+<h4>Diagram icons</h4>
 
 <p>Icons drawn in the Diagram layer shall be avoided. Particularly, icons of Diagram layer shall be avoided which are equal to the 
 icons of the Icon layer. Any graphical illustrations shall be moved to the HTML documentation instead.</p>
