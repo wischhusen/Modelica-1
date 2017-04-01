@@ -1099,17 +1099,13 @@ For parameters, connectors, as well as inputs and outputs of function automatic 
 
         annotation (Documentation(info="<html>
 
-<ol>
-<li> In the <b>icon</b> of a component the instance name is displayed
-     (text string <code>%name</code>) in <b>blue color</b>.
-     Parameter values, e.g., resistance, mass, gear ratio, are displayed
-     in the icon in <b>black color</b> in a smaller font size as the instance name.</li>
-<li> Comments and annotations should start with a capital letter, for example: <br>
+<h4>Comments and Annotations</h4>
+<p>
+Comments and annotations should start with a capital letter, for example: <br>
      <code><b>parameter</b> Real a = 1 \"Arbitrary factor\";</code>.<br>
      For Boolean parameters, the description string should start with \"= true: ..\", for example:<br>
-     <code><b>parameter</b> Boolean useHeatPort = false \"= true, if heatPort is enabled\";</code>.</li>
-</ol>
-
+     <code><b>parameter</b> Boolean useHeatPort = false \"= true, if heatPort is enabled\";</code>.
+</p>
 </html>"));
        end Format;
 
