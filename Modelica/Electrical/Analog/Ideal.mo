@@ -725,7 +725,7 @@ If the input voltage is vin larger than 0, the output voltage is out.v = VMax.
               100}}), graphics={
           Line(points={{60,0},{90,0}}, color={0,0,255}),
           Text(
-            extent={{-150,130},{150,110}},
+            extent={{-150,150},{150,110}},
             textString="%name",
             lineColor={0,0,255}),
           Line(points={{60,0},{90,0}}, color={0,0,255}),
