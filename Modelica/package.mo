@@ -1637,7 +1637,7 @@ This class summarizes contact information of the contributing persons.
     end UsersGuide;
 
     class Icons "Icon design"
-
+      extends Modelica.Icons.Information;
       annotation (Documentation(info="<html>
 
 <p>The icon of a Modelica class shall consider the following the guidelines: </p>
@@ -1684,7 +1684,7 @@ the component name shall be placed above the icon with vertical 10 units of spac
 Fig. 2: Block component name
 </p>
 
-<p>If there is a connector located at the top icon boundary and it is obvious that this connector influences the model 
+<p>If there is a connector locoated at the top icon boundary and it is obvious that this connector influences the model 
 behavior compared to a similar model without such connector, then a line from the connector to the actual icon
 shall be avoided to keep the design straight, see Fig. 4. If it is required to use a line indicating the connector dependency, then
 the line shall be interrupted such that this line does not interfere with component name.</p>
