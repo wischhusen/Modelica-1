@@ -1141,7 +1141,8 @@ Comments and annotations should start with a capital letter, for example: <br>
      <code>HeatPort_a</code>, <code>HeatPort_b</code>.</li>
 
 <li> A <b>connector class</b> has the instance
-     name definition in the diagram layer and not in the icon layer.</li>
+     name definition in the diagram layer and not in the 
+     <a href=\"modelica://Modelica.UsersGuide.Conventions.Icons\">icon</a> layer.</li>
 </ol>
 
 <h4>Variable names</h4>
@@ -1300,8 +1301,9 @@ Comments and annotations should start with a capital letter, for example: <br>
       annotation (Documentation(info="<html>
 
 <p>In this section the
-<a href=\"modelica://Modelica.UsersGuide.Conventions.ModelicaCode.Naming\">naming conventions</a> of class and instance names, parameters and variables are specified. Additionally some
-<a href=\"modelica://Modelica.UsersGuide.Conventions.ModelicaCode.Format\">format UsersGuide</a> are stated.</p>
+<a href=\"modelica://Modelica.UsersGuide.Conventions.ModelicaCode.Naming\">naming conventions</a> of class and instance names, parameters and variables are specified. 
+Additional
+<a href=\"modelica://Modelica.UsersGuide.Conventions.ModelicaCode.Format\">format</a> guidelinesare provided.</p>
 
 </html>"));
     end ModelicaCode;
