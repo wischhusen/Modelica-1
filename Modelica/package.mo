@@ -8196,7 +8196,6 @@ of the Modelica package (many more people have contributed to the design):
 </html>"));
 
 end Contact;
-
 annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
 Package <strong>Modelica</strong> is a <strong>standardized</strong> and <strong>pre-defined</strong> package
@@ -8317,7 +8316,6 @@ User's Guides that can be accessed by the following links:
 </html>"));
 end UsersGuide;
 
-
 annotation (
 preferredView="info",
 version="3.2.3",
@@ -8327,7 +8325,7 @@ dateModified = "2018-09-26 12:00:00Z",
 revisionId="$Format:%h %ci$",
 uses(Complex(version="3.2.3"), ModelicaServices(version="3.2.3")),
 conversion(
- noneFromVersion="3.2.2",
+ from(version="3.2.2", script="modelica://Modelica/Resources/Scripts/Dymola/ConvertModelica_from_3.2.2_to_3.2.3.mos"),
  noneFromVersion="3.2.1",
  noneFromVersion="3.2",
  noneFromVersion="3.1",
