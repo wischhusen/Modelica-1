@@ -149,7 +149,7 @@ equation
     experiment(StopTime=50, Interval=0.001),
     Documentation(revisions="<html>
 <dl>
-<dt><i>2009</i></dt>
+<dt><em>2009</em></dt>
 <dd>by Anton Haumer<br> initially implemented</dd>
 </dl>
 </html>",
@@ -161,6 +161,6 @@ Plot in separate windows for comparison:
 <br>basicTransformer.p1.v and idealTransformer.p1.v
 <br>basicTransformer.p1.i and idealTransformer.p1.i
 <br>basicTransformer.p2.v and idealTransformer.p2.v
-basicTransformer.p2.i and idealTransformer.p2.i </p>
+basicTransformer.p2.i and idealTransformer.p2.i</p>
 </html>"));
 end CompareTransformers;

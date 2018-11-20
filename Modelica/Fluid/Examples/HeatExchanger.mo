@@ -83,17 +83,15 @@ package HeatExchanger "Demo of a heat exchanger model"
             {-74,34},{-74,42},{-66,42}}, color={0,0,127}));
     connect(massFlowRate2.ports[1], HEX.port_b2)
                                              annotation (Line(
-        points={{-46,34},{-40,34},{-40,29.8},{-29,29.8}},
-        color={0,127,255}));
+        points={{-46,34},{-40,34},{-40,29.8},{-29,29.8}}, color={0,127,255}));
     connect(HEX.port_a2, ambient2.ports[1])
                                         annotation (Line(
-        points={{37,2.2},{42,2},{50,2},{50,-18},{62,-18}},
-        color={0,127,255}));
+        points={{37,2.2},{42,2},{50,2},{50,-18},{62,-18}}, color={0,127,255}));
     annotation (experiment(StopTime=200, Tolerance=
             1e-005),
       Documentation(info="<html>
 <p>The simulation start in steady state with counterflow operation. At time t = 50, the mass flow rate on the secondary circuit is changed to a negative value in 5 seconds. After a transient, the heat exchanger operates in co-current flow.</p>
-<p><img src=\"modelica://Modelica/Resources/Images/Fluid/Examples/HeatExchanger.png\" alt=\"HeatExchanger.png\"/> </p>
+<p><img src=\"modelica://Modelica/Resources/Images/Fluid/Examples/HeatExchanger.png\" alt=\"HeatExchanger.png\"/></p>
 </html>"));
   end HeatExchangerSimulation;
 
@@ -346,12 +344,10 @@ package HeatExchanger "Demo of a heat exchanger model"
           color={0,127,255},
           thickness=0.5));
       connect(wall.heatPort_b, pipe_1.heatPorts) annotation (Line(
-          points={{-10,-8.5},{-10,-36.8},{-9.7,-36.8}},
-          color={191,0,0}));
+          points={{-10,-8.5},{-10,-36.8},{-9.7,-36.8}}, color={191,0,0}));
       connect(pipe_2.heatPorts[nNodes:-1:1], wall.heatPort_a[1:nNodes])
         annotation (Line(
-          points={{-10.3,44.8},{-10.3,31.7},{-10,31.7},{-10,20.5}},
-          color={127,0,0}));
+          points={{-10.3,44.8},{-10.3,31.7},{-10,31.7},{-10,20.5}}, color={127,0,0}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false,
               extent={{-100,-100},{100,100}}), graphics={
             Rectangle(
@@ -464,7 +460,7 @@ The design flow direction with positive m_flow variables is counterflow.</p>
               textString="%name")}),
                                 Documentation(revisions="<html>
 <ul>
-<li><i>04 Mar 2006</i>
+<li><em>04 Mar 2006</em>
     by Katrin Pr&ouml;l&szlig;:<br>
        Model added to the Fluid library</li>
 </ul>

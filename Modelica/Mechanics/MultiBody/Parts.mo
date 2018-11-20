@@ -113,7 +113,7 @@ package Parts
       Documentation(info="<html>
 <p>
 Element consisting of a frame (frame_b) that is fixed in the world
-frame at a given position defined by parameter vector <b>r</b>
+frame at a given position defined by parameter vector <strong>r</strong>
 (vector from origin of world frame to frame_b, resolved in the
 world frame).
 </p>
@@ -123,10 +123,10 @@ world frame and frame_b of this components, as shown in the figure below.
 Note, that the visualized world frame on the left side and
 Fixed.frame_b on the right side are not part of the
 component animation and that the animation may be switched off via parameter
-animation = <b>false</b>.
+animation = <strong>false</strong>.
 </p>
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Fixed.png\" ALT=\"Parts.Fixed\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Fixed.png\" alt=\"Parts.Fixed\">
 </p>
 
 </html>"),
@@ -309,19 +309,19 @@ animation = <b>false</b>.
             textString="y")}),
       Documentation(info="<html>
 <p>
-Component for a <b>fixed translation</b> of frame_b with respect
+Component for a <strong>fixed translation</strong> of frame_b with respect
 to frame_a, i.e., the relationship between connectors frame_a and frame_b
-remains constant and frame_a is always <b>parallel</b> to frame_b.
+remains constant and frame_a is always <strong>parallel</strong> to frame_b.
 </p>
 <p>
 By default, this component is visualized by a cylinder connecting
 frame_a and frame_b, as shown in the figure below. Note, that the
 two visualized frames are not part of the component animation and that
-the animation may be switched off via parameter animation = <b>false</b>.
+the animation may be switched off via parameter animation = <strong>false</strong>.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedTranslation.png\" ALT=\"Parts.FixedTranslation\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedTranslation.png\" alt=\"Parts.FixedTranslation\">
 </p>
 </html>"));
   end FixedTranslation;
@@ -503,19 +503,19 @@ the animation may be switched off via parameter animation = <b>false</b>.
     annotation (
       Documentation(info="<html>
 <p>
-Component for a <b>fixed translation</b> and <b>fixed rotation</b> of frame_b with respect
+Component for a <strong>fixed translation</strong> and <strong>fixed rotation</strong> of frame_b with respect
 to frame_a, i.e., the relationship between connectors frame_a and frame_b
 remains constant. There are several possibilities to define the
 orientation of frame_b with respect to frame_a:
 </p>
 <ul>
-<li><b>Planar rotation</b> along axis 'n' (that is fixed and resolved
+<li><strong>Planar rotation</strong> along axis 'n' (that is fixed and resolved
     in frame_a) with a fixed angle 'angle'.</li>
-<li><b>Vectors n_x</b> and <b>n_y</b> that are directed along the corresponding axes
+<li><strong>Vectors n_x</strong> and <strong>n_y</strong> that are directed along the corresponding axes
     direction of frame_b and are resolved in frame_a (if n_y is not
     orthogonal to n_x, the y-axis of frame_b is selected such that it is
     orthogonal to n_x and in the plane of n_x and n_y).</li>
-<li><b>Sequence</b> of <b>three planar axes rotations</b>.
+<li><strong>Sequence</strong> of <strong>three planar axes rotations</strong>.
     For example, \"sequence = {1,2,3}\" and \"angles = {90, 45, -90}\"
     means to rotate frame_a around the x axis with 90 degrees, around the new
     y axis with 45 degrees and around the new z axis around -90 degrees to
@@ -528,15 +528,15 @@ By default, this component is visualized by a cylinder connecting
 frame_a and frame_b, as shown in the figure below. In this figure
 frame_b is rotated along the z-axis of frame_a with 60 degree. Note, that the
 two visualized frames are not part of the component animation and that
-the animation may be switched off via parameter animation = <b>false</b>.
+the animation may be switched off via parameter animation = <strong>false</strong>.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedRotation.png\" ALT=\"Parts.FixedRotation\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedRotation.png\" alt=\"Parts.FixedRotation\">
 </p>
-</html>", revisions="<html><p><b>Release Notes:</b></p>
+</html>", revisions="<html><p><strong>Release Notes:</strong></p>
 <ul>
-  <li><i>July 28, 2003</i><br>
+  <li><em>July 28, 2003</em><br>
          Bug fixed: if rotationType = PlanarRotationSequence, then 'angles'
          was used with unit [rad] instead of [deg].</li>
 </ul>
@@ -893,7 +893,7 @@ the animation may be switched off via parameter animation = <b>false</b>.
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
-            extent={{-100,30},{-3,-31}},
+            extent={{-100,30},{-3,-30}},
             lineColor={0,24,48},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={0,127,255},
@@ -911,26 +911,26 @@ the animation may be switched off via parameter animation = <b>false</b>.
             fillPattern=FillPattern.Sphere,
             fillColor={0,127,255})}), Documentation(info="<html>
 <p>
-<b>Rigid body</b> with mass and inertia tensor.
+<strong>Rigid body</strong> with mass and inertia tensor.
 All parameter vectors have to be resolved in frame_a.
-The <b>inertia tensor</b> has to be defined with respect to a
+The <strong>inertia tensor</strong> has to be defined with respect to a
 coordinate system that is parallel to frame_a with the
 origin at the center of mass of the body.
 </p>
 <p>
-By default, this component is visualized by a <b>cylinder</b> located
-between frame_a and the center of mass and by a <b>sphere</b> that has
+By default, this component is visualized by a <strong>cylinder</strong> located
+between frame_a and the center of mass and by a <strong>sphere</strong> that has
 its center at the center of mass. If the cylinder length is smaller as
 the radius of the sphere, e.g., since frame_a is located at the
 center of mass, the cylinder is not displayed. Note, that
-the animation may be switched off via parameter animation = <b>false</b>.
+the animation may be switched off via parameter animation = <strong>false</strong>.
 </p>
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Body.png\" ALT=\"Parts.Body\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Body.png\" alt=\"Parts.Body\">
 </p>
 
 <p>
-<b>States of Body Components</b>
+<strong>States of Body Components</strong>
 </p>
 <p>
 Every body has potential states. If possible a tool will select
@@ -942,18 +942,18 @@ freely in space, variables of the body have to be used as states. The potential
 states of the body are:
 </p>
 <ul>
-<li> The <b>position vector</b> frame_a.r_0 from the origin of the
+<li> The <strong>position vector</strong> frame_a.r_0 from the origin of the
      world frame to the origin of frame_a of the body, resolved in
-     the world frame and the <b>absolute velocity</b> v_0 of the origin of
+     the world frame and the <strong>absolute velocity</strong> v_0 of the origin of
      frame_a, resolved in the world frame (= der(frame_a.r_0)).
 </li>
-<li> If parameter <b>useQuaternions</b> in the \"Advanced\" menu
-     is <b>true</b> (this is the default), then <b>4 quaternions</b>
+<li> If parameter <strong>useQuaternions</strong> in the \"Advanced\" menu
+     is <strong>true</strong> (this is the default), then <strong>4 quaternions</strong>
      are potential states. Additionally, the coordinates of the
      absolute angular velocity vector of the
      body are 3 potential states.<br>
-     If <b>useQuaternions</b> in the \"Advanced\" menu
-     is <b>false</b>, then <b>3 angles</b> and the derivatives of
+     If <strong>useQuaternions</strong> in the \"Advanced\" menu
+     is <strong>false</strong>, then <strong>3 angles</strong> and the derivatives of
      these angles are potential states. The orientation of frame_a
      is computed by rotating the world frame along the axes defined
      in parameter vector \"sequence_angleStates\" (default = {1,2,3}, i.e.,
@@ -973,7 +973,7 @@ disadvantage that there is a singular configuration in which a
 division by zero will occur. If it is possible to determine in advance
 for an application class that this singular configuration is outside
 of the operating region, the 3 angles might be used as potential
-states by setting <b>useQuaternions</b> = <b>false</b>.
+states by setting <strong>useQuaternions</strong> = <strong>false</strong>.
 </p>
 <p>
 In text books about 3-dimensional mechanics often 3 angles and the
@@ -990,7 +990,7 @@ velocity.
 <p>
 Whether or not variables of the body are used as states is usually
 automatically selected by the Modelica translator. If parameter
-<b>enforceStates</b> is set to <b>true</b> in the \"Advanced\" menu,
+<strong>enforceStates</strong> is set to <strong>true</strong> in the \"Advanced\" menu,
 then body variables are forced to be used as states according
 to the setting of parameters \"useQuaternions\" and
 \"sequence_angleStates\".
@@ -1230,33 +1230,33 @@ to the setting of parameters \"useQuaternions\" and
     annotation (
       Documentation(info="<html>
 <p>
-<b>Rigid body</b> with mass and inertia tensor and <b>two frame connectors</b>.
+<strong>Rigid body</strong> with mass and inertia tensor and <strong>two frame connectors</strong>.
 All parameter vectors have to be resolved in frame_a.
-The <b>inertia tensor</b> has to be defined with respect to a
+The <strong>inertia tensor</strong> has to be defined with respect to a
 coordinate system that is parallel to frame_a with the
-origin at the center of mass of the body. The coordinate system <b>frame_b</b>
-is always parallel to <b>frame_a</b>.
+origin at the center of mass of the body. The coordinate system <strong>frame_b</strong>
+is always parallel to <strong>frame_a</strong>.
 </p>
 <p>
-By default, this component is visualized by any <b>shape</b> that can be
+By default, this component is visualized by any <strong>shape</strong> that can be
 defined with Modelica.Mechanics.MultiBody.Visualizers.FixedShape. This shape is placed
 between frame_a and frame_b (default: length(shape) = Frames.length(r)).
-Additionally a <b>sphere</b> may be visualized that has
+Additionally a <strong>sphere</strong> may be visualized that has
 its center at the center of mass.
 Note, that
-the animation may be switched off via parameter animation = <b>false</b>.
+the animation may be switched off via parameter animation = <strong>false</strong>.
 </p>
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyShape.png\" ALT=\"Parts.BodyShape\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyShape.png\" alt=\"Parts.BodyShape\">
 </p>
 
 <p>
-The following shapes can be defined via parameter <b>shapeType</b>,
+The following shapes can be defined via parameter <strong>shapeType</strong>,
 e.g., shapeType=\"cone\":
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedShape.png\" ALT=\"Visualizers.FixedShape\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedShape.png\" alt=\"Visualizers.FixedShape\">
 </p>
 
 <p>
@@ -1276,7 +1276,7 @@ states and of the \"Advanced\" menu parameters, see model
             extent={{-150,-100},{150,-70}},
             textString="r=%r"),
           Rectangle(
-            extent={{-100,31},{101,-30}},
+            extent={{-100,30},{101,-30}},
             lineColor={0,24,48},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={0,127,255},
@@ -1499,20 +1499,20 @@ states and of the \"Advanced\" menu parameters, see model
         thickness=0.5));
     annotation (Documentation(info="<html>
 <p>
-<b>Rigid body</b> with <b>box</b> shape.
+<strong>Rigid body</strong> with <strong>box</strong> shape.
 The mass properties of the body (mass, center of mass,
 inertia tensor) are computed
 from the box data. Optionally, the box may be hollow.
 The (outer) box shape is by default used in the animation.
 The hollow part is not shown in the animation.
-The two connector frames <b>frame_a</b> and <b>frame_b</b>
+The two connector frames <strong>frame_a</strong> and <strong>frame_b</strong>
 are always parallel to each other. Example of component
 animation (note, that
-the animation may be switched off via parameter animation = <b>false</b>):
+the animation may be switched off via parameter animation = <strong>false</strong>):
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyBox.png\" ALT=\"Parts.BodyBox\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyBox.png\" alt=\"Parts.BodyBox\">
 </p>
 
 <p>
@@ -1728,19 +1728,19 @@ states and of the \"Advanced\" menu parameters, see model
         thickness=0.5));
     annotation (Documentation(info="<html>
 <p>
-<b>Rigid body</b> with <b>cylinder</b> shape.
+<strong>Rigid body</strong> with <strong>cylinder</strong> shape.
 The mass properties of the body (mass, center of mass,
 inertia tensor) are computed
 from the cylinder data. Optionally, the cylinder may be hollow.
 The cylinder shape is by default used in the animation.
-The two connector frames <b>frame_a</b> and <b>frame_b</b>
+The two connector frames <strong>frame_a</strong> and <strong>frame_b</strong>
 are always parallel to each other. Example of component
 animation (note, that
-the animation may be switched off via parameter animation = <b>false</b>):
+the animation may be switched off via parameter animation = <strong>false</strong>):
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyCylinder.png\" ALT=\"Parts.BodyCylinder\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyCylinder.png\" alt=\"Parts.BodyCylinder\">
 </p>
 
 <p>
@@ -1873,12 +1873,12 @@ the only case where this is done.
             fillPattern=FillPattern.Sphere,
             fillColor={0,127,255})}), Documentation(info="<html>
 <p>
-<b>Rigid body</b> where the inertia tensor is neglected.
+<strong>Rigid body</strong> where the inertia tensor is neglected.
 This body is
 solely defined by its mass.
-By default, this component is visualized by a <b>sphere</b> that has
+By default, this component is visualized by a <strong>sphere</strong> that has
 its center at frame_a. Note, that
-the animation may be switched off via parameter animation = <b>false</b>.
+the animation may be switched off via parameter animation = <strong>false</strong>.
 </p>
 
 <p>
@@ -1888,16 +1888,16 @@ usually the most efficient choice. In this case the position and
 velocity of frame_a of the body will be computed
 by the component that is connected to frame_a. However, if a PointMass is moving
 freely in space, variables of the PointMass have to be used as states. The potential
-states are: The <b>position vector</b> frame_a.r_0 from the origin of the
+states are: The <strong>position vector</strong> frame_a.r_0 from the origin of the
 world frame to the origin of frame_a of the body, resolved in
-the world frame and the <b>absolute velocity</b> v_0 of the origin of
+the world frame and the <strong>absolute velocity</strong> v_0 of the origin of
 frame_a, resolved in the world frame (= der(frame_a.r_0)).
 </p>
 
 <p>
 Whether or not variables of the body are used as states is usually
 automatically selected by the Modelica translator. If parameter
-<b>enforceStates</b> is set to <b>true</b> in the \"Advanced\" menu,
+<strong>enforceStates</strong> is set to <strong>true</strong> in the \"Advanced\" menu,
 then PointMass variables frame_a.r_0 and der(frame_a.r_0)
 are forced to be used as states.
 </p>
@@ -1969,19 +1969,19 @@ and to propagate them to a carrier body.</p>
 <p>The 1-dim. support torque at <code>flange_b</code> is transformed into 3-dim. space under
 consideration of the rotation axis, parameter <code>n</code>, which has to be given in the
 local coordinate system of <code>frame_a</code>.</p>
-<p>All components of a 1-dim.-rotational mechanical system that are connected to <b>a</b> common
-<b>Mounting1D</b> element need to have the same axis of rotation
+<p>All components of a 1-dim.-rotational mechanical system that are connected to <strong>a</strong> common
+<strong>Mounting1D</strong> element need to have the same axis of rotation
 along parameter vector <code>n</code>. This means that, e.g., bevel
 gears where the axis of rotation of <code>flange_a</code> and
 <code>flange_b</code> are different cannot be described properly by
-connecting to the <b>Mounting1D</b> component. In this case, a combination of several
-<b>Mounting1D</b> components or the component <b>BevelGear1D</b> should be used.</p>
-<p><b>Reference</b><br>
+connecting to the <strong>Mounting1D</strong> component. In this case, a combination of several
+<strong>Mounting1D</strong> components or the component <strong>BevelGear1D</strong> should be used.</p>
+<p><strong>Reference</strong><br>
 <span style=\"font-variant:small-caps\">Schweiger</span>, Christian ;
 <span style=\"font-variant:small-caps\">Otter</span>, Martin:
 <a href=\"https://www.modelica.org/events/Conference2003/papers/h06_Schweiger_powertrains_v5.pdf\">Modelling
-3D Mechanical Effects of 1-dim. Powertrains</a>. In: <i>Proceedings of the 3rd International
-Modelica Conference</i>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
+3D Mechanical Effects of 1-dim. Powertrains</a>. In: <em>Proceedings of the 3rd International
+Modelica Conference</em>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
 November 3-4, 2003, pp. 149-158</p>
 </html>"));
   end Mounting1D;
@@ -2177,7 +2177,7 @@ November 3-4, 2003, pp. 149-158</p>
       annotation (Documentation(info="<html>
 <p>
 This component is used to model the gyroscopic torques exerted by a 1-dim.
-inertia (so called <i>rotor</i>) on its 3-dim. carrier body. Gyroscopic torques
+inertia (so called <em>rotor</em>) on its 3-dim. carrier body. Gyroscopic torques
 appear, if the vector of the carrier body's angular velocity is not parallel
 to the vector of the rotor's axis. The axis of rotation of the rotor is defined by
 the parameter <code>n</code>, which has to be given in the local coordinate system
@@ -2185,7 +2185,7 @@ of <code>frame_a</code>. The default animation of this component is
 shown in the figure below.</p>
 
 <p>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" ALT=\"model Parts.Rotor1D\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" alt=\"model Parts.Rotor1D\">
 </p>
 
 <p>This component is a replacement for
@@ -2193,22 +2193,27 @@ shown in the figure below.</p>
 for the case, that a 1-dim.-rotational mechanical system should be attached with a 3-dim.
 carrier body.</p>
 <p>The Boolean parameter <code>exact</code> was introduced due to performance
-reasons. If <code>exact</code> is set to <b>false</b>, the influence of the carrier body
+reasons. If <code>exact</code> is set to <strong>false</strong>, the influence of the carrier body
 motion on the angular velocity of the rotor is neglected. This influence is usually
 negligible if the 1-dim.-rotational mechanical system accelerates much faster as the base body (this is,
 e.g., the case in vehicle powertrains). The essential advantage is
 that an algebraic loop is removed since then there is only an
 action on acceleration level from the powertrain to the base body
 but not vice versa.</p>
-<p><b>Reference</b><br>
+<p><strong>Reference</strong><br>
 <span style=\"font-variant:small-caps\">Schweiger</span>, Christian ;
 <span style=\"font-variant:small-caps\">Otter</span>, Martin:
 <a href=\"https://www.modelica.org/events/Conference2003/papers/h06_Schweiger_powertrains_v5.pdf\">Modelling
-3D Mechanical Effects of 1-dim. Powertrains</a>. In: <i>Proceedings of the 3rd International
-Modelica Conference</i>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
+3D Mechanical Effects of 1-dim. Powertrains</a>. In: <em>Proceedings of the 3rd International
+Modelica Conference</em>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
 November 3-4, 2003, pp. 149-158</p>
 </html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
                 100}}), graphics={
+            Rectangle(
+              extent={{-100,10},{100,-10}},
+              lineColor={64,64,64},
+              fillPattern=FillPattern.HorizontalCylinder,
+              fillColor={192,192,192}),
             Line(points={{-80,-25},{-60,-25}}),
             Line(points={{60,-25},{80,-25}}),
             Line(points={{-70,-25},{-70,-70}}),
@@ -2228,16 +2233,6 @@ November 3-4, 2003, pp. 149-158</p>
               extent={{-50,50},{50,-50}},
               lineColor={64,64,64},
               radius=10),
-            Rectangle(
-              extent={{-100,10},{-50,-10}},
-              lineColor={64,64,64},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={192,192,192}),
-            Rectangle(
-              extent={{50,10},{100,-10}},
-              lineColor={64,64,64},
-              fillPattern=FillPattern.HorizontalCylinder,
-              fillColor={192,192,192}),
             Text(
               extent={{-148,112},{152,72}},
               textString="%name=%J",
@@ -2301,36 +2296,41 @@ November 3-4, 2003, pp. 149-158</p>
         thickness=0.5));
     annotation (Documentation(info="<html>
 <p>This component is used to model the gyroscopic torques exerted by a 1-dim.
-inertia (so called <i>rotor</i>) on its 3-dim. carrier body. Gyroscopic torques
+inertia (so called <em>rotor</em>) on its 3-dim. carrier body. Gyroscopic torques
 appear, if the vector of the carrier body's angular velocity is not parallel
 to the vector of the rotor's axis. The axis of rotation of the rotor is defined by
 the parameter <code>n</code>, which has to be given in the local coordinate system
 of <code>frame_a</code>. The default animation of this component is
 shown in the figure below.</p>
 <p>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" ALT=\"model Parts.Rotor1D\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" alt=\"model Parts.Rotor1D\">
 </p>
 <p>This component is a replacement for
 <a href=\"modelica://Modelica.Mechanics.Rotational.Components.Inertia\">Modelica.Mechanics.Rotational.Components.Inertia</a>
 for the case, that a 1-dim.-rotational mechanical system should be attached with a 3-dim.
 carrier body.</p>
 <p>The Boolean parameter <code>exact</code> was introduced due to performance
-reasons. If <code>exact</code> is set to <b>false</b>, the influence of the carrier body
+reasons. If <code>exact</code> is set to <strong>false</strong>, the influence of the carrier body
 motion on the angular velocity of the rotor is neglected. This influence is usually
 negligible if the 1-dim.-rotational mechanical system accelerates much faster as the base body (this is,
 e.g., the case in vehicle powertrains). The essential advantage is
 that an algebraic loop is removed since then there is only an
 action on acceleration level from the powertrain to the base body
 but not vice versa.</p>
-<p><b>Reference</b><br>
+<p><strong>Reference</strong><br>
 <span style=\"font-variant:small-caps\">Schweiger</span>, Christian ;
 <span style=\"font-variant:small-caps\">Otter</span>, Martin:
 <a href=\"https://www.modelica.org/events/Conference2003/papers/h06_Schweiger_powertrains_v5.pdf\">Modelling
-3D Mechanical Effects of 1-dim. Powertrains</a>. In: <i>Proceedings of the 3rd International
-Modelica Conference</i>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
+3D Mechanical Effects of 1-dim. Powertrains</a>. In: <em>Proceedings of the 3rd International
+Modelica Conference</em>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
 November 3-4, 2003, pp. 149-158</p>
 </html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
               {100,100}}), graphics={
+          Rectangle(
+            extent={{-100,10},{100,-10}},
+            lineColor={64,64,64},
+            fillPattern=FillPattern.HorizontalCylinder,
+            fillColor={192,192,192}),
           Line(points={{-80,-25},{-60,-25}}),
           Line(points={{60,-25},{80,-25}}),
           Line(points={{-70,-25},{-70,-70}}),
@@ -2350,16 +2350,6 @@ November 3-4, 2003, pp. 149-158</p>
             extent={{-50,50},{50,-50}},
             lineColor={64,64,64},
             radius=10),
-          Rectangle(
-            extent={{-100,10},{-50,-10}},
-            lineColor={64,64,64},
-            fillPattern=FillPattern.HorizontalCylinder,
-            fillColor={192,192,192}),
-          Rectangle(
-            extent={{50,10},{100,-10}},
-            lineColor={64,64,64},
-            fillPattern=FillPattern.HorizontalCylinder,
-            fillColor={192,192,192}),
           Text(
             extent={{-150,125},{150,85}},
             lineColor={0,0,255},
@@ -2555,7 +2545,7 @@ November 3-4, 2003, pp. 149-158</p>
         Rectangle(origin = {-35,40},
           fillColor = {255,255,255},
           extent = {{-15,-61},{15,60}}),
-        Rectangle(origin={35,19},
+        Rectangle(origin={35,21},
           fillColor = {255,255,255},
           extent = {{-15,-61},{15,60}})}),
       Documentation(
@@ -2570,12 +2560,12 @@ are different in general.</p>
 this component could be used to model any kind of gearbox with non-parallel axes.
 For a usage example, see <a href=\"modelica://Modelica.Mechanics.MultiBody.Examples.Rotational3DEffects.BevelGear1D\">Examples.Rotational3DEffects.BevelGear1D</a>.</p>
 
-<p><b>Reference</b><br>
+<p><strong>Reference</strong><br>
 <span style=\"font-variant:small-caps\">Schweiger</span>, Christian ;
 <span style=\"font-variant:small-caps\">Otter</span>, Martin:
 <a href=\"https://www.modelica.org/events/Conference2003/papers/h06_Schweiger_powertrains_v5.pdf\">Modelling
-3D Mechanical Effects of 1-dim. Powertrains</a>. In: <i>Proceedings of the 3rd International
-Modelica Conference</i>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
+3D Mechanical Effects of 1-dim. Powertrains</a>. In: <em>Proceedings of the 3rd International
+Modelica Conference</em>. Link&ouml;ping : The Modelica Association and Link&ouml;ping University,
 November 3-4, 2003, pp. 149-158
 </p>
 </html>"));
@@ -2651,7 +2641,7 @@ November 3-4, 2003, pp. 149-158
       annotation (Placement(transformation(extent={{-16,-16},{16,16}})));
     Modelica.Mechanics.MultiBody.Joints.RollingWheel rollingWheel(wheelRadius=
           wheelRadius, stateSelect=StateSelect.avoid)
-      annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
+      annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
     Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
       final animation=animation,
       final r_shape={0,-width,0},
@@ -2676,7 +2666,7 @@ November 3-4, 2003, pp. 149-158
         color={95,95,95},
         thickness=0.5));
     connect(rollingWheel.frame_a, frame_a) annotation (Line(
-        points={{-50,-50},{-25,-50},{-25,0},{0,0}},
+        points={{-30,0},{0,0}},
         color={95,95,95},
         thickness=0.5));
     connect(fixedShape.frame_a, frame_a) annotation (Line(
@@ -2688,15 +2678,42 @@ November 3-4, 2003, pp. 149-158
           Rectangle(
             extent={{-100,-80},{100,-100}},
             fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
+            fillPattern=FillPattern.Solid,
+            pattern=LinePattern.None),
           Ellipse(
             extent={{-80,80},{80,-80}},
             fillColor={215,215,215},
-            fillPattern=FillPattern.Solid),
+            fillPattern=FillPattern.Sphere,
+            lineColor={175,175,175}),
           Text(
-            extent={{-150,125},{150,85}},
+            extent={{-150,120},{150,80}},
             textString="%name",
-            lineColor={0,0,255})}));
+            lineColor={0,0,255}),
+          Line(
+            points={{-100,-80},{100,-80}}),
+          Ellipse(extent={{-80,80},{80,-80}}, lineColor={64,64,64})}),
+      Documentation(info="<html>
+<p>
+A wheel rolling on the x-y plane of the world frame including
+wheel mass and simple visualization.
+The rolling contact is considered being ideal, i.e. there is no
+slip between the wheel and the ground.
+The wheel can not take off but it can incline toward the ground.
+The frame frame_a is placed in the wheel center point and rotates
+with the wheel itself. Therefore, a
+<a href=\"modelica://Modelica.Mechanics.MultiBody.Joints.Revolute\">rotational joint</a>
+with rotation axis <code>n={0,1,0}</code> should be used to
+connect the wheel to a carrier.
+</p>
+
+<h4>Note</h4>
+<p>
+To work properly, the gravity acceleration vector g of the world must point in the negative z-axis, i.e.
+</p>
+<blockquote><pre>
+<span style=\"font-family:'Courier New',courier; color:#0000ff;\">inner</span> <span style=\"font-family:'Courier New',courier; color:#ff0000;\">Modelica.Mechanics.MultiBody.World</span> world(n={0,0,-1});
+</pre></blockquote>
+</html>"));
   end RollingWheel;
 
   model RollingWheelSet
@@ -2704,7 +2721,9 @@ November 3-4, 2003, pp. 149-158
     Modelica.Mechanics.MultiBody.Interfaces.Frame_a frameMiddle
       "Frame fixed in middle of axis connecting both wheels (y-axis: along wheel axis, z-axis: upwards)"
       annotation (Placement(transformation(extent={{-16,16},{16,-16}}),
-          iconTransformation(extent={{-16,-16},{16,16}})));
+          iconTransformation(extent={{-16,-16},{16,16}},
+          rotation=90,
+          origin={0,-20})));
 
     parameter Boolean animation=true
       "= true, if animation of wheel set shall be enabled";
@@ -2844,10 +2863,10 @@ November 3-4, 2003, pp. 149-158
       theta2(fixed=false),
       der_theta1(fixed=false),
       der_theta2(fixed=false))
-      annotation (Placement(transformation(extent={{-10,-42},{10,-22}})));
+      annotation (Placement(transformation(extent={{-10,40},{10,60}})));
     Modelica.Mechanics.Rotational.Interfaces.Flange_b support
       "Support of 1D axes" annotation (Placement(transformation(extent={{-10,70},
-              {10,90}}), iconTransformation(extent={{-10,72},{10,92}})));
+              {10,90}}), iconTransformation(extent={{-10,70},{10,90}})));
   equation
     wheelSetJoint.x = x;
     wheelSetJoint.y = y;
@@ -2874,59 +2893,62 @@ November 3-4, 2003, pp. 149-158
         color={95,95,95},
         thickness=0.5));
     connect(wheelSetJoint.frame2, frame2) annotation (Line(
-        points={{8,-32},{40,-32},{40,0},{80,0}},
+        points={{8,50},{30,50},{30,0},{80,0}},
         color={95,95,95},
         thickness=0.5));
     connect(wheelSetJoint.frame1, frame1) annotation (Line(
-        points={{-8,-32},{-40,-32},{-40,0},{-80,0}},
+        points={{-8,50},{-30,50},{-30,0},{-80,0}},
         color={95,95,95},
         thickness=0.5));
     connect(wheelSetJoint.axis1, axis1) annotation (Line(
-        points={{-10,-22},{-20,-22},{-20,50},{-80,50},{-80,100},{-100,100}}));
+        points={{-10,60},{-80,60},{-80,100},{-100,100}}));
     connect(wheelSetJoint.axis2, axis2) annotation (Line(
-        points={{10,-22},{24,-22},{24,50},{80,50},{80,100},{100,100}}));
+        points={{10,60},{80,60},{80,100},{100,100}}));
     connect(wheelSetJoint.support, support) annotation (Line(
-        points={{0,-24},{0,-14},{16,-14},{16,58},{0,58},{0,80}}));
+        points={{0,58},{0,80}}));
     connect(wheelSetJoint.frameMiddle, frameMiddle) annotation (Line(
-        points={{0,-32},{-4,-32},{-4,0},{0,0}},
+        points={{0,48},{0,46},{20,46},{20,0},{0,0}},
         color={95,95,95},
         thickness=0.5));
     annotation (
       defaultComponentName="wheelSet",
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
+          Line(
+            points={{0,76},{0,4}}),
+          Ellipse(
+            extent={{42,80},{118,-80}},
+            fillColor={215,215,215},
+            fillPattern=FillPattern.Sphere,
+            lineColor={64,64,64}),
+          Ellipse(extent={{42,80},{118,-80}}, lineColor={64,64,64}),
           Rectangle(
             extent={{-100,-80},{100,-100}},
             fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
+            fillPattern=FillPattern.Solid,
+            pattern=LinePattern.None),
           Text(
             extent={{-150,-105},{150,-145}},
             textString="%name",
             lineColor={0,0,255}),
-          Ellipse(
-            extent={{42,80},{118,-80}},
-            fillColor={215,215,215},
-            fillPattern=FillPattern.Sphere),
-          Rectangle(
-            extent={{-62,2},{64,-6}},
+          Line(points={{86,24},{64,24},{64,12},{56,12}}),
+          Line(points={{86,-24},{64,-24},{64,-12},{56,-12}}),
+          Line(
+            points={{100,100},{80,100},{80,-2}}),
+          Polygon(
+            points={{-62,6},{64,6},{64,-6},{6,-6},{6,-20},{-6,-20},{-6,-6},{-62,-6},{-62,6}},
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
           Ellipse(
             extent={{-118,80},{-42,-80}},
             fillColor={215,215,215},
-            fillPattern=FillPattern.Sphere),
-          Line(
-            points={{86,24},{64,24},{64,10},{56,10}}),
-          Line(
-            points={{86,-24},{64,-24},{64,-12},{56,-12}}),
+            fillPattern=FillPattern.Sphere,
+            lineColor={64,64,64}),
           Line(
             points={{-96,100},{-80,100},{-80,4}}),
+          Ellipse(extent={{-118,80},{-42,-80}}, lineColor={64,64,64}),
           Line(
-            points={{100,100},{80,100},{80,-2}}),
-          Line(
-            points={{0,72},{0,40},{-20,40},{-20,2}}),
-          Line(
-            points={{0,40},{20,40},{20,2}})}),
+            points={{-100,-80},{100,-80}})}),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
               100,100}}), graphics={Line(
               points={{0,-106},{0,-78}},
@@ -2950,107 +2972,117 @@ November 3-4, 2003, pp. 149-158
       Documentation(info="<html>
 <p>
 Two wheels are connected by an axis and can rotate around this axis.
-The wheels are rolling on the x-y plane. The coordinate system attached
-to the center of the wheel axis (frameMiddle) is constrained so that it
-is always parallel to the x-y plane. If all generalized coordinates are zero,
-frameMiddle is parallel to the world frame.
+The wheels are rolling on the x-y plane of the world frame.
+The coordinate system attached to the center of the wheel axis (frameMiddle)
+is constrained so that it is always parallel to the x-y plane.
+If all generalized coordinates are zero, frameMiddle is parallel
+to the world frame.
 </p>
+
+<h4>Note</h4>
+<p>
+To work properly, the gravity acceleration vector g of the world must point in the negative z-axis, i.e.
+</p>
+<blockquote><pre>
+<span style=\"font-family:'Courier New',courier; color:#0000ff;\">inner</span> <span style=\"font-family:'Courier New',courier; color:#ff0000;\">Modelica.Mechanics.MultiBody.World</span> world(n={0,0,-1});
+</pre></blockquote>
 </html>"));
   end RollingWheelSet;
+
   annotation (Documentation(info="<html>
 <p>
-Package <b>Parts</b> contains <b>rigid components</b> of a
+Package <strong>Parts</strong> contains <strong>rigid components</strong> of a
 multi-body system. These components may be used to build up
 more complicated structures. For example, a part may be built up of
 a \"Body\" and of several \"FixedTranslation\" components.
 </p>
 <h4>Content</h4>
 <table border=1 cellspacing=0 cellpadding=2>
-  <tr><th><b><i>Model</i></b></th><th><b><i>Description</i></b></th></tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Fixed\">Fixed</a></td>
-      <td valign=\"top\">Frame fixed in world frame at a given position.
-          It is visualized with a shape, see <b>shapeType</b> below
+  <tr><th><strong><em>Model</em></strong></th><th><strong><em>Description</em></strong></th></tr>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Fixed\">Fixed</a></td>
+      <td>Frame fixed in world frame at a given position.
+          It is visualized with a shape, see <strong>shapeType</strong> below
          (the frames on the two
           sides do not belong to the component):<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Fixed.png\" ALT=\"model Parts.Fixed\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Fixed.png\" alt=\"model Parts.Fixed\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.FixedTranslation\">FixedTranslation</a></td>
-      <td valign=\"top\">Fixed translation of frame_b with respect to frame_a.
-          It is visualized with a shape, see <b>shapeType</b> below
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.FixedTranslation\">FixedTranslation</a></td>
+      <td>Fixed translation of frame_b with respect to frame_a.
+          It is visualized with a shape, see <strong>shapeType</strong> below
           (the frames on the two sides do not belong to the component):<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedTranslation.png\" ALT=\"model Parts.FixedTranslation\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedTranslation.png\" alt=\"model Parts.FixedTranslation\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.FixedRotation\">FixedRotation</a></td>
-      <td valign=\"top\">Fixed translation and fixed rotation of frame_b with respect to frame_a
-          It is visualized with a shape, see <b>shapeType</b>  below
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.FixedRotation\">FixedRotation</a></td>
+      <td>Fixed translation and fixed rotation of frame_b with respect to frame_a
+          It is visualized with a shape, see <strong>shapeType</strong>  below
           (the frames on the two sides do not belong to the component):<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedRotation.png\" ALT=\"model Parts.FixedRotation\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedRotation.png\" alt=\"model Parts.FixedRotation\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Body</a></td>
-      <td valign=\"top\">Rigid body with mass, inertia tensor and one frame connector.
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Body</a></td>
+      <td>Rigid body with mass, inertia tensor and one frame connector.
           It is visualized with a cylinder and a sphere at the
           center of mass:<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Body.png\" ALT=\"model Parts.Body\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Body.png\" alt=\"model Parts.Body\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BodyShape\">BodyShape</a></td>
-      <td valign=\"top\">Rigid body with mass, inertia tensor, different shapes
-          (see <b>shapeType</b> below)
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BodyShape\">BodyShape</a></td>
+      <td>Rigid body with mass, inertia tensor, different shapes
+          (see <strong>shapeType</strong> below)
           for animation, and two frame connectors:<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyShape.png\" ALT=\"model Parts.BodyShape\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyShape.png\" alt=\"model Parts.BodyShape\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Fixed\">Fixed BodyBox</a></td>
-      <td valign=\"top\">Rigid body with box shape (mass and animation properties are computed
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Fixed\">Fixed BodyBox</a></td>
+      <td>Rigid body with box shape (mass and animation properties are computed
           from box data and from density):<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyBox.png\" ALT=\"model Parts.BodyBox\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyBox.png\" alt=\"model Parts.BodyBox\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BodyCylinder\">BodyCylinder</a></td>
-      <td valign=\"top\">Rigid body with cylinder shape (mass and animation properties
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BodyCylinder\">BodyCylinder</a></td>
+      <td>Rigid body with cylinder shape (mass and animation properties
           are computed from cylinder data and from density):<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyCylinder.png\" ALT=\"model Parts.BodyCylinder\">
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/BodyCylinder.png\" alt=\"model Parts.BodyCylinder\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.PointMass\">PointMass</a></td>
-      <td valign=\"top\">Rigid body where inertia tensor and rotation is neglected:<br>&nbsp;<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/PointMass.png\" ALT=\"model Parts.PointMass\">
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.PointMass\">PointMass</a></td>
+      <td>Rigid body where inertia tensor and rotation is neglected:<br>&nbsp;<br>
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/PointMass.png\" alt=\"model Parts.PointMass\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Mounting1D\">Mounting1D</a></td>
-      <td valign=\"top\"> Propagate 1-dim. support torque to 3-dim. system
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Mounting1D\">Mounting1D</a></td>
+      <td> Propagate 1-dim. support torque to 3-dim. system
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Rotor1D\">Rotor1D</a></td>
-      <td valign=\"top\">1D inertia attachable on 3-dim. bodies (without neglecting dynamic effects)<br>
-      <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" ALT=\"model Parts.Rotor1D\">
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Rotor1D\">Rotor1D</a></td>
+      <td>1D inertia attachable on 3-dim. bodies (without neglecting dynamic effects)<br>
+      <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Parts/Rotor1D.png\" alt=\"model Parts.Rotor1D\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BevelGear1D\">BevelGear1D</a></td>
-      <td valign=\"top\">1D gearbox with arbitrary shaft directions (3D bearing frame)
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.BevelGear1D\">BevelGear1D</a></td>
+      <td>1D gearbox with arbitrary shaft directions (3D bearing frame)
       </td>
   </tr>
 </table>
 <p>
-Components <b>Fixed</b>, <b>FixedTranslation</b>, <b>FixedRotation</b>
-and <b>BodyShape</b> are visualized according to parameter
-<b>shapeType</b>, that may have the following values (e.g., shapeType = \"box\"): <br>&nbsp;<br>
+Components <strong>Fixed</strong>, <strong>FixedTranslation</strong>, <strong>FixedRotation</strong>
+and <strong>BodyShape</strong> are visualized according to parameter
+<strong>shapeType</strong>, that may have the following values (e.g., shapeType = \"box\"):<br>&nbsp;<br>
 </p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedShape.png\" ALT=\"model Visualizers.FixedShape\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/FixedShape.png\" alt=\"model Visualizers.FixedShape\">
 <p>
 All the details of the visualization shape parameters are
 given in
 <a href=\"modelica://Modelica.Mechanics.MultiBody.Visualizers.FixedShape\">Visualizers.FixedShape</a>
 </p>
 <p>
-Colors in all animation parts are defined via parameter <b>color</b>.
+Colors in all animation parts are defined via parameter <strong>color</strong>.
 This is an Integer vector with 3 elements, {r, g, b}, and specifies the
 color of the shape. {r,g,b} are the \"red\", \"green\" and \"blue\" color parts,
 given in the ranges 0 .. 255, respectively. The predefined type
-<b>MultiBody.Types.Color</b> contains a menu
+<strong>MultiBody.Types.Color</strong> contains a menu
 definition of the colors used in the MultiBody library
 (this will be replaced by a color editor).
 </p>

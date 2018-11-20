@@ -1,6 +1,6 @@
 /* ModelicaStrings.h - External functions header for Modelica.Functions.Strings
 
-   Copyright (C) 2002-2017, Modelica Association and DLR
+   Copyright (C) 2002-2018, Modelica Association and DLR
    All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
@@ -12,6 +12,10 @@
    2. Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
+
+   3. Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -77,6 +81,8 @@
 MODELICA_EXPORT MODELICA_RETURNNONNULLATTR const char* ModelicaStrings_substring(
     _In_z_ const char* string, int startIndex, int endIndex) MODELICA_NONNULLATTR;
 MODELICA_EXPORT int ModelicaStrings_length(_In_z_ const char* string) MODELICA_NONNULLATTR;
+MODELICA_EXPORT int ModelicaStrings_compare(_In_z_ const char* string1,
+    _In_z_ const char* string2, int caseSensitive) MODELICA_NONNULLATTR;
 MODELICA_EXPORT int ModelicaStrings_skipWhiteSpace(_In_z_ const char* string,
     int i) MODELICA_NONNULLATTR;
 MODELICA_EXPORT void ModelicaStrings_scanIdentifier(_In_z_ const char* string,

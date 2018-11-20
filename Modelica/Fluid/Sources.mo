@@ -21,20 +21,19 @@ package Sources "Define fixed or prescribed boundary conditions"
     parameter Boolean use_T=true "select T or h"
       annotation (Evaluate = true,
                   Dialog(group = "Boundary temperature or Boundary specific enthalpy"));
-    parameter Medium.Temperature T=Medium.T_default "Boundary temperature"
+    parameter Medium.Temperature T = Medium.T_default "Boundary temperature"
       annotation (Dialog(group = "Boundary temperature or Boundary specific enthalpy",
                          enable = use_T));
-    parameter Medium.SpecificEnthalpy h=Medium.h_default
+    parameter Medium.SpecificEnthalpy h = Medium.h_default
       "Boundary specific enthalpy"
       annotation (Dialog(group="Boundary temperature or Boundary specific enthalpy",
                   enable = not use_T));
     parameter Medium.MassFraction X[Medium.nX](
-         quantity=Medium.substanceNames)=Medium.X_default
+         quantity=Medium.substanceNames) = Medium.X_default
       "Boundary mass fractions m_i/m"
       annotation (Dialog(group = "Only for multi-substance flow", enable=Medium.nXi > 0));
-
     parameter Medium.ExtraProperty C[Medium.nC](
-         quantity=Medium.extraPropertiesNames)=fill(0, Medium.nC)
+         quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Boundary trace substances"
       annotation (Dialog(group = "Only for trace-substance flow", enable=Medium.nC > 0));
   protected
@@ -108,7 +107,7 @@ package Sources "Define fixed or prescribed boundary conditions"
             lineColor={0,0,255})}),
       Documentation(info="<html>
 <p>
-Model <b>FixedBoundary</b> defines constant values for boundary conditions:
+Model <strong>FixedBoundary</strong> defines constant values for boundary conditions:
 </p>
 <ul>
 <li> Boundary pressure or boundary density.</li>
@@ -144,21 +143,17 @@ with exception of boundary pressure, do not have an effect.
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter Medium.AbsolutePressure p = Medium.p_default
       "Fixed value of pressure"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_p_in));
+      annotation (Dialog(enable = not use_p_in));
     parameter Medium.Temperature T = Medium.T_default
       "Fixed value of temperature"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_T_in));
+      annotation (Dialog(enable = not use_T_in));
     parameter Medium.MassFraction X[Medium.nX] = Medium.X_default
       "Fixed value of composition"
-      annotation (Evaluate = true,
-                  Dialog(enable = (not use_X_in) and Medium.nXi > 0));
+      annotation (Dialog(enable = (not use_X_in) and Medium.nXi > 0));
     parameter Medium.ExtraProperty C[Medium.nC](
-         quantity=Medium.extraPropertiesNames)=fill(0, Medium.nC)
+         quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Fixed values of trace substances"
-      annotation (Evaluate=true,
-                  Dialog(enable = (not use_C_in) and Medium.nC > 0));
+      annotation (Dialog(enable = (not use_C_in) and Medium.nC > 0));
     Modelica.Blocks.Interfaces.RealInput p_in if use_p_in
       "Prescribed boundary pressure"
       annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
@@ -292,21 +287,17 @@ with exception of boundary pressure, do not have an effect.
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter Medium.AbsolutePressure p = Medium.p_default
       "Fixed value of pressure"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_p_in));
+      annotation (Dialog(enable = not use_p_in));
     parameter Medium.SpecificEnthalpy h = Medium.h_default
       "Fixed value of specific enthalpy"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_h_in));
+      annotation (Dialog(enable = not use_h_in));
     parameter Medium.MassFraction X[Medium.nX] = Medium.X_default
       "Fixed value of composition"
-      annotation (Evaluate = true,
-                  Dialog(enable = (not use_X_in) and Medium.nXi > 0));
+      annotation (Dialog(enable = (not use_X_in) and Medium.nXi > 0));
     parameter Medium.ExtraProperty C[Medium.nC](
-         quantity=Medium.extraPropertiesNames)=fill(0, Medium.nC)
+         quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Fixed values of trace substances"
-      annotation (Evaluate=true,
-                  Dialog(enable = (not use_C_in) and Medium.nC > 0));
+      annotation (Dialog(enable = (not use_C_in) and Medium.nC > 0));
     Modelica.Blocks.Interfaces.RealInput p_in if use_p_in
       "Prescribed boundary pressure"
       annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
@@ -440,21 +431,17 @@ with exception of boundary pressure, do not have an effect.
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter Medium.MassFlowRate m_flow = 0
       "Fixed mass flow rate going out of the fluid port"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_m_flow_in));
+      annotation (Dialog(enable = not use_m_flow_in));
     parameter Medium.Temperature T = Medium.T_default
       "Fixed value of temperature"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_T_in));
+      annotation (Dialog(enable = not use_T_in));
     parameter Medium.MassFraction X[Medium.nX] = Medium.X_default
       "Fixed value of composition"
-      annotation (Evaluate = true,
-                  Dialog(enable = (not use_X_in) and Medium.nXi > 0));
+      annotation (Dialog(enable = (not use_X_in) and Medium.nXi > 0));
     parameter Medium.ExtraProperty C[Medium.nC](
-         quantity=Medium.extraPropertiesNames)=fill(0, Medium.nC)
+         quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Fixed values of trace substances"
-      annotation (Evaluate=true,
-                  Dialog(enable = (not use_C_in) and Medium.nC > 0));
+      annotation (Dialog(enable = (not use_C_in) and Medium.nC > 0));
     Modelica.Blocks.Interfaces.RealInput m_flow_in if     use_m_flow_in
       "Prescribed mass flow rate"
       annotation (Placement(transformation(extent={{-120,60},{-80,100}}), iconTransformation(extent={{-120,60},{-80,100}})));
@@ -593,21 +580,17 @@ with exception of boundary flow rate, do not have an effect.
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter Medium.MassFlowRate m_flow = 0
       "Fixed mass flow rate going out of the fluid port"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_m_flow_in));
+      annotation (Dialog(enable = not use_m_flow_in));
     parameter Medium.SpecificEnthalpy h = Medium.h_default
       "Fixed value of specific enthalpy"
-      annotation (Evaluate = true,
-                  Dialog(enable = not use_h_in));
+      annotation (Dialog(enable = not use_h_in));
     parameter Medium.MassFraction X[Medium.nX] = Medium.X_default
       "Fixed value of composition"
-      annotation (Evaluate = true,
-                  Dialog(enable = (not use_X_in) and Medium.nXi > 0));
+      annotation (Dialog(enable = (not use_X_in) and Medium.nXi > 0));
     parameter Medium.ExtraProperty C[Medium.nC](
-         quantity=Medium.extraPropertiesNames)=fill(0, Medium.nC)
+         quantity=Medium.extraPropertiesNames) = Medium.C_default
       "Fixed values of trace substances"
-      annotation (Evaluate=true,
-                  Dialog(enable = (not use_C_in) and Medium.nC > 0));
+      annotation (Dialog(enable = (not use_C_in) and Medium.nC > 0));
     Modelica.Blocks.Interfaces.RealInput m_flow_in if     use_m_flow_in
       "Prescribed mass flow rate"
       annotation (Placement(transformation(extent={{-120,60},{-80,100}})));
@@ -772,7 +755,7 @@ of the modeller. Increase nPorts to add an additional port.
 
     annotation (defaultComponentName="boundary", Documentation(info="<html>
 <p>
-Partial component to model the <b>volume interface</b> of a <b>source</b>
+Partial component to model the <strong>volume interface</strong> of a <strong>source</strong>
 component, such as a mass flow source. The essential
 features are:
 </p>
@@ -811,6 +794,7 @@ features are:
         "Allowed flow direction" annotation(Evaluate=true, Dialog(tab="Advanced"));
   equation
     assert(abs(sum(abs(ports.m_flow)) - max(abs(ports.m_flow))) <= Modelica.Constants.small, "FlowSource only supports one connection with flow");
+    assert(nPorts > 0, "At least one port needs to be present (nPorts > 0), otherwise the model is singular");
     // Only one connection allowed to a port to avoid unwanted ideal mixing
     for i in 1:nPorts loop
       assert(cardinality(ports[i]) <= 1,"
@@ -826,7 +810,7 @@ of the modeller. Increase nPorts to add an additional port.
 
     annotation (defaultComponentName="boundary", Documentation(info="<html>
 <p>
-Partial component to model the <b>volume interface</b> of a <b>source</b>
+Partial component to model the <strong>volume interface</strong> of a <strong>source</strong>
 component, such as a mass flow source. The essential
 features are:
 </p>
@@ -841,7 +825,7 @@ features are:
   end BaseClasses;
   annotation (Documentation(info="<html>
 <p>
-Package <b>Sources</b> contains generic sources for fluid connectors
+Package <strong>Sources</strong> contains generic sources for fluid connectors
 to define fixed or prescribed ambient conditions.
 </p>
 </html>"));

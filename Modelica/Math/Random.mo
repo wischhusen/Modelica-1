@@ -61,7 +61,7 @@ package Random "Library of functions for generating random numbers"
       annotation (experiment(StopTime=2), Documentation(info="<html>
 <p>
 This example demonstrates how to utilize the random number generators
-of package <a href=\"Modelica.Math.Random.Generators\">Math.Random.Generators</a> in a Modelica model.
+of package <a href=\"modelica://Modelica.Math.Random.Generators\">Math.Random.Generators</a> in a Modelica model.
 The example calculates random numbers in the range 0 .. 1 of the available random number generators periodically
 with a sample period of 0.05 s. Simulations results are shown in the figure below:
 </p>
@@ -73,11 +73,11 @@ with a sample period of 0.05 s. Simulations results are shown in the figure belo
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -92,17 +92,17 @@ with a sample period of 0.05 s. Simulations results are shown in the figure belo
   annotation (Documentation(info="<html>
 <p>
 This package contains examples demonstrating the usage of the functions in package
-<b>Random</b>.
+<strong>Random</strong>.
 </p>
 </html>",   revisions="<html>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -157,12 +157,12 @@ This package contains examples demonstrating the usage of the functions in packa
       annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-state = Xorshift64star.<b>initialState</b>(localSeed, globalSeed);
+state = Xorshift64star.<strong>initialState</strong>(localSeed, globalSeed);
 </pre></blockquote>
 
 <h4>Description</h4>
 <p>
-Generates the initial state vector <b>state</b> for the Xorshift64star random number generator
+Generates the initial state vector <strong>state</strong> for the Xorshift64star random number generator
 (= xorshift64* algorithm), from
 two Integer numbers given as input (arguments localSeed, globalSeed). Any Integer numbers
 can be given (including zero or negative number). The function returns
@@ -180,10 +180,10 @@ and the returned state is the one from the last iteration.
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Integer state[Xorshift64star.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
 </pre></blockquote>
 
@@ -195,11 +195,11 @@ and the returned state is the one from the last iteration.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -226,30 +226,30 @@ and the returned state is the one from the last iteration.
         annotation(Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-(r, stateOut) = Xorshift64star.<b>random</b>(stateIn);
+(r, stateOut) = Xorshift64star.<strong>random</strong>(stateIn);
 </pre></blockquote>
 
 <h4>Description</h4>
 <p>
 Returns a uniform random number r in the range 0 &lt; r &le; 1 with the xorshift64* algorithm.
-Input argument <b>stateIn</b> is the state vector of the previous call.
-Output argument <b>stateOut</b> is the updated state vector.
+Input argument <strong>stateIn</strong> is the state vector of the previous call.
+Output argument <strong>stateOut</strong> is the updated state vector.
 If the function is called with identical stateIn vectors, exactly the
 same random number r is returned.
 </p>
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Real r;
   Integer state[Xorshift64star.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
-<b>equation</b>
-  <b>when</b> sample(0,0.1) <b>then</b>
-    (r, state) = random(<b>pre</b>(state));
-  <b>end when</b>;
+<strong>equation</strong>
+  <strong>when</strong> sample(0,0.1) <strong>then</strong>
+    (r, state) = random(<strong>pre</strong>(state));
+  <strong>end when</strong>;
 </pre></blockquote>
 
 <h4>See also</h4>
@@ -260,11 +260,11 @@ same random number r is returned.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -278,7 +278,7 @@ same random number r is returned.
       end random;
       annotation (Documentation(info="<html>
 <p>
-Random number generator <b>xorshift64*</b>. This generator has a period of 2^64
+Random number generator <strong>xorshift64*</strong>. This generator has a period of 2^64
 (the period defines the number of random numbers generated before the sequence begins to repeat itself).
 For an overview, comparison with other random number generators, and links to articles, see
 <a href=\"modelica://Modelica.Math.Random.Generators\">Math.Random.Generators</a>.
@@ -287,11 +287,11 @@ For an overview, comparison with other random number generators, and links to ar
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -334,7 +334,7 @@ For an overview, comparison with other random number generators, and links to ar
         annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-state = Xorshift128plus.<b>initialState</b>(localSeed, globalSeed);
+state = Xorshift128plus.<strong>initialState</strong>(localSeed, globalSeed);
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -353,10 +353,10 @@ random number generator is used to fill the internal state vector with 64 bit ra
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Integer state[Xorshift128plus.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
 </pre></blockquote>
 
@@ -368,11 +368,11 @@ random number generator is used to fill the internal state vector with 64 bit ra
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -399,30 +399,30 @@ random number generator is used to fill the internal state vector with 64 bit ra
         annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-(r, stateOut) = Xorshift128plus.<b>random</b>(stateIn);
+(r, stateOut) = Xorshift128plus.<strong>random</strong>(stateIn);
 </pre></blockquote>
 
 <h4>Description</h4>
 <p>
 Returns a uniform random number in the range 0 &lt; random &le; 1 with the xorshift128+ algorithm.
-Input argument <b>stateIn</b> is the state vector of the previous call.
-Output argument <b>stateOut</b> is the updated state vector.
+Input argument <strong>stateIn</strong> is the state vector of the previous call.
+Output argument <strong>stateOut</strong> is the updated state vector.
 If the function is called with identical stateIn vectors, exactly the
 same random number r is returned.
 </p>
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Real r;
   Integer state[Xorshift128plus.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
-<b>equation</b>
-  <b>when</b> sample(0,0.1) <b>then</b>
-    (r, state) = random(<b>pre</b>(state));
-  <b>end when</b>;
+<strong>equation</strong>
+  <strong>when</strong> sample(0,0.1) <strong>then</strong>
+    (r, state) = random(<strong>pre</strong>(state));
+  <strong>end when</strong>;
 </pre></blockquote>
 
 <h4>See also</h4>
@@ -433,11 +433,11 @@ same random number r is returned.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -451,7 +451,7 @@ same random number r is returned.
       end random;
       annotation (Documentation(info="<html>
 <p>
-Random number generator <b>xorshift128+</b>. This generator has a period of 2^128
+Random number generator <strong>xorshift128+</strong>. This generator has a period of 2^128
 (the period defines the number of random numbers generated before the sequence begins to repeat itself).
 For an overview, comparison with
 other random number generators, and links to articles, see
@@ -461,11 +461,11 @@ other random number generators, and links to articles, see
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -510,7 +510,7 @@ other random number generators, and links to articles, see
         annotation(Inline=true, Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-state = Xorshift1024star.<b>initialState</b>(localSeed, globalSeed);
+state = Xorshift1024star.<strong>initialState</strong>(localSeed, globalSeed);
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -530,10 +530,10 @@ random number generator is used to fill the internal state vector with 64 bit ra
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Integer state[Xorshift1024star.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
 </pre></blockquote>
 
@@ -545,11 +545,11 @@ random number generator is used to fill the internal state vector with 64 bit ra
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -576,30 +576,30 @@ random number generator is used to fill the internal state vector with 64 bit ra
         annotation (Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-(r, stateOut) = Xorshift128plus.<b>random</b>(stateIn);
+(r, stateOut) = Xorshift128plus.<strong>random</strong>(stateIn);
 </pre></blockquote>
 
 <h4>Description</h4>
 <p>
 Returns a uniform random number in the range 0 &lt; random &le; 1 with the xorshift1024* algorithm.
-Input argument <b>stateIn</b> is the state vector of the previous call.
-Output argument <b>stateOut</b> is the updated state vector.
+Input argument <strong>stateIn</strong> is the state vector of the previous call.
+Output argument <strong>stateOut</strong> is the updated state vector.
 If the function is called with identical stateIn vectors, exactly the
 same random number r is returned.
 </p>
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer localSeed;
-  <b>parameter</b> Integer globalSeed;
+  <strong>parameter</strong> Integer localSeed;
+  <strong>parameter</strong> Integer globalSeed;
   Real r;
   Integer state[Xorshift1024star.nState];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = initialState(localSeed, globalSeed);
-<b>equation</b>
-  <b>when</b> sample(0,0.1) <b>then</b>
-    (r, state) = random(<b>pre</b>(state));
-  <b>end when</b>;
+<strong>equation</strong>
+  <strong>when</strong> sample(0,0.1) <strong>then</strong>
+    (r, state) = random(<strong>pre</strong>(state));
+  <strong>end when</strong>;
 </pre></blockquote>
 
 <h4>See also</h4>
@@ -610,11 +610,11 @@ same random number r is returned.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -628,7 +628,7 @@ same random number r is returned.
       end random;
       annotation (Documentation(info="<html>
 <p>
-Random number generator <b>xorshift1024*</b>. This generator has a period of 2^1024
+Random number generator <strong>xorshift1024*</strong>. This generator has a period of 2^1024
 (the period defines the number of random numbers generated before the sequence begins to repeat itself).
 For an overview, comparison with other random number generators, and links to articles, see
 <a href=\"modelica://Modelica.Math.Random.Generators\">Math.Random.Generators</a>.
@@ -637,11 +637,11 @@ For an overview, comparison with other random number generators, and links to ar
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -678,20 +678,20 @@ This package contains various pseudo random number generators. A random number g
 that consists of the following elements:
 </p>
 <ul>
-<li> Integer <b>nState</b> is a constant that defines the length of the internal state vector
+<li> Integer <strong>nState</strong> is a constant that defines the length of the internal state vector
      (in order that an appropriate Integer vector of this length can be declared, depending on
      the selected random number generator).</li>
-<li> Function <b>initialState(..)</b> is used to initialize the state of the random number generator
+<li> Function <strong>initialState(..)</strong> is used to initialize the state of the random number generator
      by providing Integer seeds and calling the random number generator often enough that
      statistically relevant random numbers are returned by every call of function random(..).</li>
-<li> Function <b>random(..)</b> is used to return a random number of type Real in the range
+<li> Function <strong>random(..)</strong> is used to return a random number of type Real in the range
      0.0 &lt; random &le; 1.0 for every call.
      Furthermore, the updated (internal) state of the random number generator is returned as well.
     </li>
 </ul>
 
 <p>
-The Generators package contains the <b>xorshift</b> suite of random number generators
+The Generators package contains the <strong>xorshift</strong> suite of random number generators
 from Sebastiano Vigna (from 2014; based on work of George Marsaglia).
 The properties of these random
 number generators are summarized below and compared with the often used
@@ -712,12 +712,7 @@ Sebastiano Vigna:
 Summary of the properties of the random number generators:
 </p>
 
-<p>
-
-</p>
-
 <blockquote>
-<p>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Property</th>
     <th>xorshift64*</th>
@@ -761,7 +756,6 @@ Summary of the properties of the random number generators:
     <td> 0.33 </td>
     <td> 1.0  </td></tr>
 </table>
-</p>
 </blockquote>
 
 <p>
@@ -769,7 +763,7 @@ Further explanations of the properties above:
 </p>
 
 <ul>
-<li> The <b>period</b> defines the number of random numbers generated
+<li> The <strong>period</strong> defines the number of random numbers generated
      before the sequence begins to repeat itself. According to
      \"<a href=\"http://xorshift.di.unimi.it/\">A long period does not imply high quality</a>\"
      a period of 2^1024 is by far large enough for even massively parallel simulations
@@ -777,15 +771,15 @@ Further explanations of the properties above:
      A period of 2^128 might be not enough for massively parallel simulations.
      </li>
 
-<li> <b>Length of state (# 32 bit integer)</b> defines the number of \"int\" (that is Modelica Integer) elements
+<li> <strong>Length of state (# 32 bit integer)</strong> defines the number of \"int\" (that is Modelica Integer) elements
      used for the internal state vector.</li>
 
-<li> <b>Big Crush</b> is part of <a href=\"http://simul.iro.umontreal.ca/testu01/tu01.html\">TestU01</a>
+<li> <strong>Big Crush</strong> is part of <a href=\"http://simul.iro.umontreal.ca/testu01/tu01.html\">TestU01</a>
      a huge framework for testing random number generators.
      According to these tests, the statistical properties of the xorshift random number
      generators are better than the ones of the Mersenne Twister random number generator.</li>
 
-<li> <b>Worst case startup</b> means how many calls are needed until getting
+<li> <strong>Worst case startup</strong> means how many calls are needed until getting
      from a bad seed to random numbers with appropriate statistical properties.
      Here, the xorshift random number suite has much better properties
      than the Mersenne Twister. When initializing a random number generator, the above property
@@ -794,15 +788,15 @@ Further explanations of the properties above:
      provides a bad initial seed (such as localSeed=1). This means, any Integer number can be given as
      initial seed without influencing the quality of the generated random numbers.</li>
 
-<li> <b>Run time</b> shows that the xorshift random number generators are
+<li> <strong>Run time</strong> shows that the xorshift random number generators are
      all much faster than the Mersenne Twister random number generator, although
      this is not really relevant for most simulations, because the execution
-     time of the other parts of the simulations is usually much larger. </li>
+     time of the other parts of the simulations is usually much larger.</li>
 </ul>
 
 <p>
 The xorshift random number generators are used in the following way in the
-<a href=\"Modelica.Blocks.Noise\">Blocks.Noise</a> package:
+<a href=\"modelica://Modelica.Blocks.Noise\">Blocks.Noise</a> package:
 </p>
 <ol>
 <li> Xorshift64star (xorshift64*) is used to generate the initial internal state vectors of the
@@ -810,14 +804,14 @@ The xorshift random number generators are used in the following way in the
      to the very good startup properties.</li>
 
 <li> Xorshift128plus (xorshift128+) is the random number generator
-     used by the blocks in <a href=\"Modelica.Blocks.Noise\">Blocks.Noise</a>.
+     used by the blocks in <a href=\"modelica://Modelica.Blocks.Noise\">Blocks.Noise</a>.
      Since these blocks hold the internal state vector for every block instance, and the
      internal state vector is copied whenever a new random number is drawn, it is important
      that the internal state vector is short (and still has good statistical properties
      as shown in the table above).</li>
 
 <li> Xorshift1024star (xorshift1024*) is the basis of the impure function
-     <a href=\"Modelica.Math.Random.Utilities.impureRandom\">Math.Random.Utilities.impureRandom</a>
+     <a href=\"modelica://Modelica.Math.Random.Utilities.impureRandom\">Math.Random.Utilities.impureRandom</a>
      which in turn is used with
      <a href=\"modelica://Modelica.Blocks.Noise.GlobalSeed\">Blocks.Noise.GlobalSeed</a>.
      The internal state vector is not exposed. It is updated internally, whenever a new random number
@@ -832,11 +826,11 @@ These numbers are mapped to the 52 bit mantissa of double numbers in the range 0
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -895,11 +889,11 @@ These numbers are mapped to the 52 bit mantissa of double numbers in the range 0
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -912,7 +906,7 @@ These numbers are mapped to the 52 bit mantissa of double numbers in the range 0
 </html>",     info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-state = Utilities.<b>initialStateWithXorshift6star</b>(localSeed, globalSeed, nState);
+state = Utilities.<strong>initialStateWithXorshift6star</strong>(localSeed, globalSeed, nState);
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -930,7 +924,7 @@ If the same localSeed, globalSeed, nState is given, the same state vector is ret
   parameter Integer localSeed;
   parameter Integer globalSeed;
   Integer state[33];
-<b>initial equation</b>
+<strong>initial equation</strong>
   state = Utilities.initialStateWithXorshift64star(localSeed, globalSeed, size(state,1));
 </pre></blockquote>
 </html>"));
@@ -947,7 +941,7 @@ If the same localSeed, globalSeed, nState is given, the same state vector is ret
         Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-seed = Utilities.<b>automaticGlobalSeed</b>();
+seed = Utilities.<strong>automaticGlobalSeed</strong>();
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -968,10 +962,10 @@ This function should be only called once during initialization.
 
 <h4>Example</h4>
 <pre>
-     <b>parameter</b> Boolean useAutomaticSeed = false;
-     <b>parameter</b> Integer fixedSeed = 67867967;
-     <b>final parameter</b> Integer seed = <b>if</b> useAutomaticSeed <b>then</b>
-                                   Random.Utilities.automaticGlobalSeed() <b>else</b> fixedSeed;;
+     <strong>parameter</strong> Boolean useAutomaticSeed = false;
+     <strong>parameter</strong> Integer fixedSeed = 67867967;
+     <strong>final parameter</strong> Integer seed = <strong>if</strong> useAutomaticSeed <strong>then</strong>
+                                   Random.Utilities.automaticGlobalSeed() <strong>else</strong> fixedSeed;
 </pre>
 
 <h4>Note</h4>
@@ -980,11 +974,11 @@ This function should be only called once during initialization.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Blocks/Noise/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -1030,7 +1024,7 @@ This function should be only called once during initialization.
       Documentation(info="<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-id = <b>initializeImpureRandom</b>(seed;
+id = <strong>initializeImpureRandom</strong>(seed;
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -1051,16 +1045,16 @@ random number generator to fill the internal state vector with 64 bit random num
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer seed;
+  <strong>parameter</strong> Integer seed;
   Real r;
-  <b>function</b> random = impureRandom (<b>final</b> id=id);
-<b>protected </b>
+  <strong>function</strong> random = impureRandom (<strong>final</strong> id=id);
+<strong>protected </strong>
   Integer id = initializeImpureRandom(seed);
-<b>equation</b>
+<strong>equation</strong>
   // Use the random number generator
-  <b>when</b> sample(0,0.001) <b>then</b>
+  <strong>when</strong> sample(0,0.001) <strong>then</strong>
      r = random();
-  <b>end when</b>;
+  <strong>end when</strong>;
 </pre></blockquote>
 
 <h4>See also</h4>
@@ -1072,11 +1066,11 @@ random number generator to fill the internal state vector with 64 bit random num
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -1103,7 +1097,7 @@ random number generator to fill the internal state vector with 64 bit random num
                    "<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-r = <b>impureRandom</b>(id);
+r = <strong>impureRandom</strong>(id);
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -1118,21 +1112,21 @@ is returned, so the function is impure.
 
 <h4>Example</h4>
 <blockquote><pre>
-  <b>parameter</b> Integer seed;
+  <strong>parameter</strong> Integer seed;
   Real r;
-  <b>function</b> random = impureRandom (<b>final</b> id=id);
-<b>protected </b>
+  <strong>function</strong> random = impureRandom (<strong>final</strong> id=id);
+<strong>protected </strong>
   Integer id;
-<b>equation</b>
+<strong>equation</strong>
   // Initialize the random number generator
-  <b>when</b> initial() <b>then</b>
+  <strong>when</strong> initial() <strong>then</strong>
     id = initializeImpureRandom(seed, time);
-  <b>end when</b>;
+  <strong>end when</strong>;
 
   // Use the random number generator
-  <b>when</b> sample(0,0.001) <b>then</b>
+  <strong>when</strong> sample(0,0.001) <strong>then</strong>
      r = random();
-  <b>end when</b>;
+  <strong>end when</strong>;
 </pre></blockquote>
 
 <h4>See also</h4>
@@ -1146,11 +1140,11 @@ is returned, so the function is impure.
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -1176,15 +1170,14 @@ is returned, so the function is impure.
       Real r "Impure Real random number";
     algorithm
       r  := impureRandom(id=id);
-      y  := integer(r*imax) + integer((1-r)*imin);
-      y  := min(imax, max(imin, y));
+      y  := min(imax, integer(r*(imax-imin+1))+imin);
 
       annotation (__ModelicaAssociation_Impure=true,
         Documentation(info=
                     "<html>
 <h4>Syntax</h4>
 <blockquote><pre>
-r = <b>impureRandomInteger</b>(id, imin=1, imax=Modelica.Constants.Integer_inf);
+r = <strong>impureRandomInteger</strong>(id, imin=1, imax=Modelica.Constants.Integer_inf);
 </pre></blockquote>
 
 <h4>Description</h4>
@@ -1209,12 +1202,12 @@ is returned, so the function is impure.
 </html>", revisions="<html>
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
-
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td>June 2, 2017</td><td>Correct probabilities - especially for small ranges, by Hans Olsson, <a href=\"https://www.3ds.com\">Dassault Syst&egrave;mes</a></td></tr>
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -1236,11 +1229,11 @@ that are usually of no interest for the user
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by
@@ -1291,11 +1284,11 @@ package <a href=\"modelica://Modelica.Blocks.Noise\">Blocks.Noise</a>).
 <table border=1 cellspacing=0 cellpadding=2>
 <tr><th>Date</th> <th align=\"left\">Description</th></tr>
 
-<tr><td valign=\"top\"> June 22, 2015 </td>
-    <td valign=\"top\">
+<tr><td> June 22, 2015 </td>
+    <td>
 
 <table border=0>
-<tr><td valign=\"top\">
+<tr><td>
          <img src=\"modelica://Modelica/Resources/Images/Logos/dlr_logo.png\">
 </td><td valign=\"bottom\">
          Initial version implemented by

@@ -1,6 +1,6 @@
 /* ModelicaStrings.c - External functions for Modelica.Functions.Strings
 
-   Copyright (C) 2002-2017, Modelica Association and DLR
+   Copyright (C) 2002-2018, Modelica Association and DLR
    All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
@@ -12,6 +12,10 @@
    2. Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
+
+   3. Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -26,6 +30,10 @@
 */
 
 /* Release Notes:
+      Jun. 16, 2017: by Thomas Beutlich, ESI ITI GmbH
+                     Utilize hash macros of uthash.h for ModelicaStrings_hashString
+                     (ticket #2250)
+
       Nov. 23, 2016: by Martin Sjoelund, SICS East Swedish ICT AB
                      Added NO_LOCALE define flag, in case the OS does
                      not have this (for example when using GCC compiler,
@@ -79,6 +87,9 @@
 #endif
 
 #include "ModelicaUtilities.h"
+#define HASH_FUNCTION HASH_AP
+#include "uthash.h"
+#undef uthash_fatal /* Ensure that nowhere in this file uses uthash_fatal by accident */
 
 _Ret_z_ const char* ModelicaStrings_substring(_In_z_ const char* string,
                                       int startIndex, int endIndex) {
@@ -113,8 +124,8 @@ _Ret_z_ const char* ModelicaStrings_substring(_In_z_ const char* string,
 
     /* Allocate memory and copy string */
     len2 = endIndex - startIndex + 1;
-    substring = ModelicaAllocateString(len2);
-    strncpy(substring, &string[startIndex-1], len2);
+    substring = ModelicaAllocateString((size_t)len2);
+    strncpy(substring, &string[startIndex-1], (size_t)len2);
     substring[len2] = '\0';
     return substring;
 }
@@ -124,7 +135,7 @@ int ModelicaStrings_length(_In_z_ const char* string) {
     return (int) strlen(string);
 }
 
-int ModelicaStrings_compare(const char* string1, const char* string2, int caseSensitive) {
+int ModelicaStrings_compare(_In_z_ const char* string1, _In_z_ const char* string2, int caseSensitive) {
     /* Compare two strings, optionally ignoring case */
     int result;
     if (string1 == 0 || string2 == 0) {
@@ -242,8 +253,8 @@ void ModelicaStrings_scanIdentifier(_In_z_ const char* string,
         }
 
         {
-            char* s = ModelicaAllocateString(token_length);
-            strncpy(s, string+token_start-1, token_length);
+            char* s = ModelicaAllocateString((size_t)token_length);
+            strncpy(s, string+token_start-1, (size_t)token_length);
             s[token_length] = '\0';
             *nextIndex = token_start + token_length;
             *identifier = s;
@@ -278,8 +289,7 @@ void ModelicaStrings_scanInteger(_In_z_ const char* string,
             /* check if the scanned string is no Real number */
             int next = token_start + sign + number_length - 1;
             if ( string[next] == '\0' ||
-                (string[next] != '\0' && string[next] != '.'
-                                      && string[next] != 'e'
+                (string[next] != '.'  && string[next] != 'e'
                                       && string[next] != 'E') ) {
 #if defined(NO_LOCALE)
 #elif defined(_MSC_VER) && _MSC_VER >= 1400
@@ -294,7 +304,7 @@ void ModelicaStrings_scanInteger(_In_z_ const char* string,
                 int x;
                 /* For receiving the result. */
 
-                strncpy(buf, string+token_start-1, sign + number_length);
+                strncpy(buf, string+token_start-1, (size_t)(sign + number_length));
                 buf[sign + number_length] = '\0';
 #if !defined(NO_LOCALE) && (defined(_MSC_VER) && _MSC_VER >= 1400)
                 x = (int)_strtol_l(buf, &endptr, 10, loc);
@@ -406,7 +416,7 @@ void ModelicaStrings_scanReal(_In_z_ const char* string, int startIndex,
         double x;
         /* For receiving the result. */
 
-        strncpy(buf, string+token_start-1, total_length);
+        strncpy(buf, string+token_start-1, (size_t)total_length);
         buf[total_length] = '\0';
 #if !defined(NO_LOCALE) && (defined(_MSC_VER) && _MSC_VER >= 1400)
         x = _strtod_l(buf, &endptr, loc);
@@ -472,8 +482,8 @@ void ModelicaStrings_scanString(_In_z_ const char* string, int startIndex,
     token_length = past_token-token_start-2;
 
     if (token_length > 0) {
-        char* s = ModelicaAllocateString(token_length);
-        strncpy(s, string+token_start, token_length);
+        char* s = ModelicaAllocateString((size_t)token_length);
+        strncpy(s, string+token_start, (size_t)token_length);
         s[token_length] = '\0';
         *result = s;
         *nextIndex = past_token;
@@ -486,35 +496,50 @@ Modelica_ERROR:
     return;
 }
 
-int ModelicaStrings_hashString(_In_z_ const char* inStr) {
-    /* Compute an unsigned int hash code from a character string
-     *
-     * Author: Arash Partow - 2002                                            *
-     * URL: http://www.partow.net                                             *
-     * URL: http://www.partow.net/programming/hashfunctions/index.html        *
-     *                                                                        *
-     * Copyright notice:                                                      *
-     * Free use of the General Purpose Hash Function Algorithms Library is    *
-     * permitted under the guidelines and in accordance with the most current *
-     * version of the Common Public License.                                  *
-     * http://www.opensource.org/licenses/cpl1.0.php                          *
-     */
-    unsigned int hash = 0xAAAAAAAA;
-    unsigned int i    = 0;
-    unsigned int len  = (unsigned int)strlen(inStr);
-    const unsigned char *str = (const unsigned char*)(inStr);
-    /* Use unsigned char to be independent of compiler settings */
+/* AP hash function macro variant of the one listed at
+   http://www.partow.net/programming/hashfunctions/index.html#APHashFunction
 
+   Copyright (C) 2002, Arash Partow
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+*/
+#define HASH_AP(key, keylen, hash) \
+do { \
+    unsigned _hb_keylen = (unsigned)keylen; \
+    const unsigned char *_hb_key = (const unsigned char*)(key); \
+    unsigned int i; \
+    hash = 0xAAAAAAAA; \
+    for (i = 0; i < _hb_keylen; _hb_key++, i++) { \
+        hash ^= ((i & 1) == 0) ? (  (hash <<  7) ^ (*_hb_key) * (hash >> 3)) : \
+                                 (~((hash << 11) + ((*_hb_key) ^ (hash >> 5)))); \
+    } \
+} while (0)
+
+int ModelicaStrings_hashString(_In_z_ const char* str) {
+    /* Compute an unsigned int hash code from a character string */
+    size_t len = strlen(str);
     union hash_tag {
         unsigned int iu;
         int          is;
     } h;
 
-    for(i = 0; i < len; str++, i++) {
-        hash ^= ((i & 1) == 0) ? (  (hash <<  7) ^  (*str) * (hash >> 3)) :
-                                 (~((hash << 11) + ((*str) ^ (hash >> 5))));
-    }
+    HASH_VALUE(str, len, h.iu);
 
-    h.iu = hash;
     return h.is;
 }

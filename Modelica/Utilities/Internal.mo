@@ -110,12 +110,26 @@ in package ModelicaServices. The interface is documented at
 </html>"));
     end PartialLoadResource;
   end ExternalReferences;
+
+  package System "System dependent functions"
+    extends Modelica.Icons.InternalPackage;
+    partial function exitBase "Interface for tool specific function to terminate the execution of the Modelica environment"
+      extends Modelica.Icons.Function;
+      input Integer status=0 "Result to be returned by environment (0 means success)";
+      annotation (Documentation(info="<html>
+<p>
+This partial function defines the function interface of a tool-specific implementation
+in package ModelicaServices.
+</p>
+</html>"));
+    end exitBase;
+  end System;
     annotation (Documentation(info="<html>
 
 <p>
 This package contains interfaces of a set of functions and models used in the
-Modelica Standard Library that requires a <b>tool specific implementation</b>.
-There is an associated package called <b>ModelicaServices</b>. A tool vendor
+Modelica Standard Library that requires a <strong>tool specific implementation</strong>.
+There is an associated package called <strong>ModelicaServices</strong>. A tool vendor
 should provide a proper implementation of this library for the corresponding
 tool. The default implementation is \"do nothing\".
 In the Modelica Standard Library, the models and functions of ModelicaServices
@@ -200,7 +214,7 @@ end getNumberOfFiles;
   annotation (
 Documentation(info="<html>
 <p>
-Package <b>Internal.FileSystem</b> is an internal package that contains
+Package <strong>Internal.FileSystem</strong> is an internal package that contains
 low level functions as interface to the file system.
 These functions should not be called directly in a scripting
 environment since more convenient functions are provided

@@ -399,6 +399,33 @@ directly utilized by a user.
 </html>"));
   end MaterialPropertiesPackage;
 
+  partial package RecordsPackage "Icon for package containing records"
+    extends Modelica.Icons.Package;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+              -100},{100,100}}), graphics={
+          Rectangle(
+            origin={0,-20},
+            lineColor={64,64,64},
+            fillColor={255,215,136},
+            fillPattern=FillPattern.Solid,
+            extent={{-80,-60},{80,60}},
+            radius=25.0),
+          Line(
+            points={{-80,0},{80,0}},
+            color={64,64,64}),
+          Line(
+            origin={0,-40},
+            points={{-80,0},{80,0}},
+            color={64,64,64}),
+          Line(
+            origin={0,-5},
+            points={{0,45},{0,-75}},
+            color={64,64,64})}),
+                              Documentation(info="<html>
+<p>This icon indicates a package that contains records</p>
+</html>"));
+  end RecordsPackage;
+
   partial class MaterialProperty "Icon for property classes"
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{100,100}}), graphics={
@@ -442,7 +469,7 @@ directly utilized by a user.
             extent={{-7.0,-7.0},{7.0,7.0}})}),
       Documentation(info="<html>
 <p>
-This icon is designed for a <b>rotational sensor</b> model.
+This icon is designed for a <strong>rotational sensor</strong> model.
 </p>
 </html>"));
   end RotationalSensor;
@@ -470,7 +497,7 @@ This icon is designed for a <b>rotational sensor</b> model.
           Line(points={{50.0,-40.0},{50.0,-60.0}})}),
       Documentation(info="<html>
 <p>
-This icon is designed for a <b>translational sensor</b> model.
+This icon is designed for a <strong>translational sensor</strong> model.
 </p></html>"));
   end TranslationalSensor;
 
@@ -547,7 +574,8 @@ built-in base classes Real, Integer etc. Instead for Complex, an icon is already
 definition (which is not possible for the built-in classes). Therefore, TypeComplex is just an alias
 to Complex and is therefore superfluous.
 </p>
-</html>"));
+</html>"),
+    obsolete = "Obsolete operator record - use Complex instead");
 
   type TypeReal "Icon for Real types"
       extends Real;
@@ -563,7 +591,7 @@ to Complex and is therefore superfluous.
               extent={{-90.0,-50.0},{90.0,50.0}},
               textString="R")}),Documentation(info="<html>
 <p>
-This icon is designed for a <b>Real</b> type.
+This icon is designed for a <strong>Real</strong> type.
 </p>
 </html>"));
   end TypeReal;
@@ -582,7 +610,7 @@ This icon is designed for a <b>Real</b> type.
               extent={{-90.0,-50.0},{90.0,50.0}},
               textString="I")}),Documentation(info="<html>
 <p>
-This icon is designed for an <b>Integer</b> type.
+This icon is designed for an <strong>Integer</strong> type.
 </p>
 </html>"));
   end TypeInteger;
@@ -602,7 +630,7 @@ This icon is designed for an <b>Integer</b> type.
               textString="B")}),
    Documentation(info="<html>
 <p>
-This icon is designed for a <b>Boolean</b> type.
+This icon is designed for a <strong>Boolean</strong> type.
 </p></html>"));
   end TypeBoolean;
 
@@ -620,7 +648,7 @@ This icon is designed for a <b>Boolean</b> type.
               extent={{-90.0,-50.0},{90.0,50.0}},
               textString="S")}),Documentation(info="<html>
 <p>
-This icon is designed for a <b>String</b> type.
+This icon is designed for a <strong>String</strong> type.
 </p>
 </html>"));
   end TypeString;
@@ -681,7 +709,7 @@ This icon is designed for a <b>String</b> type.
             extent={{-150,70},{150,40}},
             textString="%name")}),
       Documentation(info="<html>
-This icon is designed for a <b>signal bus</b> connector.
+This icon is designed for a <strong>signal bus</strong> connector.
 </html>"));
   end SignalBus;
 
@@ -738,7 +766,7 @@ This icon is designed for a <b>signal bus</b> connector.
                  "%name")}),
       Documentation(info="<html>
 <p>
-This icon is designed for a <b>sub-bus</b> in a signal connector.
+This icon is designed for a <strong>sub-bus</strong> in a signal connector.
 </p>
 </html>"));
 
@@ -774,7 +802,7 @@ corresponding library in a future release.
 
   partial package Library
     "This icon will be removed in future Modelica versions, use Package instead"
-    // extends Modelica.Icons.ObsoleteModel;
+    extends Modelica.Icons.ObsoleteModel;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
             lineColor={200,200,200},
@@ -789,12 +817,13 @@ corresponding library in a future release.
 <p>This icon of a package will be removed in future versions of the library.</p>
 <h5>Note</h5>
 <p>This icon will be removed in future versions of the Modelica Standard Library. Instead the icon <a href=\"modelica://Modelica.Icons.Package\">Package</a> shall be used.</p>
-</html>"));
+</html>"),
+    obsolete = "Obsolete package - use Modelica.Icons.Package instead");
   end Library;
 
   partial package Library2
     "This icon will be removed in future Modelica versions, use Package instead"
-    // extends Modelica.Icons.ObsoleteModel;
+    extends Modelica.Icons.ObsoleteModel;
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
@@ -809,12 +838,13 @@ corresponding library in a future release.
             radius=25.0)}), Documentation(info="<html>
 <p>This icon of a package will be removed in future versions of the library.</p>
 <h5>Note</h5>
-<p>This icon will be removed in future versions of the Modelica Standard Library. Instead the icon <a href=\"modelica://Modelica.Icons.Package\">Package</a> shall be used.</p></html>"));
+<p>This icon will be removed in future versions of the Modelica Standard Library. Instead the icon <a href=\"modelica://Modelica.Icons.Package\">Package</a> shall be used.</p></html>"),
+    obsolete = "Obsolete package - use Modelica.Icons.Package instead");
   end Library2;
 
   partial class GearIcon
     "This icon will be removed in future Modelica versions"
-    // extends Modelica.Icons.ObsoleteModel;
+    extends Modelica.Icons.ObsoleteModel;
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
@@ -847,14 +877,15 @@ corresponding library in a future release.
             points={{-60.0,-90.0},{-50.0,-90.0},{-20.0,-30.0},{20.0,-30.0},{48.0,-90.0},{60.0,-90.0},{60.0,-100.0},{-60.0,-100.0},{-60.0,-90.0}})}),
       Documentation(info="<html>
 <p>
-This icon of a <b>gearbox</b> will be removed in future versions of the library. Please use one of the icons of <a href=\"modelica://Modelica.Mechanics.Rotational.Icons\">Mechanics.Rotational.Icons</a> instead.
+This icon of a <strong>gearbox</strong> will be removed in future versions of the library. Please use one of the icons of <a href=\"modelica://Modelica.Mechanics.Rotational.Icons\">Mechanics.Rotational.Icons</a> instead.
 </p>
-</html>"));
+</html>"),
+    obsolete = "Obsolete class - use Modelica.Mechanics.Rotational.Icons instead");
   end GearIcon;
 
   partial class MotorIcon
     "This icon will be removed in future Modelica versions."
-    // extends Modelica.Icons.ObsoleteModel;
+    extends Modelica.Icons.ObsoleteModel;
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
           Rectangle(
@@ -874,13 +905,14 @@ This icon of a <b>gearbox</b> will be removed in future versions of the library.
             extent={{30.0,-10.0},{90.0,10.0}})}),
       Documentation(info="<html>
 <p>
-This icon of an <b>electrical motor</b> model will be removed in future versions of the library. Please use a locally defined icon in your user defined libraries and applications.
+This icon of an <strong>electrical motor</strong> model will be removed in future versions of the library. Please use a locally defined icon in your user defined libraries and applications.
 </p>
-</html>"));
+</html>"),
+    obsolete = "Obsolete class");
   end MotorIcon;
 
   partial class Info "This icon will be removed in future Modelica versions."
-    // extends Modelica.Icons.ObsoleteModel;
+    extends Modelica.Icons.ObsoleteModel;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
           Ellipse(
             lineColor={75,138,73},
@@ -904,7 +936,8 @@ This icon of an <b>electrical motor</b> model will be removed in future versions
                               Documentation(info="<html>
 <p>This icon indicate classes containing only documentation, intended for general description of e.g., concepts and features of a package.</p>
 <h5>Note</h5>
-<p>This icon will be removed in future versions of the Modelica Standard Library. Instead the icon <a href=\"modelica://Modelica.Icons.Information\">Information</a> shall be used.</p></html>"));
+<p>This icon will be removed in future versions of the Modelica Standard Library. Instead the icon <a href=\"modelica://Modelica.Icons.Information\">Information</a> shall be used.</p></html>"),
+    obsolete = "Obsolete class - use Modelica.Icons.Information instead");
   end Info;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
               -100},{100,100}}), graphics={Polygon(
@@ -921,7 +954,7 @@ This icon of an <b>electrical motor</b> model will be removed in future versions
             pattern=LinePattern.None,
             fillPattern=FillPattern.Solid,
             extent={{-12.5,-12.5},{12.5,12.5}})}), Documentation(info="<html>
-<p>This package contains definitions for the graphical layout of components which may be used in different libraries. The icons can be utilized by inheriting them in the desired class using &quot;extends&quot; or by directly copying the &quot;icon&quot; layer. </p>
+<p>This package contains definitions for the graphical layout of components which may be used in different libraries. The icons can be utilized by inheriting them in the desired class using &quot;extends&quot; or by directly copying the &quot;icon&quot; layer.</p>
 
 <h4>Main Authors:</h4>
 
@@ -934,7 +967,7 @@ This icon of an <b>electrical motor</b> model will be removed in future versions
     <dd>email: <a href=\"mailto:Martin.Otter@dlr.de\">Martin.Otter@dlr.de</a></dd>
 <dt>Christian Kral</dt>
 
-    <dd>  <a href=\"http://christiankral.net/\">Electric Machines, Drives and Systems</a><br>
+    <dd>  <a href=\"https://christiankral.net/\">Electric Machines, Drives and Systems</a><br>
 </dd>
     <dd>1060 Vienna, Austria</dd>
     <dd>email: <a href=\"mailto:dr.christian.kral@gmail.com\">dr.christian.kral@gmail.com</a></dd>
@@ -945,7 +978,7 @@ This icon of an <b>electrical motor</b> model will be removed in future versions
     <dd>email: <a href=\"mailto:johan.andreasson@modelon.se\">johan.andreasson@modelon.se</a></dd>
 </dl>
 
-<p>Copyright &copy; 1998-2016, Modelica Association, DLR, AIT, and Modelon AB. </p>
-<p><i>This Modelica package is <b>free</b> software; it can be redistributed and/or modified under the terms of the <b>Modelica license</b>, see the license conditions and the accompanying <b>disclaimer</b> in <a href=\"modelica://Modelica.UsersGuide.ModelicaLicense2\">Modelica.UsersGuide.ModelicaLicense2</a>.</i> </p>
+<p>Copyright &copy; 1998-2018, Modelica Association, DLR, AIT, and Modelon AB.</p>
+<p><em>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) visit <a href=\"https://modelica.org/licenses/modelica-3-clause-bsd\">https://modelica.org/licenses/modelica-3-clause-bsd</a>.</em></p>
 </html>"));
 end Icons;

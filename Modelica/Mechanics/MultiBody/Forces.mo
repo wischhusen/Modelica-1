@@ -57,8 +57,7 @@ package Forces "Components that exert forces and/or torques between frames"
         color={95,95,95},
         thickness=0.5));
     connect(basicWorldForce.force, force) annotation (Line(
-        points={{-12,0},{-120,0}},
-        color={0,0,127}));
+        points={{-12,0},{-120,0}}, color={0,0,127}));
     connect(basicWorldForce.frame_resolve, frame_resolve) annotation (Line(
         points={{0,-10},{0,-100}},
         color={95,95,95},
@@ -72,7 +71,7 @@ package Forces "Components that exert forces and/or torques between frames"
       Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
               100}}), graphics={
           Text(
-            extent={{-100,-46},{100,-76}},
+            extent={{-100,-40},{100,-70}},
             lineColor={192,192,192},
             textString="resolve"),
           Polygon(
@@ -80,7 +79,7 @@ package Forces "Components that exert forces and/or torques between frames"
                 {-100,10}},
             fillPattern=FillPattern.Solid),
           Text(
-            extent={{-150,85},{150,45}},
+            extent={{-150,80},{150,40}},
             textString="%name",
             lineColor={0,0,255}),
           Line(
@@ -90,28 +89,28 @@ package Forces "Components that exert forces and/or torques between frames"
       Documentation(info="<html>
 
 <p>
-The <b>3</b> signals of the <b>force</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> acting at the frame
+The <strong>3</strong> signals of the <strong>force</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>force</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force in world frame (= default)</td></tr>
+<tr><th><strong>Types.ResolveInFrameB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force in world frame (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force in frame_b</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force in frame_b</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = Types.ResolveInFrameB.frame_resolve, the force coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -131,11 +130,11 @@ For efficiency reasons, this reaction torque is, however, not computed.
 This force component is by default visualized as an arrow
 acting at the connector to which it is connected. The diameter
 and color of the arrow can be defined via
-variables <b>diameter</b> and <b>color</b>. The arrow
+variables <strong>diameter</strong> and <strong>color</strong>. The arrow
 points in the direction defined by the
 force signal. The length of the arrow is proportional
 to the length of the force vector using parameter
-<b>N_to_m</b> as scaling factor. For example, if N_to_m = 100 N/m,
+<strong>N_to_m</strong> as scaling factor. For example, if N_to_m = 100 N/m,
 then a force of 350 N is displayed as an arrow of length 3.5 m.
 </p>
 <p>
@@ -144,7 +143,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForce1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForce1.png\">
 </p>
 
 <p>
@@ -152,7 +151,7 @@ This leads to the following animation
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForce2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForce2.png\">
 </p>
 
 </html>"));
@@ -213,8 +212,7 @@ This leads to the following animation
         color={95,95,95},
         thickness=0.5));
     connect(basicWorldTorque.torque, torque) annotation (Line(
-        points={{-12,0},{-120,0}},
-        color={0,0,127}));
+        points={{-12,0},{-120,0}}, color={0,0,127}));
     connect(frame_resolve, basicWorldTorque.frame_resolve) annotation (Line(
         points={{0,100},{0,10}},
         color={95,95,95},
@@ -228,28 +226,28 @@ This leads to the following animation
       Documentation(info="<html>
 
 <p>
-The <b>3</b> signals of the <b>torque</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>torque</b> acting at the frame
+The <strong>3</strong> signals of the <strong>torque</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>torque</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input torque in world frame (= default)</td></tr>
+<tr><th><strong>Types.ResolveInFrameB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input torque in world frame (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input torque in frame_b</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input torque in frame_b</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = Types.ResolveInFrameB.frame_resolve, the torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -266,14 +264,14 @@ For efficiency reasons, this reaction torque is, however, not computed.
 </p>
 
 <p>
-This torque component is by default visualized as a <b>double arrow</b>
+This torque component is by default visualized as a <strong>double arrow</strong>
 acting at the connector to which it is connected. The diameter
 and color of the arrow can be defined via
-variables <b>diameter</b> and <b>color</b>. The double arrow points
+variables <strong>diameter</strong> and <strong>color</strong>. The double arrow points
 in the direction defined by the
 torque vector. The length of the double arrow is proportional
 to the length of the torque vector using parameter
-<b>Nm_to_m</b> as scaling factor. For example, if Nm_to_m = 100 Nm/m,
+<strong>Nm_to_m</strong> as scaling factor. For example, if Nm_to_m = 100 Nm/m,
 then a torque of 350 Nm is displayed as an arrow of length 3.5 m.
 </p>
 <p>
@@ -282,7 +280,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldTorque1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldTorque1.png\">
 </p>
 
 <p>
@@ -290,7 +288,7 @@ This leads to the following animation
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldTorque2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldTorque2.png\">
 </p>
 
 </html>"), Icon(coordinateSystem(
@@ -398,8 +396,7 @@ This leads to the following animation
         color={95,95,95},
         thickness=0.5));
     connect(basicWorldForce.force, force) annotation (Line(
-        points={{16,-60},{-120,-60}},
-        color={0,0,127}));
+        points={{16,-60},{-120,-60}}, color={0,0,127}));
     connect(basicWorldTorque.frame_b, frame_b)
                                       annotation (Line(
         points={{10,60},{60,60},{60,0},{100,0}},
@@ -407,8 +404,7 @@ This leads to the following animation
         thickness=0.5));
     connect(basicWorldTorque.torque, torque)
                                     annotation (Line(
-        points={{-12,60},{-120,60}},
-        color={0,0,127}));
+        points={{-12,60},{-120,60}}, color={0,0,127}));
     connect(basicWorldForce.frame_resolve, frame_resolve) annotation (Line(
         points={{28,-50},{28,80},{0,80},{0,100}},
         color={95,95,95},
@@ -461,32 +457,32 @@ This leads to the following animation
             fillPattern=FillPattern.Solid)}),
       Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>force</b> and <b>torque</b>
+The <strong>3</strong> signals of the <strong>force</strong> and <strong>torque</strong>
 connector are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> and
-<b>torque</b> acting at the frame
+as the x-, y- and z-coordinates of a <strong>force</strong> and
+<strong>torque</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force and torque in world frame (= default)</td></tr>
+<tr><th><strong>Types.ResolveInFrameB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force and torque in world frame (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force and torque in frame_b</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force and torque in frame_b</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force and torque in frame_resolve
+<tr><td>frame_resolve</td>
+    <td>Resolve input force and torque in frame_resolve
                     (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = Types.ResolveInFrameB.frame_resolve, the force and
 torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -506,12 +502,12 @@ The force and torque are by default visualized as an arrow (force)
 and as a double arrow (torque) acting at the connector to which
 they are connected. The diameters
 and colors of the arrows can be defined via
-variables <b>forceDiameter</b>, <b>torqueDiameter</b>,
-<b>forceColor</b> and <b>torqueColor</b>. The arrows
+variables <strong>forceDiameter</strong>, <strong>torqueDiameter</strong>,
+<strong>forceColor</strong> and <strong>torqueColor</strong>. The arrows
 point in the directions defined by the
 force and torque vectors. The lengths of the arrows are proportional
 to the length of the force and torque vectors, respectively, using parameters
-<b>N_to_m</b> and <b>Nm_to_m</b> as scaling factors. For example, if N_to_m = 100 N/m,
+<strong>N_to_m</strong> and <strong>Nm_to_m</strong> as scaling factors. For example, if N_to_m = 100 N/m,
 then a force of 350 N is displayed as an arrow of length 3.5 m.
 </p>
 <p>
@@ -520,7 +516,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForceAndTorque1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForceAndTorque1.png\">
 </p>
 
 <p>
@@ -528,7 +524,7 @@ This leads to the following animation
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForceAndTorque2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/WorldForceAndTorque2.png\">
 </p>
 
 </html>"));
@@ -612,8 +608,7 @@ This leads to the following animation
         color={95,95,95},
         thickness=0.5));
     connect(force, basicForce.force) annotation (Line(
-        points={{-60,120},{-60,40},{4,40},{4,12}},
-        color={0,0,127}));
+        points={{-60,120},{-60,40},{4,40},{4,12}}, color={0,0,127}));
     connect(basicForce.frame_resolve, frame_resolve) annotation (Line(
         points={{14,10},{14,40},{40,40},{40,100}},
         color={95,95,95},
@@ -657,31 +652,31 @@ This leads to the following animation
           Line(points={{20,0},{65,0}})}),
       Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>force</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> acting at the frame
+The <strong>3</strong> signals of the <strong>force</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>force</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameAB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force in world frame</td></tr>
+<tr><th><strong>Types.ResolveInFrameAB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force in world frame</td></tr>
 
-<tr><td valign=\"top\">frame_a</td>
-    <td valign=\"top\">Resolve input force in frame_a</td></tr>
+<tr><td>frame_a</td>
+    <td>Resolve input force in frame_a</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force in frame_b (= default)</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force in frame_b (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = ResolveInFrameAB.frame_resolve, the force coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -702,7 +697,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Force1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Force1.png\">
 </p>
 
 <p>
@@ -714,7 +709,7 @@ clarity this is not shown in the animation):
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Force2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Force2.png\">
 </p>
 
 </html>"));
@@ -800,8 +795,7 @@ clarity this is not shown in the animation):
         color={95,95,95},
         thickness=0.5));
     connect(basicTorque.torque, torque) annotation (Line(
-        points={{-4,12},{-4,60},{-60,60},{-60,120}},
-        color={0,0,127}));
+        points={{-4,12},{-4,60},{-60,60},{-60,120}}, color={0,0,127}));
     connect(basicTorque.frame_resolve, frame_resolve) annotation (Line(
         points={{6,10},{6,60},{40,60},{40,100}},
         color={95,95,95},
@@ -845,31 +839,31 @@ clarity this is not shown in the animation):
           Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}),
       Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>torque</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>torque</b> acting at the frame
+The <strong>3</strong> signals of the <strong>torque</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>torque</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameAB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input torque in world frame</td></tr>
+<tr><th><strong>Types.ResolveInFrameAB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input torque in world frame</td></tr>
 
-<tr><td valign=\"top\">frame_a</td>
-    <td valign=\"top\">Resolve input torque in frame_a</td></tr>
+<tr><td>frame_a</td>
+    <td>Resolve input torque in frame_a</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input torque in frame_b (= default)</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input torque in frame_b (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = ResolveInFrameAB.frame_resolve, the torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -890,7 +884,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Torque1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Torque1.png\">
 </p>
 
 <p>
@@ -902,7 +896,7 @@ clarity this is not shown in the animation):
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Torque2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Torque2.png\">
 </p>
 
 </html>"));
@@ -1027,11 +1021,9 @@ clarity this is not shown in the animation):
         color={95,95,95},
         thickness=0.5));
     connect(basicForce.force, force) annotation (Line(
-        points={{-80,12},{-80,120}},
-        color={0,0,127}));
+        points={{-80,12},{-80,120}}, color={0,0,127}));
     connect(basicTorque.torque, torque) annotation (Line(
-        points={{0,32},{0,120}},
-        color={0,0,127}));
+        points={{0,32},{0,120}}, color={0,0,127}));
     connect(basicTorque.frame_resolve, frame_resolve) annotation (Line(
         points={{10,30},{10,80},{80,80},{80,100}},
         color={95,95,95},
@@ -1098,34 +1090,34 @@ clarity this is not shown in the animation):
             textString="t")}),
       Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>force</b> connector and the
-<b>3</b> signals of the <b>torque</b> connector
+The <strong>3</strong> signals of the <strong>force</strong> connector and the
+<strong>3</strong> signals of the <strong>torque</strong> connector
 are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> and of a
-<b>torque</b> acting at the frame
+as the x-, y- and z-coordinates of a <strong>force</strong> and of a
+<strong>torque</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameAB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force/torque in world frame</td></tr>
+<tr><th><strong>Types.ResolveInFrameAB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force/torque in world frame</td></tr>
 
-<tr><td valign=\"top\">frame_a</td>
-    <td valign=\"top\">Resolve input force/torque in frame_a</td></tr>
+<tr><td>frame_a</td>
+    <td>Resolve input force/torque in frame_a</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force/torque in frame_b (= default)</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force/torque in frame_b (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force/torque in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input force/torque in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = ResolveInFrameAB.frame_resolve, the force and torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -1145,7 +1137,7 @@ following figure:
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ForceAndTorque1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ForceAndTorque1.png\">
 </p>
 
 <p>
@@ -1158,7 +1150,7 @@ clarity this is not shown in the animation):
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ForceAndTorque2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ForceAndTorque2.png\">
 </p>
 
 </html>"));
@@ -1323,7 +1315,7 @@ clarity this is not shown in the animation):
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
           Text(
-            extent={{-150,-55},{150,-95}},
+            extent={{-150,-50},{150,-90}},
             textString="%name",
             lineColor={0,0,255}),
           Rectangle(
@@ -1367,7 +1359,7 @@ clarity this is not shown in the animation):
             fillColor={0,0,255},
             fillPattern=FillPattern.Solid),
           Text(
-            extent={{-50,93},{32,78}},
+            extent={{-40,98},{40,82}},
             textString="length",
             lineColor={0,0,255}),
           Ellipse(
@@ -1429,17 +1421,17 @@ clarity this is not shown in the animation):
             color={0,0,255})}),
       Documentation(info="<html>
 <p>
-This component is used to exert a <b>line force</b>
+This component is used to exert a <strong>line force</strong>
 between the origin of frame_a and the origin of frame_b
-by attaching components of the <b>1-dimensional translational</b>
+by attaching components of the <strong>1-dimensional translational</strong>
 mechanical library of Modelica (Modelica.Mechanics.Translational)
-between the two flange connectors <b>flange_a</b> and
-<b>flange_b</b>. Optionally, there is a <b>point mass</b> on the line
+between the two flange connectors <strong>flange_a</strong> and
+<strong>flange_b</strong>. Optionally, there is a <strong>point mass</strong> on the line
 connecting the origin of frame_a and the origin of frame_b.
-This point mass approximates the <b>mass</b> of the <b>force element</b>.
+This point mass approximates the <strong>mass</strong> of the <strong>force element</strong>.
 The distance of the point mass from frame_a as a fraction of the
 distance between frame_a and frame_b is defined via
-parameter <b>lengthFraction</b> (default is 0.5, i.e., the point
+parameter <strong>lengthFraction</strong> (default is 0.5, i.e., the point
 mass is in the middle of the line).
 </p>
 <p>
@@ -1799,14 +1791,14 @@ in the other flange connector.
             color={0,0,255})}),
       Documentation(info="<html>
 <p>
-This component is used to exert a <b>line force</b>
+This component is used to exert a <strong>line force</strong>
 between the origin of frame_a and the origin of frame_b
-by attaching components of the <b>1-dimensional translational</b>
+by attaching components of the <strong>1-dimensional translational</strong>
 mechanical library of Modelica (Modelica.Mechanics.Translational)
-between the two flange connectors <b>flange_a</b> and
-<b>flange_b</b>. Optionally, there are <b>two point masses</b> on the line
+between the two flange connectors <strong>flange_a</strong> and
+<strong>flange_b</strong>. Optionally, there are <strong>two point masses</strong> on the line
 connecting the origin of frame_a and the origin of frame_b.
-These point masses approximate the <b>masses</b> of the <b>force element</b>.
+These point masses approximate the <strong>masses</strong> of the <strong>force element</strong>.
 The locations of the two point masses are defined by their
 (fixed) distances of L_a relative to frame_a and of L_b relative
 to frame_b, respectively.
@@ -1824,7 +1816,7 @@ is displayed in the figure below.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/LineForceWithTwoMasses1.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/LineForceWithTwoMasses1.png\">
 </p>
 
 <p>
@@ -1837,7 +1829,7 @@ with the LineForceWithTwoMasses component is simpler.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/LineForceWithTwoMasses2.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/LineForceWithTwoMasses2.png\">
 </p>
 
 <p>
@@ -1885,7 +1877,7 @@ in the other flange connector.
     input Types.Color massColor=Modelica.Mechanics.MultiBody.Types.Defaults.BodyColor
       "Color of mass point" annotation (Dialog(colorSelector=true, tab="Animation", group=
             "if animation = true and showMass = true", enable=animation and showMass));
-    parameter SI.Distance s_small=1.E-10
+    parameter SI.Distance s_small=1e-10
       "Prevent zero-division if distance between frame_a and frame_b is zero"
       annotation (Dialog(tab="Advanced"));
     parameter Boolean fixedRotationAtFrame_a=false
@@ -1984,8 +1976,8 @@ in the other flange connector.
             textString="R=0")}),
       Documentation(info="<html>
 <p>
-<b>Linear spring</b> acting as line force between frame_a and frame_b.
-A <b>force f</b> is exerted on the origin of frame_b and with opposite sign
+<strong>Linear spring</strong> acting as line force between frame_a and frame_b.
+A <strong>force f</strong> is exerted on the origin of frame_b and with opposite sign
 on the origin of frame_a along the line from the origin of frame_a to the origin
 of frame_b according to the equation:
 </p>
@@ -2009,8 +2001,8 @@ spring characterizes the location of the point mass.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/SpringWithMass.png\"
-ALT=\"model Examples.Elementary.SpringWithMass\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Examples/Elementary/SpringWithMass.png\"
+alt=\"model Examples.Elementary.SpringWithMass\">
 </p>
 
 </html>"));
@@ -2072,13 +2064,13 @@ ALT=\"model Examples.Elementary.SpringWithMass\">
     annotation (
       Documentation(info="<html>
 <p>
-<b>Linear damper</b> acting as line force between frame_a and frame_b.
-A <b>force f</b> is exerted on the origin of frame_b and with opposite sign
+<strong>Linear damper</strong> acting as line force between frame_a and frame_b.
+A <strong>force f</strong> is exerted on the origin of frame_b and with opposite sign
 on the origin of frame_a along the line from the origin of frame_a to the origin
 of frame_b according to the equation:
 </p>
 <pre>
-   f = d*<b>der</b>(s);
+   f = d*<strong>der</strong>(s);
 </pre>
 <p>
 where \"d\" is a parameter, \"s\" is the
@@ -2091,7 +2083,7 @@ where a mass is hanging on a damper.
 </p>
 
 <p>
-<IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Damper.png\">
+<img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Damper.png\">
 </p>
 
 </html>"),
@@ -2149,6 +2141,22 @@ where a mass is hanging on a damper.
     parameter SI.Length s_unstretched=0 "Unstretched spring length";
     parameter SI.TranslationalDampingConstant d(final min=0) = 0
       "Damping constant";
+    parameter SI.Distance length_a=world.defaultForceLength
+      "Length of damper cylinder at frame_a side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SIunits.Diameter diameter_a=world.defaultForceWidth
+      "Diameter of damper cylinder at frame_a side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SIunits.Diameter diameter_b=0.6*diameter_a
+      "Diameter of damper cylinder at frame_b side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input Types.Color color_a={100,100,100} "Color of damper cylinder at frame_a"
+      annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
+    input Types.Color color_b={155,155,155} "Color of damper cylinder at frame_b"
+      annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
+    input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
+      "Reflection of ambient light (= 0: light is completely absorbed)"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
     input SI.Distance width=world.defaultForceWidth "Width of spring"
       annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
     input SI.Distance coilWidth=width/10 "Width of spring coil"
@@ -2158,9 +2166,6 @@ where a mass is hanging on a damper.
     input Types.Color color=Modelica.Mechanics.MultiBody.Types.Defaults.SpringColor
       "Color of spring"
       annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
-    input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
-      "Reflection of ambient light (= 0: light is completely absorbed)"
-      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
     extends Interfaces.PartialLineForce;
     extends
       Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPort(
@@ -2168,6 +2173,29 @@ where a mass is hanging on a damper.
 
   protected
     Modelica.SIunits.Force f_d "Damping force";
+    Visualizers.Advanced.Shape shape_a(
+      shapeType="cylinder",
+      color=color_a,
+      specularCoefficient=specularCoefficient,
+      length=noEvent(min(length_a, s)),
+      width=diameter_a,
+      height=diameter_a,
+      lengthDirection=e_a,
+      widthDirection={0,1,0},
+      r=frame_a.r_0,
+      R=frame_a.R) if world.enableAnimation and animation;
+    Visualizers.Advanced.Shape shape_b(
+      shapeType="cylinder",
+      color=color_b,
+      specularCoefficient=specularCoefficient,
+      length=noEvent(max(s - length_a, 0)),
+      width=diameter_b,
+      height=diameter_b,
+      lengthDirection=e_a,
+      widthDirection={0,1,0},
+      r_shape=e_a*noEvent(min(length_a, s)),
+      r=frame_a.r_0,
+      R=frame_a.R) if world.enableAnimation and animation;
     Visualizers.Advanced.Shape shape(
       shapeType="spring",
       color=color,
@@ -2187,14 +2215,14 @@ where a mass is hanging on a damper.
     annotation (
       Documentation(info="<html>
 <p>
-<b>Linear spring</b> and <b>linear damper</b>
+<strong>Linear spring</strong> and <strong>linear damper</strong>
 in parallel acting as line force between frame_a and frame_b.
-A <b>force f</b> is exerted on the origin of frame_b and with opposite sign
+A <strong>force f</strong> is exerted on the origin of frame_b and with opposite sign
 on the origin of frame_a along the line from the origin of frame_a to the origin
 of frame_b according to the equation:
 </p>
 <pre>
-   f = c*(s - s_unstretched) + d*<b>der</b>(s);
+   f = c*(s - s_unstretched) + d*<strong>der</strong>(s);
 </pre>
 <p>
 where \"c\", \"s_unstretched\" and \"d\" are parameters, \"s\" is the
@@ -2267,7 +2295,8 @@ and der(s) is the time derivative of s.
 
   model SpringDamperSeries
     "Linear spring and linear damper in series connection"
-
+    import Modelica.Mechanics.MultiBody.Types;
+    parameter Boolean animation=true "= true, if animation shall be enabled";
     parameter SI.TranslationalSpringConstant c(final min=0) "Spring constant";
     parameter SI.Length s_unstretched=0 "Unstretched spring length";
     parameter SI.TranslationalDampingConstant d(final min=0) = 0
@@ -2275,10 +2304,73 @@ and der(s) is the time derivative of s.
     parameter SI.Length s_damper_start=0 "Initial length of damper";
     SI.Position s_damper(start=s_damper_start, fixed=true)
       "Actual length of damper (frame_a - damper - spring - frame_b)";
+    parameter SI.Distance length_a=world.defaultForceLength
+      "Length of damper cylinder at frame_a side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SIunits.Diameter diameter_a=world.defaultForceWidth
+      "Diameter of damper cylinder at frame_a side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SIunits.Diameter diameter_b=0.6*diameter_a
+      "Diameter of damper cylinder at damper-spring side"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input Types.Color color_a={100,100,100} "Color of damper cylinder at frame_a"
+      annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
+    input Types.Color color_b={155,155,155} "Color of damper cylinder at damper-spring frame"
+      annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
+    input Types.SpecularCoefficient specularCoefficient = world.defaultSpecularCoefficient
+      "Reflection of ambient light (= 0: light is completely absorbed)"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SI.Distance width=world.defaultForceWidth "Width of spring"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input SI.Distance coilWidth=width/10 "Width of spring coil"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    parameter Integer numberOfWindings=5 "Number of spring windings"
+      annotation (Dialog(tab="Animation", group="if animation = true", enable=animation));
+    input Types.Color color=Modelica.Mechanics.MultiBody.Types.Defaults.SpringColor
+      "Color of spring"
+      annotation (Dialog(colorSelector=true, tab="Animation", group="if animation = true", enable=animation));
     extends Interfaces.PartialLineForce;
     extends
       Modelica.Thermal.HeatTransfer.Interfaces.PartialElementaryConditionalHeatPort(
        final T=293.15);
+
+  protected
+    Visualizers.Advanced.Shape shape_a(
+      shapeType="cylinder",
+      color=color_a,
+      specularCoefficient=specularCoefficient,
+      length=noEvent(min(length_a, s_damper)),
+      width=diameter_a,
+      height=diameter_a,
+      lengthDirection=e_a,
+      widthDirection={0,1,0},
+      r=frame_a.r_0,
+      R=frame_a.R) if world.enableAnimation and animation;
+    Visualizers.Advanced.Shape shape_b(
+      shapeType="cylinder",
+      color=color_b,
+      specularCoefficient=specularCoefficient,
+      length=noEvent(max(s_damper - length_a, 0)),
+      width=diameter_b,
+      height=diameter_b,
+      lengthDirection=e_a,
+      widthDirection={0,1,0},
+      r_shape=e_a*noEvent(min(length_a, s_damper)),
+      r=frame_a.r_0,
+      R=frame_a.R) if world.enableAnimation and animation;
+    Visualizers.Advanced.Shape shape(
+      shapeType="spring",
+      color=color,
+      specularCoefficient=specularCoefficient,
+      length=s - s_damper,
+      width=width,
+      height=coilWidth*2,
+      lengthDirection=e_a,
+      widthDirection={0,1,0},
+      extra=numberOfWindings,
+      r_shape=e_a*s_damper,
+      r=frame_a.r_0,
+      R=frame_a.R) if world.enableAnimation and animation;
   equation
     f = c*(s - s_unstretched - s_damper);
     d*der(s_damper) = f;
@@ -2286,7 +2378,7 @@ and der(s) is the time derivative of s.
     annotation (
       Documentation(info="<html>
 <p>
-<b>Linear spring</b> and <b>linear damper</b> in series connection
+<strong>Linear spring</strong> and <strong>linear damper</strong> in series connection
 acting as line force between frame_a and frame_b:
 </p>
 <pre>
@@ -2295,7 +2387,7 @@ acting as line force between frame_a and frame_b:
           |-- s_damper --|  (s_damper is the state variable of this system)
 </pre>
 <p>
-A <b>force f</b> is exerted on the origin of frame_b and with opposite sign
+A <strong>force f</strong> is exerted on the origin of frame_b and with opposite sign
 on the origin of frame_a along the line from the origin of frame_a to the origin
 of frame_b according to the equations:
 </p>
@@ -2462,31 +2554,31 @@ force element) and der(s_damper) is the time derivative of s_damper.
             Line(points={{20,0},{65,0}})}),
         Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>force</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> acting at the frame
+The <strong>3</strong> signals of the <strong>force</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>force</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameAB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force in world frame</td></tr>
+<tr><th><strong>Types.ResolveInFrameAB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force in world frame</td></tr>
 
-<tr><td valign=\"top\">frame_a</td>
-    <td valign=\"top\">Resolve input force in frame_a</td></tr>
+<tr><td>frame_a</td>
+    <td>Resolve input force in frame_a</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force in frame_b (= default)</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force in frame_b (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = ResolveInFrameAB.frame_resolve, the force coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -2588,31 +2680,31 @@ values from the outside in order that the model remains balanced
             Line(points={{77,45},{66,60},{55,69},{49,74},{41,80},{31,84},{20,85}})}),
         Documentation(info="<html>
 <p>
-The <b>3</b> signals of the <b>torque</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>torque</b> acting at the frame
+The <strong>3</strong> signals of the <strong>torque</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>torque</strong> acting at the frame
 connector to which frame_b of this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameAB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input torque in world frame</td></tr>
+<tr><th><strong>Types.ResolveInFrameAB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input torque in world frame</td></tr>
 
-<tr><td valign=\"top\">frame_a</td>
-    <td valign=\"top\">Resolve input torque in frame_a</td></tr>
+<tr><td>frame_a</td>
+    <td>Resolve input torque in frame_a</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input torque in frame_b (= default)</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input torque in frame_b (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = ResolveInFrameAB.frame_resolve, the torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -2671,7 +2763,7 @@ values from the outside in order that the model remains balanced
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Text(
-              extent={{-89,-46},{91,-76}},
+              extent={{-100,-40},{100,-70}},
               lineColor={192,192,192},
               textString="resolve"),
             Polygon(
@@ -2679,7 +2771,7 @@ values from the outside in order that the model remains balanced
                   -10},{-100,10}},
               fillPattern=FillPattern.Solid),
             Text(
-              extent={{-149,103},{136,42}},
+              extent={{-150,80},{150,40}},
               textString="%name",
               lineColor={0,0,255}),
             Line(
@@ -2688,28 +2780,28 @@ values from the outside in order that the model remains balanced
               pattern=LinePattern.Dot)}),
         Documentation(info="<html>
 <p>
-The 3 signals of the <b>force</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>force</b> acting at the frame
+The 3 signals of the <strong>force</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>force</strong> acting at the frame
 connector to which this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input force in world frame (= default)</td></tr>
+<tr><th><strong>Types.ResolveInFrameB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input force in world frame (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input force in frame_b</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input force in frame_b</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input force in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = Types.ResolveInFrameB.frame_resolve, the force coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -2779,7 +2871,7 @@ values from the outside in order that the model remains balanced
               lineColor={192,192,192},
               textString="resolve"),
             Text(
-              extent={{-145,-28},{140,-89}},
+              extent={{-150,-40},{150,-80}},
               textString="%name",
               lineColor={0,0,255}),
             Line(
@@ -2796,28 +2888,28 @@ values from the outside in order that the model remains balanced
               fillPattern=FillPattern.Solid)}),
         Documentation(info="<html>
 <p>
-The 3 signals of the <b>torque</b> connector are interpreted
-as the x-, y- and z-coordinates of a <b>torque</b> acting at the frame
+The 3 signals of the <strong>torque</strong> connector are interpreted
+as the x-, y- and z-coordinates of a <strong>torque</strong> acting at the frame
 connector to which this component is attached.
-Via parameter <b>resolveInFrame</b> it is defined, in which frame these
+Via parameter <strong>resolveInFrame</strong> it is defined, in which frame these
 coordinates shall be resolved:
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><th><b>Types.ResolveInFrameB.</b></th><th><b>Meaning</b></th></tr>
-<tr><td valign=\"top\">world</td>
-    <td valign=\"top\">Resolve input torque in world frame (= default)</td></tr>
+<tr><th><strong>Types.ResolveInFrameB.</strong></th><th><strong>Meaning</strong></th></tr>
+<tr><td>world</td>
+    <td>Resolve input torque in world frame (= default)</td></tr>
 
-<tr><td valign=\"top\">frame_b</td>
-    <td valign=\"top\">Resolve input torque in frame_b</td></tr>
+<tr><td>frame_b</td>
+    <td>Resolve input torque in frame_b</td></tr>
 
-<tr><td valign=\"top\">frame_resolve</td>
-    <td valign=\"top\">Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
+<tr><td>frame_resolve</td>
+    <td>Resolve input torque in frame_resolve (frame_resolve must be connected)</td></tr>
 </table>
 
 <p>
 If resolveInFrame = Types.ResolveInFrameB.frame_resolve, the torque coordinates
-are with respect to the frame, that is connected to <b>frame_resolve</b>.
+are with respect to the frame, that is connected to <strong>frame_resolve</strong>.
 </p>
 
 <p>
@@ -2839,7 +2931,7 @@ values from the outside in order that the model remains balanced
       input GravityTypes gravityType "Type of gravity field" annotation(Dialog);
       input Modelica.SIunits.Acceleration g[3]
         "Constant gravity acceleration, resolved in world frame, if gravityType=UniformGravity"
-                                                                                                annotation(Dialog);
+        annotation(Dialog);
       input Real mue(unit="m3/s2")
         "Field constant of point gravity field, if gravityType=PointGravity" annotation(Dialog);
     algorithm
@@ -2852,9 +2944,9 @@ This function defines the standard gravity fields for the World object.
 </p>
 
 <table border=1 cellspacing=0 cellpadding=2>
-<tr><td><b><i>gravityType</i></b></td>
-    <td><b><i>gravity [m/s2]</i></b></td>
-    <td><b><i>description</i></b></td></tr>
+<tr><td><strong><em>gravityType</em></strong></td>
+    <td><strong><em>gravity [m/s2]</em></strong></td>
+    <td><strong><em>description</em></strong></td></tr>
 <tr><td>Types.GravityType.NoGravity</td>
     <td>= {0,0,0}</td>
     <td>No gravity</td></tr>
@@ -2884,70 +2976,70 @@ between two frame connectors, e.g., between two parts.
 </p>
 <h4>Content</h4>
 <table border=1 cellspacing=0 cellpadding=2>
-  <tr><th><b><i>Model</i></b></th><th><b><i>Description</i></b></th></tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldForce\">WorldForce</a></td>
-      <td valign=\"top\"> External force acting at the frame to which this component
+  <tr><th><strong><em>Model</em></strong></th><th><strong><em>Description</em></strong></th></tr>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldForce\">WorldForce</a></td>
+      <td> External force acting at the frame to which this component
            is connected and defined by 3 input signals,
-           that are interpreted as one vector resolved in frame world, frame_b or frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce.png\"></td>
+           that are interpreted as one vector resolved in frame world, frame_b or frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldTorque\">WorldTorque</a></td>
-      <td valign=\"top\"> External torque acting at the frame to which this component
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldTorque\">WorldTorque</a></td>
+      <td> External torque acting at the frame to which this component
            is connected and defined by 3 input signals,
-           that are interpreted as one vector resolved in frame world, frame_b or frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque.png\"></td>
+           that are interpreted as one vector resolved in frame world, frame_b or frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldForceAndTorque\">WorldForceAndTorque</a></td>
-      <td valign=\"top\"> External force and external torque acting at the frame
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.WorldForceAndTorque\">WorldForceAndTorque</a></td>
+      <td> External force and external torque acting at the frame
            to which this component
            is connected and defined by 3+3 input signals,
            that are interpreted as a force and as a torque vector
-           resolved in frame world, frame_b or frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce.png\"><br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque.png\">
+           resolved in frame world, frame_b or frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce.png\"><br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque.png\">
       </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Force\">Force</a></td>
-      <td valign=\"top\"> Force acting between two frames defined by 3 input signals
-           resolved in frame world, frame_a, frame_b or in frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce2.png\"></td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Force\">Force</a></td>
+      <td> Force acting between two frames defined by 3 input signals
+           resolved in frame world, frame_a, frame_b or in frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce2.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Torque\">Torque</a></td>
-      <td valign=\"top\"> Torque acting between two frames defined by 3 input signals
-           resolved in frame world, frame_a, frame_b or in frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque2.png\"></td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Torque\">Torque</a></td>
+      <td> Torque acting between two frames defined by 3 input signals
+           resolved in frame world, frame_a, frame_b or in frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque2.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.ForceAndTorque\">ForceAndTorque</a></td>
-      <td valign=\"top\"> Force and torque acting between two frames defined by 3+3 input signals
-           resolved in frame world, frame_a, frame_b or in frame_resolve. <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce2.png\"><br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque2.png\"></td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.ForceAndTorque\">ForceAndTorque</a></td>
+      <td> Force and torque acting between two frames defined by 3+3 input signals
+           resolved in frame world, frame_a, frame_b or in frame_resolve.<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowForce2.png\"><br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/ArrowTorque2.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.LineForceWithMass\">LineForceWithMass</a></td>
-      <td valign=\"top\">  General line force component with an optional point mass
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.LineForceWithMass\">LineForceWithMass</a></td>
+      <td>  General line force component with an optional point mass
             on the connection line. The force law can be defined by a
             component of Modelica.Mechanics.Translational<br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/LineForceWithMass.png\"></td>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/LineForceWithMass.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.LineForceWithTwoMasses\">LineForceWithTwoMasses</a></td>
-      <td valign=\"top\">  General line force component with two optional point masses
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.LineForceWithTwoMasses\">LineForceWithTwoMasses</a></td>
+      <td>  General line force component with two optional point masses
             on the connection line. The force law can be defined by a
             component of Modelica.Mechanics.Translational<br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/LineForceWithTwoMasses.png\"></td>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/LineForceWithTwoMasses.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Spring\">Spring</a></td>
-      <td valign=\"top\"> Linear translational spring with optional mass <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Spring2.png\"></td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Spring\">Spring</a></td>
+      <td> Linear translational spring with optional mass<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Spring2.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Damper\">Damper</a></td>
-      <td valign=\"top\"> Linear (velocity dependent) damper <br>
-           <IMG src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Damper2.png\"></td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.Damper\">Damper</a></td>
+      <td> Linear (velocity dependent) damper<br>
+           <img src=\"modelica://Modelica/Resources/Images/Mechanics/MultiBody/Forces/Damper2.png\"></td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.SpringDamperParallel\">SpringDamperParallel</a></td>
-      <td valign=\"top\"> Linear spring and damper in parallel connection </td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.SpringDamperParallel\">SpringDamperParallel</a></td>
+      <td> Linear spring and damper in parallel connection </td>
   </tr>
-  <tr><td valign=\"top\"><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.SpringDamperSeries\">SpringDamperSeries</a></td>
-      <td valign=\"top\"> Linear spring and damper in series connection </td>
+  <tr><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Forces.SpringDamperSeries\">SpringDamperSeries</a></td>
+      <td> Linear spring and damper in series connection </td>
   </tr>
 </table>
 </html>"));

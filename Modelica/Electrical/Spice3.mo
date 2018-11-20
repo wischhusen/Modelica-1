@@ -19,7 +19,7 @@ extends Modelica.Icons.Package;
 <p>The Spice3-library was built in accordance to the model structure in SPICE. It contains the following packages:</p>
 <ul>
 <li>Examples</li>
-<li>Basic (R, C, L, controlled sources) </li>
+<li>Basic (R, C, L, controlled sources)</li>
 <li>Semiconductors (MOS (P, N), BJT(NPN PNP), Diode, semiconductor resistor)</li>
 <li>Sources (constant, sinusoidal, exponential, pulse, piece wise linear, single-frequency FM, respectively for V and I)</li>
 <li>Additionals (useful features from SPICE2)</li>
@@ -38,8 +38,8 @@ extends Modelica.Icons.Package;
 <p>Within the semiconductor devices SPICE3 differentiates between technology parameters and device parameters. Device parameters can be chosen for every single model instance, e.g., the channel length of a transistor. Technology parameters which are specified in a model card (.model) are adjustable for more than one element simultaneously, e.g. the type of transistors. As usually done in Modelica the parameters of the modelcard can be set in a parameter list.</p>
 <p>To parametrize more than one model two ways are possible:</p>
 <ol>
-<li>Apart record:<br>For each transistor in the circuit a record with the technologyparameters is made available as an instance of the record modelcardMOS. In the example<br>&quot;inverterApartRecord&quot; this way is explained more in detail.</li>
-<li>Extended model:<br>For each set of technologyparameters a apart model has to be defined. In the example &quot;inverterExtendedModel&quot; this way is explained more in detail.</li>
+<li>Apart record:<br>For each transistor in the circuit a record with the technology parameters is made available as an instance of the record modelcardMOS. In the example<br>&quot;inverterApartRecord&quot; this way is explained more in detail.</li>
+<li>Extended model:<br>For each set of technology parameters a apart model has to be defined. In the example &quot;inverterExtendedModel&quot; this way is explained more in detail.</li>
 </ol>
 </html>"));
 
@@ -55,7 +55,7 @@ extends Modelica.Icons.Package;
 <table cellspacing=\"0\" cellpadding=\"0\" border=\"1\">
 <caption>Table 1: Translation of the SPICE3 netlist (left side) to Modelica (right side)</caption>
 <tr>
-<td valign=\"top\"><pre>
+<td><pre>
 inverter
 
 Mp1 11 1 13 11 MPmos
@@ -83,7 +83,7 @@ Vdrain 11 0 PULSE(0 5 0s 1s)
 
 .tran 0.01 5
 .end</pre></td>
-<td valign=\"top\"><pre>
+<td><pre>
 model inverter
   Spice3.Basic.Ground g;
   Spice3&hellip;M Mp1(mtype=true, M(GAMMA=0.37));
@@ -144,8 +144,8 @@ connect(p_out, n2);
     annotation (Documentation(info="<html>
 <p>In SPICE3 we have a predefined model pool. Each model device has got a code letter (e.g., resistor - R). In analogy to the SPICE3 models the models of the Spice3 library also got the according code letter in their names. The following examples shows the relationship:</p>
 <p>A typical SPICE3 line could be:</p>
-<p><b>C</b>1 3 2 1pF</p>
-<p>The first letter is the code letter (here <b>C</b>). It specifies the type of the model component (here capacitance). To see the analogy to the SPICE3 models in the Spice3 library the transformed capacitance has got the name <b>C</b>_Capacitance. According to that naming rule the components of the Spice3 library have the following names (the first letter is the code letter that has to be used in SPICE3):</p>
+<p><strong>C</strong>1 3 2 1pF</p>
+<p>The first letter is the code letter (here <strong>C</strong>). It specifies the type of the model component (here capacitance). To see the analogy to the SPICE3 models in the Spice3 library the transformed capacitance has got the name <strong>C</strong>_Capacitance. According to that naming rule the components of the Spice3 library have the following names (the first letter is the code letter that has to be used in SPICE3):</p>
 <ul>
 <li>R_Resistor</li>
 <li>C_Capacitance</li>
@@ -164,7 +164,7 @@ connect(p_out, n2);
 <li>V_exp, I_exp</li>
 <li>V_pulse, I_pulse</li>
 <li>V_pwl, I_pwl</li>
-<li>V_sffm, I_sffm<br/><b><br/></b></li>
+<li>V_sffm, I_sffm<br/><strong><br/></strong></li>
 </ul>
 </html>"));
   end NamingPrinciple;
@@ -182,28 +182,28 @@ connect(p_out, n2);
 
     annotation (Documentation(info="<html>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"0\"><tr>
-<td valign=\"top\"><p>[B&ouml;hme2009]</p></td>
-<td valign=\"top\"><p>S. B&ouml;hme, K. Majetta, C. Clauss, P. Schneider, &quot;Spice3 Modelica Library,&quot; <i>7th Modelica Conference</i>, Como, Italy (2009)</p></td>
+<td><p>[B&ouml;hme2009]</p></td>
+<td><p>S. B&ouml;hme, K. Majetta, C. Clauss, P. Schneider, &quot;Spice3 Modelica Library,&quot; <em>7th Modelica Conference</em>, Como, Italy (2009)</p></td>
 <td></td>
 </tr>
 <tr>
-<td valign=\"top\"><p>[Antognetti1988]</p></td>
-<td valign=\"top\"><p>P. Antognetti, G. Massobrio, <i>Semiconductor Device Modeling with SPICE.</i>, McGraw-Hill Book Company, USA, 1988</p></td>
+<td><p>[Antognetti1988]</p></td>
+<td><p>P. Antognetti, G. Massobrio, <em>Semiconductor Device Modeling with SPICE.</em>, McGraw-Hill Book Company, USA, 1988</p></td>
 <td></td>
 </tr>
 <tr>
-<td valign=\"top\"><p>[Connelly1992]</p></td>
-<td valign=\"top\"><p>A. Connelly, A, P. Choi, <i>Macromodeling with SPICE.</i>, Prentice-Hall, New Jersey, USA (1992)</p></td>
+<td><p>[Connelly1992]</p></td>
+<td><p>A. Connelly, A, P. Choi, <em>Macromodeling with SPICE.</em>, Prentice-Hall, New Jersey, USA (1992)</p></td>
 <td></td>
 </tr>
 <tr>
-<td valign=\"top\"><p>[Johnson1991]</p></td>
-<td valign=\"top\"><p>B. Johnson, T. Quarles, A.R. Newton, D. O. Pederson, A. Sangiovanni-Vincentelli, <i>SPICE3 Version 3f User's Manual.</i>, University of Berkeley, Department of Electrical Engineering and Computer Sciences, USA (1991): <a href=\"modelica://Modelica/Resources/Documentation/Electrical/Spice3/Spice_3f3_Users_Manual.pdf\">SPICE3 user's manual</a> (&copy; Regents of the University of California)</p></td>
+<td><p>[Johnson1991]</p></td>
+<td><p>B. Johnson, T. Quarles, A.R. Newton, D. O. Pederson, A. Sangiovanni-Vincentelli, <em>SPICE3 Version 3f User's Manual.</em>, University of Berkeley, Department of Electrical Engineering and Computer Sciences, USA (1991): <a href=\"modelica://Modelica/Resources/Documentation/Electrical/Spice3/Spice_3f3_Users_Manual.pdf\">SPICE3 user's manual</a> (&copy; Regents of the University of California)</p></td>
 <td></td>
 </tr>
 <tr>
-<td valign=\"top\"><p>[Kielkowski1994]</p></td>
-<td valign=\"top\"><p>R. Kielkowski, <i>Inside SPICE - Overcoming the obstacles of circuit simulation.</i>, McGraw-Hill, USA (1994)</p></td>
+<td><p>[Kielkowski1994]</p></td>
+<td><p>R. Kielkowski, <em>Inside SPICE - Overcoming the obstacles of circuit simulation.</em>, McGraw-Hill, USA (1994)</p></td>
 </tr>
 </table>
 </html>"));
@@ -219,24 +219,24 @@ connect(p_out, n2);
 </ul>
 </html>", revisions="<html>
 <ul>
-<li><i>15th March 2012 by Kristin Majetta</i><br/>SPICE3 benchmark RTL Inverter</li>
-<li><i>14th March 2012 by Kristin Majetta</i><br/>SPICE3 benchmark Mosfet characterisation</li>
-<li><i>14th March 2012 by Kristin Majetta</i><br/>SPICE3 benchmark Differential Pair added</li>
-<li><i>12th March 2012 by Kristin Majetta</i><br/>BJT model improved</li>
-<li><i>09th March 2012 by Kristin Majetta</i><br/>MOS Level 2 model added</li>
-<li><i>24th February 2012 by Kristin Majetta</i><br/>JFET model added</li>
-<li><i>23rd February 2012 by Kristin Majetta</i><br/>Semiconductor Capacitor added</li>
-<li><i>21st February 2012</i> by Kristin Majetta<br/>CoupledInductors (K) added</li>
-<li><i>March 2010</i> by Kristin Majetta<br/>Guidelines applied, User&apos;s Guide added</li>
-<li><i>February 2010</i> by Kristin Majetta<br/>Spice3 library added to MSL and examples revised</li>
-<li><i>September 2009 </i>by Kristin Majetta <br/>Bipolar transistor implemented</li>
-<li><i>August 2009 </i>by Jonathan Kress <br/>default values in sources improved</li>
-<li><i>August 2009 </i>by Kristin Majetta <br/>Bipolar transistor started</li>
-<li><i>April 2009 </i>by Kristin Majetta <br/>Semiconductor Resistor implemented</li>
-<li><i>March 2009 </i>by Kristin Majetta <br/>DIODE implemented</li>
-<li><i>25th February 2009 </i>by Kristin Majetta <br/>MOS Level 2 implemented</li>
-<li><i>15th October 2008 </i>by Kristin Majetta <br/>minor errors fixed in L_Inductor, I_Pulse and SpiceRoot</li>
-<li><i>April, 2008 </i>by Sandra Boehme <br/>initially implemented<br/></li>
+<li><em>15th March 2012 by Kristin Majetta</em><br/>SPICE3 benchmark RTL Inverter</li>
+<li><em>14th March 2012 by Kristin Majetta</em><br/>SPICE3 benchmark Mosfet characterisation</li>
+<li><em>14th March 2012 by Kristin Majetta</em><br/>SPICE3 benchmark Differential Pair added</li>
+<li><em>12th March 2012 by Kristin Majetta</em><br/>BJT model improved</li>
+<li><em>09th March 2012 by Kristin Majetta</em><br/>MOS Level 2 model added</li>
+<li><em>24th February 2012 by Kristin Majetta</em><br/>JFET model added</li>
+<li><em>23rd February 2012 by Kristin Majetta</em><br/>Semiconductor Capacitor added</li>
+<li><em>21st February 2012</em> by Kristin Majetta<br/>CoupledInductors (K) added</li>
+<li><em>March 2010</em> by Kristin Majetta<br/>Guidelines applied, User&#39;s Guide added</li>
+<li><em>February 2010</em> by Kristin Majetta<br/>Spice3 library added to MSL and examples revised</li>
+<li><em>September 2009</em> by Kristin Majetta <br/>Bipolar transistor implemented</li>
+<li><em>August 2009</em> by Jonathan Kress <br/>default values in sources improved</li>
+<li><em>August 2009</em> by Kristin Majetta <br/>Bipolar transistor started</li>
+<li><em>April 2009</em> by Kristin Majetta <br/>Semiconductor Resistor implemented</li>
+<li><em>March 2009</em> by Kristin Majetta <br/>DIODE implemented</li>
+<li><em>25th February 2009</em> by Kristin Majetta <br/>MOS Level 2 implemented</li>
+<li><em>15th October 2008</em> by Kristin Majetta <br/>minor errors fixed in L_Inductor, I_Pulse and SpiceRoot</li>
+<li><em>April, 2008</em> by Sandra Boehme <br/>initially implemented<br/></li>
 </ul>
 </html>"));
 
@@ -246,14 +246,14 @@ connect(p_out, n2);
     extends Modelica.Icons.Contact;
 
     annotation (Documentation(info="<html>
+<h4>Main Authors</h4>
 
-<h4>Main Authors:</h4>
 <dl>
-<dt><b>Kristin Majetta</b></dt>
+<dt><strong>Kristin Majetta</strong></dt>
 <dd>email: <a href=\"mailto:Kristin.Majetta@eas.iis.fraunhofer.de\">Kristin Majetta@eas.iis.fraunhofer.de</a></dd>
-<dt><b>Christoph Clauss</b></dt>
-<dd>email: <a href=\"mailto:Christoph.Clauss@eas.iis.fraunhofer.de\">Christoph.Clauss@eas.iis.fraunhofer.de</a></dd>
-<dt><b>Sandra Boehme</b></dt>
+<dt><strong>Christoph Clauss</strong></dt>
+<dd>email: <a href=\"mailto:christoph@clauss-it.com\">christoph@clauss-it.com</a></dd>
+<dt><strong>Sandra Boehme</strong></dt>
 <dd>email: <a href=\"mailto:Sandra.Boehme@eas.iis.fraunhofer.de\">Sandra.Boehme@eas.iis.fraunhofer.de</a></dd>
 </dl>
 
@@ -261,24 +261,25 @@ connect(p_out, n2);
 <dt>Address</dt>
 <dd>Fraunhofer Institute Integrated Circuits<br />
 Design Automation Division<br />
-Zeunerstrasse 38<br />
+Zeunerstra&szlig;e 38<br />
 01069 Dresden, Germany</dd>
 </dl>
 
-<h4>Acknowledgements:</h4>
+<h4>Acknowledgements</h4>
+
 <ul>
-<li>The development of this library was done within the European ITEA2 projects EUROSYSLIB and MODELISAR. </li>
+<li>The development of this library was done within the European ITEA2 projects EUROSYSLIB and MODELISAR.</li>
 <li>For his contribution we thank Mr. Jonathan Gerbet.</li>
 </ul>
 </html>"));
   end Contact;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
-<p>Package Spice3 is a <b>free</b> Modelica package</p>
-<p>This is a short <b>User's Guide</b> for the overall library.</p>
+<p>Package Spice3 is a <strong>free</strong> Modelica package</p>
+<p>This is a short <strong>User's Guide</strong> for the overall library.</p>
 </html>",   revisions="<html>
 <ul>
-<li><i>Feb 2010 </i>by Kristin Majetta initially written</li>
+<li><em>Feb 2010</em> by Kristin Majetta initially written</li>
 </ul>
 </html>"));
   end UsersGuide;
@@ -323,26 +324,21 @@ Zeunerstrasse 38<br />
             origin={40,-4})));
     equation
       connect(mn.D,mp. S) annotation (Line(
-          points={{-4,-14},{-4,8}},
-          color={0,0,255}));
+          points={{-4,-14},{-4,8}}, color={0,0,255}));
       connect(mp.G,mn. G) annotation (Line(
-          points={{-14,17.9},{-14,-24.1}},
-          color={0,0,255}));
+          points={{-14,17.9},{-14,-24.1}}, color={0,0,255}));
       connect(mn.S,mn. B) annotation (Line(
           points={{-4,-34},{6,-34},{6,-24}}));
       connect(mp.B,mp. D) annotation (Line(
-          points={{6,18},{6,28},{-4,28}},
-          color={0,0,255}));
+          points={{6,18},{6,28},{-4,28}}, color={0,0,255}));
       connect(mn.S, ground.p) annotation (Line(
           points={{-4,-34},{-4,-40}}));
       connect(v.p,mp. D) annotation (Line(
-          points={{40,6},{40,28},{-4,28}},
-          color={0,0,255}));
+          points={{40,6},{40,28},{-4,28}}, color={0,0,255}));
       connect(v.n, ground.p) annotation (Line(
           points={{40,-14},{40,-40},{-4,-40}}));
       connect(vin.p,mp. G) annotation (Line(
-          points={{-40,-6},{-40,17.9},{-14,17.9}},
-          color={0,0,255}));
+          points={{-40,-6},{-40,17.9},{-14,17.9}}, color={0,0,255}));
       connect(vin.n, ground.p) annotation (Line(
           points={{-40,-26},{-40,-40},{-4,-40}}));
       annotation (experiment(
@@ -351,10 +347,10 @@ Zeunerstrasse 38<br />
           Tolerance=1e-7),
         Documentation(info="<html>
 <p>An inverter is an electrical circuit that consists of a PMOS and a NMOS transistor. Its task is to turn the input voltage from high potential to low potential or the other way round.</p>
-<p>Simulate until 1.e-11 s. Display the input voltage Vin.p.v as well as the output voltage mp.S.v. It shows that the input voltage is inverted.</p>
+<p>Simulate until 1e-11 s. Display the input voltage vin.p.v as well as the output voltage mp.S.v. It shows that the input voltage is inverted.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>March 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"));
     end Inverter;
@@ -366,7 +362,7 @@ Zeunerstrasse 38<br />
       Basic.Ground ground annotation (Placement(transformation(extent={{-38,-80},
                 {-18,-60}})));
     //--------------------------------------------------------------------------------------------------------------
-    /*apart record: For each transistor in the circuit a record with the technologyparameters is made available
+    /*apart record: For each transistor in the circuit a record with the technology parameters is made available
   as an instance of the record modelcardMOS */
       parameter Semiconductors.ModelcardMOS MPmos(GAMMA=0.37, CBD=0, CBS=0)
         "Specified modelcardMOS for MPmos"; //instance of record modelcardMOS
@@ -411,25 +407,20 @@ Zeunerstrasse 38<br />
             origin={60,-32})));
     equation
       connect(mp1.B, mp1.D) annotation (Line(points={{-18,30},{-18,40},{-28,
-              40}},
-            color={0,0,255}));
+              40}}, color={0,0,255}));
       connect(mn1.S, ground.p)
         annotation (Line(points={{-28,-30},{-28,-60}}, color={0,0,255}));
       connect(mp1.S, mn1.D)
         annotation (Line(points={{-28,20},{-28,-10}}, color={0,0,255}));
-      connect(mn1.G, mp1.G) annotation (Line(points={{-38,-20.1},{-38,29.9}},
-            color={0,0,255}));
+      connect(mn1.G, mp1.G) annotation (Line(points={{-38,-20.1},{-38,29.9}}, color={0,0,255}));
       connect(mn1.B, mn1.S) annotation (Line(points={{-18,-20},{-18,-30},{-28,
-              -30}},
-            color={0,0,255}));
-      connect(mp2.B, mp2.D) annotation (Line(points={{22,30},{22,40},{12,40}},
-            color={0,0,255}));
+              -30}}, color={0,0,255}));
+      connect(mp2.B, mp2.D) annotation (Line(points={{22,30},{22,40},{12,40}}, color={0,0,255}));
       connect(mn2.S, ground.p) annotation (Line(points={{12,-30},{12,-60},{-28,
               -60}}, color={0,0,255}));
       connect(mp2.S, mn2.D)
         annotation (Line(points={{12,20},{12,-10}}, color={0,0,255}));
-      connect(mn2.G, mp2.G) annotation (Line(points={{2,-20.1},{2,29.9}},
-            color={0,0,255}));
+      connect(mn2.G, mp2.G) annotation (Line(points={{2,-20.1},{2,29.9}}, color={0,0,255}));
       connect(mn2.B, mn2.S) annotation (Line(points={{22,-20},{22,-30},{12,
               -30}}, color={0,0,255}));
       connect(mp2.G, mn1.D) annotation (Line(points={{2,29.9},{2,0},{-28,0},{
@@ -443,29 +434,26 @@ Zeunerstrasse 38<br />
       connect(c1.n, ground.p) annotation (Line(points={{-8,-40},{-8,-60},{-28,
               -60}}, color={0,0,255}));
       connect(mp1.G, vin.p) annotation (Line(
-          points={{-38,29.9},{-60,29.9},{-60,-22}},
-          color={0,0,255}));
+          points={{-38,29.9},{-60,29.9},{-60,-22}}, color={0,0,255}));
       connect(vin.n, ground.p) annotation (Line(
           points={{-60,-42},{-60,-60},{-28,-60}}));
       connect(v.p, mp2.D) annotation (Line(
-          points={{60,-22},{60,40},{12,40}},
-          color={0,0,255}));
+          points={{60,-22},{60,40},{12,40}}, color={0,0,255}));
       connect(mp1.D, mp2.D) annotation (Line(
-          points={{-28,40},{12,40}},
-          color={0,0,255}));
+          points={{-28,40},{12,40}}, color={0,0,255}));
       connect(v.n, ground.p) annotation (Line(
           points={{60,-42},{60,-60},{-28,-60}}));
       annotation (experiment(StopTime=5),
         Documentation(info="<html>
-<p>An inverter is an electrical circuit that consists of a PMOS and a NMOS. Its task is to turn the input voltage from high potential to low potential or the other way round. This circuit <i>InverterApartModel</i> contains two inverters. The input voltage of the first inverter is nearly equal to the output voltage of the second inverter. Capacities cause some differences.</p>
+<p>An inverter is an electrical circuit that consists of a PMOS and a NMOS. Its task is to turn the input voltage from high potential to low potential or the other way round. This circuit <em>InverterApartModel</em> contains two inverters. The input voltage of the first inverter is nearly equal to the output voltage of the second inverter. Capacities cause some differences.</p>
 <p>To see the typical behavior of the circuit the input voltages and the output voltages should be plotted. Besides that it can be interesting to watch the output voltage of the first inverter. Simulated until t=5s.</p>
 <p>Input voltages: vin.p.v and v.p.v</p>
-<p>Output voltage of the first inverter: mn1.ND.v</p>
-<p>Output voltage of the second Inverter: mn2.ND.v</p>
+<p>Output voltage of the first inverter: mn1.D.v</p>
+<p>Output voltage of the second Inverter: mn2.D.v</p>
 <p>This example shows one possibility to make the record of the technology parameters available for more than one transistor. For each transistor in the circuit a record with the technology parameters is made available as an instance of the record modelcardMOS. In this circuit we need two different records for technology parameters, one for PMOS (MPmos) and one for NMOS (MNmos). This instances of the record for the technology parameters were made available for every transistor as one of theirs parameters (Spice3.Repository.MOS mn1(mtype=0, modelcard=MNmos).</p>
 </html>", revisions="<html>
 <ul>
-<li><i>April 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>April 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"));
     end InvertersApartRecord;
@@ -484,7 +472,7 @@ Zeunerstrasse 38<br />
         parameter Semiconductors.ModelcardMOS M(GAMMA=0.37, CBD=0, CBS=0);
         extends Semiconductors.M_PMOS(modelcard=M);
         annotation (Documentation(info="<html>
-<p>This model MPmos is inherited by the model <i>InverterExtendedModel</i> to build an inverter circuit. For detailed information</p><p>please see <i>InverterExtendedModel</i>.</p>
+<p>This model MPmos is inherited by the model <em>InverterExtendedModel</em> to build an inverter circuit. For detailed information</p><p>please see <em>InverterExtendedModel</em>.</p>
 </html>"));
       end MPmos;
 
@@ -492,7 +480,7 @@ Zeunerstrasse 38<br />
         parameter Semiconductors.ModelcardMOS M(GAMMA=0.37, LAMBDA=0.02, CBD=0, CBS=0);
         extends Semiconductors.M_NMOS(modelcard=M);
         annotation (Documentation(info="<html>
-<p>This model MNmos is inherited by the model <i>InverterExtendedModel</i> to build an inverter circuit. For detailed information</p><p>please see <i>InverterExtendedModel</i>.</p>
+<p>This model MNmos is inherited by the model <em>InverterExtendedModel</em> to build an inverter circuit. For detailed information</p><p>please see <em>InverterExtendedModel</em>.</p>
 </html>"));
       end MNmos;
 
@@ -529,60 +517,48 @@ Zeunerstrasse 38<br />
             rotation=270,
             origin={56,-22})));
     equation
-      connect(mp1.B, mp1.D) annotation (Line(points={{-20,30},{-20,40},{-30,40}},
-            color={0,0,255}));
+      connect(mp1.B, mp1.D) annotation (Line(points={{-20,30},{-20,40},{-30,40}}, color={0,0,255}));
       connect(mn1.S, ground.p)
         annotation (Line(points={{-30,-30},{-30,-60}}, color={0,0,255}));
       connect(mp1.S, mn1.D)
         annotation (Line(points={{-30,20},{-30,-10}}, color={0,0,255}));
-      connect(mn1.G, mp1.G) annotation (Line(points={{-40,-20.1},{-40,29.9}},
-            color={0,0,255}));
-      connect(mn1.B, mn1.S) annotation (Line(points={{-20,-20},{-20,-30},{-30,-30}},
-            color={0,0,255}));
-      connect(mp2.B, mp2.D) annotation (Line(points={{20,30},{20,40},{10,40}},
-            color={0,0,255}));
-      connect(mn2.S, ground.p) annotation (Line(points={{10,-30},{10,-60},{-30,-60}},
-                     color={0,0,255}));
+      connect(mn1.G, mp1.G) annotation (Line(points={{-40,-20.1},{-40,29.9}}, color={0,0,255}));
+      connect(mn1.B, mn1.S) annotation (Line(points={{-20,-20},{-20,-30},{-30,-30}}, color={0,0,255}));
+      connect(mp2.B, mp2.D) annotation (Line(points={{20,30},{20,40},{10,40}}, color={0,0,255}));
+      connect(mn2.S, ground.p) annotation (Line(points={{10,-30},{10,-60},{-30,-60}}, color={0,0,255}));
       connect(mp2.S, mn2.D)
         annotation (Line(points={{10,20},{10,-10}}, color={0,0,255}));
-      connect(mn2.G, mp2.G) annotation (Line(points={{0,-20.1},{0,29.9}},
-            color={0,0,255}));
-      connect(mn2.B, mn2.S) annotation (Line(points={{20,-20},{20,-30},{10,-30}},
-                     color={0,0,255}));
-      connect(mp2.G, mn1.D) annotation (Line(points={{0,29.9},{0,0},{-30,0},{-30,-10}},
-                          color={0,0,255}));
+      connect(mn2.G, mp2.G) annotation (Line(points={{0,-20.1},{0,29.9}}, color={0,0,255}));
+      connect(mn2.B, mn2.S) annotation (Line(points={{20,-20},{20,-30},{10,-30}}, color={0,0,255}));
+      connect(mp2.G, mn1.D) annotation (Line(points={{0,29.9},{0,0},{-30,0},{-30,-10}}, color={0,0,255}));
       connect(c1.p, mn1.D) annotation (Line(points={{-10,-20},{-10,0},{-30,0},{
               -30,-10}}, color={0,0,255}));
-      connect(mn2.D, c2.p) annotation (Line(points={{10,-10},{10,0},{32,0},{32,-20}},
-                     color={0,0,255}));
+      connect(mn2.D, c2.p) annotation (Line(points={{10,-10},{10,0},{32,0},{32,-20}}, color={0,0,255}));
       connect(c2.n, ground.p) annotation (Line(points={{32,-40},{32,-60},{-30,
               -60}}, color={0,0,255}));
       connect(c1.n, ground.p) annotation (Line(points={{-10,-40},{-10,-60},{-30,
               -60}}, color={0,0,255}));
       connect(vin.p, mp1.G) annotation (Line(
-          points={{-60,-12},{-60,26},{-40,26},{-40,29.9}},
-          color={0,0,255}));
+          points={{-60,-12},{-60,26},{-40,26},{-40,29.9}}, color={0,0,255}));
       connect(vin.n, ground.p) annotation (Line(
           points={{-60,-32},{-60,-60},{-30,-60}}));
       connect(v.p, mp2.D) annotation (Line(
-          points={{56,-12},{56,40},{10,40}},
-          color={0,0,255}));
+          points={{56,-12},{56,40},{10,40}}, color={0,0,255}));
       connect(mp2.D, mp1.D) annotation (Line(
-          points={{10,40},{-30,40}},
-          color={0,0,255}));
+          points={{10,40},{-30,40}}, color={0,0,255}));
       connect(v.n, ground.p) annotation (Line(
           points={{56,-32},{56,-60},{-30,-60}}));
       annotation (experiment(StopTime=5),
         Documentation(info="<html>
-<p>An inverter is an electrical circuit that consists of a PMOS and a NMOS. Its task is to turn the input voltage from high potential to low potential or the other way round. This circuit <i>InverterExtendedModel</i> contains two inverters. The input voltage of the first inverter is nearly equal to the output voltage of the second inverter. Capacities cause some differences.</p>
+<p>An inverter is an electrical circuit that consists of a PMOS and a NMOS. Its task is to turn the input voltage from high potential to low potential or the other way round. This circuit <em>InverterExtendedModel</em> contains two inverters. The input voltage of the first inverter is nearly equal to the output voltage of the second inverter. Capacities cause some differences.</p>
 <p>To see the typical behavior of the circuit the input voltages and the output voltages should be plotted. Besides that it can be interesting to watch the output voltage of the first inverter. Simulated until t=5s.</p>
 <p>Input voltages: vin.p.v and v.p.v</p>
-<p>Output voltage of the first inverter: mn1.ND.v</p>
-<p>Output voltage of the second Inverter: mn2.ND.v</p>
-<p>This example shows one possibility to make the record of the technology parameters available for more than one transistor. For each set of technology parameters an apart model has to be defined (in this example: MPmos ans MNmos). Inside the model definition the technology parameters are appointed (Spice3.Semiconductors.modelcardMOS M(GAMMA=0.37, LAMBDA=0.02)). Every model extends a transistor. In this process the required technologyparameters are specified (extends Spice3.Repository.MOS(final mtype=1, modelcard=M). To make transistors available in the circuit instances of the defined models are applied (MPmos mp1; MNmos mn1; MPmos mp2; MNmos mn2;).</p>
+<p>Output voltage of the first inverter: mn1.D.v</p>
+<p>Output voltage of the second Inverter: mn2.D.v</p>
+<p>This example shows one possibility to make the record of the technology parameters available for more than one transistor. For each set of technology parameters an apart model has to be defined (in this example: MPmos ans MNmos). Inside the model definition the technology parameters are appointed (Spice3.Semiconductors.modelcardMOS M(GAMMA=0.37, LAMBDA=0.02)). Every model extends a transistor. In this process the required technology parameters are specified (extends Spice3.Repository.MOS(final mtype=1, modelcard=M). To make transistors available in the circuit instances of the defined models are applied (MPmos mp1; MNmos mn1; MPmos mp2; MNmos mn2;).</p>
 </html>", revisions="<html>
 <ul>
-<li><i>April 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>April 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"));
     end InvertersExtendedModel;
@@ -595,9 +571,9 @@ Zeunerstrasse 38<br />
                 {-54,-60}})));
 
       parameter Semiconductors.ModelcardMOS modp(CBD=0, CBS=0)
-        "private PMOS modelcard";
+        "Private PMOS modelcard";
       parameter Semiconductors.ModelcardMOS modn(CBD=0, CBS=0)
-        "private NMOS modelcard";
+        "Private NMOS modelcard";
 
       Semiconductors.M_PMOS mp1(modelcard=modp, IC=-1e40)
                 annotation (Placement(transformation(extent={{-74,20},{-54,40}})));
@@ -609,10 +585,10 @@ Zeunerstrasse 38<br />
                 annotation (Placement(transformation(extent={{-34,-30},{-14,-10}})));
       Semiconductors.M_PMOS mp3(modelcard=modp, IC=-1e40)
                 annotation (Placement(transformation(extent={{6,20},{26,40}})));
-      Semiconductors.M_PMOS mp4(modelcard=modn, IC=-1e40)
-                annotation (Placement(transformation(extent={{46,20},{66,40}})));
       Semiconductors.M_NMOS mn3(modelcard=modp, IC=-1e40)
                 annotation (Placement(transformation(extent={{6,-30},{26,-10}})));
+      Semiconductors.M_PMOS mp4(modelcard=modn, IC=-1e40)
+                annotation (Placement(transformation(extent={{46,20},{66,40}})));
       Semiconductors.M_NMOS mn4(modelcard=modn, IC=-1e40)
                 annotation (Placement(transformation(extent={{46,-30},{66,-10}})));
       Basic.C_Capacitor c1(C=10e-6,
@@ -657,35 +633,27 @@ Zeunerstrasse 38<br />
             origin={92,-48})));
     equation
       connect(mp1.B, mp1.D) annotation (Line(points={{-54,30},{-54,40},{-64,
-              40}},
-            color={0,0,255}));
+              40}}, color={0,0,255}));
       connect(mn1.S, ground.p)
         annotation (Line(points={{-64,-30},{-64,-60}}, color={0,0,255}));
       connect(mp1.S, mn1.D)
         annotation (Line(points={{-64,20},{-64,-10}}, color={0,0,255}));
-      connect(mn1.G, mp1.G) annotation (Line(points={{-74,-20.1},{-74,29.9}},
-            color={0,0,255}));
+      connect(mn1.G, mp1.G) annotation (Line(points={{-74,-20.1},{-74,29.9}}, color={0,0,255}));
       connect(mn1.B, mn1.S) annotation (Line(points={{-54,-20},{-54,-30},{-64,
-              -30}},
-            color={0,0,255}));
+              -30}}, color={0,0,255}));
       connect(mp2.B, mp2.D) annotation (Line(points={{-14,30},{-14,40},{-24,
-              40}},
-            color={0,0,255}));
+              40}}, color={0,0,255}));
       connect(mn2.S, ground.p) annotation (Line(points={{-24,-30},{-24,-60},{
-              -64,-60}},
-                     color={0,0,255}));
+              -64,-60}}, color={0,0,255}));
       connect(mp2.S, mn2.D)
-        annotation (Line(points={{-24,20},{-24,-10}},
-                                                    color={0,0,255}));
-      connect(mn2.G, mp2.G) annotation (Line(points={{-34,-20.1},{-34,29.9}},
-            color={0,0,255}));
+        annotation (Line(points={{-24,20},{-24,-10}}, color={0,0,255}));
+      connect(mn2.G, mp2.G) annotation (Line(points={{-34,-20.1},{-34,29.9}}, color={0,0,255}));
       connect(mn2.B, mn2.S) annotation (Line(points={{-14,-20},{-14,-30},{-24,
               -30}}, color={0,0,255}));
       connect(c1.p, mn1.D) annotation (Line(points={{-44,-20},{-44,0},{-64,0},
-              {-64,-10}},color={0,0,255}));
+              {-64,-10}}, color={0,0,255}));
       connect(mn2.D, c2.p) annotation (Line(points={{-24,-10},{-24,0},{-2,0},{
-              -2,-20}},
-                     color={0,0,255}));
+              -2,-20}}, color={0,0,255}));
       connect(c2.n, ground.p) annotation (Line(points={{-2,-40},{-2,-60},{-64,
               -60}}, color={0,0,255}));
       connect(c1.n, ground.p) annotation (Line(points={{-44,-40},{-44,-60},{-64,
@@ -698,10 +666,8 @@ Zeunerstrasse 38<br />
               -30}}, color={0,0,255}));
       connect(mn3.B, mn3.S) annotation (Line(points={{26,-20},{26,-30},{16,
               -30}}, color={0,0,255}));
-      connect(mp3.B, mp3.D) annotation (Line(points={{26,30},{26,40},{16,40}},
-            color={0,0,255}));
-      connect(mp4.B, mp4.D) annotation (Line(points={{66,30},{66,40},{56,40}},
-                    color={0,0,255}));
+      connect(mp3.B, mp3.D) annotation (Line(points={{26,30},{26,40},{16,40}}, color={0,0,255}));
+      connect(mp4.B, mp4.D) annotation (Line(points={{66,30},{66,40},{56,40}}, color={0,0,255}));
       connect(mp3.S, mn3.D)
         annotation (Line(points={{16,20},{16,-10}}, color={0,0,255}));
       connect(mp4.S, mn4.D)
@@ -716,40 +682,33 @@ Zeunerstrasse 38<br />
               -10}}, color={0,0,255}));
       connect(c2.p, mn3.G) annotation (Line(points={{-2,-20},{2,-20},{2,-20.1},
               {6,-20.1}}, color={0,0,255}));
-      connect(mn3.G, mp3.G) annotation (Line(points={{6,-20.1},{6,29.9}},
-            color={0,0,255}));
+      connect(mn3.G, mp3.G) annotation (Line(points={{6,-20.1},{6,29.9}}, color={0,0,255}));
       connect(c3.p, mn4.G) annotation (Line(points={{36,-20},{41,-20},{41,
               -20.1},{46,-20.1}}, color={0,0,255}));
-      connect(mn4.G, mp4.G) annotation (Line(points={{46,-20.1},{46,29.9}},
-            color={0,0,255}));
+      connect(mn4.G, mp4.G) annotation (Line(points={{46,-20.1},{46,29.9}}, color={0,0,255}));
       connect(c1.p, mn2.G) annotation (Line(points={{-44,-20},{-39,-20},{-39,
-              -20.1},{-34,-20.1}},color={0,0,255}));
+              -20.1},{-34,-20.1}}, color={0,0,255}));
       connect(vin.p, mn1.G) annotation (Line(
-          points={{-86,-32},{-86,0},{-74,0},{-74,-20.1}},
-          color={0,0,255}));
+          points={{-86,-32},{-86,0},{-74,0},{-74,-20.1}}, color={0,0,255}));
       connect(vin.n, ground.p) annotation (Line(
           points={{-86,-52},{-86,-60},{-64,-60}}));
       connect(v.p, mp4.D) annotation (Line(
-          points={{92,-38},{92,40},{56,40}},
-          color={0,0,255}));
+          points={{92,-38},{92,40},{56,40}}, color={0,0,255}));
       connect(v.n, ground.p) annotation (Line(
           points={{92,-58},{92,-60},{-64,-60}}));
       connect(mp3.D, mp4.D) annotation (Line(
-          points={{16,40},{56,40}},
-          color={0,0,255}));
+          points={{16,40},{56,40}}, color={0,0,255}));
       connect(mp2.D, mp3.D) annotation (Line(
-          points={{-24,40},{16,40}},
-          color={0,0,255}));
+          points={{-24,40},{16,40}}, color={0,0,255}));
       connect(mp1.D, mp2.D) annotation (Line(
-          points={{-64,40},{-24,40}},
-          color={0,0,255}));
+          points={{-64,40},{-24,40}}, color={0,0,255}));
       annotation (experiment(StopTime=5),
         Documentation(info="<html>
-<p>This circuit that contains four inverter was designed to show the functionality of the MOS transistor models. To see the behavior of the circuit the output voltages of each inverter should be displayed (mp1.NS.v, mp2.NS.v, mp3.NS.v, mp4.NS.v). The output voltages of the second an fourth inverter and the input voltage of the first inverter have the same potential. The output voltages of the first and third inverter have the opposite potential compared with inverter 2 and 4.</p>
-<p>Simulate until t=5s. The output values should be: mp1.NS.v, mp2.NS.v, mp3.NS.v, mp4.NS.v and vgate.p.v</p>
+<p>This circuit that contains four inverter was designed to show the functionality of the MOS transistor models. To see the behavior of the circuit the output voltages of each inverter should be displayed (mp1.S.v, mp2.S.v, mp3.S.v, mp4.S.v). The output voltages of the second an fourth inverter and the input voltage of the first inverter have the same potential. The output voltages of the first and third inverter have the opposite potential compared with inverter 2 and 4.</p>
+<p>Simulate until t=5s. The output values should be: mp1.S.v, mp2.S.v, mp3.S.v and mp4.S.v</p>
 </html>", revisions="<html>
 <ul>
-<li><i>April 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>April 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"));
     end FourInverters;
@@ -806,43 +765,38 @@ Zeunerstrasse 38<br />
       connect(mp2.D, mp1.D)
         annotation (Line(points={{34,44},{-12,44}}, color={0,0,255}));
       connect(mp1.G, mn1.G) annotation (Line(points={{-22,33.9},{-22,
-              16},{-24,16},{-24,-0.1}},
-                      color={0,0,255}));
+              16},{-24,16},{-24,-0.1}}, color={0,0,255}));
       connect(mp1.G, vin1.p) annotation (Line(points={{-22,33.9},{-38,33.9},
               {-38,34},{-50,34}}, color={0,0,255}));
       connect(vin1.n, ground.p) annotation (Line(points={{-50,14},{-62,14},{
-              -62,-80},{30,-80}},color={0,0,255}));
+              -62,-80},{30,-80}}, color={0,0,255}));
       connect(mp2.G, mn2.G) annotation (Line(points={{24,33.9},{24,14},
-              {-32,14},{-32,-34.1},{-24,-34.1}},
-                                              color={0,0,255}));
+              {-32,14},{-32,-34.1},{-24,-34.1}}, color={0,0,255}));
       connect(mn2.G, vin2.p) annotation (Line(points={{-24,-34.1},{-38,
-              -34.1},{-38,-34},{-52,-34}},
-                                  color={0,0,255}));
+              -34.1},{-38,-34},{-52,-34}}, color={0,0,255}));
       connect(vin2.n, ground.p) annotation (Line(points={{-52,-54},{-52,-80},{
-              30,-80}},color={0,0,255}));
+              30,-80}}, color={0,0,255}));
       connect(mn2.S, ground.p) annotation (Line(points={{-14,-44},{-14,-80},
-              {30,-80}},color={0,0,255}));
+              {30,-80}}, color={0,0,255}));
       connect(mn1.B, mn2.B)
         annotation (Line(points={{-4,0},{-4,-34}}, color={0,0,255}));
       connect(mn2.B, mn2.S) annotation (Line(points={{-4,-34},{-4,-44},
               {-14,-44}}, color={0,0,255}));
       connect(mn1.S, mn2.D)
-        annotation (Line(points={{-14,-10},{-14,-24}},
-                                                    color={0,0,255}));
+        annotation (Line(points={{-14,-10},{-14,-24}}, color={0,0,255}));
       connect(mp1.S, mn1.D)
-        annotation (Line(points={{-12,24},{-12,18},{-14,18},{-14,10}},
-                                                     color={0,0,255}));
+        annotation (Line(points={{-12,24},{-12,18},{-14,18},{-14,10}}, color={0,0,255}));
       connect(mp2.S, mn1.D) annotation (Line(points={{34,24},{34,10},
               {-14,10}}, color={0,0,255}));
       connect(vconstant.n, ground.p) annotation (Line(points={{62,24},{62,-80},
-              {30,-80}},color={0,0,255}));
+              {30,-80}}, color={0,0,255}));
       annotation (Documentation(info="<html>
 <p>In nearly every electronic the basic circuit &quot;nand&quot; are used. A nand contains two PMOS and two NMOS. The faulty wiring can be seen in the graphical mode. If and only if the two input voltages have high potential, the output voltage has low potential, otherwise the output voltage has high potential.</p>
 <p>Nand truth table (1 means true, it is represented by the 5V voltage):</p>
 <table cellspacing=\"2\" cellpadding=\"0\" border=\"1\"><tr>
 <td><p>input voltage vin1</p></td>
 <td><p>input voltage vin2</p></td>
-<td><p>output voltage mNMOS1.NS</p></td>
+<td><p>output voltage mn1.D</p></td>
 </tr>
 <tr>
 <td><p>0</p></td>
@@ -865,10 +819,10 @@ Zeunerstrasse 38<br />
 <td><p>0</p></td>
 </tr>
 </table>
-<p>Simulate until t=2e-7s. Display the two input voltages vin1.p.v and vin2.p.v and the output voltage mNMOS1.ND.v, which becomes zero only if both input values are high.</p>
+<p>Simulate until t=2e-7s. Display the two input voltages vin1.p.v and vin2.p.v and the output voltage mn1.D.v, which becomes zero only if both input values are high.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>May 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>May 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"),
         experiment(StopTime=2e-007));
@@ -948,39 +902,31 @@ Zeunerstrasse 38<br />
       connect(mn2.B, mn2.S) annotation (Line(points={{52,-34},{52,-44},
               {42,-44}}, color={0,0,255}));
       connect(mn2.S, ground.p) annotation (Line(points={{42,-44},{38,-44},
-              {38,-80}},
-                       color={0,0,255}));
+              {38,-80}}, color={0,0,255}));
       connect(mn1.S, ground.p) annotation (Line(points={{-6,-44},{-6,-80},{
               38,-80}}, color={0,0,255}));
       connect(vin2.p, mn1.G) annotation (Line(points={{-44,-34},{-29,
-              -34},{-29,-34.1},{-16,-34.1}},
-                                      color={0,0,255}));
+              -34},{-29,-34.1},{-16,-34.1}}, color={0,0,255}));
       connect(vin2.n, ground.p) annotation (Line(points={{-44,-54},{-44,-80},
-              {38,-80}},color={0,0,255}));
+              {38,-80}}, color={0,0,255}));
       connect(vin1.p, mp1.G) annotation (Line(points={{-42,34},{-29,34},
               {-29,33.9},{-16,33.9}}, color={0,0,255}));
       connect(vin1.n, ground.p) annotation (Line(points={{-42,14},{-64,14},{
-              -64,-80},{38,-80}},color={0,0,255}));
+              -64,-80},{38,-80}}, color={0,0,255}));
       connect(mp1.S, mp2.D)
         annotation (Line(points={{-6,24},{-6,14}}, color={0,0,255}));
-      connect(mp2.S, mn1.D) annotation (Line(points={{-6,-6},{-6,-24}},
-            color={0,0,255}));
-      connect(mn2.D, mn1.D) annotation (Line(points={{42,-24},{-6,-24}},
-            color={0,0,255}));
+      connect(mp2.S, mn1.D) annotation (Line(points={{-6,-6},{-6,-24}}, color={0,0,255}));
+      connect(mn2.D, mn1.D) annotation (Line(points={{42,-24},{-6,-24}}, color={0,0,255}));
       connect(vin2.p, mp2.G) annotation (Line(points={{-44,-34},{-44,4},
               {-16,4},{-16,3.9}}, color={0,0,255}));
       connect(vin1.p, mn2.G) annotation (Line(points={{-42,34},{-28,34},
-              {-28,-18},{32,-18},{32,-34.1}},
-                                         color={0,0,255}));
+              {-28,-18},{32,-18},{32,-34.1}}, color={0,0,255}));
       connect(mp1.B, mp1.D) annotation (Line(
-          points={{4,34},{4,44},{-6,44}},
-          color={0,0,255}));
+          points={{4,34},{4,44},{-6,44}}, color={0,0,255}));
       connect(mp2.B, mp1.B) annotation (Line(
-          points={{4,4},{4,34}},
-          color={0,0,255}));
+          points={{4,4},{4,34}}, color={0,0,255}));
       connect(v.p, mp1.D) annotation (Line(
-          points={{62,44},{-6,44}},
-          color={0,0,255}));
+          points={{62,44},{-6,44}}, color={0,0,255}));
       connect(v.n, ground.p) annotation (Line(
           points={{62,24},{62,-80},{38,-80}}));
       annotation (Documentation(info="<html>
@@ -989,7 +935,7 @@ Zeunerstrasse 38<br />
 <table cellspacing=\"2\" cellpadding=\"0\" border=\"1\"><tr>
 <td><p>input voltage vin1</p></td>
 <td><p>input voltage vin2</p></td>
-<td><p>output voltage m_PMOS1.NS</p></td>
+<td><p>output voltage mp1.S</p></td>
 </tr>
 <tr>
 <td><p>0</p></td>
@@ -1012,11 +958,11 @@ Zeunerstrasse 38<br />
 <td><p>0</p></td>
 </tr>
 </table>
-<p>Simulate until t=5s. Display the two input voltages vin1.p.v and vin2.p.v and the output voltage mPMOS1.NS.v.</p>
+<p>Simulate until t=5s. Display the two input voltages vin1.p.v and vin2.p.v and the output voltage mp1.S.v.</p>
 <p>The output value in the example shows a behaviour &quot;near&quot; the one of the truth table, since the capacitances are huge. Therefore loading is not finished before the next input changes.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2009 </i>by Kristin Majetta initially implemented</li>
+<li><em>March 2009</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"),
         experiment(StopTime=5));
@@ -1057,26 +1003,21 @@ Zeunerstrasse 38<br />
       connect(D1.n, D3.p) annotation (Line(
           points={{10,14},{20,14},{20,2}}));
       connect(D2.p, D1.p) annotation (Line(
-          points={{-20,2},{-20,14},{-10,14}},
-          color={0,0,255}));
+          points={{-20,2},{-20,14},{-10,14}}, color={0,0,255}));
       connect(D4.n, D3.n) annotation (Line(
           points={{11,-30},{20,-30},{20,-18}}));
       connect(D4.p, D2.n) annotation (Line(
-          points={{-9,-30},{-20,-30},{-20,-18}},
-          color={0,0,255}));
+          points={{-9,-30},{-20,-30},{-20,-18}}, color={0,0,255}));
       connect(D4.p, ground.p) annotation (Line(
-          points={{-9,-30},{-20,-30},{-20,-40}},
-          color={0,0,255}));
+          points={{-9,-30},{-20,-30},{-20,-40}}, color={0,0,255}));
       connect(vsin.n, ground.p) annotation (Line(
           points={{-44,-18},{-44,-40},{-20,-40}}));
       connect(D4.n, rout.p) annotation (Line(
           points={{11,-30},{42,-30},{42,-17}}));
       connect(rout.n, D1.p) annotation (Line(
-          points={{42,3},{42,26},{-20,26},{-20,14},{-10,14}},
-          color={0,0,255}));
+          points={{42,3},{42,26},{-20,26},{-20,14},{-10,14}}, color={0,0,255}));
       connect(D3.p, vsin.p) annotation (Line(
-          points={{20,2},{20,40},{-44,40},{-44,2}},
-          color={0,0,255}));
+          points={{20,2},{20,40},{-44,40},{-44,2}}, color={0,0,255}));
       annotation (
         experiment(StopTime=0.025),
         Documentation(info="<html>
@@ -1084,7 +1025,7 @@ Zeunerstrasse 38<br />
 <p>Simulator until 0.025 s. Then display the input voltage vsin.p.v. The rout.p.v voltage is the rectified voltage result, which is pulsing mostly in the positive range.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>Jan. 2010 </i>by Kristin Majetta initially implemented</li>
+<li><em>Jan. 2010</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"));
     end Graetz;
@@ -1151,40 +1092,31 @@ Zeunerstrasse 38<br />
       connect(r2.n,r3. n) annotation (Line(
           points={{18,30},{50,30}}));
       connect(r.p,c. p) annotation (Line(
-          points={{-36,10},{-32,10}},
-          color={0,0,255}));
+          points={{-36,10},{-32,10}}, color={0,0,255}));
       connect(c.n,r1. p) annotation (Line(
           points={{-12,10},{-6,10}}));
       connect(r2.p,c1. p) annotation (Line(
-          points={{18,10},{24,10}},
-          color={0,0,255}));
+          points={{18,10},{24,10}}, color={0,0,255}));
       connect(c1.n,r3. p) annotation (Line(
           points={{44,10},{50,10}}));
       connect(r1.p, T2.B) annotation (Line(
-          points={{-6,10},{-6,-30},{30.4,-30}},
-          color={0,0,255}));
+          points={{-6,10},{-6,-30},{30.4,-30}}, color={0,0,255}));
       connect(r2.p, T1.B) annotation (Line(
-          points={{18,10},{18,-24},{-20.4,-24}},
-          color={0,0,255}));
+          points={{18,10},{18,-24},{-20.4,-24}}, color={0,0,255}));
       connect(T1.C, r.p) annotation (Line(
-          points={{-33,-34},{-48,-34},{-48,10},{-36,10}},
-          color={0,0,255}));
+          points={{-33,-34},{-48,-34},{-48,10},{-36,10}}, color={0,0,255}));
       connect(T1.E, ground1.p) annotation (Line(
           points={{-33,-14},{-68,-14}}));
       connect(T2.E, ground2.p) annotation (Line(
           points={{43,-40},{60,-40}}));
       connect(r3.p, T2.C) annotation (Line(
-          points={{50,10},{50,-20},{43,-20}},
-          color={0,0,255}));
+          points={{50,10},{50,-20},{43,-20}}, color={0,0,255}));
       connect(r3.p, r4.p) annotation (Line(
-          points={{50,10},{58,10},{58,8},{64,8}},
-          color={0,0,255}));
+          points={{50,10},{58,10},{58,8},{64,8}}, color={0,0,255}));
       connect(ground2.p, r4.n) annotation (Line(
-          points={{60,-40},{60,-12},{64,-12}},
-          color={0,0,255}));
+          points={{60,-40},{60,-12},{64,-12}}, color={0,0,255}));
       connect(v.p, r.n) annotation (Line(
-          points={{-68,30},{-36,30}},
-          color={0,0,255}));
+          points={{-68,30},{-36,30}}, color={0,0,255}));
       connect(v.n, ground1.p) annotation (Line(
           points={{-68,10},{-68,-14}}));
       annotation (
@@ -1194,7 +1126,7 @@ Zeunerstrasse 38<br />
 <p>Simulate until 0.025 s. Display v.p.v, which is rising until 5 V. Furthermore display r4.p.v, which starts oscillating.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>Jan. 2010 </i>by Jonathan Gerbet initially implemented</li>
+<li><em>Jan. 2010</em> by Jonathan Gerbet initially implemented</li>
 </ul>
 </html>"));
     end Oscillator;
@@ -1232,7 +1164,7 @@ Zeunerstrasse 38<br />
             extent={{-10,-10},{10,10}},
             rotation=270,
             origin={60,50})));
-      Modelica.Electrical.Spice3.Basic.C_Capacitor C1(C=1.e-6) annotation (
+      Modelica.Electrical.Spice3.Basic.C_Capacitor C1(C=1e-6) annotation (
           Placement(transformation(
             extent={{-10,-10},{10,10}},
             rotation=270,
@@ -1266,71 +1198,49 @@ Zeunerstrasse 38<br />
             origin={6,10})));
     equation
       connect(sineVoltage.n, ground.p) annotation (Line(
-          points={{-90,10},{-90,-80}},
-          color={0,0,255}));
+          points={{-90,10},{-90,-80}}, color={0,0,255}));
       connect(R1.p, sineVoltage.p) annotation (Line(
-          points={{-80,80},{-90,80},{-90,30}},
-          color={0,0,255}));
+          points={{-80,80},{-90,80},{-90,30}}, color={0,0,255}));
       connect(R1.n, L1.p) annotation (Line(
-          points={{-60,80},{-40,80},{-40,50}},
-          color={0,0,255}));
+          points={{-60,80},{-40,80},{-40,50}}, color={0,0,255}));
       connect(L1.n, ground.p) annotation (Line(
-          points={{-40,30},{-40,-80},{-90,-80}},
-          color={0,0,255}));
+          points={{-40,30},{-40,-80},{-90,-80}}, color={0,0,255}));
       connect(C1.n, R3.n) annotation (Line(
-          points={{80,40},{60,40}},
-          color={0,0,255}));
+          points={{80,40},{60,40}}, color={0,0,255}));
       connect(L2.n, R3.n) annotation (Line(
-          points={{20,50},{20,40},{60,40}},
-          color={0,0,255}));
+          points={{20,50},{20,40},{60,40}}, color={0,0,255}));
       connect(C1.p, R2.p) annotation (Line(
-          points={{80,60},{80,80},{52,80}},
-          color={0,0,255}));
+          points={{80,60},{80,80},{52,80}}, color={0,0,255}));
       connect(R3.p, R2.p) annotation (Line(
-          points={{60,60},{60,80},{52,80}},
-          color={0,0,255}));
+          points={{60,60},{60,80},{52,80}}, color={0,0,255}));
       connect(R2.n, L2.p) annotation (Line(
-          points={{32,80},{20,80},{20,70}},
-          color={0,0,255}));
+          points={{32,80},{20,80},{20,70}}, color={0,0,255}));
       connect(C2.n, R5.n) annotation (Line(
-          points={{80,-60},{60,-60}},
-          color={0,0,255}));
+          points={{80,-60},{60,-60}}, color={0,0,255}));
       connect(L3.n, R5.n) annotation (Line(
-          points={{20,-50},{20,-60},{60,-60}},
-          color={0,0,255}));
+          points={{20,-50},{20,-60},{60,-60}}, color={0,0,255}));
       connect(C2.p, R4.p) annotation (Line(
-          points={{80,-40},{80,-20},{52,-20}},
-          color={0,0,255}));
+          points={{80,-40},{80,-20},{52,-20}}, color={0,0,255}));
       connect(R5.p, R4.p) annotation (Line(
-          points={{60,-40},{60,-20},{52,-20}},
-          color={0,0,255}));
+          points={{60,-40},{60,-20},{52,-20}}, color={0,0,255}));
       connect(R4.n, L3.p) annotation (Line(
-          points={{32,-20},{20,-20},{20,-30}},
-          color={0,0,255}));
+          points={{32,-20},{20,-20},{20,-30}}, color={0,0,255}));
       connect(C1.n, ground.p) annotation (Line(
-          points={{80,40},{90,40},{90,-80},{-90,-80}},
-          color={0,0,255}));
+          points={{80,40},{90,40},{90,-80},{-90,-80}}, color={0,0,255}));
       connect(C2.n, ground.p) annotation (Line(
-          points={{80,-60},{90,-60},{90,-80},{-90,-80}},
-          color={0,0,255}));
+          points={{80,-60},{90,-60},{90,-80},{-90,-80}}, color={0,0,255}));
       connect(L1.ICP, k2.inductiveCouplePin1) annotation (Line(
-          points={{-31.6,40},{-28,40},{-28,-40},{-20,-40}},
-          color={170,85,255}));
+          points={{-31.6,40},{-28,40},{-28,-40},{-20,-40}}, color={170,85,255}));
       connect(k2.inductiveCouplePin2, L3.ICP) annotation (Line(
-          points={{0,-40},{11.6,-40}},
-          color={170,85,255}));
+          points={{0,-40},{11.6,-40}}, color={170,85,255}));
       connect(L3.ICP, k3.inductiveCouplePin1) annotation (Line(
-          points={{11.6,-40},{6,-40},{6,0}},
-          color={170,85,255}));
+          points={{11.6,-40},{6,-40},{6,0}}, color={170,85,255}));
       connect(k3.inductiveCouplePin2, L2.ICP) annotation (Line(
-          points={{6,20},{6,60},{11.6,60}},
-          color={170,85,255}));
+          points={{6,20},{6,60},{11.6,60}}, color={170,85,255}));
       connect(L2.ICP, k1.inductiveCouplePin2) annotation (Line(
-          points={{11.6,60},{0,60}},
-          color={170,85,255}));
+          points={{11.6,60},{0,60}}, color={170,85,255}));
       connect(L1.ICP, k1.inductiveCouplePin1) annotation (Line(
-          points={{-31.6,40},{-28,40},{-28,60},{-20,60}},
-          color={170,85,255}));
+          points={{-31.6,40},{-28,40},{-28,60},{-20,60}}, color={170,85,255}));
       annotation (
         experiment(StopTime=0.2),
         Documentation(info="<html>
@@ -1367,38 +1277,29 @@ Zeunerstrasse 38<br />
             origin={-66,4})));
     equation
       connect(J2.D, J1.S) annotation (Line(
-          points={{-44,24},{-44,38}},
-          color={0,0,255}));
+          points={{-44,24},{-44,38}}, color={0,0,255}));
       connect(ground.p, J2.S) annotation (Line(
-          points={{-44,-6},{-44,4}},
-          color={0,0,255}));
+          points={{-44,-6},{-44,4}}, color={0,0,255}));
       connect(v_sin.p, J2.G) annotation (Line(
-          points={{-66,14},{-60,14},{-60,13.9},{-54,13.9}},
-          color={0,0,255}));
+          points={{-66,14},{-60,14},{-60,13.9},{-54,13.9}}, color={0,0,255}));
       connect(v_sin.n, ground.p) annotation (Line(
-          points={{-66,-6},{-44,-6}},
-          color={0,0,255}));
+          points={{-66,-6},{-44,-6}}, color={0,0,255}));
       connect(U0.p, J1.G) annotation (Line(
-          points={{-72,48},{-63,48},{-63,47.9},{-54,47.9}},
-          color={0,0,255}));
+          points={{-72,48},{-63,48},{-63,47.9},{-54,47.9}}, color={0,0,255}));
       connect(U0.n, ground.p) annotation (Line(
-          points={{-72,28},{-80,28},{-80,-6},{-44,-6}},
-          color={0,0,255}));
+          points={{-72,28},{-80,28},{-80,-6},{-44,-6}}, color={0,0,255}));
       connect(J1.D, RC.p) annotation (Line(
-          points={{-44,58},{-44,70}},
-          color={0,0,255}));
+          points={{-44,58},{-44,70}}, color={0,0,255}));
       connect(UDD.p, RC.n) annotation (Line(
-          points={{-10,70},{-24,70}},
-          color={0,0,255}));
+          points={{-10,70},{-24,70}}, color={0,0,255}));
       connect(UDD.n, ground.p) annotation (Line(
-          points={{-10,50},{-10,-6},{-44,-6}},
-          color={0,0,255}));
+          points={{-10,50},{-10,-6},{-44,-6}}, color={0,0,255}));
       annotation (Documentation(info="<html>
-<p>This model is a simple JFET cascode circuit. The J2 gate variation (v_sin.p.v) is transformed to the J2 drain variation (J2.D.v). </p>
+<p>This model is a simple JFET cascode circuit. The J2 gate variation (v_sin.p.v) is transformed to the J2 drain variation (J2.D.v).</p>
 <p><br/>Simulate until 0.2s, and display the mentioned voltages.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>Aug. 2011 </i>by Kristin Majetta initially implemented</li>
+<li><em>Aug. 2011</em> by Kristin Majetta initially implemented</li>
 </ul>
 </html>"),experiment(
           StopTime=0.2,
@@ -1469,7 +1370,7 @@ Zeunerstrasse 38<br />
       annotation (experiment(StopTime=1, Interval=0.001,
           Tolerance=1e-005),
           Documentation(info="<html>
-<p>This Differential pair model is one of the five benchmark circuits described in the SPICE3 Version e3 User&apos;s Manual (see information of package Spice3).</p>
+<p>This Differential pair model is one of the five benchmark circuits described in the SPICE3 Version e3 User&#39;s Manual (see information of package Spice3).</p>
 <p>The differential pair circuit is operating in the differential mode. This means the input voltage VIN that is only applied at one transistor
 is amplified. To comprehend this behavior the user is recommended to simulate from t=0 to t=1s and observe \"VIN.p.v\" which is the input voltage and \"Outputvoltage\" which is the
 amplified output voltage.</p>
@@ -1491,7 +1392,7 @@ RE 4 8 10K<br/>
 .AC DEC 10 1 100MEG<br/>
 .END
 </pre>
-<p>In the Modelica representation the tiny capacity CJC was set to 1.e-9F to get a higher numerical
+<p>In the Modelica representation the tiny capacity CJC was set to 1e-9F to get a higher numerical
 robustness. In future the numerical behavior will be analysed to be able to apply the original value
 CJC=.5PF.</p>
 </html>"));
@@ -1535,10 +1436,10 @@ CJC=.5PF.</p>
 
       annotation (experiment(StopTime=1e-007, Interval=1e-009),
         Documentation(info="<html>
-<p>This Mosfet Characterization model is one of the five benchmark circuits described in the SPICE3 Version e3 User&apos;s Manual (see information of package Spice3). </p>
+<p>This Mosfet Characterization model is one of the five benchmark circuits described in the SPICE3 Version e3 User&#39;s Manual (see information of package Spice3).</p>
 <p>This circuit is a very simple one than consists of an NMOS transistor level 1 that is connected to voltage sources at gate and drain node whereas the drain voltage source supplies the
 operating voltage. The user is recommended to simulate from t=0 to t=1e-7s and observe the gate node voltage (\"VGS.p.v\") and the transistor current (\"M1.D.i\").
-It can be seen that the current is increasing with increasing gate voltage which means the conductivity of the transistor is increasing. The opposite case occurs for decreasing gate voltage. </p>
+It can be seen that the current is increasing with increasing gate voltage which means the conductivity of the transistor is increasing. The opposite case occurs for decreasing gate voltage.</p>
 <p>Original SPICE3 netlist of the MOSFET characterization circuit:</p>
 <pre>
 MOS OUTPUT CHARACTERISTICS<br/>
@@ -1590,7 +1491,7 @@ M1 1 2 0 0 MOD1 L=4U W=6U AD=10P AS=10P<br/>
           Interval=1e-010,
           Tolerance=1e-008),
         Documentation(info="<html>
-<p>This RTL Inverter model is one of the five benchmark circuits described in the SPICE3 Version e3 User&apos;s Manual (see information of package Spice3). </p>
+<p>This RTL Inverter model is one of the five benchmark circuits described in the SPICE3 Version e3 User&#39;s Manual (see information of package Spice3).</p>
 <p>This simple RTL inverter (resistor transistor logic) circuits inverts the input voltage which means the output voltage has high potential if the input voltage
 has low potential and the other way round. To comprehend this behaviour the user is recommended to simulate from t=0 to t=1e-7s and observe the input voltage (VIN.p.v)
 and the output voltage (Q1.C.v)</p>
@@ -2136,7 +2037,6 @@ RC 3 4 1K<br/>
       Modelica.Electrical.Spice3.Basic.R_Resistor RBIT2(R=1000);
       Modelica.Electrical.Spice3.Basic.R_Resistor RBIT3(R=1000);
       Modelica.Electrical.Spice3.Basic.R_Resistor RCOUT(R=1000);
-      // *** (FOR THOSE WITH MONEY (AND MEMORY) TO BURN)
       Modelica.Electrical.Spice3.Basic.Ground g;
 
     protected
@@ -2204,7 +2104,7 @@ RC 3 4 1K<br/>
 
       annotation (experiment(StopTime=1e-006, Interval=1e-009),
         Documentation(info="<html>
-<p>This Four Bit Binary Adder model is one of the five benchmark circuits described in the SPICE3 Version e3 User&apos;s Manual (see information of package Spice3). </p>
+<p>This Four Bit Binary Adder model is one of the five benchmark circuits described in the SPICE3 Version e3 User&#39;s Manual (see information of package Spice3).</p>
 <p>The model adds two 4-bit numbers (Number A and Number B). It has eight inputs where the first one is the lowest-order bit of the first number (Number A Bit0), the second is the lowest-order bit of the second number (Number B Bit0), the third one is the second-order bit of the first number (Number A Bit1) and so on. The Four Bit Binary Adder has four outputs where the first one (Sum Bit0) is the lowest-order bit, the second and the third one (Sum Bit1 and Sum Bit2) are the next two bits and the last one (Sum Bit3) is the highest-order bit. The picture illustrates the pin-assignment.</p>
 <blockquote>
 <img src=\"modelica://Modelica/Resources/Images/Electrical/Spice3/FourBitBinaryAdder.jpg\"
@@ -2225,10 +2125,10 @@ RC 3 4 1K<br/>
 <p>X1_p11_v --> Sum Bit2</p>
 <p>X1_p12_v --> Sum Bit3</p>
 <p>X1_p14_v --> Cout</p>
-<p>The Four Bit Binary Adder is built out of two two bit adders which respectively are built out of two one bit adders. One one bit adder is build out of nine NAND circuits. </p>
+<p>The Four Bit Binary Adder is built out of two two bit adders which respectively are built out of two one bit adders. One one bit adder is build out of nine NAND circuits.</p>
 <p>Please note, that the simulation time of the Four Bit Binary Adder can take several hours due to its immense size (e.g. 11387 equations).</p>
 <p>The user is recommended to simulate from t=0 to t=1e-6s and observe the eight inputs (X1_p1_v, ..., X1_p8_v) and the four outputs (X1_p9_v, ..., X1_p12_v) and the carryout output (X1_p14_v).</p>
-<p><b>The timing of the single transistors of the adder causes a delay which makes it hard to recognize the adder behaviour. Since the Four Bit Binary Adder is a SPICE3 benchmark, the circuit is not changed in order to see the adder behaviour in a better way.</b></p>
+<p><strong>The timing of the single transistors of the adder causes a delay which makes it hard to recognize the adder behaviour. Since the Four Bit Binary Adder is a SPICE3 benchmark, the circuit is not changed in order to see the adder behaviour in a better way.</strong></p>
 <p>Original SPICE3 netlist of the Four Bit Binary Adder:</p>
 <pre>
 ADDER - 4 BIT ALL-NAND-GATE BINARY ADDER
@@ -2317,7 +2217,7 @@ print v(11) v(12) v(13)
 
 .END
 </pre>
-<p>The model is built out of several subcircuits which were described only ones and used several times. </p>
+<p>The model is built out of several subcircuits which were described only ones and used several times.</p>
 </html>"));
     end Spice3BenchmarkFourBitBinaryAdder;
     annotation (Documentation(info="<html>
@@ -2339,17 +2239,17 @@ print v(11) v(12) v(13)
       p.v = 0;
       annotation (
         Documentation(info="<html>
-<P>
+<p>
 Ground of an electrical circuit. The potential at the
 ground node is zero. Every electrical circuit has to contain
 at least one ground object.
-</P>
-<P>
+</p>
+<p>
 SPICE does not have an element for the ground node (mass). In SPICE
 netlists the ground is specified by the node number 0.
 This Modelica SPICE library demands to describe the ground node
 by this ground element.
-</P>
+</p>
 </html>"),
         Icon(coordinateSystem(
             preserveAspectRatio=true,
@@ -2379,11 +2279,11 @@ by this ground element.
       R*i = v;
       annotation (
         Documentation(info="<html>
-<P>
-The linear resistor connects the branch voltage <i>v</i> with the
-branch current <i>i</i> by <i>i*R = v</i>.
-The Resistance <i>R</i> is allowed to be positive, zero, or negative.
-</P>
+<p>
+The linear resistor connects the branch voltage <em>v</em> with the
+branch current <em>i</em> by <em>i*R = v</em>.
+The Resistance <em>R</em> is allowed to be positive, zero, or negative.
+</p>
 </html>"),
         Icon(coordinateSystem(
             preserveAspectRatio=false,
@@ -2417,9 +2317,9 @@ The Resistance <i>R</i> is allowed to be positive, zero, or negative.
       annotation (
         Documentation(info="<html>
 <p>
-The linear capacitor connects the branch voltage <i>v</i> with the
-branch current <i>i</i> by <i>i = C * dv/dt</i>.
-The Capacitance <i>C</i> is allowed to be positive, zero, or negative.
+The linear capacitor connects the branch voltage <em>v</em> with the
+branch current <em>i</em> by <em>i = C * dv/dt</em>.
+The Capacitance <em>C</em> is allowed to be positive, zero, or negative.
 </p>
 </html>"), Icon(coordinateSystem(
             preserveAspectRatio=false,
@@ -2469,7 +2369,7 @@ The Capacitance <i>C</i> is allowed to be positive, zero, or negative.
       ICP.di = der(iinternal);
       annotation (
         Documentation(info="<html>
-<p>The linear inductor connects the branch voltage <i>v</i> with the branch current <i>i</i> by <i>v = L * di/dt</i>. The inductance <i>L</i> is allowed to be positive, zero, or negative.</p>
+<p>The linear inductor connects the branch voltage <em>v</em> with the branch current <em>i</em> by <em>v = L * di/dt</em>. The inductance <em>L</em> is allowed to be positive, zero, or negative.</p>
 </html>"),
         Icon(coordinateSystem(
             preserveAspectRatio=false,
@@ -2755,15 +2655,15 @@ The corresponding SPICE description
 
     annotation(preferredView="info",
   Documentation(info="<html>
-<p>This Package contains the basic components of the SPICE3 models. The first letter of the</p><p>name of the component shows the SPICE name, e.g., <b>R</b>_Resistor: <b>R</b> is the SPICE-name of the component</p><p>resistor which is used in SPICE-Netlists.</p>
+<p>This Package contains the basic components of the SPICE3 models. The first letter of the</p><p>name of the component shows the SPICE name, e.g., <strong>R</strong>_Resistor: <strong>R</strong> is the SPICE-name of the component</p><p>resistor which is used in SPICE-Netlists.</p>
 </html>",
      revisions="<html>
 <dl>
 <dt>
-<b>Main Authors:</b>
+<strong>Main Authors:</strong>
 <dd>
 Christoph Clau&szlig;
-    &lt;<a href=\"mailto:clauss@eas.iis.fhg.de\">clauss@eas.iis.fhg.de</a>&gt;<br>
+    &lt;<a href=\"mailto:christoph@clauss-it.com\">christoph@clauss-it.com</a>&gt;<br>
 
     Fraunhofer Institute for Integrated Circuits<br>
     Design Automation Department<br>
@@ -2792,7 +2692,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Repository.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end M_PMOS;
@@ -2812,7 +2712,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Repository.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end M_NMOS;
@@ -2835,13 +2735,13 @@ Christoph Clau&szlig;
               lineColor={0,0,255},
               fillColor={0,0,255},
               fillPattern=FillPattern.Solid)}), Documentation(info="<html>
-<p>The model M_NMOS is a N channel MOSFET transistor with fixed level 2: </p>
+<p>The model M_NMOS is a N channel MOSFET transistor with fixed level 2:</p>
 <p>The models from the package Semiconductors accesses to the package Internal where all functions,</p>
 <p>records and data are stored and modeled that are needed for the semiconductor models.</p>
 <p>The package Semiconductors is for user access but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end M_NMOS2;
@@ -2861,7 +2761,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end M_PMOS2;
@@ -2892,7 +2792,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
 
@@ -2915,7 +2815,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
 
@@ -2940,8 +2840,8 @@ Christoph Clau&szlig;
 <p>The models from the package Semiconductors accesses to the package Internal where all functions, records and data are stored and modeled that are needed for the semiconductor models. The package Semiconductors is for user access, but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>September 2011 </i>revised by Sandra B&ouml;hme</br/>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>September 2011 </em>revised by Sandra B&ouml;hme</br/>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
@@ -2963,8 +2863,8 @@ Christoph Clau&szlig;
 <p>The models from the package Semiconductors accesses to the package Internal where all functions, records and data are stored and modeled that are needed for the semiconductor models. The package Semiconductors is for user access, but not the package Internal.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>September 2011 </i>revised by Sandra B&ouml;hme</br/>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>September 2011 </em>revised by Sandra B&ouml;hme</br/>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"), Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
                 -100},{100,100}}), graphics={Polygon(
@@ -2996,7 +2896,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Repository.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>Nov. 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Nov. 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
 
@@ -3020,7 +2920,7 @@ Christoph Clau&szlig;
 <p>The package Semiconductors is for user access but not the package Repository.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>April 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>April 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end R_Resistor;
@@ -3044,8 +2944,8 @@ Christoph Clau&szlig;
 <p>The models from the package Semiconductors accesses to the package Repository where all functions, records and data are stored and modeled that are needed for the semiconductor models. The package Semiconductors is for user access, but not the package Repository.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>September 2011 </i>revised by Sandra B&ouml;hme</br/>
-<li><i>April 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>September 2011 </em>revised by Sandra B&ouml;hme</br/>
+<li><em>April 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end C_Capacitor;
@@ -3079,11 +2979,18 @@ Christoph Clau&szlig;
         Icon(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}}), graphics={
-        Line(points={{-90,0},{-10,0}}, color={0,0,255}),
-        Line(points={{-10,60},{-10,-60}}, color={0,0,255}),
-        Line(points={{0,30},{0,-30}}, color={0,0,255}),
-        Line(points={{0,0},{90,0}}, color={0,0,255}),
-        Text(extent={{-100,-120},{100,-80}}, textString="%name=%V")}),
+        Text(extent={{-100,-120},{100,-80}}, textString="%name=%V"),
+            Ellipse(
+              extent={{-50,50},{50,-50}},
+              lineColor={0,0,255},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
+            Line(points={{-90,0},{-50,0}}, color={0,0,255}),
+            Line(points={{-50,0},{50,0}}, color={0,0,255}),
+            Line(points={{50,0},{90,0}}, color={0,0,255}),
+            Line(points={{60,20},{80,20}}, color={0,0,255}),
+            Line(points={{-70,30},{-70,10}}, color={0,0,255}),
+            Line(points={{-80,20},{-60,20}}, color={0,0,255})}),
     Documentation(info="<html>
 <p>The V_constant source is a  source is a simple constant voltage source for an ideal constant voltage which is provided by a parameter.</p>
 </html>"));
@@ -3191,7 +3098,7 @@ Christoph Clau&szlig;
 <h4>Note:</h4>
 <ul>
 <li>All parameters of sources should be set explicitly.</li>
-<li>since TSTEP and TSTOP are not available for modeling in Modelica, differences to SPICE may occur if not all parameters are set.- it should be set all the parameters definitely <br>- normally, there exist differences between Dymola and Spice, because TSTEP and TSTOP are not available. <br></li>
+<li>since TSTEP and TSTOP are not available for modeling in Modelica, differences to SPICE may occur if not all parameters are set.- it should be set all the parameters definitely<br>- normally, there exist differences between Dymola and Spice, because TSTEP and TSTOP are not available.<br></li>
 </ul>
 </html>"));
     end V_exp;
@@ -3366,16 +3273,16 @@ Christoph Clau&szlig;
              Line(points={{50,0},{90,0}}, color={0,0,255}),
                                    Line(points={{-40,-50},{-40,70},{60,70},{60,
                   -50},{-40,-50},{-40,-20},{60,-20},{60,10},{-40,10},{-40,40},{
-                  60,40},{60,70},{10,70},{10,-51}},color={192,192,192})}),
+                  60,40},{60,70},{10,70},{10,-51}}, color={192,192,192})}),
         Documentation(info="<html>
-<p>This model generates a voltage by <b>linear interpolation</b> in a given table. The time points and voltage values are stored in a matrix <b>table[i,j]</b>, where the first column table[:,1] contains the time points and the second column contains the voltage to be interpolated. The table interpolation has the following properties:</p>
+<p>This model generates a voltage by <strong>linear interpolation</strong> in a given table. The time points and voltage values are stored in a matrix <strong>table[i,j]</strong>, where the first column table[:,1] contains the time points and the second column contains the voltage to be interpolated. The table interpolation has the following properties:</p>
 <ul>
-<li>The time points need to be <b>monotonically increasing</b>. </li>
-<li><b>Discontinuities</b> are allowed, by providing the same time point twice in the table. </li>
-<li>Values <b>outside</b> of the table range, are computed by <b>extrapolation</b> through the last or first two points of the table.</li>
-<li>If the table has only <b>one row</b>, no interpolation is performed and the voltage value is just returned independently of the actual time instant, i.e., this is a constant voltage source.</li>
-<li>Via parameters <b>startTime</b> and <b>offset</b> the curve defined by the table can be shifted both in time and in the voltage. </li>
-<li>The table is implemented in a numerically sound way by generating <b>time events</b> at interval boundaries.
+<li>The time points need to be <strong>monotonically increasing</strong>.</li>
+<li><strong>Discontinuities</strong> are allowed, by providing the same time point twice in the table.</li>
+<li>Values <strong>outside</strong> of the table range, are computed by <strong>extrapolation</strong> through the last or first two points of the table.</li>
+<li>If the table has only <strong>one row</strong>, no interpolation is performed and the voltage value is just returned independently of the actual time instant, i.e., this is a constant voltage source.</li>
+<li>Via parameters <strong>startTime</strong> and <strong>offset</strong> the curve defined by the table can be shifted both in time and in the voltage.</li>
+<li>The table is implemented in a numerically sound way by generating <strong>time events</strong> at interval boundaries.
     This generates continuously differentiable values for the integrator.</li>
 </ul>
 <p>Example:</p>
@@ -3735,15 +3642,15 @@ If, e.g., time = 1.0, the voltage v =  0.0 (before event), 1.0 (after event)
               fillColor={0,0,255},
               fillPattern=FillPattern.Solid)}),
         Documentation(info="<html>
-<p>This model generates a current  by <b>linear interpolation</b> in a given table. The time points and current values are stored in a matrix <b>table[i,j]</b>, where the first column table[:,1] contains the time points and the second column contains the current to be interpolated. The table interpolation has the following properties:</p>
+<p>This model generates a current  by <strong>linear interpolation</strong> in a given table. The time points and current values are stored in a matrix <strong>table[i,j]</strong>, where the first column table[:,1] contains the time points and the second column contains the current to be interpolated. The table interpolation has the following properties:</p>
 
 <ul>
-<li>The time points need to be <b>monotonically increasing</b>. </li>
-<li><b>Discontinuities</b> are allowed, by providing the same time point twice in the table. </li>
-<li>Values <b>outside</b> of the table range, are computed by <b>extrapolation</b> through the last or first two points of the table.</li>
-<li>If the table has only <b>one row</b>, no interpolation is performed and the current value is just returned independently of the actual time instant, i.e., this is a constant current source.</li>
-<li>Via parameters <b>startTime</b> and <b>offset</b> the curve defined by the table can be shifted both in time and in the current. </li>
-<li>The table is implemented in a numerically sound way by generating <b>time events</b> at interval boundaries.
+<li>The time points need to be <strong>monotonically increasing</strong>.</li>
+<li><strong>Discontinuities</strong> are allowed, by providing the same time point twice in the table.</li>
+<li>Values <strong>outside</strong> of the table range, are computed by <strong>extrapolation</strong> through the last or first two points of the table.</li>
+<li>If the table has only <strong>one row</strong>, no interpolation is performed and the current value is just returned independently of the actual time instant, i.e., this is a constant current source.</li>
+<li>Via parameters <strong>startTime</strong> and <strong>offset</strong> the curve defined by the table can be shifted both in time and in the current.</li>
+<li>The table is implemented in a numerically sound way by generating <strong>time events</strong> at interval boundaries.
     This generates continuously differentiable values for the integrator.</li>
 </ul>
 
@@ -3788,7 +3695,7 @@ If, e.g., time = 1.0, the current i =  0.0 (before event), 1.0 (after event)
              Line(points={{50,0},{90,0}}, color={0,0,255}),
              Line(points={{-92,0},{-52,0}},
                                           color={0,0,255}),
-             Line(points={{0,-50},{0,50}},color={0,0,255}),
+             Line(points={{0,-50},{0,50}}, color={0,0,255}),
                                   Polygon(
               points={{90,0},{60,10},{60,-10},{90,0}},
               lineColor={0,0,255},
@@ -3811,11 +3718,11 @@ If, e.g., time = 1.0, the current i =  0.0 (before event), 1.0 (after event)
     annotation(preferredView="info", Documentation(info=
                    "<html>
 <p>This package contains the SPICE sources.</p>
-<p><b>Note:</b> There are differences between SPICE3 and Modelica concerning the default values of the parameter. Therefore it is recommended to specify <b>all</b> parameters of the source.</p>
+<p><strong>Note:</strong> There are differences between SPICE3 and Modelica concerning the default values of the parameter. Therefore it is recommended to specify <strong>all</strong> parameters of the source.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>August 2009 </i>default values improved by Jonathan Kress<br/></li>
-<li><i>October 2008 </i>by Christoph Clauss initially implemented.</li>
+<li><em>August 2009 </em>default values improved by Jonathan Kress<br/></li>
+<li><em>October 2008</em> by Christoph Clauss initially implemented.</li>
 </ul>
 </html>"));
   end Sources;
@@ -4018,7 +3925,7 @@ E2N -&gt; name.pc[N-1]
 P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...})</pre>
 </html>", revisions="<html>
 <ul>
-<li><i>Sept 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Sept 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end E_VCV_POLY;
@@ -4113,7 +4020,7 @@ E2N -&gt; name.pc[N-1]
 P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...}) </pre>
 </html>", revisions="<html>
 <ul>
-<li><i>Sept 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Sept 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end G_VCC_POLY;
@@ -4215,7 +4122,7 @@ P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...})
 </pre>
 </html>", revisions="<html>
 <ul>
-<li><i>Sept 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Sept 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end H_CCV_POLY;
@@ -4315,7 +4222,7 @@ P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...})
 </pre>
 </html>", revisions="<html>
 <ul>
-<li><i>Sept 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Sept 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end F_CCC_POLY;
@@ -4403,7 +4310,7 @@ P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...})
       end if;
       annotation (Documentation(revisions="<html>
 <ul>
-<li><i> February 17, 2009   </i>
+<li><em> February 17, 2009   </em>
        by Christoph Clauss<br> initially implemented<br>
        </li>
 </ul>
@@ -4412,16 +4319,16 @@ P0, P1 -&gt; polynomial coefficients name.coeff(coeff={P0,P1,...})
 This partial model provides a conditional heating port for the connection to a thermal network.
 </p>
 <ul>
-<li> If <b>useHeatPort</b> is set to <b>false</b> (default), no heat port is available, and the thermal
-     loss power flows internally to the ground. In this case, the parameter <b>T</b> specifies
+<li> If <strong>useHeatPort</strong> is set to <strong>false</strong> (default), no heat port is available, and the thermal
+     loss power flows internally to the ground. In this case, the parameter <strong>T</strong> specifies
      the fixed device temperature (the default for T = 20<sup>o</sup>C).</li>
-<li> If <b>useHeatPort</b> is set to <b>true</b>, a heat port is available.</li>
+<li> If <strong>useHeatPort</strong> is set to <strong>true</strong>, a heat port is available.</li>
 </ul>
 
 <p>
 If this model is used, the loss power has to be provided by an equation in the model which inherits from
-ConditionalHeatingPort model (<b>lossPower = ...</b>). As device temperature
-<b>T_heatPort</b> can be used to describe the influence of the device temperature
+ConditionalHeatingPort model (<strong>lossPower = ...</strong>). As device temperature
+<strong>T_heatPort</strong> can be used to describe the influence of the device temperature
 on the model behaviour.
 </p>
 </html>"));
@@ -4584,7 +4491,7 @@ on the model behaviour.
 <p>The package Repository is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"),
         Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{
@@ -4600,7 +4507,7 @@ on the model behaviour.
               textString="%name")}));
   end MOS;
 
-     record ModelcardMOS "Record with technological parameters (.model)"
+     record ModelcardMOS "Record with technology parameters (.model)"
      extends Modelica.Icons.Record;
        parameter SI.Voltage VTO=-1e40 "Zero-bias threshold voltage, default 0";
        parameter SI.Transconductance KP=-1e40
@@ -4615,7 +4522,7 @@ on the model behaviour.
         "Zero-bias B-D junction capacitance, default 0";
        parameter SI.Capacitance CBS=-1e40
         "Zero-bias B-S junction capacitance, default 0";
-       parameter SI.Current IS=1.e-14 "Bulk junction saturation current";
+       parameter SI.Current IS=1e-14 "Bulk junction saturation current";
        parameter SI.Voltage PB=0.8 "Bulk junction potential";
        parameter SI.Permittivity CGSO=0.0
         "Gate-source overlap capacitance per meter channel width";
@@ -4880,7 +4787,7 @@ on the model behaviour.
 <p>The package Repository is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>January 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>January 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"),
         Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
@@ -4896,14 +4803,14 @@ on the model behaviour.
               textString="%name")}));
   end MOS2;
 
-     record ModelcardMOS2 "Record with technological parameters (.model)"
+     record ModelcardMOS2 "Record with technology parameters (.model)"
        extends Modelica.Icons.Record;
      extends Spice3.Internal.ModelcardMOS(MJSW=0.33);
 
        parameter SI.Conversions.NonSIunits.PerArea_cm NFS=0.0
         "Fast surface state density";
        parameter SI.Length XJ=0.0 "Metallurgical junction depth";
-       parameter Types.ElectricFieldStrength_cm UCRIT=1.e4
+       parameter Types.ElectricFieldStrength_cm UCRIT=1e4
         "Critical field for mobility degradation (MOS2 only)";
        parameter Real UEXP=0.0
         "Critical field exponent in mobility degradation (MOS2 only)";
@@ -5052,13 +4959,13 @@ on the model behaviour.
 <p>The package Internal is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
 </html>",     revisions="<html>
 <ul>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
     end BJT2;
 
-    record ModelcardBJT2 "Record with technological parameters (.model)"
-    extends Modelica.Icons.Record;
+    record ModelcardBJT2 "Record with technology parameters (.model)"
+      extends Modelica.Icons.Record;
       parameter SI.Temp_C TNOM = 27 "Parameter measurement temperature";
       parameter SI.Current IS = 1e-16 "Transport saturation current";
       parameter Real BF = 100.00 "Ideal maximum forward beta F";
@@ -5113,7 +5020,7 @@ on the model behaviour.
     end ModelcardBJT2;
 
     model BJT "Bipolar junction transistor, obsolete, use model BJT2"
-     extends Modelica.Icons.ObsoleteModel;
+      extends Modelica.Icons.ObsoleteModel;
       Modelica.Electrical.Analog.Interfaces.PositivePin B "Base node"
         annotation (Placement(transformation(extent={{-108,-10},{-88,10}}),
             iconTransformation(extent={{-106,-10},{-86,10}})));
@@ -5172,8 +5079,7 @@ on the model behaviour.
               vl) "Precalculated parameters";
 
       constant Boolean m_bInit = false;
-      Spice3.Internal.Bjt3.CurrentsCapacitances
-                                cc;
+      Spice3.Internal.Bjt3.CurrentsCapacitances cc;
       Real Cinternal;    //inner collector node
       Real Binternal;    //inner base node
       Real Einternal;    //inner emitter node
@@ -5252,15 +5158,16 @@ on the model behaviour.
 <p>The package Internal is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
 </html>",     revisions="<html>
 <ul>
-<li><i>August 2009 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>August 2009</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
-</html>"));
+</html>"),
+      obsolete = "Obsolete model - use Modelica.Electrical.Spice3.Internal.BJT2 instead");
     end BJT;
 
     record ModelcardBJT
-      "Record with technological parameters (.model), obsolete model, please use ModelcardBJT2"
-     extends Modelica.Icons.Record;
-     extends Modelica.Icons.ObsoleteModel;
+      "Record with technology parameters (.model), obsolete model, please use ModelcardBJT2"
+      extends Modelica.Icons.Record;
+      extends Modelica.Icons.ObsoleteModel;
       parameter SI.Temp_C TNOM = -1e40
         "Parameter measurement temperature, default 27";
       parameter SI.Current IS = 1e-16 "Transport saturation current";
@@ -5311,10 +5218,11 @@ on the model behaviour.
       parameter Real FC = 0.5 "Forward bias junction fit parameter";
 
       annotation (Documentation(info="<html>
-<p>This model is obsolete, please use BJT2</p>
+<p>This record is obsolete, please use ModelcardBJT2</p>
 <p>Modelcard parameters for BJT model, both PNP and NPN</p>
 <p>The package Internal is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
-</html>"));
+</html>"),
+      obsolete = "Obsolete record - use Modelica.Electrical.Spice3.Internal.ModelcardBJT2 instead");
     end ModelcardBJT;
 
   model JFET "Junction Field-Effect Transistor"
@@ -5426,7 +5334,7 @@ on the model behaviour.
 <p>The package Internal is not for user access. There all function, records and data are stored, that are needed for modeling the semiconductor models of the package Semiconductors.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>March 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>March 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"),
         Icon(coordinateSystem(preserveAspectRatio=true,  extent={{-100,-100},{
@@ -5441,13 +5349,13 @@ on the model behaviour.
               textString="%name")}));
   end JFET;
 
-    record ModelcardJFET "Record with technological parameters (.model)"
+    record ModelcardJFET "Record with technology parameters (.model)"
     extends Modelica.Icons.Record;
       parameter SI.Capacitance CGS=-1e40
         "Zero-bias G-S junction capacitance, default 0";
       parameter SI.Capacitance CGD=-1e40
         "Zero-bias G-D junction capacitance, default 0";
-      parameter SI.Current IS=1.e-14 "Saturation current of pn junctions";
+      parameter SI.Current IS=1e-14 "Saturation current of pn junctions";
       parameter Real FC=0.5
         "Coefficient for forward-bias depletion capacitance formula";
       parameter SI.Resistance RD=-1e40 "Drain ohmic resistance, default 0";
@@ -5556,12 +5464,12 @@ on the model behaviour.
 <p>The package Repository is not for user access. There all function, records and data are stored, that are needed for the semiconductor models of the package Semiconductors.</p>
 </html>", revisions="<html>
 <ul>
-<li><i>Nov. 2008 </i>by Kristin Majetta <br/>initially implemented</li>
+<li><em>Nov. 2008</em> by Kristin Majetta <br/>initially implemented</li>
 </ul>
 </html>"));
    end DIODE;
 
-   record ModelcardDIODE "Record with technological parameters (.model)"
+   record ModelcardDIODE "Record with technology parameters (.model)"
      extends Modelica.Icons.Record;
     parameter SI.Current IS=1e-14 "Saturation Current";
     parameter SI.Resistance RS=0.0 "Ohmic resistance";
@@ -5643,7 +5551,7 @@ on the model behaviour.
               textString="%name",
               lineColor={0,0,255})}),Documentation(revisions="<html>
 <dl>
-<dt><i> April 2009 </i></dt>
+<dt><em> April 2009 </em></dt>
 <dd>by Kristin Majetta initially implemented</dd>
 </dl>
 </html>", info="<html>
@@ -5652,12 +5560,12 @@ on the model behaviour.
 </html>"));
     end R_SEMI;
 
-    record ModelcardR "Record with technological parameters (.model)"
+    record ModelcardR "Record with technology parameters (.model)"
       extends Modelica.Icons.Record;
-     parameter SI.Conversions.NonSIunits.FirstOrderTemperaturCoefficient TC1 =        0.0
+     parameter SI.LinearTemperatureCoefficientResistance TC1 = 0.0
         "First order temperature coefficient";
-     parameter SI.Conversions.NonSIunits.SecondOrderTemperaturCoefficient TC2 =               0.0
-        "In Ohm/(deg C*deg C), Second2 order temperature coefficient";
+     parameter SI.QuadraticTemperatureCoefficientResistance TC2 = 0.0
+        "Second order temperature coefficient";
      parameter SI.Resistance RSH = -1e40 "Sheet resistance";
      parameter SI.Temp_C TNOM = -1e40
         "Parameter measurement temperature, default 27";
@@ -5732,15 +5640,15 @@ on the model behaviour.
               points={{14,28},{14,-28}},
               color={0,0,255},
               thickness=0.5),
-            Line(points={{-90,0},{-14,0}},color={0,0,255}),
-            Line(points={{14,0},{90,0}},color={0,0,255}),
+            Line(points={{-90,0},{-14,0}}, color={0,0,255}),
+            Line(points={{14,0},{90,0}}, color={0,0,255}),
             Text(
               extent={{-130,-40},{134,-60}},
               textString="C=%C"),
             Text(extent={{-138,42},{136,62}}, textString="%name")}),
                                      Documentation(revisions="<html>
 <ul>
-<li><i>April 2009</i> by Kristin Majetta
+<li><em>April 2009</em> by Kristin Majetta
     <br>initially implemented</li>
 </ul>
 </html>", info="<html>
@@ -5749,7 +5657,7 @@ on the model behaviour.
 </html>"));
     end C_SEMI;
 
-    record ModelcardC "Record with technological parameters (.model)"
+    record ModelcardC "Record with technology parameters (.model)"
     extends Modelica.Icons.Record;
       parameter SI.CapacitancePerArea CJ = 0.0
         "Junction bottom capacitance     F/meters2";
@@ -5773,7 +5681,7 @@ on the model behaviour.
        constant SI.Temp_K REFTEMP =    300.15;  /* 27 deg C */
 
        constant Real CONSTroot2 =  sqrt(2.0);
-       constant Real CONSTvt0(   final unit= "(J/K)/(A.s)") = Modelica.Constants.k * SI.Conversions.from_degC(27)  / CHARGE; // deg C
+       constant Real CONSTvt0(   final unit= "(J)/(A.s)") = Modelica.Constants.k * SI.Conversions.from_degC(27)  / CHARGE; // deg C
        constant Real CONSTKoverQ(  final unit= "(J/K)/(A.s)")= Modelica.Constants.k / CHARGE;
        constant Real CONSTe =      exp(1.0);
 
@@ -5828,9 +5736,11 @@ on the model behaviour.
         output SI.Voltage ret "Output voltage";
 
       protected
-        SI.Voltage phibtemp;
-        SI.Voltage phibtnom;
+        SI.GapEnergy phibtemp;
+        SI.GapEnergy phibtnom;
         SI.Voltage vt;
+        constant SI.GapEnergy unitGapEnergy = 1;
+        constant SI.Voltage unitVoltage = 1;
 
       algorithm
         phibtemp :=
@@ -5839,7 +5749,7 @@ on the model behaviour.
           Modelica.Electrical.Spice3.Internal.Functions.energyGapDepTemp(tnom);
         vt := Spice3.Internal.SpiceConstants.CONSTKoverQ*
           temp;
-        ret := (phi0 - phibtnom) * temp / tnom + phibtemp + vt * 3 * Modelica.Math.log( tnom / temp);
+        ret := (phi0 - phibtnom*(unitVoltage/unitGapEnergy)) * temp / tnom + phibtemp*(unitVoltage/unitGapEnergy) + vt * 3 * Modelica.Math.log( tnom / temp);
 
         annotation (Documentation(info="<html>
 <p>This internal function calculates the temperature dependent junction potential based on the actual and the nominal temperature.</p>
@@ -5858,8 +5768,10 @@ on the model behaviour.
       protected
         SI.Voltage vt;
         SI.Voltage vtnom;
-        SI.Voltage energygaptnom;
-        SI.Voltage energygaptemp;
+        SI.GapEnergy energygaptnom;
+        SI.GapEnergy energygaptemp;
+        constant SI.GapEnergy unitGapEnergy = 1;
+        constant SI.Voltage unitVoltage = 1;
 
       algorithm
         vt := Spice3.Internal.SpiceConstants.CONSTKoverQ*
@@ -5870,7 +5782,7 @@ on the model behaviour.
           Modelica.Electrical.Spice3.Internal.Functions.energyGapDepTemp(tnom);
         energygaptemp :=
           Modelica.Electrical.Spice3.Internal.Functions.energyGapDepTemp(temp);
-        ret           := satcur0  * exp( energygaptnom / vtnom - energygaptemp / vt);
+        ret           := satcur0 * exp( energygaptnom*(unitVoltage/unitGapEnergy) / vtnom - energygaptemp*(unitVoltage/unitGapEnergy) / vt);
 
         annotation (Documentation(info="<html>
 <p>This internal function calculates the temperature dependent saturation current based on the actual and the nominal temperature.</p>
@@ -5895,7 +5807,7 @@ on the model behaviour.
         ret := if ( ret > 1e10) then  1e10 else ret;
 
         annotation (Documentation(info="<html>
-<p>This internal function limits the junction voltage. If it increases 1.e10, it is hold to be constant at that value.</p>
+<p>This internal function limits the junction voltage. If it increases 1e10, it is hold to be constant at that value.</p>
 </html>"));
       end junctionVCrit;
 
@@ -5912,8 +5824,8 @@ on the model behaviour.
         output Real jucntioncap "Junction capacitance";
 
       protected
-        SI.Voltage phibtemp;
-        SI.Voltage phibtnom;
+        SI.GapEnergy phibtemp;
+        SI.GapEnergy phibtnom;
         SI.Voltage vt;
         SI.Voltage vtnom;
         Real arg;
@@ -5995,7 +5907,7 @@ on the model behaviour.
       Real evbd;
       Real evd;
       constant Real max_exp = 50.;
-      constant SI.Current max_current = 1.e4;
+      constant SI.Current max_current = 1e4;
 
     algorithm
       if (satcur > 1e-101) then
@@ -6029,9 +5941,9 @@ on the model behaviour.
     end junction2SPICE3MOSFETRevised;
 
     function junction2SPICE3MOSFET
-        "Junction current and conductance calculation, obsolete, use junction2SPICE3MOSFETRevised"
-       extends Modelica.Icons.Function;
-       extends Modelica.Icons.ObsoleteModel;
+      "Junction current and conductance calculation, obsolete, use junction2SPICE3MOSFETRevised"
+      extends Modelica.Icons.Function;
+      extends Modelica.Icons.ObsoleteModel;
 
       input SI.Current current "Input current";
       input SI.Conductance cond "Input conductance";
@@ -6049,7 +5961,7 @@ on the model behaviour.
       Real evbd;
       Real evd;
       constant Real max_exp =     50.;
-      constant SI.Current max_current = 1.e4;
+      constant SI.Current max_current = 1e4;
 
     algorithm
       out_current := current;
@@ -6082,11 +5994,12 @@ on the model behaviour.
 
       annotation (Documentation(info="<html>
 <p>This internal function calculates both the junction current and the junction conductance dependent from the given voltage.</p>
-</html>"));
+</html>"),
+      obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Functions.junction2SPICE3MOSFETRevised instead");
     end junction2SPICE3MOSFET;
 
     function junctionCapRevised "Junction capacity"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Capacitance capin "Input capacitance";
       input SI.Voltage voltage "Input voltage";
       input SI.Voltage depcap;
@@ -6127,8 +6040,8 @@ on the model behaviour.
     end junctionCapRevised;
 
     function junctionCap "Junction capacity, obsolete, use JunctionCapRevised"
-       extends Modelica.Icons.Function;
-       extends Modelica.Icons.ObsoleteModel;
+      extends Modelica.Icons.Function;
+      extends Modelica.Icons.ObsoleteModel;
 
       input SI.Capacitance capin "Input capacitance";
       input SI.Voltage voltage "Input voltage";
@@ -6166,12 +6079,13 @@ on the model behaviour.
 
       annotation (Documentation(info="<html>
 <p>This internal function calculates the charge and the capacitance of the junction capacity dependent from the given voltage.</p>
-</html>"));
+</html>"),
+      obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Functions.junctionCapRevised instead");
     end junctionCap;
 
     function saturationCurDepTempSPICE3
-        "Temperature dependency of saturation current"
-    extends Modelica.Icons.Function;
+      "Temperature dependency of saturation current"
+      extends Modelica.Icons.Function;
       input SI.Current satcur0 "Saturation current";
       input SI.Temp_K temp "Device Temperature";
       input SI.Temp_K tnom "Nominal Temperature";
@@ -6198,7 +6112,7 @@ on the model behaviour.
     end saturationCurDepTempSPICE3;
 
     function junctionVoltage23SPICE3 "Junction Voltage"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Voltage vb;
       input SI.Current ivb;
       input SI.Current satcur "Saturation current";
@@ -6239,7 +6153,7 @@ on the model behaviour.
     end junctionVoltage23SPICE3;
 
     function junction3 "Junction current and conductance calculation"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Voltage voltage "Input voltage";
       input SI.Temp_K temp "Device Temperature";
       input Real ncoeff;
@@ -6304,8 +6218,8 @@ on the model behaviour.
     end junction3;
 
     function junctionCapTransTime
-        "Junction capacitance transittime calculation"
-    extends Modelica.Icons.Function;
+      "Junction capacitance transittime calculation"
+      extends Modelica.Icons.Function;
       input SI.Capacitance capin "Input capacitance";
       input SI.Voltage voltage "Input voltage";
       input SI.Voltage depcap;
@@ -6340,7 +6254,7 @@ on the model behaviour.
     end junctionCapTransTime;
 
     function junction2 "Junction current and conductance calculation"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Voltage voltage "Input Voltage";
       input SI.Temp_K temp "Device Temperature";
       input Real ncoeff;
@@ -6391,15 +6305,15 @@ on the model behaviour.
     end junction2;
 
     function resDepTemp "Temperature dependent conductance"
-    extends Modelica.Icons.Function;
-    input SI.Resistance resist "Input resistance";
-    input SI.Temp_K temp "Device temperature";
-    input SI.Temp_K tnom "Nominal temperature";
-    input Real tc1;
-    input Real tc2;
+      extends Modelica.Icons.Function;
+      input SI.Resistance resist "Input resistance";
+      input SI.Temp_K temp "Device temperature";
+      input SI.Temp_K tnom "Nominal temperature";
+      input Real tc1;
+      input Real tc2;
 
-    output SI.Conductance conduct "Output conductance";
-    output Real dCond_dTemp "Output value";
+      output SI.Conductance conduct "Output conductance";
+      output Real dCond_dTemp "Output value";
 
       protected
       Real difference;
@@ -6434,8 +6348,8 @@ on the model behaviour.
     end resDepGeom;
 
     function saturationCurDepTempSPICE3JFET
-        "Temperature dependency of saturation current"
-    extends Modelica.Icons.Function;
+      "Temperature dependency of saturation current"
+      extends Modelica.Icons.Function;
       input SI.Current satcur0 "Saturation current";
       input SI.Temp_K temp "Device Temperature";
       input SI.Temp_K tnom "Nominal Temperature";
@@ -6446,20 +6360,20 @@ on the model behaviour.
       SI.Voltage vt;
 
     algorithm
-        vt := Spice3.Internal.SpiceConstants.CONSTKoverQ*temp;
+      vt := Spice3.Internal.SpiceConstants.CONSTKoverQ*temp;
       ret := satcur0  * exp( (temp / tnom - 1) * 1.11 / vt);
 
     end saturationCurDepTempSPICE3JFET;
 
     function capDepGeom "Capacitance dependent from width and narrow"
-    extends Modelica.Icons.Function;
-    input SI.CapacitancePerArea cap0 "Junction bottom capacitance";
-    input SI.Permittivity capsw0 "Junction sidewall capacitance";
-    input SI.Length  width "Input capacitor width";
-    input SI.Length  length "Input capacitor length";
-    input SI.Length  narrow "Input narrow";
+      extends Modelica.Icons.Function;
+      input SI.CapacitancePerArea cap0 "Junction bottom capacitance";
+      input SI.Permittivity capsw0 "Junction sidewall capacitance";
+      input SI.Length  width "Input capacitor width";
+      input SI.Length  length "Input capacitor length";
+      input SI.Length  narrow "Input narrow";
 
-    output SI.Capacitance out "Output value";
+      output SI.Capacitance out "Output value";
 
     algorithm
       out := cap0 * (width - narrow) * (length - narrow)
@@ -6467,12 +6381,12 @@ on the model behaviour.
 
     end capDepGeom;
 
-      function energyGapDepTemp "Temperature dependency of energy gap"
+    function energyGapDepTemp "Temperature dependency of energy gap"
       extends Modelica.Icons.Function;
         input SI.Temp_K temp "Temperature";
-        output SI.Voltage ret "Output voltage";
+        output SI.GapEnergy ret "Output Gap Energy";
 
-      algorithm
+    algorithm
         ret := Spice3.Internal.MaterialParameters.EnergyGapSi - (
           Spice3.Internal.MaterialParameters.FirstBandCorrFactorSi
           *temp*temp)/(temp + Spice3.Internal.MaterialParameters.SecondBandCorrFactorSi);
@@ -6480,10 +6394,10 @@ on the model behaviour.
         annotation (Documentation(info="<html>
 <p>This internal function calculates the temperature dependent energy gap based on the actual temperature, and two coefficients given as input to the function.</p>
 </html>"));
-      end energyGapDepTemp;
+    end energyGapDepTemp;
 
     function junction2SPICE3BJT "Junction current and conductance calculation"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Voltage voltage "Input Voltage";
       input SI.Temp_K temp "Device Temperature";
       input Real ncoeff1;
@@ -6529,7 +6443,7 @@ on the model behaviour.
     end junction2SPICE3BJT;
 
     function energyGapDepTemp_old "Temperature dependency of energy gap"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input SI.Temp_K temp "Temperature";
       output SI.Voltage ret "Output voltage";
 
@@ -6554,7 +6468,7 @@ on the model behaviour.
       extends Modelica.Icons.InternalPackage;
 
       record SpiceRoot "Data for insertion to matrices"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current[6] m_pCurrentValues(   start = zeros(6));
         Real[36] m_pResJacobi(      start = zeros(36));
         Real[36] m_pCapJacobi(      start = zeros(36));
@@ -6565,7 +6479,7 @@ on the model behaviour.
       end SpiceRoot;
 
       function useInitialConditions "Initial condition handling"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         output Boolean ret;
 
       algorithm
@@ -6577,9 +6491,9 @@ on the model behaviour.
       end useInitialConditions;
 
       function initJunctionVoltages
-        "Choice of junction voltage handling, obsolete, use initJunctionVoltageRevised"
+        "Choice of junction voltage handling, obsolete, use initJunctionVoltagesRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
         output Boolean ret;
       algorithm
@@ -6588,13 +6502,14 @@ on the model behaviour.
 
         annotation (Documentation(info="<html>
 <p>This internal function is provided to choose the junction voltage handling which is at the current library version fixed to false.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.SpiceRoot.initJunctionVoltagesRevised instead");
       end initJunctionVoltages;
 
       function limitJunctionVoltage
         "Limitation of junction voltage, obsolete, use limitJunctionVoltageRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
         input SI.Voltage voltage "Input voltage";
 
@@ -6605,11 +6520,12 @@ on the model behaviour.
 
         annotation (Documentation(info="<html>
 <p>This internal function is provided to limit the junction voltage which is at the current library version fixed to false.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.SpiceRoot.limitJunctionVoltageRevised instead");
       end limitJunctionVoltage;
 
       function limitJunctionVoltageRevised "Limitation of junction voltage"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input SI.Voltage voltage "Input voltage";
 
         output SI.Voltage ret;
@@ -6624,7 +6540,7 @@ on the model behaviour.
 
       function initJunctionVoltagesRevised
         "Choice of junction voltage handling"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         output Boolean ret;
       algorithm
 
@@ -6643,7 +6559,7 @@ on the model behaviour.
       extends Modelica.Icons.InternalPackage;
 
     record Model "Device Temperature"
-    extends Modelica.Icons.Record;
+      extends Modelica.Icons.Record;
       SI.Temp_K m_dTemp( start = SpiceConstants.CKTnomTemp)
           "TEMP, Device Temperature";
         annotation (Documentation(info="<html>
@@ -6700,7 +6616,7 @@ on the model behaviour.
       end Mosfet;
 
       record MosfetModelLineParams "Record for Mosfet model line parameters"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
          Real m_jctSatCurDensity(           start = 0.0)
           "JS, Bulk jct. sat. current density, input - use tSatCurDens";
          SI.Resistance m_sheetResistance(            start = 0.0)
@@ -6738,7 +6654,7 @@ on the model behaviour.
       end MosfetModelLineParams;
 
       record MosfetModelLine "Type of the transistor"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Integer m_type(   start = 1) "device type : 1 = n,  -1 = p";
 
         annotation (Documentation(info="<html>
@@ -6747,7 +6663,7 @@ on the model behaviour.
       end MosfetModelLine;
 
       record MosfetCalc "Mosfet Variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Voltage m_vds "Vds, Drain-Source voltage";
         SI.Voltage m_vgs "Vgs, Gate-Source voltage";
         SI.Voltage m_vbs "Vbs, Bulk-Source voltage";
@@ -6785,7 +6701,7 @@ on the model behaviour.
       end MosfetCalc;
 
       function mosfetInitEquations "MOSFET initial precalculations"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Mosfet in_m "Input parameter set";
 
         output Mosfet out_m "Changed parameter set";
@@ -6806,7 +6722,7 @@ on the model behaviour.
       end mosfetInitEquations;
 
       function mosfetModelLineInitEquations "Type transcription"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Mosfet in_m "Input parameter set";
 
         output MosfetModelLine out_ml "Changed parameter set";
@@ -6821,7 +6737,7 @@ on the model behaviour.
       end mosfetModelLineInitEquations;
 
       function getNumberOfElectricalPins "Number of Pins"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         output Integer ret "Number of pins";
 
       algorithm
@@ -6960,7 +6876,7 @@ on the model behaviour.
 
       record MosModelLineVariables
         "Record for Mosfet model line variables (for level 1)"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Real m_oxideCapFactor;
         SI.Voltage m_vt0;
         SI.Voltage m_phi;
@@ -7014,7 +6930,7 @@ on the model behaviour.
       end MosCalc;
 
       record DEVqmeyer "Meyer capacities and charge"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Capacitance qm_capgb(  start = 0);
         SI.Capacitance qm_capgs(  start = 0);
         SI.Capacitance qm_capgd(  start = 0);
@@ -7031,7 +6947,7 @@ on the model behaviour.
       end DEVqmeyer;
 
       record CurrrentsCapacitances "Currents and Capacities"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current idrain( start = 0);
         SI.Current iBD( start = 0);
         SI.Current iBS( start = 0);
@@ -7048,7 +6964,7 @@ on the model behaviour.
       end CurrrentsCapacitances;
 
       function mosCalcInitEquations "Mosfet initial precalculations (level 1)"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mos1.Mos1ModelLineParams in_p
           "Input record model line parameters for MOS1";
         input Spice3.Internal.SpiceConstants in_C
@@ -7146,7 +7062,7 @@ on the model behaviour.
 
       function mosCalcCalcTempDependencies
         "Precalculation relating to temperature"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mos1.Mos1ModelLineParams in_p
           "Input record model line parameters for MOS1";
         input Spice3.Internal.SpiceConstants in_C
@@ -7290,7 +7206,7 @@ on the model behaviour.
 
       function mosCalcNoBypassCode
         "Calculation of currents and capacities (level 1)"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mosfet.Mosfet in_m
           "Input record MOSFET parameters";
         input Integer in_m_type "Type of MOS transistor";
@@ -7483,7 +7399,7 @@ on the model behaviour.
       end mosCalcNoBypassCode;
 
       function mosCalcDEVqmeyer "Calculation of Meyer capacities"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input SI.Voltage vgs;
         input SI.Voltage vgd;
         input SI.Voltage vgb;
@@ -7542,7 +7458,7 @@ on the model behaviour.
 
       function mos2CalcInitEquationsRevised
         "Mosfet initial precalculations (level 2)"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mos2.Mos2ModelLineParams in_p
           "Input record Mos2 values";
         input Spice3.Internal.Mosfet.Mosfet in_m
@@ -7579,7 +7495,7 @@ on the model behaviour.
       function mos2CalcInitEquations
         "Mosfet initial precalculations (level 1) obsolete, use mos2CalcInitEquationsRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
         input Spice3.Internal.Mos2.Mos2ModelLineParams
                                        in_p "Input record Mos2 values";
@@ -7614,12 +7530,13 @@ on the model behaviour.
 
         annotation (Documentation(info="<html>
 <p>This function mosCalcInitEquations does the initial precalculation of the MOSFET parameters (level 2).</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete model - use Modelica.Electrical.Spice3.Internal.Mos.mos2CalcInitEquationsRevised instead");
       end mos2CalcInitEquations;
 
       function mos2CalcCalcTempDependenciesRevised
         "Precalculation relating to temperature"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mos2.Mos2ModelLineParams in_p
           "Output record Mos1 calculated values";
         input Spice3.Internal.Mosfet.Mosfet in_m
@@ -7751,7 +7668,7 @@ on the model behaviour.
       function mos2CalcCalcTempDependencies
         "Precalculation relating to temperature obsolete, use mos2CalcCalcTempDependenciesRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
         input Spice3.Internal.Mos2.Mos2ModelLineParams
                                        in_p
@@ -7892,12 +7809,13 @@ on the model behaviour.
 
         annotation (Documentation(info="<html>
 <p>This function mosCalcCalcTempDependencies does precalculation relating to the temperature (level 2).</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Mos.mos2CalcCalcTempDependenciesRevised instead");
       end mos2CalcCalcTempDependencies;
 
       function mos2CalcNoBypassCodeRevised
         "Calculation of currents and capacities (level 2)"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.Mosfet.Mosfet in_m
           "Input record MOSFET parameters";
         input Integer in_m_type "Type of MOS transistor";
@@ -8087,7 +8005,7 @@ on the model behaviour.
       function mos2CalcNoBypassCode
         "Calculation of currents and capacities (level 2) obsolete, use mos2CalcNoBypassCodeRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
         input Spice3.Internal.Mosfet.Mosfet in_m
           "Input record MOSFET parameters";
@@ -8338,7 +8256,8 @@ on the model behaviour.
 
         annotation (Documentation(info="<html>
 <p>This function NoBypassCode calculates the currents (and the capacitances) that are necessary for the currents sum in the toplevelmodel (level 2).</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Mos.mos2CalcNoBypassCodeRevised instead");
       end mos2CalcNoBypassCode;
 
       annotation (Documentation(info="<html>
@@ -8369,7 +8288,7 @@ on the model behaviour.
       end Mos1Calc;
 
       function mos1ModelLineParamsInitEquations "Initial precalculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Mos1ModelLineParams in_p
           "Input record model line parameters for MOS1";
         input SpiceConstants in_C "Spice constants";
@@ -8442,7 +8361,7 @@ on the model behaviour.
       end mos1ModelLineParamsInitEquations;
 
       function drainCur "Drain current calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input SI.Voltage vb;
         input SI.Voltage vg;
         input SI.Voltage vds;
@@ -8511,7 +8430,7 @@ on the model behaviour.
 
       function mos1RenameParameters "Parameter renaming to internal names"
       extends Modelica.Icons.Function;
-        input ModelcardMOS ex "Modelcard with technologyparameters";
+        input ModelcardMOS ex "Modelcard with technology parameters";
         input SpiceConstants con "Spice constants";
 
         output Mos.MosModelLineParams intern
@@ -8727,8 +8646,8 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
 
       function mos2ModelLineParamsInitEquations
         "Initial precalculation obsolete, use mos2ModelLineParamsInitEquationsRevised"
-       extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.Function;
+        extends Modelica.Icons.ObsoleteModel;
 
         input Mos2ModelLineParams in_p
           "Input record model line parameters for MOS2";
@@ -8800,11 +8719,12 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
 
         annotation (Documentation(info="<html>
 <p>This function mos1ModelLineParamsInitEquation does the initial precalculation of the MOSFET model line parameters for level 2.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Mos2.mos2ModelLineParamsInitEquationsRevised instead");
       end mos2ModelLineParamsInitEquations;
 
       function mos2ModelLineParamsInitEquationsRevised "Initial precalculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Modelica.Electrical.Spice3.Internal.Mos2.Mos2ModelLineParams in_p
           "Input record model line parameters for MOS2";
         input Integer in_m_type "Type of MOS transistor";
@@ -8878,19 +8798,19 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end mos2ModelLineParamsInitEquationsRevised;
 
       function drainCurRevised "Drain current calculation"
-      extends Modelica.Icons.Function;
-         input SI.Voltage vbs;
-         input SI.Voltage vgs;
-         input SI.Voltage vds;
+        extends Modelica.Icons.Function;
+        input SI.Voltage vbs;
+        input SI.Voltage vgs;
+        input SI.Voltage vds;
 
-         input Spice3.Internal.Mosfet.Mosfet in_m "Record MOSFET";
-         input Modelica.Electrical.Spice3.Internal.Mos2.Mos2Calc in_c
+        input Spice3.Internal.Mosfet.Mosfet in_m "Record MOSFET";
+        input Modelica.Electrical.Spice3.Internal.Mos2.Mos2Calc in_c
           "Input record Mos2Calc";
-         input Modelica.Electrical.Spice3.Internal.Mos2.Mos2ModelLineParams in_p
+        input Modelica.Electrical.Spice3.Internal.Mos2.Mos2ModelLineParams in_p
           "Input record model line parameters for MOS2";
-         input Integer in_m_type "Type of MOS transistor";
+        input Integer in_m_type "Type of MOS transistor";
 
-         output Modelica.Electrical.Spice3.Internal.Mos2.Mos2Calc out_c
+        output Modelica.Electrical.Spice3.Internal.Mos2.Mos2Calc out_c
           "Output record Mos2Calc";
 
       protected
@@ -8934,7 +8854,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real ueff;
         Real dsdvgs;
         Real dsdvbs;
-        Real dbsrdb;
+        Real dbsrdb = 0.0;
         Real gdbdvs = 0.0;
         Real dldvgs;
         Real dldvds;
@@ -8974,7 +8894,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real[4] sig2;
         Real[4] a4;
         Real[4] b4;
-        Real[8] x4;
+        Real[8] x4 = fill(0.0, 8);
         Real[8] poly4;
         Real delta4;
         Integer j;
@@ -9019,7 +8939,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real expg;
 
       algorithm
-         out_c := in_c;
+        out_c := in_c;
 
         vt := Spice3.Internal.SpiceConstants.CONSTKoverQ*Spice3.Internal.SpiceConstants.REFTEMP;
 
@@ -9427,21 +9347,21 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       function drainCur
         "Drain current calculation obsolete, use drainCurRevised"
         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.ObsoleteModel;
 
-         input SI.Voltage vbs;
-         input SI.Voltage vgs;
-         input SI.Voltage vds;
+        input SI.Voltage vbs;
+        input SI.Voltage vgs;
+        input SI.Voltage vds;
 
-         input Spice3.Internal.Mosfet.Mosfet in_m "Record MOSFET";
-         input Mos2Calc in_c "Input record Mos2Calc";
-         input Mos2ModelLineParams in_p
+        input Spice3.Internal.Mosfet.Mosfet in_m "Record MOSFET";
+        input Mos2Calc in_c "Input record Mos2Calc";
+        input Mos2ModelLineParams in_p
           "Input record model line parameters for MOS2";
-         input Spice3.Internal.SpiceConstants in_C "Spice constants";
-         input Mos2ModelLineVariables in_vp "Input record model line variables";
-         input Integer in_m_type "Type of MOS transistor";
+        input Spice3.Internal.SpiceConstants in_C "Spice constants";
+        input Mos2ModelLineVariables in_vp "Input record model line variables";
+        input Integer in_m_type "Type of MOS transistor";
 
-         output Mos2Calc out_c "Output record Mos2Calc";
+        output Mos2Calc out_c "Output record Mos2Calc";
 
       protected
         Real vt;      // K * T / Q
@@ -9484,7 +9404,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real ueff;
         Real dsdvgs;
         Real dsdvbs;
-        Real dbsrdb;
+        Real dbsrdb = 0.0;
         Real gdbdvs = 0.0;
         Real dldvgs;
         Real dldvds;
@@ -9524,7 +9444,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real[4] sig2;
         Real[4] a4;
         Real[4] b4;
-        Real[8] x4;
+        Real[8] x4 = fill(0.0, 8);
         Real[8] poly4;
         Real delta4;
         Integer j;
@@ -9569,7 +9489,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         Real expg;
 
       algorithm
-         out_c := in_c;
+        out_c := in_c;
 
         vt := in_C.CONSTKoverQ * in_C.REFTEMP;
 
@@ -9969,12 +9889,13 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
 
         annotation (Documentation(info="<html>
 <p>This function drainCur calculates the main currents that flows from drain node to source node (level 2).</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Mos2.drainCurRevised instead");
       end drainCur;
 
       function mos2RenameParametersRevised
         "Parameter renaming to internal names"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Spice3.Internal.ModelcardMOS2 ex
           "Modelcard with technology parameters";
 
@@ -10042,8 +9963,8 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
 
       function mos2RenameParameters
         "Parameter renaming to internal names obsolete, use mos2RenameParametersRevised"
-         extends Modelica.Icons.Function;
-         extends Modelica.Icons.ObsoleteModel;
+        extends Modelica.Icons.Function;
+        extends Modelica.Icons.ObsoleteModel;
 
         input Spice3.Internal.ModelcardMOS2
                             ex "Modelcard with technology parameters";
@@ -10128,7 +10049,8 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
         annotation (Documentation(info="<html>
 <p>This function mos2RenameParameters assigns the external (given by the user, e.g., RD) technology parameters
 to the internal parameters (e.g., m_drainResistance). It also does the analysis of the IsGiven values (level 2).</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function - use Modelica.Electrical.Spice3.Internal.Mos2.mos2RenameParametersRevised instead");
       end mos2RenameParameters;
 
       function mos2RenameParametersDev
@@ -10192,7 +10114,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       extends Modelica.Icons.InternalPackage;
 
       record DiodeModelLineParams "Record for Diode model line parameters"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current m_satCur( start = 1.0e-14) "IS, Saturation current";
         SI.Resistance m_resist( start = 0.0) "RS, Ohmic resistance";
         Real m_emissionCoeff( start = 1.0) "N, Emission Coefficient";
@@ -10223,7 +10145,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end DiodeModelLineParams;
 
       record DiodeModelLineVariables "Record for Diode model line variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Real m_gradingCoeff;
         Real m_activationEnergy;
         Real m_depletionCapCoeff;
@@ -10235,7 +10157,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end DiodeModelLineVariables;
 
       record DiodeParams "Record for Diode device parameters"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Real m_area(start = 1.0) "AREA, Area factor";
         Boolean m_bOff(start = false) "OFF, Initially off";
         SI.Voltage m_dIC(start = 0.0) "IC, Initial device voltage";
@@ -10249,7 +10171,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end DiodeParams;
 
       record DiodeVariables "Variables for the diode model"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Real m_pBvIsGiven "Additional BV is given variable";
 
         annotation (Documentation(info="<html>
@@ -10258,7 +10180,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end DiodeVariables;
 
       record DiodeCalc "Diode variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Voltage m_tJctPot;
         SI.Capacitance m_tJctCap;
         Real m_tF1;
@@ -10275,7 +10197,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end DiodeCalc;
 
       record CurrentsCapacitances "Diode variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current m_dCurrent;
 
         annotation (Documentation(info="<html>
@@ -10285,7 +10207,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
 
       function diodeModelLineInitEquations
         "Initial precalculation of model line parameters"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input DiodeModelLineParams in_p
           "Input record with diode model line parameters";
 
@@ -10314,7 +10236,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end diodeModelLineInitEquations;
 
       function diodeInitEquations "Initial calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input DiodeModelLineParams in_p
           "Input record with diode model line parameters";
 
@@ -10334,7 +10256,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end diodeInitEquations;
 
       function diodeCalcTempDependencies "Temperature dependency calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input DiodeModelLineParams in_p
           "Input record diode model line parameters";
         input DiodeParams in_dp "Input record diode parameters";
@@ -10389,7 +10311,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end diodeCalcTempDependencies;
 
       function diodeNoBypassCode "Calculation of currents"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input DiodeModelLineParams in_p
           "Input record model line parameters for diode";
         input DiodeParams in_dp "Input record with parameters for diode";
@@ -10462,7 +10384,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end diodeNoBypassCode;
 
       function diodeCalcAdditionalValues "Calculation of additional values"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input DiodeVariables in_v "Input record with diode variables";
         input DiodeModelLineParams in_p
           "Input record with diode model line parameters";
@@ -10480,7 +10402,7 @@ to the internal parameters (e.g., m_drainResistance). It also does the analysis 
       end diodeCalcAdditionalValues;
 
       function diodeRenameParameters "Technology parameter renaming"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input ModelcardDIODE ex "Modelcard with technology parameters";
         input SpiceConstants con "Spice constants";
 
@@ -10545,7 +10467,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end diodeRenameParametersDev;
 
       function diodeRenameParametersDevTemp "Temperature calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input SI.Temp_C TEMP "Temperature";
         output Model.Model dev_temp "Input record Model";
 
@@ -10566,57 +10488,55 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         extends Modelica.Icons.InternalPackage;
 
       record ResistorParams "Resistor device parameters"
-      extends Modelica.Icons.Record;
-          SI.Resistance m_dResist( start=1000) "Device is a resistor model";
-          Real m_dResIsGiven "Resistance is given value";
-          SI.Length m_dWidth( start=0) "Width";
-          Real m_dWidthIsGiven "Width is given value";
-          SI.Length m_dLength "Length";
-          Real m_dLengthIsGiven "Length is given value";
-          Boolean m_bSensResist( start = false)
+        extends Modelica.Icons.Record;
+        SI.Resistance m_dResist( start=1000) "Device is a resistor model";
+        Real m_dResIsGiven "Resistance is given value";
+        SI.Length m_dWidth( start=0) "Width";
+        Real m_dWidthIsGiven "Width is given value";
+        SI.Length m_dLength "Length";
+        Real m_dLengthIsGiven "Length is given value";
+        Boolean m_bSensResist( start = false)
           "flag to request sensitivity WRT resistance";
-          SI.Temp_C m_dTemp(start = 27) "Resistor device temperature";
+        SI.Temp_C m_dTemp(start = 27) "Resistor device temperature";
 
         annotation (Documentation(info="<html>
 <p>This record contains the device parameters that are used for the resistor model in SPICE3.</p>
 </html>"));
       end ResistorParams;
 
-      record ResistorModelLineParams "Record for Diode model line parameters"
-      extends Modelica.Icons.Record;
-          SI.Conversions.NonSIunits.FirstOrderTemperaturCoefficient
-          m_dTC1 "First order temp, coefficient";
-          SI.Conversions.NonSIunits.SecondOrderTemperaturCoefficient
-          m_dTC2 "Second order temp, coefficient";
-          SI.Resistance m_dRsh "Sheet resistance";
-          Real m_dRshIsGiven;
-          SI.Length m_dDefW "Default device width";
-          SI.Length m_dNarrow "Narrowing of resistor";
-          SI.Temp_C m_dTnom "Parameter measurement temperature";
+      record ResistorModelLineParams "Record for resistor model line parameters"
+        extends Modelica.Icons.Record;
+        SI.LinearTemperatureCoefficientResistance m_dTC1 "First order temperature coefficient";
+        SI.QuadraticTemperatureCoefficientResistance m_dTC2 "Second order temperature coefficient";
+        SI.Resistance m_dRsh "Sheet resistance";
+        Real m_dRshIsGiven;
+        SI.Length m_dDefW "Default device width";
+        SI.Length m_dNarrow "Narrowing of resistor";
+        SI.Temp_C m_dTnom "Parameter measurement temperature";
 
         annotation (Documentation(info="<html>
 <p>This record contains the model line (also called model card) parameters that are used for the resistor model in SPICE3.</p>
 </html>"));
       end ResistorModelLineParams;
 
-      record ResistorVariables "Variables for the diode model"
+      record ResistorVariables "Variables for the resistor model"
         extends Modelica.Icons.Record;
-       SI.Length m_dWidth;
-       SI.Length m_dLength;
-       SI.Resistance m_dResist;
-       SI.Conductance m_dConduct;
-       SI.Temp_C m_dCond_dTemp;
+        SI.Length m_dWidth;
+        SI.Length m_dLength;
+        SI.Resistance m_dResist;
+        SI.Conductance m_dConduct;
+        SI.Temp_C m_dCond_dTemp;
         annotation (Documentation(info="<html>
 <p>This record contains the model variables that are used for the resistor model in SPICE3.</p>
 </html>"));
       end ResistorVariables;
 
       function resistorRenameParameters "Technology parameter renaming"
-      extends Modelica.Icons.Function;
-      input ModelcardR ex "Modelcard with technology parameters";
-      input SpiceConstants con "Spice constants";
+        extends Modelica.Icons.Function;
+        input ModelcardR ex "Modelcard with technology parameters";
+        input SpiceConstants con "Spice constants";
 
-      output ResistorModelLineParams intern
+        output ResistorModelLineParams intern
           "Output record with resistor model line parameters";
 
       algorithm
@@ -10638,7 +10558,7 @@ to the internal parameters (e.g., m_emissionCoeff). It also does the analysis of
       end resistorRenameParameters;
 
       function resistorRenameParametersDev "Device parameter renaming"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input SI.Resistance R "Resistance";
         input SI.Length W "Width";
         input SI.Length L "Length";
@@ -10677,13 +10597,13 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
       function resistorInitEquations "Initial calculation"
         extends Modelica.Icons.Function;
-       input ResistorParams in_p "Input record with resistor parameters";
-       input ResistorModelLineParams in_p2
+        input ResistorParams in_p "Input record with resistor parameters";
+        input ResistorModelLineParams in_p2
           "Input record with resistor model line parameters";
-       output ResistorVariables out "Output record with resistor variables";
+        output ResistorVariables out "Output record with resistor variables";
 
       algorithm
-      out.m_dLength := 0;
+        out.m_dLength := 0;
         out.m_dConduct := 0;
         out.m_dCond_dTemp := 0;
 
@@ -10748,7 +10668,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end Bjt;
 
       record BjtModelLineParams "Record for bjt model line parameters"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         Real m_type( start = 1) "device type : 1 = n,  -1 = p";
 
         SI.Temp_K m_tnom(start=Spice3.Internal.SpiceConstants.CKTnomTemp)
@@ -10847,7 +10767,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end BjtModelLineParams;
 
       record BjtCalc "Bjt variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current m_tSatCur(start=0);
         Real m_tBetaF( start = 1);
         Real m_tBetaR( start = 1);
@@ -10874,7 +10794,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end BjtCalc;
 
       record CurrentsCapacitances "Bjt variables"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         SI.Current iBE(start=0.0);
                                    //current through diode dE1 (ideal part)
         SI.Current iBEN(start=0.0);
@@ -10896,12 +10816,12 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         Real iXX;
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor model in SPICE3.</p>
+<p>This record contains the model variables that are used for the bipolar transistor model in SPICE3.</p>
 </html>"));
       end CurrentsCapacitances;
 
       function bjtModelLineInitEquations "Initial calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input BjtModelLineParams in_p
           "Input record with Bjt model line parameters";
 
@@ -10949,7 +10869,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end bjtModelLineInitEquations;
 
       function bjtInitEquations "Initial calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Bjt in_p "Input record Bjt";
         input BjtModelLineParams in_pml
           "Input record with Bjt model line parameters";
@@ -10971,7 +10891,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end bjtInitEquations;
 
       function bjtCalcTempDependencies "Temperature dependency calculation"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Bjt in_p3 "Input record Bjt";
         input BjtModelLineParams in_p
           "Input record with Bjt model line parameters";
@@ -11071,7 +10991,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
       end bjtCalcTempDependencies;
 
       function bjtNoBypassCode "Calculation of currents"
-      extends Modelica.Icons.Function;
+        extends Modelica.Icons.Function;
         input Bjt in_p3 "Input record Bjt";
         input BjtModelLineParams in_p
           "Input record with Bjt model line parameters";
@@ -11503,7 +11423,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This record contains the model line (also called model card) variables that are used for the bipolar transistor model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record for bjt model line variables");
       end BjtModelLineVariables;
 
       record BjtVariables "Variables for the bjt model, obsolete"
@@ -11514,8 +11435,9 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         Real m_CScap= 1;
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor bjt model in SPICE3.</p>
-</html>"));
+<p>This record contains the model variables that are used for the bipolar transistor bjt model in SPICE3.</p>
+</html>"),
+        obsolete = "Obsolete record");
       end BjtVariables;
 
       record Bjt3Variables "Variables for the bjt3 model, obsolete"
@@ -11526,8 +11448,9 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         Real m_invRollOffR=1;
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor bjt3 model in SPICE3.</p>
-</html>"));
+<p>This record contains the model variables that are used for the bipolar transistor bjt3 model in SPICE3.</p>
+</html>"),
+        obsolete = "Obsolete record");
       end Bjt3Variables;
       annotation (Documentation(info="<html>
 <p>This package Bjt contains functions and records with data of the Bjt bipolar transistor models.</p>
@@ -11540,7 +11463,7 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
       record BjtModelLineParams
         "Record for bjt model line parameters, obsolete"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         extends Modelica.Icons.ObsoleteModel;
         Real m_type( start = 1) "device type : 1 = n,  -1 = p";
 
@@ -11628,12 +11551,13 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This record contains the model line (also called model card) parameters that are used for the bipolar transistor model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record");
       end BjtModelLineParams;
 
       record BjtModelLineVariables
         "Record for bjt model line variables, obsolete"
-      extends Modelica.Icons.Record;
+        extends Modelica.Icons.Record;
         extends Modelica.Icons.ObsoleteModel;
         SI.Current m_leakBEcurrent;
         SI.Current m_leakBCcurrent;
@@ -11651,7 +11575,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This record contains the model line (also called model card) variables that are used for the bipolar transistor model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record");
       end BjtModelLineVariables;
 
       function bjtModelLineInitEquations "Initial calculation, obsolete"
@@ -11706,7 +11631,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>Within this function some parameters are initially precalculated from model line parameters.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtModelLineInitEquations;
 
       record Bjt3 "Record for bjt3 device parameters, obsolete"
@@ -11727,7 +11653,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This record contains the device parameters that are used for the bipolar transistor bjt3 model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record");
       end Bjt3;
 
       record Bjt3Variables "Variables for the bjt3 model, obsolete"
@@ -11738,8 +11665,9 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         Real m_invRollOffR( start = 0.0);
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor bjt3 model in SPICE3.</p>
-</html>"));
+<p>This record contains the model variables that are used for the bipolar transistor bjt3 model in SPICE3.</p>
+</html>"),
+        obsolete = "Obsolete record");
       end Bjt3Variables;
 
       record Bjt3Calc "Bjt3 variables, obsolete"
@@ -11767,7 +11695,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This record contains the model variables that are used for the bipolar transistor model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record");
       end Bjt3Calc;
 
       record CurrentsCapacitances "Bjt3 variables, obsolete"
@@ -11785,8 +11714,9 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         SI.Capacitance capcs( start = 0.0);
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor model in SPICE3.</p>
-</html>"));
+<p>This record contains the model variables that are used for the bipolar transistor model in SPICE3.</p>
+</html>"),
+        obsolete = "Obsolete record");
       end CurrentsCapacitances;
 
       function bjt3InitEquations "Initial calculation, obsolete"
@@ -11807,7 +11737,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>Within this function some parameters are initially precalculated from model line parameters.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjt3InitEquations;
 
       function bjt3CalcTempDependencies
@@ -11915,7 +11846,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>In this function for the bipolar transistor model temperature dependencies are calculated using temperature treating functions from the equation package.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjt3CalcTempDependencies;
 
       function bjt3NoBypassCode "Calculation of currents, obsolete"
@@ -12180,14 +12112,16 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This function NoBypassCode calculates the currents (and the capacitances) that are necessary for the currents to be used in the top-level model.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjt3NoBypassCode;
 
       record Bjt "Record for bjt device parameters, obsolete"
         extends Bjt3;
         annotation (Documentation(info="<html>
 <p>This record contains the device parameters that are used for the bipolar transistor bjt model in SPICE3.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete record");
       end Bjt;
 
       record BjtVariables "Variables for the bjt model, obsolete"
@@ -12196,8 +12130,9 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         Real m_CScap;
 
         annotation (Documentation(info="<html>
-<p>This record contains the model variables that are used for the bipoar transistor bjt model in SPICE3.</p>
-</html>"));
+<p>This record contains the model variables that are used for the bipolar transistor bjt model in SPICE3.</p>
+</html>"),
+        obsolete = "Obsolete record");
       end BjtVariables;
 
       function bjtInitEquations "Initial calculation, obsolete"
@@ -12220,7 +12155,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>Within this function some parameters are initially precalculated from model line parameters.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtInitEquations;
 
       function bjtNoBypassCode "Calculation of currents, obsolete"
@@ -12280,7 +12216,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
 
         annotation (Documentation(info="<html>
 <p>This function NoBypassCode calculates the currents (and the capacitances) that are necessary for the currents to be used in the top-level model.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtNoBypassCode;
 
       function bjtRenameParameters "Technology parameter renaming, obsolete"
@@ -12357,7 +12294,8 @@ to the internal parameters (e.g., m_area). It also does the analysis of the IsGi
         annotation (Documentation(info="<html>
 <p>This function assigns the external (given by the user, e.g., IS) technology parameters
 to the internal parameters (e.g., m_satCur). It also does the analysis of the IsGiven values.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtRenameParameters;
 
       function bjtRenameParametersDev "Temperature calculation, obsolete"
@@ -12387,7 +12325,8 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
 
         annotation (Documentation(info="<html>
 <p>This function assigns the external (given by the user, e.g., AREA) device parameters to the internal parameters (e.g., m_area). It also does the analysis of the IsGiven values.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtRenameParametersDev;
 
       function bjtRenameParametersDevTemp "Temperature calculation, obsolete"
@@ -12402,7 +12341,8 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
 
         annotation (Documentation(info="<html>
 <p>This function calculates device parameters which are temperature dependent.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtRenameParametersDevTemp;
 
       function bjtRenameParametersType "Type, obsolete"
@@ -12415,13 +12355,15 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
 
         annotation (Documentation(info="<html>
 <p>This function assigns the external (given by the user, e.g. AREA) device parameters to the internal parameters (e.g. m_area). It also does the analysis of the IsGiven values.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete function");
       end bjtRenameParametersType;
 
       annotation (Documentation(info="<html>
 <p>The package Bjt3 is obsolete. Please use package Bjt instead.</p>
 <p>This package Bjt3 contains functions and records with data of the Bjt3 bipolar transistor models.</p>
-</html>"));
+</html>"),
+        obsolete = "Obsolete package - use Modelica.Electrical.Spice3.Internal.Bjt");
     end Bjt3;
 
     package Fet
@@ -12458,7 +12400,7 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
         SI.Charge m_chargegd "Qgd";
         SI.Capacitance m_capgd "Cgd, G-D junction cap";
         SI.Charge m_chargegs "Qgs";
-        SI.Capacitance m_capgs "Cgs, G-S junction capactance";
+        SI.Capacitance m_capgs "Cgs, G-S junction capacitance";
         SI.Current m_cdrain "Idrain";
         SI.Conductance m_gm "Gm";
         SI.Conductance m_gds "Gds";
@@ -12694,7 +12636,7 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
 
         end drainCur;
 
-        function calculateGateCap "Gate capactance calculation"
+        function calculateGateCap "Gate capacitance calculation"
         extends Modelica.Icons.Function;
           input Modelica.Electrical.Spice3.Internal.Fet.Fet in_f;
           input SI.Voltage vgs "Input voltage gate source";
@@ -12865,7 +12807,7 @@ to the internal parameters (e.g., m_satCur). It also does the analysis of the Is
         function jfetRenameParameters "Parameter renaming to internal names"
         extends Modelica.Icons.Function;
           input Modelica.Electrical.Spice3.Internal.ModelcardJFET ex
-          "Modelcard with technologyparameters";
+          "Modelcard with technology parameters";
 
           output JfetModelLine intern "Output record model line parameters";
 
@@ -13001,10 +12943,13 @@ to the internal parameters (e.g. m_drainResistance). It also does the analysis o
         end capacitorRenameParametersDev;
 
       end Csemiconductor;
+    annotation (Documentation(info="<html>
+<p>The package Internal contains functions and auxiliary models that are necessary for the Spice3 models. The package should not be used by the users of the Spice3-library.</p>
+</html>"));
   end Internal;
 
     annotation (Documentation(info="<html>
-<p>This package contains all function, parameters and data of semiconductor models, that are transformed from SPICE3 into Modelica. The models of the package semiconductors access to repository models. This package should not be used via direct access by a user of the Spice-Library for Modelica. It is restricted to the development.</p>
+<p>The Spice3 package contains models of the electronic simulator SPICE3. The models were translated into Modelica by rewriting the SPICE3 model code. </p>
 </html>"), Icon(graphics={
           Line(points={{-20,40},{-20,-40}}),
           Line(points={{-90,0},{-20,0}}),
