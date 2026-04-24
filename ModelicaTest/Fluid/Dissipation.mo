@@ -196,7 +196,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,-100},{100,10}},
                   textColor={0,0,255},
                   textString="Target == UndevBoth >> UNDEVELOPED fluid flow AND heat transfer at BOTH sides")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapLaminar;
 
         model kc_evenGapLaminar_KC
@@ -394,7 +394,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-98,-102},{102,8}},
                   textColor={0,0,255},
                   textString="Target == UndevBoth >> UNDEVELOPED fluid flow AND heat transfer at BOTH sides")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapLaminar_KC;
 
         model kc_evenGapOverall "Verification of function kc_evenGapOverall"
@@ -598,7 +598,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,-102},{100,8}},
                   textColor={0,0,255},
                   textString="Target == UndevBoth >> UNDEVELOPED fluid flow AND heat transfer at BOTH sides")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapOverall;
 
         model kc_evenGapOverall_KC
@@ -817,7 +817,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,-104},{100,6}},
                   textColor={0,0,255},
                   textString="Target == UndevBoth >> UNDEVELOPED fluid flow AND heat transfer at BOTH sides")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapOverall_KC;
 
         model kc_evenGapTurbulent
@@ -912,7 +912,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,50},{100,75}},
                   textColor={0,0,255},
                   textString="Heat transfer of EVEN GAP for TURBULENT flow regime")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapTurbulent;
 
         model kc_evenGapTurbulent_KC
@@ -1002,7 +1002,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Heat transfer of EVEN GAP for TURBULENT flow regime (inlining)")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_evenGapTurbulent_KC;
       end Channel;
 
@@ -1154,7 +1154,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Heat transfer of GENERIC calculation for forced convection for TURBULENT flow regime")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_approxForcedConvection;
 
         model kc_approxForcedConvection_KC
@@ -1298,624 +1298,9 @@ extends Modelica.Icons.ExamplesPackage;
                    textColor={0,0,255},
                    textString=
                      "Heat transfer of GENERIC calculation for forced convection for TURBULENT flow regime (inlining)")}),
-             experiment(StopTime=1.01));
+             experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_approxForcedConvection_KC;
       end General;
-
-      package HeatExchanger
-        "Verification package for heat exchanger correlations"
-      extends Modelica.Icons.ExamplesPackage;
-
-        model kc_flatTube "Verification of function kc_flatTube"
-          extends Modelica.Icons.Example;
-
-          parameter Integer n=2 "Number of various fin geometries";
-
-          //heat exchanger variables
-          parameter SI.Area A_fr=1 "Frontal area";
-
-          //heat exchanger variables geometry no.1
-          parameter SI.Length D_m_1=0.005
-            "Major tube diameter for flat tube";
-          parameter SI.Length F_l_1=0.019 "Fin length";
-          parameter SI.Length F_p_1=0.0018
-            "Fin pitch, fin spacing + fin thickness";
-          parameter SI.Length L_l_1=0.01607 "Louver length";
-          parameter SI.Length L_p_1=0.001534 "Louver pitch";
-          parameter SI.Length T_d_1=0.026 "Tube depth";
-          parameter SI.Length T_p_1=0.0197 "Tube pitch";
-
-          parameter SI.Length delta_f_1=0.0001 "fin thickness";
-          parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
-            "Louver angle";
-
-          //heat exchanger variables geometry no.2
-          parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
-          parameter SI.Length D_m_2=0.002
-            "Major tube diameter for flat tube";
-          parameter Real alpha_2=0.244
-            "Lateral fin spacing (s) / free flow height (h)";
-          parameter Real gamma_2=0.067
-            "Fin thickness (t) / lateral fin spacing (s)";
-          parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
-
-          //fluid property variables
-          parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-              1007 "Specific heat capacity at constant pressure of fluid";
-          parameter SI.DynamicViscosity eta=18.24e-6
-            "Dynamic viscosity of fluid";
-          parameter SI.ThermalConductivity lambda=25.69e-3
-            "Thermal conductivity of fluid";
-          parameter SI.Density rho=1.188 "Density of fluid";
-
-          //input VARIABLES
-          SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
-            annotation (Dialog(group="Input"));
-
-          //input record
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-            m_flow_IN_con_1(
-            A_fr=A_fr,
-            D_m=D_m_1,
-            F_l=F_l_1,
-            F_p=F_p_1,
-            L_l=L_l_1,
-            L_p=L_p_1,
-            T_d=T_d_1,
-            T_p=T_p_1,
-            delta_f=delta_f_1,
-            Phi=Phi_1,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
-            annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-            m_flow_IN_var_1(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow(start=0.88)=m_flow[1])
-            annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-            m_flow_IN_con_2(
-            A_fr=A_fr,
-            D_h=D_h_2,
-            alpha=alpha_2,
-            gamma=gamma_2,
-            delta=delta_2,
-            D_m=D_m_2,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
-                       annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-            m_flow_IN_var_2(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow(start=0.53)=m_flow[2])
-            annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-          //output variables
-          SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
-          SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
-
-        public
-          Modelica.Blocks.Sources.Ramp input_Re(
-            duration=1,
-            startTime=0,
-            height=10000,
-            offset=0)   annotation (Placement(
-                transformation(extent={{-80,-80},{-60,-60}})));
-
-        equation
-          //heat transfer calculation
-          (,,Re,Nu[1],) =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
-            m_flow_IN_con_1, m_flow_IN_var_1);
-
-          (,,Re,Nu[2],) =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
-            m_flow_IN_con_2, m_flow_IN_var_2);
-
-          annotation (__Dymola_Commands(file=
-                  "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube.mos"
-                "Verification of kc_flatTube"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-                Text(
-                  extent={{-100,50},{100,75}},
-                  textColor={0,0,255},
-                  textString=
-                      "Heat transfer of heat exchangers with flat tubes and various fin geometries"),
-                Text(
-                  extent={{-58,-22},{-22,-30}},
-                  textColor={0,0,255},
-                  textString="Flat tube and louver fin"),
-                Text(
-                  extent={{22,-22},{58,-30}},
-                  textColor={0,0,255},
-                  textString="Flat tube and slit fin")}),
-            experiment(StopTime=1.01));
-        end kc_flatTube;
-
-        model kc_flatTube_KC "Verification of function kc_flatTube_KC"
-          extends Modelica.Icons.Example;
-
-          parameter Integer n=2 "Number of various fin geometries";
-
-          //heat exchanger variables
-          parameter SI.Area A_fr=1 "Frontal area";
-
-          //heat exchanger variables geometry no.1
-          parameter SI.Length D_m_1=0.005
-            "Major tube diameter for flat tube";
-          parameter SI.Length F_l_1=0.019 "Fin length";
-          parameter SI.Length F_p_1=0.0018
-            "Fin pitch, fin spacing + fin thickness";
-          parameter SI.Length L_l_1=0.01607 "Louver length";
-          parameter SI.Length L_p_1=0.001534 "Louver pitch";
-          parameter SI.Length T_d_1=0.026 "Tube depth";
-          parameter SI.Length T_p_1=0.0197 "Tube pitch";
-
-          parameter SI.Length delta_f_1=0.0001 "fin thickness";
-          parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
-            "louver angle";
-
-          //heat exchanger variables geometry no.2
-          parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
-          parameter SI.Length D_m_2=0.002
-            "Major tube diameter for flat tube";
-          parameter Real alpha_2=0.244
-            "Lateral fin spacing (s) / free flow height (h)";
-          parameter Real gamma_2=0.067
-            "Fin thickness (t) / lateral fin spacing (s)";
-          parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
-
-          SI.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2)
-            "Free flow height";
-          SI.Length l_2=t_2/delta_2 "Fin length";
-          SI.Length s_2=h_2*alpha_2
-            "Lateral fin spacing (free flow width)";
-          SI.Length t_2=s_2*gamma_2 "Fin thickness";
-
-          //fluid property variables
-          parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-              1007 "Specific heat capacity at constant pressure of fluid";
-          parameter SI.DynamicViscosity eta=18.24e-6
-            "Dynamic viscosity of fluid";
-          parameter SI.ThermalConductivity lambda=25.69e-3
-            "Thermal conductivity of fluid";
-          parameter SI.Density rho=1.188 "Density of fluid";
-
-          //here: Nusselt number as input for inverse calculation
-          SI.NusseltNumber Nu=input_Nu.y;
-          SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
-
-          SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/L_p_1;
-          SI.CoefficientOfHeatTransfer kc_2=Nu*lambda/D_h_2;
-
-          //input record
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-            m_flow_IN_con_1(
-            A_fr=A_fr,
-            D_m=D_m_1,
-            F_l=F_l_1,
-            F_p=F_p_1,
-            L_l=L_l_1,
-            L_p=L_p_1,
-            T_d=T_d_1,
-            T_p=T_p_1,
-            delta_f=delta_f_1,
-            Phi=Phi_1,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
-            annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-            m_flow_IN_var_1(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[1])
-            annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-            m_flow_IN_con_2(
-            A_fr=A_fr,
-            D_h=D_h_2,
-            alpha=alpha_2,
-            gamma=gamma_2,
-            delta=delta_2,
-            D_m=D_m_2,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
-                       annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-            m_flow_IN_var_2(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[2])
-            annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-          SI.ReynoldsNumber Re_1=abs(m_flow[1])*L_p_1/(eta*A_fr*(
-              (F_l_1 - delta_f_1)*(F_p_1 - delta_f_1)/((F_l_1 + D_m_1)*F_p_1)));
-          SI.ReynoldsNumber Re_2=abs(m_flow[2])*D_h_2/(eta*A_fr*(
-              h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2))));
-
-        public
-          Modelica.Blocks.Sources.Ramp input_Nu(
-            startTime=0,
-            duration=1,
-            height=1e3,
-            offset=1) annotation (Placement(transformation(
-                  extent={{50,-80},{70,-60}})));
-        equation
-          //heat transfer calculation
-          kc_1 =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
-            m_flow_IN_con_1, m_flow_IN_var_1);
-          kc_2 =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
-            m_flow_IN_con_2, m_flow_IN_var_2);
-
-          annotation (__Dymola_Commands(file=
-                  "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube_KC.mos"
-                "Verification of kc_flatTube_KC"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-                Text(
-                  extent={{-100,50},{100,75}},
-                  textColor={0,0,255},
-                  textString=
-                      "Heat transfer of heat exchangers with flat tubes and various fin geometries (inlining)"),
-                Text(
-                  extent={{-58,-22},{-22,-30}},
-                  textColor={0,0,255},
-                  textString="Flat tube and louver fin"),
-                Text(
-                  extent={{22,-22},{58,-30}},
-                  textColor={0,0,255},
-                  textString="Flat tube and slit fin")}),
-            experiment(StopTime=1.01));
-        end kc_flatTube_KC;
-
-        model kc_roundTube "Verification of function kc_roundTube"
-          extends Modelica.Icons.Example;
-
-          parameter Integer n=4 "Number of various fin geometries";
-
-          //heat exchanger variables
-          parameter SI.Area A_fr=1 "Frontal area";
-          parameter SI.Length delta_f=0.0001 "fin thickness";
-
-          //heat exchanger variables geometry no.1
-          parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
-          parameter SI.Length F_p_1=0.00122
-            "Fin pitch, fin spacing + fin thickness";
-          parameter SI.Length P_l_1=0.0127
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
-          parameter Integer N_1=2 "Number of tube rows";
-
-          //heat exchanger variables geometry no.4
-          parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
-          parameter SI.Length F_p_4=0.00169
-            "Fin pitch, fin spacing + fin thickness";
-          parameter Integer N_4=2 "Number of tube rows";
-          parameter SI.Length P_l_4=0.01905
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_4=0.0254
-            "Transverse tube pitch";
-
-          //fluid property variables
-          parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-              1007 "Specific heat capacity at constant pressure of fluid";
-          parameter SI.DynamicViscosity eta=18.24e-6
-            "Dynamic viscosity of fluid";
-          parameter SI.ThermalConductivity lambda=25.69e-3
-            "Thermal conductivity of fluid";
-          parameter SI.Density rho=1.188 "Density of fluid";
-
-          //input VARIABLES
-          SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
-            annotation (Dialog(group="Input"));
-
-          //input record
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_1(
-            A_fr=A_fr,
-            D_c=D_c_1,
-            F_p=F_p_1,
-            P_t=P_t_1,
-            P_l=P_l_1,
-            N=N_1,
-            delta_f=delta_f,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
-            annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_1(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow(start=0.14)=m_flow[1])
-            annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_4(
-            A_fr=A_fr,
-            D_c=D_c_4,
-            F_p=F_p_4,
-            P_t=P_t_4,
-            delta_f=delta_f,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
-            annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_4(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow(start=0.1)=m_flow[4])
-            annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-          //output variables
-          SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
-          SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
-
-        public
-          Modelica.Blocks.Sources.Ramp input_Re(
-            duration=1,
-            startTime=0,
-            height=10000,
-            offset=0)   annotation (Placement(
-                transformation(extent={{-80,-80},{-60,-60}})));
-
-        equation
-          //heat transfer calculation
-          (,,Re,Nu[1],) =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
-            m_flow_IN_con_1, m_flow_IN_var_1);
-
-          (,,Re,Nu[4],) =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
-            m_flow_IN_con_4, m_flow_IN_var_4);
-
-          // dummy values for questionable geometries 2 and 3
-          m_flow[2] = 0; Nu[2] = 0;
-          m_flow[3] = 0; Nu[3] = 0;
-
-          annotation (__Dymola_Commands(file=
-                  "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube.mos"
-                "Verification of kc_roundTube"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-                Text(
-                  extent={{-100,50},{100,75}},
-                  textColor={0,0,255},
-                  textString=
-                      "Heat transfer of heat exchangers with round tubes and various fin geometries"),
-                Text(
-                  extent={{-60,18},{-20,10}},
-                  textColor={0,0,255},
-                  textString="Round tube and plain fin"),
-                Text(
-                  extent={{20,-22},{60,-30}},
-                  textColor={0,0,255},
-                  textString="Round tube and wavy fin")}),
-            experiment(StopTime=1.01));
-        end kc_roundTube;
-
-        model kc_roundTube_KC "Verification of function kc_roundTube_KC"
-          extends Modelica.Icons.Example;
-          //The functions for heat exchanger geometry no.2 and no.3 are too complex for inverting.
-          //Therefore they have been removed from this verification model.
-
-          parameter Integer n=4 "Number of various fin geometries";
-
-          //heat exchanger variables
-          parameter SI.Area A_fr=1 "Frontal area";
-          parameter SI.Length delta_f=0.0001 "fin thickness";
-
-          //heat exchanger variables geometry no.1
-          parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
-          parameter SI.Length F_p_1=0.00122
-            "Fin pitch, fin spacing + fin thickness";
-          parameter SI.Length P_l_1=0.0127
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
-          parameter Integer N_1=2 "Number of tube rows";
-
-          //heat exchanger variables geometry no.2
-          parameter SI.Length D_c_2=0.01042 "Fin collar diameter";
-          parameter SI.Length F_p_2=0.00205
-            "Fin pitch, fin spacing + fin thickness";
-          parameter SI.Length L_2=N_2*P_l_2
-            "Heat exchanger length";
-          parameter SI.Length L_h_2=0.0014 "Louver height";
-          parameter SI.Length L_p_2=0.0024 "Louver pitch";
-          parameter Integer N_2=2 "Number of tube rows";
-          parameter SI.Length P_l_2=0.01905
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_2=0.0254
-            "Transverse tube pitch";
-
-          //heat exchanger variables geometry no.3
-          parameter SI.Length D_c_3=0.01034 "Fin collar diameter";
-          parameter SI.Length F_p_3=0.00246
-            "Fin pitch, fin spacing + fin thickness";
-          parameter Integer N_3=2 "Number of tube rows";
-          parameter SI.Length P_l_3=0.022
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_3=0.0254
-            "Transverse tube pitch";
-          parameter SI.Length delta_f_3=0.00012 "fin thickness";
-          parameter SI.Length S_h_3=0.00099 "Slit height";
-          parameter SI.Length S_p_3=0.0022 "Slit pitch";
-
-          //heat exchanger variables geometry no.4
-          parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
-          parameter SI.Length F_p_4=0.00169
-            "Fin pitch, fin spacing + fin thickness";
-          parameter Integer N_4=2 "Number of tube rows";
-          parameter SI.Length P_l_4=0.01905
-            "Longitudinal tube pitch";
-          parameter SI.Length P_t_4=0.0254
-            "Transverse tube pitch";
-
-          //fluid property variables
-          parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-              1007 "Specific heat capacity at constant pressure of fluid";
-          parameter SI.DynamicViscosity eta=18.24e-6
-            "Dynamic viscosity of fluid";
-          parameter SI.ThermalConductivity lambda=25.69e-3
-            "Thermal conductivity of fluid";
-          parameter SI.Density rho=1.188 "Density of fluid";
-
-          //here: Nusselt number as input for inverse calculation
-          SI.NusseltNumber Nu=input_Nu.y;
-          SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
-
-          SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/D_c_1;
-          //SI.CoefficientOfHeatTransfer kc_2 = Nu*lambda/D_c_2;
-          //SI.CoefficientOfHeatTransfer kc_3 = Nu*lambda/D_c_3;
-          SI.CoefficientOfHeatTransfer kc_4=Nu*lambda/D_c_4;
-
-          //input record
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_1(
-            A_fr=A_fr,
-            D_c=D_c_1,
-            F_p=F_p_1,
-            P_t=P_t_1,
-            P_l=P_l_1,
-            N=N_1,
-            delta_f=delta_f,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
-            annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_1(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[1])
-            annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_2(
-            A_fr=A_fr,
-            D_c=D_c_2,
-            F_p=F_p_2,
-            L_h=L_h_2,
-            L_p=L_p_2,
-            P_t=P_t_2,
-            P_l=P_l_2,
-            N=N_2,
-            delta_f=delta_f,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin)
-            annotation (Placement(transformation(extent={{20,20},{40,40}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_2(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[2])
-            annotation (Placement(transformation(extent={{40,20},{60,40}})));
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_3(
-            A_fr=A_fr,
-            D_c=D_c_3,
-            F_p=F_p_3,
-            P_t=P_t_3,
-            P_l=P_l_3,
-            N=N_3,
-            S_h=S_h_3,
-            S_p=S_p_3,
-            delta_f=delta_f_3,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.SlitFin)
-            annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_3(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[3])
-            annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-            m_flow_IN_con_4(
-            A_fr=A_fr,
-            D_c=D_c_4,
-            F_p=F_p_4,
-            P_t=P_t_4,
-            delta_f=delta_f,
-            geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
-            annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-            m_flow_IN_var_4(
-            cp=cp,
-            eta=eta,
-            lambda=lambda,
-            rho=rho,
-            m_flow=m_flow[4])
-            annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-          SI.ReynoldsNumber Re_1=abs(m_flow[1])*D_c_1/(eta*A_fr*(
-              (F_p_1*P_t_1 - F_p_1*D_c_1 - (P_t_1 - D_c_1)*delta_f)/(F_p_1*
-              P_t_1)));
-          //SI.ReynoldsNumber Re_2 = abs(m_flow[2])*D_c_2/(eta*A_fr*((F_p_2*P_t_2-F_p_2*D_c_2-(P_t_2-D_c_2)*delta_f)/(F_p_2*P_t_2)));
-          //SI.ReynoldsNumber Re_3 = abs(m_flow[3])*D_c_3/(eta*A_fr*((F_p_3*P_t_3-F_p_3*D_c_3-(P_t_3-D_c_3)*delta_f_3)/(F_p_3*P_t_3)));
-          SI.ReynoldsNumber Re_4=abs(m_flow[4])*D_c_4/(eta*A_fr*(
-              (F_p_4*P_t_4 - F_p_4*D_c_4 - (P_t_4 - D_c_4)*delta_f)/(F_p_4*
-              P_t_4)));
-        public
-          Modelica.Blocks.Sources.Ramp input_Nu(
-            startTime=0,
-            duration=1,
-            height=1e3,
-            offset=5) annotation (Placement(transformation(
-                  extent={{50,-80},{70,-60}})));
-        equation
-          //heat transfer calculation
-          kc_1 =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-            m_flow_IN_con_1, m_flow_IN_var_1);
-          //kc_2 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_heatExchanger_KC(
-          //m_flow_IN_con_2, m_flow_IN_var_2);
-          //kc_3 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-          //m_flow_IN_con_3, m_flow_IN_var_3);
-          kc_4 =
-            Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-            m_flow_IN_con_4, m_flow_IN_var_4);
-          m_flow[2] = 1;
-          m_flow[3] = 1;
-
-          annotation (__Dymola_Commands(file=
-                  "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube_KC.mos"
-                "Verification of kc_roundTube_KC"), Diagram(coordinateSystem(
-                  preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-                   Text(
-                  extent={{-100,50},{100,75}},
-                  textColor={0,0,255},
-                  textString=
-                    "Heat transfer of heat exchangers with round tubes and various fin geometries (inlining)"),
-                  Text(
-                  extent={{-60,18},{-20,10}},
-                  textColor={0,0,255},
-                  textString="Round tube and plain fin"),Text(
-                  extent={{20,18},{60,10}},
-                  textColor={0,0,255},
-                  textString="Round tube and louver fin"),Text(
-                  extent={{-60,-22},{-20,-30}},
-                  textColor={0,0,255},
-                  textString="Round tube and slit fin"),Text(
-                  extent={{20,-22},{60,-30}},
-                  textColor={0,0,255},
-                  textString="Round tube and wavy fin")}),
-            experiment(StopTime=1.01));
-        end kc_roundTube_KC;
-      end HeatExchanger;
 
       package HelicalPipe "Verification package for helical pipe correlations"
       extends Modelica.Icons.ExamplesPackage;
@@ -2068,7 +1453,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{42,15},{80,6}},
                   textColor={0,0,255},
                   textString="number of turns n_nt = 10")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_laminar;
 
         model kc_laminar_KC "Verification of function kc_laminar_KC"
@@ -2212,7 +1597,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{40,17},{78,8}},
                   textColor={0,0,255},
                   textString="number of turns n_nt = 10")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_laminar_KC;
 
         model kc_overall "Verification of function kc_overall"
@@ -2362,7 +1747,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,50},{100,75}},
                   textColor={0,0,255},
                   textString="Heat transfer of helical pipe for OVERALL flow regime")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_overall;
 
         model kc_overall_KC "Verification of function kc_mean_overall_KC"
@@ -2504,7 +1889,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{40,19},{78,10}},
                   textColor={0,0,255},
                   textString="number of turns n_nt = 10")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_overall_KC;
 
         model kc_turbulent "Verification of function kc_turbulent"
@@ -2658,7 +2043,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{44,15},{82,6}},
                   textColor={0,0,255},
                   textString="number of turns n_nt = 10")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_turbulent;
 
         model kc_turbulent_KC "Verification of function kc_turbulent_KC"
@@ -2802,7 +2187,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{40,17},{78,8}},
                   textColor={0,0,255},
                   textString="number of turns n_nt = 10")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_turbulent_KC;
       end HelicalPipe;
 
@@ -2895,7 +2280,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,11},{100,6}},
                   textColor={0,0,255},
                   textString="Target: kc == f(m_flow)")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_laminar;
 
         model kc_laminar_KC "Verification of function kc_laminar_KC"
@@ -2972,7 +2357,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_laminar_KC;
 
         model kc_overall "Verification of function kc_overall"
@@ -3064,7 +2449,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,11},{100,6}},
                   textColor={0,0,255},
                   textString="Target: kc == f(m_flow)")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_overall;
 
         model kc_overall_KC "Verification of function kc_overall_KC"
@@ -3140,7 +2525,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_overall_KC;
 
         model kc_turbulent "Verification of function kc_turbulent"
@@ -3231,7 +2616,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-100,11},{100,6}},
                   textColor={0,0,255},
                   textString="Target: kc == f(m_flow)")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_turbulent;
 
         model kc_turbulent_KC "Verification of function kc_turbulent_KC"
@@ -3308,7 +2693,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_turbulent_KC;
       end Plate;
 
@@ -3496,7 +2881,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{56,20},{102,12}},
                   textColor={0,0,255},
                   textString="UHF + UFF")}),
-            experiment(StopTime=1.01, Tolerance=1e-007));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-007));
         end kc_laminar;
 
         model kc_laminar_KC "Verification of function kc_mean_laminar_KC"
@@ -3663,7 +3048,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{6,12},{52,4}},
                   textColor={0,0,255},
                   textString="UWT+UFF")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_laminar_KC;
 
         model kc_overall "Verification of function kc_overall"
@@ -3851,7 +3236,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{56,20},{102,12}},
                   textColor={0,0,255},
                   textString="UHF + UFF")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_overall;
 
         model kc_overall_KC "Verification of function kc_mean_overall_KC"
@@ -4021,7 +3406,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{56,18},{102,10}},
                   textColor={0,0,255},
                   textString="UHF + UFF")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_overall_KC;
 
         model kc_turbulent "Verification of function kc_turbulent"
@@ -4145,7 +3530,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Heat transfer in straight pipe for turbulent flow regime ")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_turbulent;
 
         model kc_turbulent_KC "Verification of function kc_turbulent_KC"
@@ -4252,7 +3637,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Heat transfer in straight pipe for turbulent flow regime considering surface roughness")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end kc_turbulent_KC;
 
         model kc_twoPhaseOverall_KC
@@ -4469,7 +3854,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "Two phase heat transfer in straight pipe for overall  flow regime ")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+              experiment(StopTime=1.01, Interval=0.0002, Tolerance=1e-005));
         end kc_twoPhaseOverall_KC;
       end StraightPipe;
     end HeatTransfer;
@@ -4508,8 +3893,8 @@ extends Modelica.Icons.ExamplesPackage;
           //intended input variables for records
           SI.MassFlowRate input_mdot_1[n](start=zeros(n))
             "(Input) mass flow rate (for intended incompressible case)";
-          SI.Pressure input_dp_1[n](start=zeros(n))=ones(n)*
-            input_DP.y "(Input) pressure loss (for intended compressible case)";
+          SI.Pressure input_dp_1[n](start=zeros(n)) = ones(n)*input_DP.y
+            "(Input) pressure loss (for intended compressible case)";
 
           //intended output variables for records
           SI.MassFlowRate M_FLOW_1[n](start=zeros(n))
@@ -4522,8 +3907,8 @@ extends Modelica.Icons.ExamplesPackage;
           //intended input variables for records
           SI.MassFlowRate input_mdot_2[m](start=zeros(m))
             "(Input) mass flow rate (for intended incompressible case)";
-          SI.Pressure input_dp_2[m](start=zeros(m))=ones(m)*
-            input_DP.y "(Input) pressure loss (for intended compressible case)";
+          SI.Pressure input_dp_2[m](start=zeros(m)) = ones(m)*input_DP.y
+            "(Input) pressure loss (for intended compressible case)";
 
           //intended output variables for records
           SI.MassFlowRate M_FLOW_2[m](start=zeros(m))
@@ -4609,13 +3994,16 @@ extends Modelica.Icons.ExamplesPackage;
               for i in 1:m} "Pressure loss coefficients";
 
         public
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             duration=1,
-            offset=1e-3,
-            height=1.2e4) annotation (Placement(
-                transformation(extent={{60,-80},{80,-60}})));
+            offset=1e-5,
+            height=1.2e4)
+            annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*1.2e4 +
+                1e-5)
+            annotation (Placement(transformation(extent={{60,-58},{80,-38}})));
         equation
           //target == DP (incompressible)
           DP_1 = {
@@ -4669,7 +4057,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "constant relative curvature radius | angle of turning dependence")}),
-            experiment(StopTime=1.01, Tolerance=1e-005));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-005));
         end dp_curvedOverall_DPMFLOW;
 
         model dp_edgedOverall_DPMFLOW
@@ -4699,8 +4087,8 @@ extends Modelica.Icons.ExamplesPackage;
           //intended input variables for records
           SI.MassFlowRate input_mdot[n](start=zeros(n))
             "(Input) mass flow rate (for intended incompressible case)";
-          SI.Pressure input_dp[n](start=zeros(n))=ones(n)*
-            input_DP.y "(Input) pressure loss (for intended compressible case)";
+          SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
+            "(Input) pressure loss (for intended compressible case)";
 
           //intended output variables for records
           SI.MassFlowRate M_FLOW[n](start=zeros(n))
@@ -4745,13 +4133,16 @@ extends Modelica.Icons.ExamplesPackage;
           Real zeta_TOT[n]={2*abs(DP_plot[i])/(max(rho*(velocity[i])^2, 1e-5)) for i in
                   1:n} "Pressure loss coefficients";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             duration=1,
-            offset=1e-4,
-            height=276270) annotation (Placement(
-                transformation(extent={{60,-80},{80,-60}})));
+            offset=1e-6,
+            height=276270)
+            annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*276270 +
+                1e-6)
+            annotation (Placement(transformation(extent={{60,-48},{80,-28}})));
         equation
           //target == DP (incompressible)
           DP = {Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_DP(
@@ -4766,7 +4157,7 @@ extends Modelica.Icons.ExamplesPackage;
                     dp_IN_var[i],
                     input_dp[i]) for i in 1:n};
 
-          annotation (experiment(StopTime=1.0), __Dymola_Commands(file=
+          annotation (experiment(StopTime=1.0, Interval=0.002, Tolerance=1e-5), __Dymola_Commands(file=
                   "modelica://ModelicaTest/Resources/Scripts/Dymola/pressureLoss/bend/dp_edgedOverall_DPMFLOW.mos"
                 "Verification of dp_edgedOverall_DPMFLOW"), Diagram(coordinateSystem(
                   preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
@@ -4921,13 +4312,17 @@ extends Modelica.Icons.ExamplesPackage;
               for i in 1:n} "Pressure loss coefficients";
 
         public
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             duration=1,
             height=1.2e4,
-            offset=1) annotation (Placement(transformation(
+            offset=1e-3)
+                      annotation (Placement(transformation(
                   extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*1.2e4 +
+                1e-3)
+            annotation (Placement(transformation(extent={{60,-58},{80,-38}})));
         equation
           //target == DP (incompressible)
           DP_1 = {
@@ -4961,7 +4356,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end dp_internalFlowOverall_DPMFLOW;
       end Channel;
 
@@ -5088,7 +4483,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end dp_idealGas_DPMFLOW;
 
         model dp_nominalDensityViscosity_DPMFLOW
@@ -5178,12 +4573,14 @@ extends Modelica.Icons.ExamplesPackage;
           //plotting
           Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=5e5) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*5e5)
+            annotation (Placement(transformation(extent={{60,-54},{80,-34}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -5215,7 +4612,7 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{13,14},{88,4}},
                   textColor={0,0,255},
                   textString="Target == M_FLOW (compressible)")}),
-            experiment(StopTime=1.01));
+            experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end dp_nominalDensityViscosity_DPMFLOW;
 
         model dp_nominalPressureLossLawDensity_DPMFLOW
@@ -5314,12 +4711,14 @@ extends Modelica.Icons.ExamplesPackage;
           //plotting
           Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=2.5e5) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*2.5e5)
+            annotation (Placement(transformation(extent={{60,-58},{80,-38}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -5357,7 +4756,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_nominalPressureLossLawDensity_DPMFLOW;
 
@@ -5411,13 +4810,15 @@ extends Modelica.Icons.ExamplesPackage;
           //plotting
           Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=6757) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*6757)
+            annotation (Placement(transformation(extent={{60,-58},{80,-38}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -5455,7 +4856,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_pressureLossCoefficient_DPMFLOW;
 
@@ -5515,13 +4916,15 @@ extends Modelica.Icons.ExamplesPackage;
           //plotting
           Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=31.25) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*31.25)
+            annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -5559,7 +4962,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_volumeFlowRate_DPMFLOW;
       end General;
@@ -5647,12 +5050,14 @@ extends Modelica.Icons.ExamplesPackage;
           Real zeta_TOT=2*abs(DP_plot)/max(MIN, rho*(velocity)^2)
             "Pressure loss coefficients";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=836) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*836)
+            annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
         equation
           //orifice variables
           der(frac_A1toA2) = 1;
@@ -5692,7 +5097,7 @@ extends Modelica.Icons.ExamplesPackage;
                   textColor={0,0,255},
                   textString=
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
-            experiment(StopTime=1.0,Interval=2e-4));
+            experiment(StopTime=1.0,Interval=2e-3, Tolerance=1e-5));
         end dp_suddenChange_DPMFLOW;
 
         model dp_thickEdgedOverall_DPMFLOW
@@ -5778,13 +5183,15 @@ extends Modelica.Icons.ExamplesPackage;
           Real velocity[n]={input_mdot[1]/max(MIN, (rho*A_cross[i])) for i in 1:n};
           Real zeta_TOT[n]={2*DP[i]/max(MIN, (rho*(velocity[i]^2))) for i in 1:n};
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             duration=1,
             height=836,
             offset=0) annotation (Placement(transformation(
                   extent={{60,-80},{80,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*836)
+            annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
         equation
           //orifice variables
           der(L) = 0.39;
@@ -5825,7 +5232,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_thickEdgedOverall_DPMFLOW;
       end Orifice;
@@ -5909,12 +5316,14 @@ extends Modelica.Icons.ExamplesPackage;
           Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n}
             "Frictional resistance coefficient";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=41) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*41)
+            annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -5946,7 +5355,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_laminar_DPMFLOW;
 
@@ -6161,12 +5570,14 @@ extends Modelica.Icons.ExamplesPackage;
           Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n}
             "Frictional resistance coefficient";
 
-          Modelica.Blocks.Sources.Ramp input_DP(
+          Modelica.Blocks.Sources.Ramp input_DP_lin(
             startTime=0,
             offset=0,
             duration=1,
             height=4e4) annotation (Placement(
                 transformation(extent={{60,-80},{80,-60}})));
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*4e4)
+            annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
         equation
           //target == DP (incompressible)
           DP = {
@@ -6204,7 +5615,7 @@ extends Modelica.Icons.ExamplesPackage;
                     "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
             experiment(
               StopTime=1.01,
-              Interval=2e-4,
+              Interval=2e-3,
               Tolerance=1e-005));
         end dp_turbulent_DPMFLOW;
 
@@ -6527,23 +5938,29 @@ extends Modelica.Icons.ExamplesPackage;
           Real Re_3[n]={input_mdot_3[i]*d_hyd/(eta*Av) for i in 1:n};
 
         public
-          Modelica.Blocks.Sources.Ramp input_DP(height=1e3, duration=1) annotation (
+          Modelica.Blocks.Sources.Ramp input_DP_lin(height=1e3, duration=1) annotation (
               Placement(transformation(extent={{-70,-80},{
                     -50,-60}})));
 
-          Modelica.Blocks.Sources.Ramp input_opening(
+          Modelica.Blocks.Sources.Ramp input_opening_lin(
             startTime=0,
             duration=1,
             height=1,
             offset=0) annotation (Placement(transformation(
                   extent={{50,-80},{70,-60}})));
 
-          Modelica.Blocks.Sources.Ramp input_mdot(
+          Modelica.Blocks.Sources.Ramp input_mdot_lin(
             offset=0,
             duration=1,
             height=1e2) annotation (Placement(
                 transformation(extent={{-8,-80},{12,-60}})));
 
+          Modelica.Blocks.Sources.RealExpression input_DP(y=(time)^3*1e3)
+            annotation (Placement(transformation(extent={{-70,-60},{-50,-40}})));
+          Modelica.Blocks.Sources.RealExpression input_mdot(y=(time)^3*1e2)
+            annotation (Placement(transformation(extent={{-8,-60},{12,-40}})));
+          Modelica.Blocks.Sources.RealExpression input_opening(y=(time)^3)
+            annotation (Placement(transformation(extent={{50,-60},{70,-40}})));
         equation
           //compressible case
           //constant opening
@@ -6617,10 +6034,634 @@ extends Modelica.Icons.ExamplesPackage;
                   extent={{-27,52},{26,42}},
                   textColor={0,0,255},
                   textString="compressible cases")}),
-            experiment(StopTime=1.0));
+            experiment(StopTime=1.0, Interval=0.002, Tolerance=1e-5));
         end dp_severalGeometryOverall_DPMFLOW;
       end Valve;
     end PressureLoss;
+
+    package HeatExchanger
+      "Verification package for heat exchanger correlations"
+    extends Modelica.Icons.ExamplesPackage;
+
+      model kc_flatTube "Verification of function kc_flatTube"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=2 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_m_1=0.005
+          "Major tube diameter for flat tube";
+        parameter SI.Length F_l_1=0.019 "Fin length";
+        parameter SI.Length F_p_1=0.0018
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_l_1=0.01607 "Louver length";
+        parameter SI.Length L_p_1=0.001534 "Louver pitch";
+        parameter SI.Length T_d_1=0.026 "Tube depth";
+        parameter SI.Length T_p_1=0.0197 "Tube pitch";
+
+        parameter SI.Length delta_f_1=0.0001 "fin thickness";
+        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
+          "Louver angle";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
+        parameter SI.Length D_m_2=0.002
+          "Major tube diameter for flat tube";
+        parameter Real alpha_2=0.244
+          "Lateral fin spacing (s) / free flow height (h)";
+        parameter Real gamma_2=0.067
+          "Fin thickness (t) / lateral fin spacing (s)";
+        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //input VARIABLES
+        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
+          annotation (Dialog(group="Input"));
+
+        //input record
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_m=D_m_1,
+          F_l=F_l_1,
+          F_p=F_p_1,
+          L_l=L_l_1,
+          L_p=L_p_1,
+          T_d=T_d_1,
+          T_p=T_p_1,
+          delta_f=delta_f_1,
+          Phi=Phi_1,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.88)=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_h=D_h_2,
+          alpha=alpha_2,
+          gamma=gamma_2,
+          delta=delta_2,
+          D_m=D_m_2,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
+                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.53)=m_flow[2])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        //output variables
+        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
+        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Re_lin(
+          duration=1,
+          startTime=0,
+          height=10000,
+          offset=0)   annotation (Placement(
+              transformation(extent={{-80,-80},{-60,-60}})));
+
+        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
+          annotation (Placement(transformation(extent={{-80,-58},{-60,-38}})));
+      equation
+        //heat transfer calculation
+        (,,Re,Nu[1],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+
+        (,,Re,Nu[2],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
+          m_flow_IN_con_2, m_flow_IN_var_2);
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube.mos"
+              "Verification of kc_flatTube"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with flat tubes and various fin geometries"),
+              Text(
+                extent={{-58,-22},{-22,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and louver fin"),
+              Text(
+                extent={{22,-22},{58,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and slit fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_flatTube;
+
+      model kc_flatTube_KC "Verification of function kc_flatTube_KC"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=2 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_m_1=0.005
+          "Major tube diameter for flat tube";
+        parameter SI.Length F_l_1=0.019 "Fin length";
+        parameter SI.Length F_p_1=0.0018
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_l_1=0.01607 "Louver length";
+        parameter SI.Length L_p_1=0.001534 "Louver pitch";
+        parameter SI.Length T_d_1=0.026 "Tube depth";
+        parameter SI.Length T_p_1=0.0197 "Tube pitch";
+
+        parameter SI.Length delta_f_1=0.0001 "fin thickness";
+        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
+          "louver angle";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
+        parameter SI.Length D_m_2=0.002
+          "Major tube diameter for flat tube";
+        parameter Real alpha_2=0.244
+          "Lateral fin spacing (s) / free flow height (h)";
+        parameter Real gamma_2=0.067
+          "Fin thickness (t) / lateral fin spacing (s)";
+        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
+
+        SI.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2)
+          "Free flow height";
+        SI.Length l_2=t_2/delta_2 "Fin length";
+        SI.Length s_2=h_2*alpha_2
+          "Lateral fin spacing (free flow width)";
+        SI.Length t_2=s_2*gamma_2 "Fin thickness";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //here: Nusselt number as input for inverse calculation
+        SI.NusseltNumber Nu=input_Nu.y;
+        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
+
+        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/L_p_1;
+        SI.CoefficientOfHeatTransfer kc_2=Nu*lambda/D_h_2;
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_m=D_m_1,
+          F_l=F_l_1,
+          F_p=F_p_1,
+          L_l=L_l_1,
+          L_p=L_p_1,
+          T_d=T_d_1,
+          T_p=T_p_1,
+          delta_f=delta_f_1,
+          Phi=Phi_1,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_h=D_h_2,
+          alpha=alpha_2,
+          gamma=gamma_2,
+          delta=delta_2,
+          D_m=D_m_2,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
+                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[2])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        SI.ReynoldsNumber Re_1=abs(m_flow[1])*L_p_1/(eta*A_fr*(
+            (F_l_1 - delta_f_1)*(F_p_1 - delta_f_1)/((F_l_1 + D_m_1)*F_p_1)));
+        SI.ReynoldsNumber Re_2=abs(m_flow[2])*D_h_2/(eta*A_fr*(
+            h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2))));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Nu_lin(
+          startTime=0,
+          duration=1,
+          height=1e3,
+          offset=1e-4)
+                    annotation (Placement(transformation(
+                extent={{50,-80},{70,-60}})));
+        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
+          annotation (Placement(transformation(extent={{50,-56},{70,-36}})));
+      equation
+        //heat transfer calculation
+        kc_1 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+        kc_2 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
+          m_flow_IN_con_2, m_flow_IN_var_2);
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube_KC.mos"
+              "Verification of kc_flatTube_KC"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with flat tubes and various fin geometries (inlining)"),
+              Text(
+                extent={{-58,-22},{-22,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and louver fin"),
+              Text(
+                extent={{22,-22},{58,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and slit fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_flatTube_KC;
+
+      model kc_roundTube "Verification of function kc_roundTube"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=4 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+        parameter SI.Length delta_f=0.0001 "fin thickness";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
+        parameter SI.Length F_p_1=0.00122
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length P_l_1=0.0127
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
+        parameter Integer N_1=2 "Number of tube rows";
+
+        //heat exchanger variables geometry no.4
+        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
+        parameter SI.Length F_p_4=0.00169
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_4=2 "Number of tube rows";
+        parameter SI.Length P_l_4=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_4=0.0254
+          "Transverse tube pitch";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //input VARIABLES
+        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
+          annotation (Dialog(group="Input"));
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_c=D_c_1,
+          F_p=F_p_1,
+          P_t=P_t_1,
+          P_l=P_l_1,
+          N=N_1,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
+          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.14)=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_4(
+          A_fr=A_fr,
+          D_c=D_c_4,
+          F_p=F_p_4,
+          P_t=P_t_4,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
+          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_4(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.1)=m_flow[4])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        //output variables
+        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
+        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Re_lin(
+          duration=1,
+          startTime=0,
+          height=10000,
+          offset=0)   annotation (Placement(
+              transformation(extent={{-80,-80},{-60,-60}})));
+
+        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
+          annotation (Placement(transformation(extent={{-80,-56},{-60,-36}})));
+      equation
+        //heat transfer calculation
+        (,,Re,Nu[1],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+
+        (,,Re,Nu[4],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
+          m_flow_IN_con_4, m_flow_IN_var_4);
+
+        // dummy values for questionable geometries 2 and 3
+        m_flow[2] = 0; Nu[2] = 0;
+        m_flow[3] = 0; Nu[3] = 0;
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube.mos"
+              "Verification of kc_roundTube"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with round tubes and various fin geometries"),
+              Text(
+                extent={{-60,18},{-20,10}},
+                textColor={0,0,255},
+                textString="Round tube and plain fin"),
+              Text(
+                extent={{20,-22},{60,-30}},
+                textColor={0,0,255},
+                textString="Round tube and wavy fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_roundTube;
+
+      model kc_roundTube_KC "Verification of function kc_roundTube_KC"
+        extends Modelica.Icons.Example;
+        //The functions for heat exchanger geometry no.2 and no.3 are too complex for inverting.
+        //Therefore they have been removed from this verification model.
+
+        parameter Integer n=4 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+        parameter SI.Length delta_f=0.0001 "fin thickness";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
+        parameter SI.Length F_p_1=0.00122
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length P_l_1=0.0127
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
+        parameter Integer N_1=2 "Number of tube rows";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_c_2=0.01042 "Fin collar diameter";
+        parameter SI.Length F_p_2=0.00205
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_2=N_2*P_l_2
+          "Heat exchanger length";
+        parameter SI.Length L_h_2=0.0014 "Louver height";
+        parameter SI.Length L_p_2=0.0024 "Louver pitch";
+        parameter Integer N_2=2 "Number of tube rows";
+        parameter SI.Length P_l_2=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_2=0.0254
+          "Transverse tube pitch";
+
+        //heat exchanger variables geometry no.3
+        parameter SI.Length D_c_3=0.01034 "Fin collar diameter";
+        parameter SI.Length F_p_3=0.00246
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_3=2 "Number of tube rows";
+        parameter SI.Length P_l_3=0.022
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_3=0.0254
+          "Transverse tube pitch";
+        parameter SI.Length delta_f_3=0.00012 "fin thickness";
+        parameter SI.Length S_h_3=0.00099 "Slit height";
+        parameter SI.Length S_p_3=0.0022 "Slit pitch";
+
+        //heat exchanger variables geometry no.4
+        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
+        parameter SI.Length F_p_4=0.00169
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_4=2 "Number of tube rows";
+        parameter SI.Length P_l_4=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_4=0.0254
+          "Transverse tube pitch";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //here: Nusselt number as input for inverse calculation
+        SI.NusseltNumber Nu=input_Nu.y;
+        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
+
+        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/D_c_1;
+        //SI.CoefficientOfHeatTransfer kc_2 = Nu*lambda/D_c_2;
+        //SI.CoefficientOfHeatTransfer kc_3 = Nu*lambda/D_c_3;
+        SI.CoefficientOfHeatTransfer kc_4=Nu*lambda/D_c_4;
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_c=D_c_1,
+          F_p=F_p_1,
+          P_t=P_t_1,
+          P_l=P_l_1,
+          N=N_1,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
+          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_c=D_c_2,
+          F_p=F_p_2,
+          L_h=L_h_2,
+          L_p=L_p_2,
+          P_t=P_t_2,
+          P_l=P_l_2,
+          N=N_2,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin)
+          annotation (Placement(transformation(extent={{20,20},{40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[2])
+          annotation (Placement(transformation(extent={{40,20},{60,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_3(
+          A_fr=A_fr,
+          D_c=D_c_3,
+          F_p=F_p_3,
+          P_t=P_t_3,
+          P_l=P_l_3,
+          N=N_3,
+          S_h=S_h_3,
+          S_p=S_p_3,
+          delta_f=delta_f_3,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.SlitFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_3(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[3])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_4(
+          A_fr=A_fr,
+          D_c=D_c_4,
+          F_p=F_p_4,
+          P_t=P_t_4,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
+          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_4(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[4])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        SI.ReynoldsNumber Re_1=abs(m_flow[1])*D_c_1/(eta*A_fr*(
+            (F_p_1*P_t_1 - F_p_1*D_c_1 - (P_t_1 - D_c_1)*delta_f)/(F_p_1*
+            P_t_1)));
+        //SI.ReynoldsNumber Re_2 = abs(m_flow[2])*D_c_2/(eta*A_fr*((F_p_2*P_t_2-F_p_2*D_c_2-(P_t_2-D_c_2)*delta_f)/(F_p_2*P_t_2)));
+        //SI.ReynoldsNumber Re_3 = abs(m_flow[3])*D_c_3/(eta*A_fr*((F_p_3*P_t_3-F_p_3*D_c_3-(P_t_3-D_c_3)*delta_f_3)/(F_p_3*P_t_3)));
+        SI.ReynoldsNumber Re_4=abs(m_flow[4])*D_c_4/(eta*A_fr*(
+            (F_p_4*P_t_4 - F_p_4*D_c_4 - (P_t_4 - D_c_4)*delta_f)/(F_p_4*
+            P_t_4)));
+      public
+        Modelica.Blocks.Sources.Ramp input_Nu_lin(
+          startTime=0,
+          duration=1,
+          height=1e3,
+          offset=5) annotation (Placement(transformation(
+                extent={{50,-80},{70,-60}})));
+        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
+          annotation (Placement(transformation(extent={{50,-58},{70,-38}})));
+      equation
+        //heat transfer calculation
+        kc_1 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+        //kc_2 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_heatExchanger_KC(
+        //m_flow_IN_con_2, m_flow_IN_var_2);
+        //kc_3 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+        //m_flow_IN_con_3, m_flow_IN_var_3);
+        kc_4 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+          m_flow_IN_con_4, m_flow_IN_var_4);
+        m_flow[2] = 1;
+        m_flow[3] = 1;
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube_KC.mos"
+              "Verification of kc_roundTube_KC"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+                 Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                  "Heat transfer of heat exchangers with round tubes and various fin geometries (inlining)"),
+                Text(
+                extent={{-60,18},{-20,10}},
+                textColor={0,0,255},
+                textString="Round tube and plain fin"),Text(
+                extent={{20,18},{60,10}},
+                textColor={0,0,255},
+                textString="Round tube and louver fin"),Text(
+                extent={{-60,-22},{-20,-30}},
+                textColor={0,0,255},
+                textString="Round tube and slit fin"),Text(
+                extent={{20,-22},{60,-30}},
+                textColor={0,0,255},
+                textString="Round tube and wavy fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_roundTube_KC;
+    end HeatExchanger;
   end Verifications;
 
   package TestCases "package for implemented test cases ready for simulation"
@@ -6719,7 +6760,7 @@ Switch to the diagram or equation layer to see the model of a <strong> Modelica.
 <p>
 This model executes pressure loss calculations out of the <strong> Fluid.Dissipation </strong> library for a bend of an incompressible and single-phase fluid flow considering surface roughness. Both the <strong> compressible </strong> case, where the mass flow rate (M_FLOW) is calculated in dependence of a known pressure loss (dp) and the <strong> incompressible </strong> case, where the pressure loss (DP) is calculated in dependence of a known mass flow rate (m_flow) are modelled.
 </p>
-</html>"),       experiment(StopTime=1.01, Interval=2e-4),
+</html>"),       experiment(StopTime=1.01, Interval=2e-4, Tolerance=1e-5),
           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
                   100}}), graphics={Text(
                 extent={{-96,120},{86,58}},
@@ -6825,7 +6866,7 @@ Switch to the diagram or equation layer to see the model of a <strong> Modelica.
 <p>
 This model executes pressure loss calculations out of the <strong> Fluid.Dissipation </strong> library for a bend of an incompressible and single-phase fluid flow considering surface roughness. Both the <strong> compressible </strong> case, where the mass flow rate (M_FLOW) is calculated in dependence of a known pressure loss (dp) and the <strong> incompressible </strong> case, where the pressure loss (DP) is calculated in dependence of a known mass flow rate (m_flow) are modelled.
 </p>
-</html>"),       experiment(StopTime=1.01, Interval=2e-4),
+</html>"),       experiment(StopTime=1.01, Interval=2e-4, Tolerance=1e-5),
           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
                   100}}), graphics={Text(
                 extent={{-96,120},{86,58}},
@@ -7079,7 +7120,7 @@ Switch to the diagram or equation layer to see the model of a <strong> Modelica.
 <p>
 This model executes pressure loss calculations out of the <strong> Fluid.Dissipation </strong> library for a bend of an incompressible and single-phase fluid flow considering surface roughness. Both the <strong> compressible </strong> case, where the mass flow rate (M_FLOW) is calculated in dependence of a known pressure loss (dp) and the <strong> incompressible </strong> case, where the pressure loss (DP) is calculated in dependence of a known mass flow rate (m_flow) are modelled.
 </p>
-</html>"),       experiment(StopTime=1.01, Interval=2e-4),
+</html>"),       experiment(StopTime=1.01, Interval=2e-4, Tolerance=1e-5),
           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,-200},{200,
                   200}}), graphics={
               Text(
