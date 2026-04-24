@@ -1301,7 +1301,629 @@ extends Modelica.Icons.ExamplesPackage;
              experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
         end kc_approxForcedConvection_KC;
       end General;
+    package HeatExchanger
+      "Verification package for heat exchanger correlations"
+    extends Modelica.Icons.ExamplesPackage;
 
+      model kc_flatTube "Verification of function kc_flatTube"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=2 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_m_1=0.005
+          "Major tube diameter for flat tube";
+        parameter SI.Length F_l_1=0.019 "Fin length";
+        parameter SI.Length F_p_1=0.0018
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_l_1=0.01607 "Louver length";
+        parameter SI.Length L_p_1=0.001534 "Louver pitch";
+        parameter SI.Length T_d_1=0.026 "Tube depth";
+        parameter SI.Length T_p_1=0.0197 "Tube pitch";
+
+        parameter SI.Length delta_f_1=0.0001 "fin thickness";
+        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
+          "Louver angle";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
+        parameter SI.Length D_m_2=0.002
+          "Major tube diameter for flat tube";
+        parameter Real alpha_2=0.244
+          "Lateral fin spacing (s) / free flow height (h)";
+        parameter Real gamma_2=0.067
+          "Fin thickness (t) / lateral fin spacing (s)";
+        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //input VARIABLES
+        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
+          annotation (Dialog(group="Input"));
+
+        //input record
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_m=D_m_1,
+          F_l=F_l_1,
+          F_p=F_p_1,
+          L_l=L_l_1,
+          L_p=L_p_1,
+          T_d=T_d_1,
+          T_p=T_p_1,
+          delta_f=delta_f_1,
+          Phi=Phi_1,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.88)=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_h=D_h_2,
+          alpha=alpha_2,
+          gamma=gamma_2,
+          delta=delta_2,
+          D_m=D_m_2,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
+                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.53)=m_flow[2])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        //output variables
+        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
+        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Re_lin(
+          duration=1,
+          startTime=0,
+          height=10000,
+          offset=0)   annotation (Placement(
+              transformation(extent={{-80,-80},{-60,-60}})));
+
+        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
+          annotation (Placement(transformation(extent={{-80,-58},{-60,-38}})));
+      equation
+        //heat transfer calculation
+        (,,Re,Nu[1],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+
+        (,,Re,Nu[2],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
+          m_flow_IN_con_2, m_flow_IN_var_2);
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube.mos"
+              "Verification of kc_flatTube"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with flat tubes and various fin geometries"),
+              Text(
+                extent={{-58,-22},{-22,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and louver fin"),
+              Text(
+                extent={{22,-22},{58,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and slit fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_flatTube;
+
+      model kc_flatTube_KC "Verification of function kc_flatTube_KC"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=2 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_m_1=0.005
+          "Major tube diameter for flat tube";
+        parameter SI.Length F_l_1=0.019 "Fin length";
+        parameter SI.Length F_p_1=0.0018
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_l_1=0.01607 "Louver length";
+        parameter SI.Length L_p_1=0.001534 "Louver pitch";
+        parameter SI.Length T_d_1=0.026 "Tube depth";
+        parameter SI.Length T_p_1=0.0197 "Tube pitch";
+
+        parameter SI.Length delta_f_1=0.0001 "fin thickness";
+        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
+          "louver angle";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
+        parameter SI.Length D_m_2=0.002
+          "Major tube diameter for flat tube";
+        parameter Real alpha_2=0.244
+          "Lateral fin spacing (s) / free flow height (h)";
+        parameter Real gamma_2=0.067
+          "Fin thickness (t) / lateral fin spacing (s)";
+        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
+
+        SI.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2)
+          "Free flow height";
+        SI.Length l_2=t_2/delta_2 "Fin length";
+        SI.Length s_2=h_2*alpha_2
+          "Lateral fin spacing (free flow width)";
+        SI.Length t_2=s_2*gamma_2 "Fin thickness";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //here: Nusselt number as input for inverse calculation
+        SI.NusseltNumber Nu=input_Nu.y;
+        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
+
+        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/L_p_1;
+        SI.CoefficientOfHeatTransfer kc_2=Nu*lambda/D_h_2;
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_m=D_m_1,
+          F_l=F_l_1,
+          F_p=F_p_1,
+          L_l=L_l_1,
+          L_p=L_p_1,
+          T_d=T_d_1,
+          T_p=T_p_1,
+          delta_f=delta_f_1,
+          Phi=Phi_1,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_h=D_h_2,
+          alpha=alpha_2,
+          gamma=gamma_2,
+          delta=delta_2,
+          D_m=D_m_2,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
+                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[2])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        SI.ReynoldsNumber Re_1=abs(m_flow[1])*L_p_1/(eta*A_fr*(
+            (F_l_1 - delta_f_1)*(F_p_1 - delta_f_1)/((F_l_1 + D_m_1)*F_p_1)));
+        SI.ReynoldsNumber Re_2=abs(m_flow[2])*D_h_2/(eta*A_fr*(
+            h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2))));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Nu_lin(
+          startTime=0,
+          duration=1,
+          height=1e3,
+          offset=1e-4)
+                    annotation (Placement(transformation(
+                extent={{50,-80},{70,-60}})));
+        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
+          annotation (Placement(transformation(extent={{50,-56},{70,-36}})));
+      equation
+        //heat transfer calculation
+        kc_1 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+        kc_2 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
+          m_flow_IN_con_2, m_flow_IN_var_2);
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube_KC.mos"
+              "Verification of kc_flatTube_KC"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with flat tubes and various fin geometries (inlining)"),
+              Text(
+                extent={{-58,-22},{-22,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and louver fin"),
+              Text(
+                extent={{22,-22},{58,-30}},
+                textColor={0,0,255},
+                textString="Flat tube and slit fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_flatTube_KC;
+
+      model kc_roundTube "Verification of function kc_roundTube"
+        extends Modelica.Icons.Example;
+
+        parameter Integer n=4 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+        parameter SI.Length delta_f=0.0001 "fin thickness";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
+        parameter SI.Length F_p_1=0.00122
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length P_l_1=0.0127
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
+        parameter Integer N_1=2 "Number of tube rows";
+
+        //heat exchanger variables geometry no.4
+        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
+        parameter SI.Length F_p_4=0.00169
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_4=2 "Number of tube rows";
+        parameter SI.Length P_l_4=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_4=0.0254
+          "Transverse tube pitch";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //input VARIABLES
+        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
+          annotation (Dialog(group="Input"));
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_c=D_c_1,
+          F_p=F_p_1,
+          P_t=P_t_1,
+          P_l=P_l_1,
+          N=N_1,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
+          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.14)=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_4(
+          A_fr=A_fr,
+          D_c=D_c_4,
+          F_p=F_p_4,
+          P_t=P_t_4,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
+          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_4(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow(start=0.1)=m_flow[4])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        //output variables
+        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
+        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
+
+      public
+        Modelica.Blocks.Sources.Ramp input_Re_lin(
+          duration=1,
+          startTime=0,
+          height=10000,
+          offset=0)   annotation (Placement(
+              transformation(extent={{-80,-80},{-60,-60}})));
+
+        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
+          annotation (Placement(transformation(extent={{-80,-56},{-60,-36}})));
+      equation
+        //heat transfer calculation
+        (,,Re,Nu[1],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+
+        (,,Re,Nu[4],) =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
+          m_flow_IN_con_4, m_flow_IN_var_4);
+
+        // dummy values for questionable geometries 2 and 3
+        m_flow[2] = 0; Nu[2] = 0;
+        m_flow[3] = 0; Nu[3] = 0;
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube.mos"
+              "Verification of kc_roundTube"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+              Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                    "Heat transfer of heat exchangers with round tubes and various fin geometries"),
+              Text(
+                extent={{-60,18},{-20,10}},
+                textColor={0,0,255},
+                textString="Round tube and plain fin"),
+              Text(
+                extent={{20,-22},{60,-30}},
+                textColor={0,0,255},
+                textString="Round tube and wavy fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_roundTube;
+
+      model kc_roundTube_KC "Verification of function kc_roundTube_KC"
+        extends Modelica.Icons.Example;
+        //The functions for heat exchanger geometry no.2 and no.3 are too complex for inverting.
+        //Therefore they have been removed from this verification model.
+
+        parameter Integer n=4 "Number of various fin geometries";
+
+        //heat exchanger variables
+        parameter SI.Area A_fr=1 "Frontal area";
+        parameter SI.Length delta_f=0.0001 "fin thickness";
+
+        //heat exchanger variables geometry no.1
+        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
+        parameter SI.Length F_p_1=0.00122
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length P_l_1=0.0127
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
+        parameter Integer N_1=2 "Number of tube rows";
+
+        //heat exchanger variables geometry no.2
+        parameter SI.Length D_c_2=0.01042 "Fin collar diameter";
+        parameter SI.Length F_p_2=0.00205
+          "Fin pitch, fin spacing + fin thickness";
+        parameter SI.Length L_2=N_2*P_l_2
+          "Heat exchanger length";
+        parameter SI.Length L_h_2=0.0014 "Louver height";
+        parameter SI.Length L_p_2=0.0024 "Louver pitch";
+        parameter Integer N_2=2 "Number of tube rows";
+        parameter SI.Length P_l_2=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_2=0.0254
+          "Transverse tube pitch";
+
+        //heat exchanger variables geometry no.3
+        parameter SI.Length D_c_3=0.01034 "Fin collar diameter";
+        parameter SI.Length F_p_3=0.00246
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_3=2 "Number of tube rows";
+        parameter SI.Length P_l_3=0.022
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_3=0.0254
+          "Transverse tube pitch";
+        parameter SI.Length delta_f_3=0.00012 "fin thickness";
+        parameter SI.Length S_h_3=0.00099 "Slit height";
+        parameter SI.Length S_p_3=0.0022 "Slit pitch";
+
+        //heat exchanger variables geometry no.4
+        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
+        parameter SI.Length F_p_4=0.00169
+          "Fin pitch, fin spacing + fin thickness";
+        parameter Integer N_4=2 "Number of tube rows";
+        parameter SI.Length P_l_4=0.01905
+          "Longitudinal tube pitch";
+        parameter SI.Length P_t_4=0.0254
+          "Transverse tube pitch";
+
+        //fluid property variables
+        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
+            1007 "Specific heat capacity at constant pressure of fluid";
+        parameter SI.DynamicViscosity eta=18.24e-6
+          "Dynamic viscosity of fluid";
+        parameter SI.ThermalConductivity lambda=25.69e-3
+          "Thermal conductivity of fluid";
+        parameter SI.Density rho=1.188 "Density of fluid";
+
+        //here: Nusselt number as input for inverse calculation
+        SI.NusseltNumber Nu=input_Nu.y;
+        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
+
+        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/D_c_1;
+        //SI.CoefficientOfHeatTransfer kc_2 = Nu*lambda/D_c_2;
+        //SI.CoefficientOfHeatTransfer kc_3 = Nu*lambda/D_c_3;
+        SI.CoefficientOfHeatTransfer kc_4=Nu*lambda/D_c_4;
+
+        //input record
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_1(
+          A_fr=A_fr,
+          D_c=D_c_1,
+          F_p=F_p_1,
+          P_t=P_t_1,
+          P_l=P_l_1,
+          N=N_1,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
+          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_1(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[1])
+          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_2(
+          A_fr=A_fr,
+          D_c=D_c_2,
+          F_p=F_p_2,
+          L_h=L_h_2,
+          L_p=L_p_2,
+          P_t=P_t_2,
+          P_l=P_l_2,
+          N=N_2,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin)
+          annotation (Placement(transformation(extent={{20,20},{40,40}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_2(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[2])
+          annotation (Placement(transformation(extent={{40,20},{60,40}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_3(
+          A_fr=A_fr,
+          D_c=D_c_3,
+          F_p=F_p_3,
+          P_t=P_t_3,
+          P_l=P_l_3,
+          N=N_3,
+          S_h=S_h_3,
+          S_p=S_p_3,
+          delta_f=delta_f_3,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.SlitFin)
+          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_3(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[3])
+          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
+          m_flow_IN_con_4(
+          A_fr=A_fr,
+          D_c=D_c_4,
+          F_p=F_p_4,
+          P_t=P_t_4,
+          delta_f=delta_f,
+          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
+          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
+          m_flow_IN_var_4(
+          cp=cp,
+          eta=eta,
+          lambda=lambda,
+          rho=rho,
+          m_flow=m_flow[4])
+          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
+
+        SI.ReynoldsNumber Re_1=abs(m_flow[1])*D_c_1/(eta*A_fr*(
+            (F_p_1*P_t_1 - F_p_1*D_c_1 - (P_t_1 - D_c_1)*delta_f)/(F_p_1*
+            P_t_1)));
+        //SI.ReynoldsNumber Re_2 = abs(m_flow[2])*D_c_2/(eta*A_fr*((F_p_2*P_t_2-F_p_2*D_c_2-(P_t_2-D_c_2)*delta_f)/(F_p_2*P_t_2)));
+        //SI.ReynoldsNumber Re_3 = abs(m_flow[3])*D_c_3/(eta*A_fr*((F_p_3*P_t_3-F_p_3*D_c_3-(P_t_3-D_c_3)*delta_f_3)/(F_p_3*P_t_3)));
+        SI.ReynoldsNumber Re_4=abs(m_flow[4])*D_c_4/(eta*A_fr*(
+            (F_p_4*P_t_4 - F_p_4*D_c_4 - (P_t_4 - D_c_4)*delta_f)/(F_p_4*
+            P_t_4)));
+      public
+        Modelica.Blocks.Sources.Ramp input_Nu_lin(
+          startTime=0,
+          duration=1,
+          height=1e3,
+          offset=5) annotation (Placement(transformation(
+                extent={{50,-80},{70,-60}})));
+        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
+          annotation (Placement(transformation(extent={{50,-58},{70,-38}})));
+      equation
+        //heat transfer calculation
+        kc_1 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+          m_flow_IN_con_1, m_flow_IN_var_1);
+        //kc_2 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_heatExchanger_KC(
+        //m_flow_IN_con_2, m_flow_IN_var_2);
+        //kc_3 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+        //m_flow_IN_con_3, m_flow_IN_var_3);
+        kc_4 =
+          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
+          m_flow_IN_con_4, m_flow_IN_var_4);
+        m_flow[2] = 1;
+        m_flow[3] = 1;
+
+        annotation (__Dymola_Commands(file=
+                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube_KC.mos"
+              "Verification of kc_roundTube_KC"), Diagram(coordinateSystem(
+                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
+                 Text(
+                extent={{-100,50},{100,75}},
+                textColor={0,0,255},
+                textString=
+                  "Heat transfer of heat exchangers with round tubes and various fin geometries (inlining)"),
+                Text(
+                extent={{-60,18},{-20,10}},
+                textColor={0,0,255},
+                textString="Round tube and plain fin"),Text(
+                extent={{20,18},{60,10}},
+                textColor={0,0,255},
+                textString="Round tube and louver fin"),Text(
+                extent={{-60,-22},{-20,-30}},
+                textColor={0,0,255},
+                textString="Round tube and slit fin"),Text(
+                extent={{20,-22},{60,-30}},
+                textColor={0,0,255},
+                textString="Round tube and wavy fin")}),
+          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
+      end kc_roundTube_KC;
+    end HeatExchanger;
       package HelicalPipe "Verification package for helical pipe correlations"
       extends Modelica.Icons.ExamplesPackage;
         model kc_laminar "Verification of function kc_laminar"
@@ -6038,630 +6660,6 @@ extends Modelica.Icons.ExamplesPackage;
         end dp_severalGeometryOverall_DPMFLOW;
       end Valve;
     end PressureLoss;
-
-    package HeatExchanger
-      "Verification package for heat exchanger correlations"
-    extends Modelica.Icons.ExamplesPackage;
-
-      model kc_flatTube "Verification of function kc_flatTube"
-        extends Modelica.Icons.Example;
-
-        parameter Integer n=2 "Number of various fin geometries";
-
-        //heat exchanger variables
-        parameter SI.Area A_fr=1 "Frontal area";
-
-        //heat exchanger variables geometry no.1
-        parameter SI.Length D_m_1=0.005
-          "Major tube diameter for flat tube";
-        parameter SI.Length F_l_1=0.019 "Fin length";
-        parameter SI.Length F_p_1=0.0018
-          "Fin pitch, fin spacing + fin thickness";
-        parameter SI.Length L_l_1=0.01607 "Louver length";
-        parameter SI.Length L_p_1=0.001534 "Louver pitch";
-        parameter SI.Length T_d_1=0.026 "Tube depth";
-        parameter SI.Length T_p_1=0.0197 "Tube pitch";
-
-        parameter SI.Length delta_f_1=0.0001 "fin thickness";
-        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
-          "Louver angle";
-
-        //heat exchanger variables geometry no.2
-        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
-        parameter SI.Length D_m_2=0.002
-          "Major tube diameter for flat tube";
-        parameter Real alpha_2=0.244
-          "Lateral fin spacing (s) / free flow height (h)";
-        parameter Real gamma_2=0.067
-          "Fin thickness (t) / lateral fin spacing (s)";
-        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
-
-        //fluid property variables
-        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-            1007 "Specific heat capacity at constant pressure of fluid";
-        parameter SI.DynamicViscosity eta=18.24e-6
-          "Dynamic viscosity of fluid";
-        parameter SI.ThermalConductivity lambda=25.69e-3
-          "Thermal conductivity of fluid";
-        parameter SI.Density rho=1.188 "Density of fluid";
-
-        //input VARIABLES
-        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
-          annotation (Dialog(group="Input"));
-
-        //input record
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-          m_flow_IN_con_1(
-          A_fr=A_fr,
-          D_m=D_m_1,
-          F_l=F_l_1,
-          F_p=F_p_1,
-          L_l=L_l_1,
-          L_p=L_p_1,
-          T_d=T_d_1,
-          T_p=T_p_1,
-          delta_f=delta_f_1,
-          Phi=Phi_1,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
-          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-          m_flow_IN_var_1(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow(start=0.88)=m_flow[1])
-          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-          m_flow_IN_con_2(
-          A_fr=A_fr,
-          D_h=D_h_2,
-          alpha=alpha_2,
-          gamma=gamma_2,
-          delta=delta_2,
-          D_m=D_m_2,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
-                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-          m_flow_IN_var_2(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow(start=0.53)=m_flow[2])
-          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-        //output variables
-        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
-        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
-
-      public
-        Modelica.Blocks.Sources.Ramp input_Re_lin(
-          duration=1,
-          startTime=0,
-          height=10000,
-          offset=0)   annotation (Placement(
-              transformation(extent={{-80,-80},{-60,-60}})));
-
-        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
-          annotation (Placement(transformation(extent={{-80,-58},{-60,-38}})));
-      equation
-        //heat transfer calculation
-        (,,Re,Nu[1],) =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
-          m_flow_IN_con_1, m_flow_IN_var_1);
-
-        (,,Re,Nu[2],) =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube(
-          m_flow_IN_con_2, m_flow_IN_var_2);
-
-        annotation (__Dymola_Commands(file=
-                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube.mos"
-              "Verification of kc_flatTube"), Diagram(coordinateSystem(
-                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-              Text(
-                extent={{-100,50},{100,75}},
-                textColor={0,0,255},
-                textString=
-                    "Heat transfer of heat exchangers with flat tubes and various fin geometries"),
-              Text(
-                extent={{-58,-22},{-22,-30}},
-                textColor={0,0,255},
-                textString="Flat tube and louver fin"),
-              Text(
-                extent={{22,-22},{58,-30}},
-                textColor={0,0,255},
-                textString="Flat tube and slit fin")}),
-          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
-      end kc_flatTube;
-
-      model kc_flatTube_KC "Verification of function kc_flatTube_KC"
-        extends Modelica.Icons.Example;
-
-        parameter Integer n=2 "Number of various fin geometries";
-
-        //heat exchanger variables
-        parameter SI.Area A_fr=1 "Frontal area";
-
-        //heat exchanger variables geometry no.1
-        parameter SI.Length D_m_1=0.005
-          "Major tube diameter for flat tube";
-        parameter SI.Length F_l_1=0.019 "Fin length";
-        parameter SI.Length F_p_1=0.0018
-          "Fin pitch, fin spacing + fin thickness";
-        parameter SI.Length L_l_1=0.01607 "Louver length";
-        parameter SI.Length L_p_1=0.001534 "Louver pitch";
-        parameter SI.Length T_d_1=0.026 "Tube depth";
-        parameter SI.Length T_p_1=0.0197 "Tube pitch";
-
-        parameter SI.Length delta_f_1=0.0001 "fin thickness";
-        parameter SI.Angle Phi_1=28*Modelica.Constants.pi/180
-          "louver angle";
-
-        //heat exchanger variables geometry no.2
-        parameter SI.Length D_h_2=0.002383 "Hydraulic diameter";
-        parameter SI.Length D_m_2=0.002
-          "Major tube diameter for flat tube";
-        parameter Real alpha_2=0.244
-          "Lateral fin spacing (s) / free flow height (h)";
-        parameter Real gamma_2=0.067
-          "Fin thickness (t) / lateral fin spacing (s)";
-        parameter Real delta_2=0.032 "Fin thickness (t) / Fin length (l)";
-
-        SI.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2)
-          "Free flow height";
-        SI.Length l_2=t_2/delta_2 "Fin length";
-        SI.Length s_2=h_2*alpha_2
-          "Lateral fin spacing (free flow width)";
-        SI.Length t_2=s_2*gamma_2 "Fin thickness";
-
-        //fluid property variables
-        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-            1007 "Specific heat capacity at constant pressure of fluid";
-        parameter SI.DynamicViscosity eta=18.24e-6
-          "Dynamic viscosity of fluid";
-        parameter SI.ThermalConductivity lambda=25.69e-3
-          "Thermal conductivity of fluid";
-        parameter SI.Density rho=1.188 "Density of fluid";
-
-        //here: Nusselt number as input for inverse calculation
-        SI.NusseltNumber Nu=input_Nu.y;
-        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
-
-        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/L_p_1;
-        SI.CoefficientOfHeatTransfer kc_2=Nu*lambda/D_h_2;
-
-        //input record
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-          m_flow_IN_con_1(
-          A_fr=A_fr,
-          D_m=D_m_1,
-          F_l=F_l_1,
-          F_p=F_p_1,
-          L_l=L_l_1,
-          L_p=L_p_1,
-          T_d=T_d_1,
-          T_p=T_p_1,
-          delta_f=delta_f_1,
-          Phi=Phi_1,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin)
-          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-          m_flow_IN_var_1(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[1])
-          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con
-          m_flow_IN_con_2(
-          A_fr=A_fr,
-          D_h=D_h_2,
-          alpha=alpha_2,
-          gamma=gamma_2,
-          delta=delta_2,
-          D_m=D_m_2,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin)
-                     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var
-          m_flow_IN_var_2(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[2])
-          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-        SI.ReynoldsNumber Re_1=abs(m_flow[1])*L_p_1/(eta*A_fr*(
-            (F_l_1 - delta_f_1)*(F_p_1 - delta_f_1)/((F_l_1 + D_m_1)*F_p_1)));
-        SI.ReynoldsNumber Re_2=abs(m_flow[2])*D_h_2/(eta*A_fr*(
-            h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2))));
-
-      public
-        Modelica.Blocks.Sources.Ramp input_Nu_lin(
-          startTime=0,
-          duration=1,
-          height=1e3,
-          offset=1e-4)
-                    annotation (Placement(transformation(
-                extent={{50,-80},{70,-60}})));
-        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
-          annotation (Placement(transformation(extent={{50,-56},{70,-36}})));
-      equation
-        //heat transfer calculation
-        kc_1 =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
-          m_flow_IN_con_1, m_flow_IN_var_1);
-        kc_2 =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_flatTube_KC(
-          m_flow_IN_con_2, m_flow_IN_var_2);
-
-        annotation (__Dymola_Commands(file=
-                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_flatTube_KC.mos"
-              "Verification of kc_flatTube_KC"), Diagram(coordinateSystem(
-                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-              Text(
-                extent={{-100,50},{100,75}},
-                textColor={0,0,255},
-                textString=
-                    "Heat transfer of heat exchangers with flat tubes and various fin geometries (inlining)"),
-              Text(
-                extent={{-58,-22},{-22,-30}},
-                textColor={0,0,255},
-                textString="Flat tube and louver fin"),
-              Text(
-                extent={{22,-22},{58,-30}},
-                textColor={0,0,255},
-                textString="Flat tube and slit fin")}),
-          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
-      end kc_flatTube_KC;
-
-      model kc_roundTube "Verification of function kc_roundTube"
-        extends Modelica.Icons.Example;
-
-        parameter Integer n=4 "Number of various fin geometries";
-
-        //heat exchanger variables
-        parameter SI.Area A_fr=1 "Frontal area";
-        parameter SI.Length delta_f=0.0001 "fin thickness";
-
-        //heat exchanger variables geometry no.1
-        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
-        parameter SI.Length F_p_1=0.00122
-          "Fin pitch, fin spacing + fin thickness";
-        parameter SI.Length P_l_1=0.0127
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
-        parameter Integer N_1=2 "Number of tube rows";
-
-        //heat exchanger variables geometry no.4
-        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
-        parameter SI.Length F_p_4=0.00169
-          "Fin pitch, fin spacing + fin thickness";
-        parameter Integer N_4=2 "Number of tube rows";
-        parameter SI.Length P_l_4=0.01905
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_4=0.0254
-          "Transverse tube pitch";
-
-        //fluid property variables
-        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-            1007 "Specific heat capacity at constant pressure of fluid";
-        parameter SI.DynamicViscosity eta=18.24e-6
-          "Dynamic viscosity of fluid";
-        parameter SI.ThermalConductivity lambda=25.69e-3
-          "Thermal conductivity of fluid";
-        parameter SI.Density rho=1.188 "Density of fluid";
-
-        //input VARIABLES
-        SI.ReynoldsNumber Re=input_Re.y "Reynolds number"
-          annotation (Dialog(group="Input"));
-
-        //input record
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_1(
-          A_fr=A_fr,
-          D_c=D_c_1,
-          F_p=F_p_1,
-          P_t=P_t_1,
-          P_l=P_l_1,
-          N=N_1,
-          delta_f=delta_f,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
-          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_1(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow(start=0.14)=m_flow[1])
-          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_4(
-          A_fr=A_fr,
-          D_c=D_c_4,
-          F_p=F_p_4,
-          P_t=P_t_4,
-          delta_f=delta_f,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
-          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_4(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow(start=0.1)=m_flow[4])
-          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-        //output variables
-        SI.MassFlowRate m_flow[n] "Mass flow rate" annotation (Dialog(group="Output"));
-        SI.NusseltNumber Nu[n] "Nusselt number" annotation (Dialog(group="Output"));
-
-      public
-        Modelica.Blocks.Sources.Ramp input_Re_lin(
-          duration=1,
-          startTime=0,
-          height=10000,
-          offset=0)   annotation (Placement(
-              transformation(extent={{-80,-80},{-60,-60}})));
-
-        Modelica.Blocks.Sources.RealExpression input_Re(y=(time)^3*1e4)
-          annotation (Placement(transformation(extent={{-80,-56},{-60,-36}})));
-      equation
-        //heat transfer calculation
-        (,,Re,Nu[1],) =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
-          m_flow_IN_con_1, m_flow_IN_var_1);
-
-        (,,Re,Nu[4],) =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube(
-          m_flow_IN_con_4, m_flow_IN_var_4);
-
-        // dummy values for questionable geometries 2 and 3
-        m_flow[2] = 0; Nu[2] = 0;
-        m_flow[3] = 0; Nu[3] = 0;
-
-        annotation (__Dymola_Commands(file=
-                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube.mos"
-              "Verification of kc_roundTube"), Diagram(coordinateSystem(
-                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-              Text(
-                extent={{-100,50},{100,75}},
-                textColor={0,0,255},
-                textString=
-                    "Heat transfer of heat exchangers with round tubes and various fin geometries"),
-              Text(
-                extent={{-60,18},{-20,10}},
-                textColor={0,0,255},
-                textString="Round tube and plain fin"),
-              Text(
-                extent={{20,-22},{60,-30}},
-                textColor={0,0,255},
-                textString="Round tube and wavy fin")}),
-          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
-      end kc_roundTube;
-
-      model kc_roundTube_KC "Verification of function kc_roundTube_KC"
-        extends Modelica.Icons.Example;
-        //The functions for heat exchanger geometry no.2 and no.3 are too complex for inverting.
-        //Therefore they have been removed from this verification model.
-
-        parameter Integer n=4 "Number of various fin geometries";
-
-        //heat exchanger variables
-        parameter SI.Area A_fr=1 "Frontal area";
-        parameter SI.Length delta_f=0.0001 "fin thickness";
-
-        //heat exchanger variables geometry no.1
-        parameter SI.Length D_c_1=0.00752 "Fin collar diameter";
-        parameter SI.Length F_p_1=0.00122
-          "Fin pitch, fin spacing + fin thickness";
-        parameter SI.Length P_l_1=0.0127
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_1=0.021 "Transverse tube pitch";
-        parameter Integer N_1=2 "Number of tube rows";
-
-        //heat exchanger variables geometry no.2
-        parameter SI.Length D_c_2=0.01042 "Fin collar diameter";
-        parameter SI.Length F_p_2=0.00205
-          "Fin pitch, fin spacing + fin thickness";
-        parameter SI.Length L_2=N_2*P_l_2
-          "Heat exchanger length";
-        parameter SI.Length L_h_2=0.0014 "Louver height";
-        parameter SI.Length L_p_2=0.0024 "Louver pitch";
-        parameter Integer N_2=2 "Number of tube rows";
-        parameter SI.Length P_l_2=0.01905
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_2=0.0254
-          "Transverse tube pitch";
-
-        //heat exchanger variables geometry no.3
-        parameter SI.Length D_c_3=0.01034 "Fin collar diameter";
-        parameter SI.Length F_p_3=0.00246
-          "Fin pitch, fin spacing + fin thickness";
-        parameter Integer N_3=2 "Number of tube rows";
-        parameter SI.Length P_l_3=0.022
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_3=0.0254
-          "Transverse tube pitch";
-        parameter SI.Length delta_f_3=0.00012 "fin thickness";
-        parameter SI.Length S_h_3=0.00099 "Slit height";
-        parameter SI.Length S_p_3=0.0022 "Slit pitch";
-
-        //heat exchanger variables geometry no.4
-        parameter SI.Length D_c_4=0.0103 "Fin collar diameter";
-        parameter SI.Length F_p_4=0.00169
-          "Fin pitch, fin spacing + fin thickness";
-        parameter Integer N_4=2 "Number of tube rows";
-        parameter SI.Length P_l_4=0.01905
-          "Longitudinal tube pitch";
-        parameter SI.Length P_t_4=0.0254
-          "Transverse tube pitch";
-
-        //fluid property variables
-        parameter SI.SpecificHeatCapacityAtConstantPressure cp=
-            1007 "Specific heat capacity at constant pressure of fluid";
-        parameter SI.DynamicViscosity eta=18.24e-6
-          "Dynamic viscosity of fluid";
-        parameter SI.ThermalConductivity lambda=25.69e-3
-          "Thermal conductivity of fluid";
-        parameter SI.Density rho=1.188 "Density of fluid";
-
-        //here: Nusselt number as input for inverse calculation
-        SI.NusseltNumber Nu=input_Nu.y;
-        SI.MassFlowRate m_flow[n](start=ones(n)*1e-6);
-
-        SI.CoefficientOfHeatTransfer kc_1=Nu*lambda/D_c_1;
-        //SI.CoefficientOfHeatTransfer kc_2 = Nu*lambda/D_c_2;
-        //SI.CoefficientOfHeatTransfer kc_3 = Nu*lambda/D_c_3;
-        SI.CoefficientOfHeatTransfer kc_4=Nu*lambda/D_c_4;
-
-        //input record
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_1(
-          A_fr=A_fr,
-          D_c=D_c_1,
-          F_p=F_p_1,
-          P_t=P_t_1,
-          P_l=P_l_1,
-          N=N_1,
-          delta_f=delta_f,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin)
-          annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_1(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[1])
-          annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_2(
-          A_fr=A_fr,
-          D_c=D_c_2,
-          F_p=F_p_2,
-          L_h=L_h_2,
-          L_p=L_p_2,
-          P_t=P_t_2,
-          P_l=P_l_2,
-          N=N_2,
-          delta_f=delta_f,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin)
-          annotation (Placement(transformation(extent={{20,20},{40,40}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_2(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[2])
-          annotation (Placement(transformation(extent={{40,20},{60,40}})));
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_3(
-          A_fr=A_fr,
-          D_c=D_c_3,
-          F_p=F_p_3,
-          P_t=P_t_3,
-          P_l=P_l_3,
-          N=N_3,
-          S_h=S_h_3,
-          S_p=S_p_3,
-          delta_f=delta_f_3,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.SlitFin)
-          annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_3(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[3])
-          annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con
-          m_flow_IN_con_4(
-          A_fr=A_fr,
-          D_c=D_c_4,
-          F_p=F_p_4,
-          P_t=P_t_4,
-          delta_f=delta_f,
-          geometry=Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin)
-          annotation (Placement(transformation(extent={{20,-20},{40,0}})));
-        Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var
-          m_flow_IN_var_4(
-          cp=cp,
-          eta=eta,
-          lambda=lambda,
-          rho=rho,
-          m_flow=m_flow[4])
-          annotation (Placement(transformation(extent={{40,-20},{60,0}})));
-
-        SI.ReynoldsNumber Re_1=abs(m_flow[1])*D_c_1/(eta*A_fr*(
-            (F_p_1*P_t_1 - F_p_1*D_c_1 - (P_t_1 - D_c_1)*delta_f)/(F_p_1*
-            P_t_1)));
-        //SI.ReynoldsNumber Re_2 = abs(m_flow[2])*D_c_2/(eta*A_fr*((F_p_2*P_t_2-F_p_2*D_c_2-(P_t_2-D_c_2)*delta_f)/(F_p_2*P_t_2)));
-        //SI.ReynoldsNumber Re_3 = abs(m_flow[3])*D_c_3/(eta*A_fr*((F_p_3*P_t_3-F_p_3*D_c_3-(P_t_3-D_c_3)*delta_f_3)/(F_p_3*P_t_3)));
-        SI.ReynoldsNumber Re_4=abs(m_flow[4])*D_c_4/(eta*A_fr*(
-            (F_p_4*P_t_4 - F_p_4*D_c_4 - (P_t_4 - D_c_4)*delta_f)/(F_p_4*
-            P_t_4)));
-      public
-        Modelica.Blocks.Sources.Ramp input_Nu_lin(
-          startTime=0,
-          duration=1,
-          height=1e3,
-          offset=5) annotation (Placement(transformation(
-                extent={{50,-80},{70,-60}})));
-        Modelica.Blocks.Sources.RealExpression input_Nu(y=(time)^3*1e3 + 1e-3)
-          annotation (Placement(transformation(extent={{50,-58},{70,-38}})));
-      equation
-        //heat transfer calculation
-        kc_1 =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-          m_flow_IN_con_1, m_flow_IN_var_1);
-        //kc_2 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_heatExchanger_KC(
-        //m_flow_IN_con_2, m_flow_IN_var_2);
-        //kc_3 = Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-        //m_flow_IN_con_3, m_flow_IN_var_3);
-        kc_4 =
-          Modelica.Fluid.Dissipation.HeatTransfer.HeatExchanger.kc_roundTube_KC(
-          m_flow_IN_con_4, m_flow_IN_var_4);
-        m_flow[2] = 1;
-        m_flow[3] = 1;
-
-        annotation (__Dymola_Commands(file=
-                "modelica://ModelicaTest/Resources/Scripts/Dymola/heatTransfer/heatExchanger/kc_roundTube_KC.mos"
-              "Verification of kc_roundTube_KC"), Diagram(coordinateSystem(
-                preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
-                 Text(
-                extent={{-100,50},{100,75}},
-                textColor={0,0,255},
-                textString=
-                  "Heat transfer of heat exchangers with round tubes and various fin geometries (inlining)"),
-                Text(
-                extent={{-60,18},{-20,10}},
-                textColor={0,0,255},
-                textString="Round tube and plain fin"),Text(
-                extent={{20,18},{60,10}},
-                textColor={0,0,255},
-                textString="Round tube and louver fin"),Text(
-                extent={{-60,-22},{-20,-30}},
-                textColor={0,0,255},
-                textString="Round tube and slit fin"),Text(
-                extent={{20,-22},{60,-30}},
-                textColor={0,0,255},
-                textString="Round tube and wavy fin")}),
-          experiment(StopTime=1.01, Interval=0.002, Tolerance=1e-5));
-      end kc_roundTube_KC;
-    end HeatExchanger;
   end Verifications;
 
   package TestCases "package for implemented test cases ready for simulation"
